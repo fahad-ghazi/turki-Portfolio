@@ -240,6 +240,21 @@ body {
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  /* Activate Thmanyah's signature kashida + contextual alternates */
+  font-feature-settings: "kern" 1, "liga" 1, "calt" 1, "dlig" 1, "salt" 1, "ss01" 1, "ss02" 1, "ss03" 1, "ss04" 1;
+  text-rendering: optimizeLegibility;
+  font-kerning: normal;
+}
+
+/* Justified Arabic text triggers kashida — the soul of the typeface */
+.hero-tagline,
+.about-text,
+.case-text {
+  text-align: justify;
+  text-justify: inter-word;
+  -ms-text-justify: distribute;
+  word-spacing: 0.05em;
+  hanging-punctuation: first last;
 }
 
 /* ===== NAVIGATION ===== */
@@ -345,6 +360,19 @@ nav {
   line-height: 1.55;
 }
 
+.hero-feature {
+  font-family: 'Thmanyah Display', serif;
+  font-weight: 900;
+  font-size: clamp(38px, 6.5vw, 88px);
+  line-height: 1.05;
+  letter-spacing: -1px;
+  color: var(--ink);
+  margin-top: 80px;
+  max-width: 1100px;
+  /* Kashida-friendly rendering */
+  font-feature-settings: "salt" 1, "ss01" 1, "ss02" 1, "ss03" 1, "calt" 1, "dlig" 1;
+}
+
 .hero-tagline-en {
   font-family: 'Inter', sans-serif;
   font-size: clamp(13px, 1.4vw, 16px);
@@ -412,12 +440,15 @@ nav {
 }
 
 .section-title-ar {
-  font-family: 'Thmanyah Sans', sans-serif;
-  font-size: clamp(16px, 1.6vw, 20px);
+  /* In AR version, this slot now holds the English label (FILMS, FASHION, etc.) */
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(11px, 1.1vw, 13px);
   font-weight: 500;
+  letter-spacing: 4px;
   color: var(--ink-soft);
-  margin-top: 4px;
-  opacity: 0.75;
+  margin-top: 8px;
+  opacity: 0.55;
+  text-transform: uppercase;
 }
 
 .section-meta {
@@ -1268,6 +1299,7 @@ footer {
 <section class="hero" id="top">
   <h1 class="hero-name">تركي النفيعي</h1>
   <p class="hero-tagline">فنان بصري سعودي · يصنع عوالم بالذكاء الاصطناعي · الرياض</p>
+  <div class="hero-feature" aria-hidden="true">يـمـتـدّ المـشـهـد حـسـب تـعـبـيـرك</div>
 </section>
 
 <!-- ===== FILMS SECTION ===== -->
