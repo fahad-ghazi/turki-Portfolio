@@ -1,0 +1,1830 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Turki Alnefaie · AI Visual Artist</title>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;900&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #F5F1E8;
+  --ink: #0a0a0a;
+  --ink-soft: #2a2a2a;
+  --gold: #C9A961;
+  --line: rgba(10,10,10,0.1);
+  --hover: rgba(201, 169, 97, 0.08);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Tajawal', 'Inter', system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* ===== NAVIGATION ===== */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 32px;
+  background: rgba(245, 241, 232, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--line);
+  font-family: 'Inter', sans-serif;
+}
+
+.logo {
+  font-family: 'Playfair Display', serif;
+  font-weight: 900;
+  font-size: 22px;
+  letter-spacing: -0.5px;
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.nav-links {
+  display: flex;
+  gap: 32px;
+  list-style: none;
+}
+
+.nav-links a {
+  color: var(--ink-soft);
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover { color: var(--gold); }
+
+/* ===== HERO ===== */
+.hero {
+  padding: 140px 32px 60px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.hero-name {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(48px, 8vw, 96px);
+  font-weight: 900;
+  line-height: 0.95;
+  letter-spacing: -2px;
+  color: var(--ink);
+}
+
+.hero-name-en {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(14px, 1.5vw, 16px);
+  letter-spacing: 6px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-top: 16px;
+  font-weight: 500;
+}
+
+.hero-tagline {
+  font-size: clamp(18px, 2.2vw, 26px);
+  color: var(--ink-soft);
+  margin-top: 30px;
+  max-width: 720px;
+  font-weight: 400;
+  line-height: 1.4;
+}
+
+.hero-tagline-en {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(13px, 1.4vw, 16px);
+  color: var(--ink-soft);
+  margin-top: 12px;
+  font-style: italic;
+  opacity: 0.7;
+}
+
+/* ===== SECTION ===== */
+.section {
+  padding: 60px 32px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* ===== SECTION BANNER ===== */
+.section-banner {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 21/9;
+  overflow: hidden;
+  margin-bottom: 32px;
+  background: var(--ink);
+}
+
+.section-banner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 6s ease;
+}
+
+.section-banner:hover img {
+  transform: scale(1.04);
+}
+
+.section-banner::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0) 40%, rgba(0,0,0,0.55) 100%);
+  pointer-events: none;
+}
+
+@media (max-width: 768px) {
+  .section-banner { aspect-ratio: 16/9; margin-bottom: 24px; }
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 32px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--line);
+}
+
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(28px, 3.5vw, 42px);
+  font-weight: 700;
+  letter-spacing: -1px;
+}
+
+.section-title-ar {
+  font-family: 'Tajawal', sans-serif;
+  font-size: clamp(16px, 1.6vw, 20px);
+  font-weight: 500;
+  color: var(--ink-soft);
+  margin-top: 4px;
+  opacity: 0.75;
+}
+
+.section-meta {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 500;
+}
+
+/* ===== VIDEO GRID ===== */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 4px;
+}
+
+.tile {
+  position: relative;
+  aspect-ratio: 16/9;
+  overflow: hidden;
+  cursor: pointer;
+  background: var(--ink);
+}
+
+.tile img,
+.tile video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: opacity 0.3s, transform 0.5s ease;
+}
+
+.tile:hover img { opacity: 0; }
+.tile:hover video { opacity: 1; transform: scale(1.02); }
+
+.tile video {
+  position: absolute;
+  top: 0; left: 0;
+  opacity: 0;
+}
+
+.tile-caption {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  padding: 22px;
+  background: linear-gradient(transparent, rgba(0,0,0,0.85));
+  color: white;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.tile-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(20px, 2vw, 28px);
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  margin-bottom: 4px;
+}
+
+.tile-meta {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 500;
+}
+
+/* ===== MODAL VIDEO PLAYER ===== */
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 10, 10, 0.95);
+  backdrop-filter: blur(20px);
+  z-index: 1000;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+}
+
+.modal.active { display: flex; }
+
+.modal-video {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  box-shadow: 0 30px 100px rgba(0,0,0,0.5);
+}
+
+.modal-close {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 36px;
+  cursor: pointer;
+  font-weight: 200;
+  z-index: 10;
+  transition: color 0.2s;
+}
+
+.modal-close:hover { color: var(--gold); }
+
+/* ===== TRAINED MODELS — CHARACTER CARDS ===== */
+.character-card {
+  margin-bottom: 56px;
+}
+
+.character-card:last-child { margin-bottom: 0; }
+
+.character-label {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 14px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--line);
+  font-family: 'Inter', sans-serif;
+}
+
+.character-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  color: var(--ink);
+}
+
+.character-meta {
+  font-size: 10px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 500;
+}
+
+.angles-row {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 4px;
+}
+
+.angles-row img {
+  width: 100%;
+  aspect-ratio: 3/4;
+  object-fit: cover;
+  background: var(--ink);
+  cursor: pointer;
+  transition: opacity 0.3s, transform 0.4s;
+}
+
+.angles-row img:hover {
+  opacity: 0.85;
+  transform: scale(0.98);
+}
+
+@media (max-width: 1024px) {
+  .angles-row { grid-template-columns: repeat(4, 1fr); }
+}
+
+@media (max-width: 640px) {
+  .angles-row { grid-template-columns: repeat(3, 1fr); gap: 3px; }
+  .character-name { font-size: 18px; }
+}
+
+/* ===== MASONRY GRID (Fashion / Editorial) ===== */
+.masonry-grid {
+  column-count: 4;
+  column-gap: 4px;
+}
+
+.masonry-grid img {
+  width: 100%;
+  margin-bottom: 4px;
+  display: block;
+  break-inside: avoid;
+  cursor: pointer;
+  transition: opacity 0.3s, transform 0.4s;
+  background: var(--ink);
+}
+
+.masonry-grid img:hover {
+  opacity: 0.85;
+  transform: scale(0.99);
+}
+
+@media (max-width: 1024px) {
+  .masonry-grid { column-count: 3; }
+}
+
+@media (max-width: 640px) {
+  .masonry-grid { column-count: 2; }
+}
+
+/* Lightbox for images */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(10,10,10,0.97);
+  z-index: 1000;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+  cursor: zoom-out;
+}
+
+.lightbox.active { display: flex; }
+
+.lightbox img {
+  max-width: 95%;
+  max-height: 95%;
+  object-fit: contain;
+  box-shadow: 0 30px 100px rgba(0,0,0,0.5);
+}
+
+/* ===== STILLS GRID ===== */
+.stills-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 4px;
+  margin-top: 24px;
+}
+
+.still {
+  aspect-ratio: 1/1;
+  overflow: hidden;
+  background: var(--ink);
+}
+
+.still img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s;
+}
+
+.still:hover img { transform: scale(1.05); }
+
+/* ===== ABOUT ===== */
+.about {
+  padding: 80px 32px;
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.about-text {
+  font-size: clamp(16px, 1.8vw, 20px);
+  color: var(--ink-soft);
+  line-height: 1.8;
+  margin-bottom: 40px;
+}
+
+.about-text-en {
+  font-family: 'Inter', sans-serif;
+  font-style: italic;
+  opacity: 0.7;
+  font-size: clamp(13px, 1.3vw, 15px);
+}
+
+.contact {
+  font-family: 'Inter', sans-serif;
+  margin-top: 60px;
+  padding-top: 40px;
+  border-top: 1px solid var(--line);
+}
+
+.contact-label {
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 8px;
+}
+
+.contact a {
+  color: var(--ink);
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 500;
+  transition: color 0.2s;
+  display: block;
+  margin: 4px 0;
+}
+
+.contact a:hover { color: var(--gold); }
+
+/* ===== FOOTER ===== */
+footer {
+  padding: 40px 32px;
+  text-align: center;
+  border-top: 1px solid var(--line);
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  opacity: 0.6;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  nav { padding: 14px 20px; }
+  .nav-links { gap: 18px; }
+  .nav-links a { font-size: 11px; }
+  .hero { padding: 110px 20px 40px; }
+  .section { padding: 40px 20px; }
+  .grid { grid-template-columns: 1fr; }
+  .stills-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* ===== SUBTLE ANIMATION ===== */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ===== SCROLL PROGRESS BAR ===== */
+.scroll-progress {
+  position: fixed;
+  top: 0; left: 0;
+  height: 2px;
+  background: var(--gold);
+  width: 0%;
+  z-index: 200;
+  transition: width 0.1s linear;
+  box-shadow: 0 0 8px rgba(201, 169, 97, 0.6);
+}
+
+/* ===== SECTION COUNTER ===== */
+.section-counter {
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  background: rgba(245, 241, 232, 0.85);
+  backdrop-filter: blur(20px);
+  padding: 10px 16px;
+  border: 1px solid var(--line);
+  z-index: 90;
+  font-weight: 500;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.section-counter.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.section-counter .current {
+  color: var(--gold);
+  font-weight: 700;
+}
+
+/* ===== KEYBOARD HINT ===== */
+.keyboard-hint {
+  position: fixed;
+  bottom: 32px;
+  left: 32px;
+  font-family: 'Inter', sans-serif;
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  color: var(--ink-soft);
+  opacity: 0.5;
+  z-index: 90;
+  pointer-events: none;
+}
+
+.keyboard-hint kbd {
+  display: inline-block;
+  padding: 2px 6px;
+  margin: 0 2px;
+  background: rgba(10,10,10,0.05);
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  font-family: monospace;
+  font-size: 10px;
+  color: var(--ink);
+}
+
+@media (max-width: 768px) {
+  .section-counter, .keyboard-hint { display: none; }
+}
+
+/* ===== CINEMATIC TILE CURSOR ===== */
+.tile { cursor: none; }
+
+.tile-cursor {
+  position: fixed;
+  width: 70px;
+  height: 70px;
+  border: 1px solid rgba(255,255,255,0.7);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 999;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Inter', sans-serif;
+  font-size: 9px;
+  letter-spacing: 2px;
+  color: white;
+  background: rgba(10,10,10,0.5);
+  backdrop-filter: blur(8px);
+  transform: translate(-50%, -50%) scale(0.8);
+  transition: transform 0.2s ease, opacity 0.2s ease;
+  text-transform: uppercase;
+  font-weight: 600;
+  opacity: 0;
+}
+
+.tile-cursor.active {
+  display: flex;
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+@media (max-width: 1024px) {
+  .tile { cursor: pointer; }
+  .tile-cursor { display: none !important; }
+}
+
+/* ===== CASE STUDY BADGE ===== */
+.case-study-badge {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  padding: 5px 10px;
+  background: rgba(201, 169, 97, 0.95);
+  color: var(--ink);
+  font-family: 'Inter', sans-serif;
+  font-size: 9px;
+  letter-spacing: 2px;
+  font-weight: 700;
+  text-transform: uppercase;
+  z-index: 3;
+  pointer-events: none;
+}
+
+/* ===== CASE STUDY MODAL ===== */
+.case-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 10, 10, 0.98);
+  z-index: 1100;
+  display: none;
+  overflow-y: auto;
+  padding: 0;
+}
+
+.case-modal.active { display: block; }
+
+.case-modal-inner {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 80px 32px 60px;
+  color: #f5f1e8;
+  font-family: 'Tajawal', 'Inter', sans-serif;
+}
+
+.case-close {
+  position: fixed;
+  top: 24px;
+  right: 24px;
+  background: none;
+  border: 1px solid rgba(255,255,255,0.2);
+  color: white;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  font-size: 22px;
+  cursor: pointer;
+  font-weight: 200;
+  z-index: 1101;
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.case-close:hover {
+  background: var(--gold);
+  color: var(--ink);
+  border-color: var(--gold);
+}
+
+.case-meta-top {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 14px;
+}
+
+.case-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(40px, 6vw, 72px);
+  font-weight: 900;
+  line-height: 0.95;
+  letter-spacing: -2px;
+  margin-bottom: 8px;
+}
+
+.case-title-ar {
+  font-size: clamp(28px, 4vw, 48px);
+  font-weight: 700;
+  margin-bottom: 32px;
+  opacity: 0.85;
+}
+
+.case-hero-video {
+  width: 100%;
+  margin: 32px 0 48px;
+  background: #000;
+  aspect-ratio: 16/9;
+}
+
+.case-hero-video video {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: #000;
+}
+
+.case-section {
+  margin-bottom: 40px;
+}
+
+.case-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 12px;
+  font-weight: 600;
+}
+
+.case-text {
+  font-size: 17px;
+  line-height: 1.8;
+  color: rgba(245, 241, 232, 0.85);
+  margin-bottom: 14px;
+}
+
+.case-text-en {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-style: italic;
+  opacity: 0.55;
+  line-height: 1.7;
+}
+
+.case-meta-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 16px;
+  margin: 32px 0;
+  padding: 24px 0;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.case-meta-item {
+  font-family: 'Inter', sans-serif;
+}
+
+.case-meta-item .k {
+  font-size: 9px;
+  letter-spacing: 2px;
+  color: var(--gold);
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.case-meta-item .v {
+  font-size: 14px;
+  font-weight: 500;
+  color: white;
+}
+
+.case-scenes {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.case-scene {
+  display: grid;
+  grid-template-columns: 60px 1fr;
+  gap: 20px;
+  padding: 16px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.case-scene-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--gold);
+  line-height: 1;
+}
+
+.case-scene-text { color: rgba(245, 241, 232, 0.8); font-size: 15px; line-height: 1.7; }
+
+.case-watch-btn {
+  display: inline-block;
+  margin-top: 32px;
+  padding: 18px 36px;
+  background: var(--gold);
+  color: var(--ink);
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.case-watch-btn:hover {
+  background: white;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(201,169,97,0.3);
+}
+
+@media (max-width: 768px) {
+  .case-modal-inner { padding: 60px 20px 40px; }
+}
+
+/* ===== TILE LETTERBOX TRANSITION ===== */
+.modal { transition: opacity 0.4s ease; }
+.modal:not(.active) { opacity: 0; pointer-events: none; }
+
+/* ===== HERO SUBTLE PARALLAX ===== */
+.hero-name {
+  will-change: transform;
+}
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+  position: fixed;
+  bottom: 80px;
+  right: 32px;
+  width: 48px;
+  height: 48px;
+  background: var(--ink);
+  color: var(--bg);
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 95;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  opacity: 0;
+  transform: translateY(20px) scale(0.8);
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+}
+
+.back-to-top:hover {
+  background: var(--gold);
+  color: var(--ink);
+  transform: translateY(0) scale(1.05);
+}
+
+.back-to-top.visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+@media (max-width: 768px) {
+  .back-to-top { bottom: 24px; right: 24px; width: 44px; height: 44px; }
+}
+
+/* ===== SECTION DOTS (right-side rail) ===== */
+.section-dots {
+  position: fixed;
+  top: 50%;
+  right: 14px;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  z-index: 90;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+
+.section-dots.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.section-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(10,10,10,0.25);
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.section-dot:hover {
+  background: var(--gold);
+  transform: scale(1.4);
+}
+
+.section-dot.active {
+  background: var(--gold);
+  width: 24px;
+  border-radius: 4px;
+}
+
+.section-dot[data-label]::before {
+  content: attr(data-label);
+  position: absolute;
+  right: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: 'Inter', sans-serif;
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--ink);
+  background: rgba(245, 241, 232, 0.95);
+  padding: 4px 10px;
+  border: 1px solid var(--line);
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+
+.section-dot:hover::before {
+  opacity: 1;
+}
+
+@media (max-width: 768px) {
+  .section-dots { display: none; }
+}
+
+/* ===== FASHION LOAD-MORE ===== */
+.fashion-controls {
+  margin-top: 32px;
+  text-align: center;
+}
+
+.show-more-btn {
+  background: transparent;
+  border: 1px solid var(--ink);
+  color: var(--ink);
+  padding: 14px 32px;
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.show-more-btn:hover {
+  background: var(--ink);
+  color: var(--bg);
+}
+
+.show-more-btn .count {
+  color: var(--gold);
+  margin-left: 6px;
+}
+</style>
+</head>
+<body>
+
+<!-- ===== SCROLL PROGRESS ===== -->
+<div class="scroll-progress" id="scroll-progress"></div>
+
+<!-- ===== CUSTOM CURSOR FOR TILES ===== -->
+<div class="tile-cursor" id="tile-cursor">PLAY</div>
+
+<!-- ===== SECTION COUNTER ===== -->
+<div class="section-counter" id="section-counter"><span class="current">01</span> / <span id="total-sections">10</span> · <span id="section-name">Films</span></div>
+
+<!-- ===== KEYBOARD HINT ===== -->
+<div class="keyboard-hint">
+  <kbd>J</kbd>/<kbd>K</kbd> sections · <kbd>1</kbd>–<kbd>9</kbd> jump · <kbd>ESC</kbd> close
+</div>
+
+<!-- ===== SECTION DOTS RAIL ===== -->
+<div class="section-dots" id="section-dots"></div>
+
+<!-- ===== BACK TO TOP ===== -->
+<button class="back-to-top" id="back-to-top" aria-label="Back to top">↑</button>
+
+<!-- ===== NAVIGATION ===== -->
+<nav>
+  <a href="#top" class="logo">TA</a>
+  <ul class="nav-links">
+    <li><a href="#films">Films</a></li>
+    <li><a href="#fashion">Fashion</a></li>
+    <li><a href="#commercial">Commercial</a></li>
+    <li><a href="#ads">Ads</a></li>
+    <li><a href="#realestate">Real Estate</a></li>
+    <li><a href="#heritage">Heritage</a></li>
+    <li><a href="#trained">Trained Models</a></li>
+    <li><a href="#studies">Studies</a></li>
+    <li><a href="#about">About</a></li>
+  </ul>
+</nav>
+
+<!-- ===== HERO ===== -->
+<section class="hero" id="top">
+  <h1 class="hero-name">تركي النفيعي</h1>
+  <div class="hero-name-en">Turki Alnefaie</div>
+  <p class="hero-tagline">منتج محتوى إبداعي بالذكاء الاصطناعي · راوي بصري · الرياض</p>
+  <p class="hero-tagline-en">AI Creative Producer & Visual Storyteller · Riyadh, Saudi Arabia</p>
+</section>
+
+<!-- ===== FILMS SECTION ===== -->
+<section class="section" id="films">
+  <div class="section-header">
+    <div>
+      <h2 class="section-title">Films</h2>
+      <div class="section-title-ar">أفلام</div>
+    </div>
+    <span class="section-meta">2026 / SELECTED WORK</span>
+  </div>
+
+  <div class="grid">
+    <!-- Saudi Joker -->
+    <div class="tile" data-video="videos/01_saudi_joker.mp4" data-case="joker">
+      <span class="case-study-badge">Case Study</span>
+      <img src="images/poster_01_saudi_joker.jpg" alt="Saudi Joker">
+      <video muted loop playsinline preload="none">
+        <source src="videos/01_saudi_joker.mp4" type="video/mp4">
+      </video>
+      <div class="tile-caption">
+        <div class="tile-title">Saudi Joker</div>
+        <div class="tile-meta">CINEMATIC TRIBUTE · 2026</div>
+      </div>
+    </div>
+
+    <!-- Mohammed the Writer -->
+    <div class="tile" data-video="videos/03_mohammed_writer.mp4">
+      <img src="images/poster_03_mohammed_writer.jpg" alt="Mohammed">
+      <video muted loop playsinline preload="none">
+        <source src="videos/03_mohammed_writer.mp4" type="video/mp4">
+      </video>
+      <div class="tile-caption">
+        <div class="tile-title">عقل محمد كاتب</div>
+        <div class="tile-meta">DRAMA · MENTAL INSTITUTION</div>
+      </div>
+    </div>
+
+    <!-- The Human Snail -->
+    <div class="tile" data-video="videos/02_human_snail.mp4">
+      <img src="images/poster_02_human_snail.jpg" alt="Human Snail">
+      <video muted loop playsinline preload="none">
+        <source src="videos/02_human_snail.mp4" type="video/mp4">
+      </video>
+      <div class="tile-caption">
+        <div class="tile-title">الحلزون البشري</div>
+        <div class="tile-meta">SCI-FI / DYSTOPIA</div>
+      </div>
+    </div>
+
+    <!-- Disorders / الاضطرابات -->
+    <div class="tile" data-video="videos/05_disorders.mp4" data-case="disorders">
+      <span class="case-study-badge">Case Study</span>
+      <img src="images/poster_05_disorders.jpg" alt="Disorders">
+      <video muted loop playsinline preload="none">
+        <source src="videos/05_disorders.mp4" type="video/mp4">
+      </video>
+      <div class="tile-caption">
+        <div class="tile-title">الاضطرابات</div>
+        <div class="tile-meta">MUSIC VIDEO · MENTAL HEALTH</div>
+      </div>
+    </div>
+
+    <!-- Saudi Harley Quinn -->
+    <div class="tile" data-video="videos/06_saudi_harley.mp4">
+      <img src="images/poster_06_saudi_harley.jpg" alt="Saudi Harley Quinn">
+      <video muted loop playsinline preload="none">
+        <source src="videos/06_saudi_harley.mp4" type="video/mp4">
+      </video>
+      <div class="tile-caption">
+        <div class="tile-title">Saudi Harley Quinn</div>
+        <div class="tile-meta">MUSIC VIDEO · ANTI-HERO</div>
+      </div>
+    </div>
+
+    <!-- كل جيل عنده فنان -->
+    <div class="tile" data-video="videos/09_generations.mp4">
+      <img src="images/poster_09_generations.jpg" alt="Every Generation Has an Artist">
+      <video muted loop playsinline preload="none">
+        <source src="videos/09_generations.mp4" type="video/mp4">
+      </video>
+      <div class="tile-caption">
+        <div class="tile-title">كل جيل عنده فنان</div>
+        <div class="tile-meta">PORTRAIT SERIES · GENERATIONS</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FASHION & EDITORIAL ===== -->
+<section class="section" id="fashion">
+  <div class="section-header">
+    <div>
+      <h2 class="section-title">Fashion & Editorial</h2>
+      <div class="section-title-ar">أزياء وإيديتوريال</div>
+    </div>
+    <span class="section-meta">PHOTOSHOOTS · LOOKBOOKS · 2026</span>
+  </div>
+  <p style="color: var(--ink-soft); margin-bottom: 24px; font-size: 14px; max-width: 700px;">
+    Editorial photoshoots and fashion sessions — styling, lighting, and atmosphere
+    composed entirely as AI imagery.
+    جلسات تصوير فاشن وإيديتوريال — ستايل وإضاءة وأجواء بالكامل بالذكاء الاصطناعي.
+  </p>
+  <div class="masonry-grid" id="fashion-grid"></div>
+</section>
+
+<!-- ===== COMMERCIAL CAMPAIGN ===== -->
+<section class="section" id="commercial">
+  <div class="section-header">
+    <div>
+      <h2 class="section-title">Commercial</h2>
+      <div class="section-title-ar">إعلانات تجارية</div>
+    </div>
+    <span class="section-meta">BRAND CAMPAIGNS · 2026</span>
+  </div>
+
+  <div class="grid">
+    <!-- Glasses Cinematic -->
+    <div class="tile" data-video="videos/07_glasses_cinematic.mp4" style="aspect-ratio: 9/16;">
+      <img src="images/poster_07_glasses_cinematic.jpg" alt="The Glasses Cinematic">
+      <video muted loop playsinline preload="none">
+        <source src="videos/07_glasses_cinematic.mp4" type="video/mp4">
+      </video>
+      <div class="tile-caption">
+        <div class="tile-title">The Glasses</div>
+        <div class="tile-meta">EDITORIAL · CINEMATIC</div>
+      </div>
+    </div>
+
+    <!-- Glasses UGC -->
+    <div class="tile" data-video="videos/08_glasses_ugc.mp4" style="aspect-ratio: 9/16;">
+      <img src="images/poster_08_glasses_ugc.jpg" alt="The Glasses UGC">
+      <video muted loop playsinline preload="none">
+        <source src="videos/08_glasses_ugc.mp4" type="video/mp4">
+      </video>
+      <div class="tile-caption">
+        <div class="tile-title">The Glasses</div>
+        <div class="tile-meta">UGC · TALKING HEAD</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== STUDIES SECTION ===== -->
+<section class="section" id="studies">
+  <div class="section-header">
+    <div>
+      <h2 class="section-title">Studies</h2>
+      <div class="section-title-ar">دراسات بصرية</div>
+    </div>
+    <span class="section-meta">EXPERIMENTAL / FRAGMENTS</span>
+  </div>
+
+  <div class="grid" style="grid-template-columns: 1fr;">
+    <div class="tile" data-video="videos/04_studies_fragments.mp4" style="aspect-ratio: 21/9;">
+      <img src="images/poster_04_studies_fragments.jpg" alt="Studies">
+      <video muted loop playsinline preload="none">
+        <source src="videos/04_studies_fragments.mp4" type="video/mp4">
+      </video>
+      <div class="tile-caption">
+        <div class="tile-title">Studies / 01 — Fragments</div>
+        <div class="tile-meta">A SERIES OF MOMENTS WITHOUT NARRATIVE</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== REAL ESTATE ===== -->
+<section class="section" id="realestate">
+  <div class="section-header">
+    <div>
+      <h2 class="section-title">Real Estate</h2>
+      <div class="section-title-ar">عقارات</div>
+    </div>
+    <span class="section-meta">PROPERTY VISUALIZATION · 2026</span>
+  </div>
+  <p style="color: var(--ink-soft); margin-bottom: 24px; font-size: 14px; max-width: 700px;">
+    Photoreal architectural and property visualizations for Saudi real estate developers.
+    تصورات بصرية معمارية وعقارية فوتوريالستية لمطوّري العقارات السعوديين.
+  </p>
+  <div class="masonry-grid" id="realestate-grid"></div>
+</section>
+
+<!-- ===== HERITAGE ===== -->
+<section class="section" id="heritage">
+  <div class="section-header">
+    <div>
+      <h2 class="section-title">Heritage</h2>
+      <div class="section-title-ar">تراث</div>
+    </div>
+    <span class="section-meta">SAUDI CLASSICAL · NOSTALGIA</span>
+  </div>
+  <p style="color: var(--ink-soft); margin-bottom: 24px; font-size: 14px; max-width: 700px;">
+    Cultural and nostalgic Saudi imagery — traditional life, heritage spaces, and classical aesthetics.
+    صور سعودية كلاسيكية وشعبية تستحضر التراث والفضاءات التقليدية.
+  </p>
+  <div class="masonry-grid" id="heritage-grid"></div>
+</section>
+
+<!-- ===== PRODUCTS & ADS ===== -->
+<section class="section" id="ads">
+  <div class="section-header">
+    <div>
+      <h2 class="section-title">Products & Ads</h2>
+      <div class="section-title-ar">منتجات وإعلانات</div>
+    </div>
+    <span class="section-meta">COMMERCIAL · BRAND CAMPAIGNS</span>
+  </div>
+  <p style="color: var(--ink-soft); margin-bottom: 24px; font-size: 14px; max-width: 700px;">
+    Photoreal product photography and brand advertising visuals — created entirely with AI.
+    تصوير منتجات إعلاني فوتوريالستي ومرئيات حملات تجارية بالكامل بالذكاء الاصطناعي.
+  </p>
+  <div class="masonry-grid" id="ads-grid"></div>
+</section>
+
+<!-- ===== TRAINED MODELS ===== -->
+<section class="section" id="trained">
+  <div class="section-header">
+    <div>
+      <h2 class="section-title">Trained Models</h2>
+      <div class="section-title-ar">شخصيات مُدرَّبة</div>
+    </div>
+    <span class="section-meta">CUSTOM CHARACTERS · 5-ANGLE CONSISTENCY</span>
+  </div>
+  <p style="color: var(--ink-soft); margin-bottom: 36px; font-size: 14px; max-width: 700px;">
+    Custom-trained AI character models — each rendered across five angles to maintain
+    photorealistic identity consistency for film, editorial, and brand work.
+    شخصيات مُدرَّبة بالذكاء الاصطناعي — كل شخصية بخمس زوايا تحافظ على هويتها البصرية.
+  </p>
+  <div id="trained-models-container"></div>
+</section>
+
+
+<!-- ===== ABOUT ===== -->
+<section class="about" id="about">
+  <h2 class="section-title" style="margin-bottom: 8px;">About</h2>
+  <div class="section-title-ar" style="margin-bottom: 30px;">عن تركي</div>
+  <p class="about-text">
+    منتج محتوى إبداعي سعودي يحوّل الأماكن واللحظات والأفكار إلى رؤى بصرية.
+    أعمل في تقاطع الفن السينمائي والذكاء الاصطناعي، أبني عوالم بصرية تستحضر
+    الذاكرة والثقافة والحلم.
+  </p>
+  <p class="about-text-en">
+    Saudi visual artist working at the intersection of cinema and artificial
+    intelligence. I turn places, moments, and ideas into AI visions — building
+    worlds that evoke memory, culture, and dream.
+  </p>
+
+  <div class="contact">
+    <div class="contact-label">CONTACT</div>
+    <a href="mailto:turkig1101999@gmail.com">turkig1101999@gmail.com</a>
+    <a href="tel:+966509588702">+966 50 958 8702</a>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  TURKI ALNEFAIE · ALL RIGHTS RESERVED · 2026
+</footer>
+
+<!-- ===== MODAL (Video) ===== -->
+<div class="modal" id="modal">
+  <button class="modal-close" id="modal-close">×</button>
+  <video class="modal-video" id="modal-video" controls preload="none"></video>
+</div>
+
+<!-- ===== LIGHTBOX (Images) ===== -->
+<div class="lightbox" id="lightbox">
+  <img id="lightbox-img" src="" alt="">
+</div>
+
+<!-- ===== CASE STUDY MODAL ===== -->
+<div class="case-modal" id="case-modal">
+  <button class="case-close" id="case-close" aria-label="Close case study">×</button>
+  <div class="case-modal-inner" id="case-modal-content"></div>
+</div>
+
+<script>
+// === Case Study Data ===
+const caseStudies = {
+  joker: {
+    metaTop: 'FILM · 2026',
+    title: 'The Dark Knight — Saudi Edition',
+    titleAr: 'النسخة السعودية',
+    video: 'videos/01_saudi_joker.mp4',
+    concept: 'The Dark Knight, reborn in Riyadh.',
+    conceptEn: 'النسخة السعودية من ذا دارك نايت.',
+    meta: [
+      { k: 'Format', v: 'Short Film' },
+      { k: 'Duration', v: '~1:50' },
+      { k: 'Setting', v: 'Riyadh' },
+      { k: 'Year', v: '2026' }
+    ],
+    scenes: [
+      'KAFD towers at sunset, the city on edge',
+      'Joker walks into the bank — shemagh, paint, silence',
+      'Ardha sword dance turns into an UZI',
+      'Batmobile cuts through geometric concrete walls',
+      'JORER card lands on a Saudi figure',
+      'Final stand: Batman, Kingdom Tower, the city watching'
+    ]
+  },
+  disorders: {
+    metaTop: 'MUSIC VIDEO · 2026',
+    title: 'Disorders',
+    titleAr: 'الاضطرابات',
+    video: 'videos/05_disorders.mp4',
+    concept: 'A song and a music video. Seven portraits, seven mental disorders, one message — what we don\'t name, we still live with.',
+    conceptEn: 'أغنية وكليب. سبع شخصيات، سبعة اضطرابات نفسية، ورسالة واحدة — اللي ما نسمّيه، نعيشه.',
+    meta: [
+      { k: 'Format', v: 'Music Video' },
+      { k: 'Portraits', v: '7' },
+      { k: 'Theme', v: 'Awareness' },
+      { k: 'Year', v: '2026' }
+    ],
+    scenes: [
+      'Portrait 01 — repeated rituals, frame after frame',
+      'Portrait 02 — every mirror reflects a different person',
+      'Portrait 03 — descent from warm light into cold blue',
+      'Portrait 04 — empty room, one chair, walls breathing',
+      'Portrait 05 — hands that won\'t stop washing',
+      'Portrait 06 — a child\'s drawing on an adult\'s wall',
+      'Portrait 07 — stillness, the camera holds'
+    ]
+  }
+};
+
+// === Modal Video Player ===
+const modal = document.getElementById('modal');
+const modalVideo = document.getElementById('modal-video');
+const modalClose = document.getElementById('modal-close');
+
+const closeModal = () => {
+  modal.classList.remove('active');
+  modalVideo.pause();
+  modalVideo.src = '';
+};
+
+modalClose.addEventListener('click', closeModal);
+modal.addEventListener('click', e => {
+  if (e.target === modal) closeModal();
+});
+
+// === Case Study Modal ===
+const caseModal = document.getElementById('case-modal');
+const caseContent = document.getElementById('case-modal-content');
+const caseClose = document.getElementById('case-close');
+
+const openCaseStudy = (key) => {
+  const cs = caseStudies[key];
+  if (!cs) return;
+
+  caseContent.innerHTML = `
+    <div class="case-meta-top">${cs.metaTop}</div>
+    <h1 class="case-title">${cs.title}</h1>
+    <h2 class="case-title-ar" dir="rtl">${cs.titleAr}</h2>
+
+    <div class="case-hero-video">
+      <video controls autoplay muted playsinline>
+        <source src="${cs.video}" type="video/mp4">
+      </video>
+    </div>
+
+    <div class="case-meta-grid">
+      ${cs.meta.map(m => `<div class="case-meta-item"><div class="k">${m.k}</div><div class="v">${m.v}</div></div>`).join('')}
+    </div>
+
+    <div class="case-section">
+      <div class="case-label">Concept</div>
+      <p class="case-text">${cs.concept}</p>
+      <p class="case-text-en" dir="rtl">${cs.conceptEn}</p>
+    </div>
+
+    <div class="case-section">
+      <div class="case-label">Scene Breakdown</div>
+      <div class="case-scenes">
+        ${cs.scenes.map((s, i) => `
+          <div class="case-scene">
+            <div class="case-scene-num">${String(i + 1).padStart(2, '0')}</div>
+            <div class="case-scene-text">${s}</div>
+          </div>`).join('')}
+      </div>
+    </div>
+
+    <button class="case-watch-btn" id="case-watch-full">Watch Full Film →</button>
+  `;
+
+  caseModal.classList.add('active');
+  document.body.style.overflow = 'hidden';
+
+  document.getElementById('case-watch-full').addEventListener('click', () => {
+    closeCaseStudy();
+    setTimeout(() => {
+      modalVideo.src = cs.video;
+      modal.classList.add('active');
+      modalVideo.play().catch(() => {});
+    }, 200);
+  });
+};
+
+const closeCaseStudy = () => {
+  caseModal.classList.remove('active');
+  caseContent.innerHTML = '';
+  document.body.style.overflow = '';
+};
+
+caseClose.addEventListener('click', closeCaseStudy);
+caseModal.addEventListener('click', e => {
+  if (e.target === caseModal) closeCaseStudy();
+});
+
+// === Tile Click Routing (Case Study or Direct Video) ===
+document.querySelectorAll('.tile[data-video]').forEach(tile => {
+  tile.addEventListener('click', (e) => {
+    const caseKey = tile.dataset.case;
+    if (caseKey && caseStudies[caseKey]) {
+      openCaseStudy(caseKey);
+    } else {
+      const src = tile.dataset.video;
+      modalVideo.src = src;
+      modal.classList.add('active');
+      modalVideo.play().catch(() => {});
+    }
+  });
+});
+
+// === Hover preview videos ===
+document.querySelectorAll('.tile').forEach(tile => {
+  const video = tile.querySelector('video');
+  if (!video) return;
+
+  tile.addEventListener('mouseenter', () => {
+    video.play().catch(() => {});
+  });
+
+  tile.addEventListener('mouseleave', () => {
+    video.pause();
+    video.currentTime = 0;
+  });
+});
+
+// === Custom Tile Cursor ===
+const tileCursor = document.getElementById('tile-cursor');
+let cursorRaf = null;
+
+document.querySelectorAll('.tile').forEach(tile => {
+  tile.addEventListener('mouseenter', () => {
+    tileCursor.classList.add('active');
+    tileCursor.textContent = tile.dataset.case ? 'STUDY' : 'PLAY';
+  });
+  tile.addEventListener('mouseleave', () => {
+    tileCursor.classList.remove('active');
+  });
+});
+
+document.addEventListener('mousemove', (e) => {
+  if (cursorRaf) return;
+  cursorRaf = requestAnimationFrame(() => {
+    tileCursor.style.left = e.clientX + 'px';
+    tileCursor.style.top = e.clientY + 'px';
+    cursorRaf = null;
+  });
+});
+
+// === Populate Real Estate Grid (41 images) ===
+const realestateGrid = document.getElementById('realestate-grid');
+const totalRealEstate = 41;
+for (let i = 1; i <= totalRealEstate; i++) {
+  const num = String(i).padStart(3, '0');
+  const img = document.createElement('img');
+  img.src = `images/realestate/r_${num}.jpg`;
+  img.alt = `Real Estate ${i}`;
+  img.loading = 'lazy';
+  img.dataset.full = `images/realestate/r_${num}.jpg`;
+  realestateGrid.appendChild(img);
+}
+
+// === Populate Heritage Grid (21 images) ===
+const heritageGrid = document.getElementById('heritage-grid');
+const totalHeritage = 21;
+for (let i = 1; i <= totalHeritage; i++) {
+  const num = String(i).padStart(3, '0');
+  const img = document.createElement('img');
+  img.src = `images/heritage/h_${num}.jpg`;
+  img.alt = `Heritage ${i}`;
+  img.loading = 'lazy';
+  img.dataset.full = `images/heritage/h_${num}.jpg`;
+  heritageGrid.appendChild(img);
+}
+
+// === Populate Ads Grid (71 product/ad images) ===
+const adsGrid = document.getElementById('ads-grid');
+const totalAds = 71;
+for (let i = 1; i <= totalAds; i++) {
+  const num = String(i).padStart(3, '0');
+  const img = document.createElement('img');
+  img.src = `images/ads/a_${num}.jpg`;
+  img.alt = `Ad ${i}`;
+  img.loading = 'lazy';
+  img.dataset.full = `images/ads/a_${num}.jpg`;
+  adsGrid.appendChild(img);
+}
+
+// === Populate Trained Models (8 numbered characters) ===
+const trainedContainer = document.getElementById('trained-models-container');
+const characterNames = [
+  { id: 'char_01', name: 'Model 01', count: 10, meta: 'ANGLES · EXPRESSIONS' },
+  { id: 'char_02', name: 'Model 02', count: 10, meta: 'ANGLES · EXPRESSIONS' },
+  { id: 'char_03', name: 'Model 03', count: 10, meta: 'ANGLES · EXPRESSIONS' },
+  { id: 'char_04', name: 'Model 04', count: 10, meta: 'ANGLES · EXPRESSIONS' },
+  { id: 'char_05', name: 'Model 05', count: 10, meta: 'ANGLES · EXPRESSIONS' },
+  { id: 'char_06', name: 'Model 06', count: 6, meta: 'ANGLES · EXPRESSIONS' },
+  { id: 'char_07', name: 'Model 07', count: 6, meta: 'ANGLES · EXPRESSIONS' },
+  { id: 'char_08', name: 'Model 08', count: 6, meta: 'ANGLES · EXPRESSIONS' }
+];
+
+characterNames.forEach(char => {
+  const card = document.createElement('div');
+  card.className = 'character-card';
+
+  const label = document.createElement('div');
+  label.className = 'character-label';
+  label.innerHTML = `<span class="character-name">${char.name}</span><span class="character-meta">${char.meta}</span>`;
+
+  const row = document.createElement('div');
+  row.className = 'angles-row';
+
+  for (let i = 1; i <= char.count; i++) {
+    const img = document.createElement('img');
+    img.src = `images/trained_models/${char.id}/angle_${i}.jpg`;
+    img.alt = `${char.name} angle ${i}`;
+    img.loading = 'lazy';
+    img.dataset.full = `images/trained_models/${char.id}/angle_${i}.jpg`;
+    row.appendChild(img);
+  }
+
+  card.appendChild(label);
+  card.appendChild(row);
+  trainedContainer.appendChild(card);
+});
+
+// === Populate Fashion Grid (paginated to fix scroll fatigue) ===
+const fashionGrid = document.getElementById('fashion-grid');
+const FASHION_TOTAL = 159;
+const fashionAllItems = [];
+for (let i = 1; i <= FASHION_TOTAL; i++) {
+  const num = String(i).padStart(3, '0');
+  fashionAllItems.push(`images/fashion/f_${num}.jpg`);
+}
+
+const FASHION_BATCH = 60;
+let fashionLoaded = 0;
+
+const renderFashionBatch = () => {
+  const end = Math.min(fashionLoaded + FASHION_BATCH, fashionAllItems.length);
+  for (let i = fashionLoaded; i < end; i++) {
+    const img = document.createElement('img');
+    img.src = fashionAllItems[i];
+    img.alt = `Editorial ${i + 1}`;
+    img.loading = 'lazy';
+    img.decoding = 'async';
+    img.dataset.full = fashionAllItems[i];
+    fashionGrid.appendChild(img);
+  }
+  fashionLoaded = end;
+  updateFashionBtn();
+};
+
+const fashionControls = document.createElement('div');
+fashionControls.className = 'fashion-controls';
+const showMoreBtn = document.createElement('button');
+showMoreBtn.className = 'show-more-btn';
+showMoreBtn.id = 'fashion-show-more';
+fashionGrid.parentNode.appendChild(fashionControls);
+fashionControls.appendChild(showMoreBtn);
+
+const updateFashionBtn = () => {
+  const remaining = fashionAllItems.length - fashionLoaded;
+  if (remaining <= 0) {
+    fashionControls.style.display = 'none';
+    return;
+  }
+  const next = Math.min(remaining, FASHION_BATCH);
+  showMoreBtn.innerHTML = `Show More <span class="count">+${next}</span>`;
+};
+
+showMoreBtn.addEventListener('click', renderFashionBatch);
+renderFashionBatch();
+
+// === Lightbox for Images ===
+const lightbox = document.getElementById('lightbox');
+const lightboxImg = document.getElementById('lightbox-img');
+
+document.addEventListener('click', (e) => {
+  if (e.target.tagName === 'IMG' && e.target.dataset.full) {
+    lightboxImg.src = e.target.dataset.full;
+    lightbox.classList.add('active');
+  }
+});
+
+lightbox.addEventListener('click', () => {
+  lightbox.classList.remove('active');
+  lightboxImg.src = '';
+});
+
+// === Fade in on scroll ===
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.section, .about').forEach(el => {
+  el.classList.add('fade-in');
+  observer.observe(el);
+});
+
+// === Scroll Progress Bar ===
+const scrollProgress = document.getElementById('scroll-progress');
+const updateScrollProgress = () => {
+  const scrollTop = window.scrollY;
+  const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+  const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+  scrollProgress.style.width = pct + '%';
+};
+window.addEventListener('scroll', updateScrollProgress, { passive: true });
+updateScrollProgress();
+
+// === Section Counter & Active Tracking ===
+const sectionCounter = document.getElementById('section-counter');
+const sectionCurrent = sectionCounter.querySelector('.current');
+const sectionName = document.getElementById('section-name');
+const totalSectionsEl = document.getElementById('total-sections');
+
+const allSections = Array.from(document.querySelectorAll('section[id]')).filter(s => s.id !== 'top');
+totalSectionsEl.textContent = String(allSections.length).padStart(2, '0');
+
+const sectionLabels = {
+  films: 'Films',
+  commercial: 'Commercial',
+  ads: 'Products & Ads',
+  realestate: 'Real Estate',
+  heritage: 'Heritage',
+  trained: 'Trained Models',
+  fashion: 'Fashion',
+  studies: 'Studies',
+  stills: 'Stills',
+  about: 'About'
+};
+
+const sectionObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting && entry.intersectionRatio > 0.3) {
+      const idx = allSections.indexOf(entry.target);
+      if (idx >= 0) {
+        sectionCurrent.textContent = String(idx + 1).padStart(2, '0');
+        sectionName.textContent = sectionLabels[entry.target.id] || entry.target.id;
+      }
+    }
+  });
+}, { threshold: [0.3, 0.5, 0.7] });
+
+allSections.forEach(s => sectionObserver.observe(s));
+
+// Show counter after first scroll
+let counterShown = false;
+window.addEventListener('scroll', () => {
+  if (!counterShown && window.scrollY > 200) {
+    sectionCounter.classList.add('visible');
+    counterShown = true;
+  }
+}, { passive: true });
+
+// === Keyboard Navigation ===
+document.addEventListener('keydown', e => {
+  // Close modals on ESC
+  if (e.key === 'Escape') {
+    if (caseModal.classList.contains('active')) closeCaseStudy();
+    else if (modal.classList.contains('active')) closeModal();
+    else if (lightbox.classList.contains('active')) {
+      lightbox.classList.remove('active');
+      lightboxImg.src = '';
+    }
+    return;
+  }
+
+  // Skip if typing in an input
+  if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+  if (caseModal.classList.contains('active') || modal.classList.contains('active')) return;
+
+  // Find current section
+  const scrollMid = window.scrollY + window.innerHeight / 2;
+  let currentIdx = 0;
+  allSections.forEach((s, i) => {
+    if (s.offsetTop <= scrollMid) currentIdx = i;
+  });
+
+  // J/Down — next, K/Up — prev
+  if (e.key === 'j' || e.key === 'J' || e.key === 'ArrowDown') {
+    if (e.key === 'ArrowDown' && !e.shiftKey) return;
+    e.preventDefault();
+    const next = allSections[Math.min(currentIdx + 1, allSections.length - 1)];
+    if (next) next.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  } else if (e.key === 'k' || e.key === 'K' || e.key === 'ArrowUp') {
+    if (e.key === 'ArrowUp' && !e.shiftKey) return;
+    e.preventDefault();
+    const prev = allSections[Math.max(currentIdx - 1, 0)];
+    if (prev) prev.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  } else if (/^[1-9]$/.test(e.key)) {
+    const idx = parseInt(e.key, 10) - 1;
+    if (allSections[idx]) {
+      allSections[idx].scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  } else if (e.key === '0') {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+});
+
+// === Hero Subtle Parallax ===
+const heroName = document.querySelector('.hero-name');
+if (heroName) {
+  window.addEventListener('scroll', () => {
+    const y = window.scrollY;
+    if (y < window.innerHeight) {
+      heroName.style.transform = `translateY(${y * 0.15}px)`;
+    }
+  }, { passive: true });
+}
+
+// === Performance: Apply async decoding to all images ===
+document.querySelectorAll('img').forEach(img => {
+  if (!img.hasAttribute('decoding')) img.setAttribute('decoding', 'async');
+});
+
+// === Performance: Preload videos when their tile enters viewport ===
+const videoPreloadObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const tile = entry.target;
+      const video = tile.querySelector('video');
+      if (video && video.preload === 'none') {
+        video.preload = 'metadata';
+      }
+    }
+  });
+}, { rootMargin: '200px' });
+
+document.querySelectorAll('.tile[data-video]').forEach(tile => {
+  videoPreloadObserver.observe(tile);
+});
+
+// === Back to Top Button ===
+const backToTop = document.getElementById('back-to-top');
+backToTop.addEventListener('click', () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 600) {
+    backToTop.classList.add('visible');
+  } else {
+    backToTop.classList.remove('visible');
+  }
+}, { passive: true });
+
+// === Section Dots Rail ===
+const dotsRail = document.getElementById('section-dots');
+allSections.forEach((s) => {
+  const dot = document.createElement('button');
+  dot.className = 'section-dot';
+  dot.dataset.target = s.id;
+  dot.dataset.label = sectionLabels[s.id] || s.id;
+  dot.addEventListener('click', () => {
+    s.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+  dotsRail.appendChild(dot);
+});
+
+const dotsObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting && entry.intersectionRatio > 0.3) {
+      document.querySelectorAll('.section-dot').forEach(d => d.classList.remove('active'));
+      const dot = dotsRail.querySelector(`[data-target="${entry.target.id}"]`);
+      if (dot) dot.classList.add('active');
+    }
+  });
+}, { threshold: [0.3] });
+
+allSections.forEach(s => dotsObserver.observe(s));
+
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 400) {
+    dotsRail.classList.add('visible');
+  } else {
+    dotsRail.classList.remove('visible');
+  }
+}, { passive: true });
+</script>
+
+</body>
+</html>

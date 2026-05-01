@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Upload — Trained Models</title>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;900&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #F5F1E8;
+  --ink: #0a0a0a;
+  --ink-soft: #2a2a2a;
+  --gold: #C9A961;
+  --line: rgba(10,10,10,0.1);
+  --green: #4caf50;
+  --danger: #d32f2f;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Tajawal', 'Inter', system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  line-height: 1.6;
+  padding: 40px 24px 80px;
+}
+
+.container { max-width: 1400px; margin: 0 auto; }
+
+.header {
+  margin-bottom: 32px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--line);
+}
+
+h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 48px;
+  font-weight: 900;
+  letter-spacing: -1.5px;
+  margin-bottom: 8px;
+}
+
+.subtitle {
+  font-size: 14px;
+  color: var(--ink-soft);
+  font-family: 'Inter', sans-serif;
+}
+
+.controls {
+  position: sticky;
+  top: 0;
+  background: var(--bg);
+  padding: 14px 0;
+  margin-bottom: 24px;
+  border-bottom: 1px solid var(--line);
+  z-index: 10;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+button {
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  font-weight: 600;
+  padding: 12px 20px;
+  border: 1px solid var(--ink);
+  background: var(--ink);
+  color: var(--bg);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+button:hover { background: var(--gold); color: var(--ink); border-color: var(--gold); }
+button:disabled { opacity: 0.4; cursor: not-allowed; }
+
+button.secondary { background: transparent; color: var(--ink); }
+button.secondary:hover { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+
+.status {
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  color: var(--ink-soft);
+  margin-right: auto;
+}
+
+.status.connected { color: var(--green); font-weight: 600; }
+
+.model-section {
+  margin-bottom: 48px;
+  padding-bottom: 32px;
+  border-bottom: 1px solid var(--line);
+}
+
+.model-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 16px;
+}
+
+.model-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+.model-meta {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 600;
+}
+
+.slots-row {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 6px;
+  margin-bottom: 6px;
+}
+
+.slot {
+  position: relative;
+  aspect-ratio: 3/4;
+  background: rgba(10,10,10,0.04);
+  border: 2px dashed rgba(10,10,10,0.2);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  transition: all 0.2s;
+}
+
+.slot:hover { border-color: var(--gold); background: rgba(201,169,97,0.08); }
+
+.slot.dragover {
+  border-color: var(--gold);
+  background: rgba(201,169,97,0.18);
+  border-style: solid;
+}
+
+.slot.uploaded {
+  border-style: solid;
+  border-color: var(--green);
+}
+
+.slot.error {
+  border-color: var(--danger);
+}
+
+.slot img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.slot .label {
+  position: relative;
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  color: rgba(10,10,10,0.4);
+  text-align: center;
+  font-weight: 500;
+}
+
+.slot.uploaded .label,
+.slot.dragover .label { display: none; }
+
+.slot .badge {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  background: rgba(255,255,255,0.95);
+  color: var(--ink);
+  font-family: 'Inter', sans-serif;
+  font-size: 10px;
+  letter-spacing: 1px;
+  font-weight: 700;
+  padding: 3px 7px;
+  z-index: 2;
+}
+
+.slot.uploaded .badge {
+  background: var(--green);
+  color: white;
+}
+
+.slot .hint {
+  position: absolute;
+  bottom: 6px;
+  left: 6px;
+  font-family: 'Inter', sans-serif;
+  font-size: 9px;
+  color: rgba(10,10,10,0.5);
+  letter-spacing: 0.5px;
+  z-index: 2;
+}
+
+.row-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 600;
+  margin: 14px 0 8px;
+}
+
+.help-box {
+  background: rgba(201,169,97,0.1);
+  border: 1px solid var(--gold);
+  padding: 16px 20px;
+  margin-bottom: 24px;
+  font-size: 14px;
+  color: var(--ink-soft);
+  line-height: 1.7;
+}
+
+.help-box strong { color: var(--ink); }
+
+.summary {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--ink);
+  color: var(--bg);
+  padding: 12px 24px;
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  letter-spacing: 1.5px;
+  font-weight: 600;
+  z-index: 100;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.2);
+}
+
+.summary .count { color: var(--gold); font-weight: 700; }
+
+@media (max-width: 768px) {
+  .slots-row { grid-template-columns: repeat(3, 1fr); }
+  h1 { font-size: 32px; }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+  <div class="header">
+    <h1>Trained Models · Upload</h1>
+    <p class="subtitle">اسحب الصور للمكان الصح → تنحفظ تلقائياً في الفولدر</p>
+  </div>
+
+  <div class="help-box">
+    <strong>1.</strong> اضغط <strong>"Connect Portfolio Folder"</strong> واختر فولدر <code>Portfolio</code> (يطلب صلاحية كتابة)<br>
+    <strong>2.</strong> اسحب صورة من جهازك → ارميها في أي خانة (الصف الأول كلوز اب، الثاني بعيد)<br>
+    <strong>3.</strong> الصورة تتحوّل لـ JPG وتنحفظ تلقائياً (مثلاً <code>angle_1.jpg</code>)<br>
+    <strong>4.</strong> لما تخلص، افتح <a href="index.html">index.html</a> وشوف النتيجة
+  </div>
+
+  <div class="controls">
+    <button id="connect-btn">Connect Portfolio Folder</button>
+    <button id="open-portfolio" class="secondary">Open Portfolio</button>
+    <span class="status" id="status">Not connected</span>
+  </div>
+
+  <div id="models-container"></div>
+</div>
+
+<div class="summary" id="summary">
+  <span class="count" id="uploaded-count">0</span> / <span id="total-count">80</span> photos uploaded
+</div>
+
+<script>
+const MODELS_COUNT = 8;
+const PHOTOS_PER_MODEL = 10;
+const PHOTOS_PER_ROW = 5;
+
+let portfolioHandle = null;
+let trainedHandle = null;
+const slotState = {}; // { "char_01_angle_1": true }
+
+const container = document.getElementById('models-container');
+const status = document.getElementById('status');
+const connectBtn = document.getElementById('connect-btn');
+const openPortfolioBtn = document.getElementById('open-portfolio');
+const uploadedCount = document.getElementById('uploaded-count');
+const totalCount = document.getElementById('total-count');
+totalCount.textContent = MODELS_COUNT * PHOTOS_PER_MODEL;
+
+// Build UI
+for (let m = 1; m <= MODELS_COUNT; m++) {
+  const charId = `char_${String(m).padStart(2, '0')}`;
+  const section = document.createElement('div');
+  section.className = 'model-section';
+  section.innerHTML = `
+    <div class="model-header">
+      <div class="model-name">Model ${String(m).padStart(2, '0')}</div>
+      <div class="model-meta">ANGLES · EXPRESSIONS · 10 PHOTOS</div>
+    </div>
+    <div class="row-label">Row 1 — Close-up</div>
+    <div class="slots-row" id="${charId}-row1"></div>
+    <div class="row-label">Row 2 — Wide</div>
+    <div class="slots-row" id="${charId}-row2"></div>
+  `;
+  container.appendChild(section);
+
+  const row1 = section.querySelector(`#${charId}-row1`);
+  const row2 = section.querySelector(`#${charId}-row2`);
+
+  for (let i = 1; i <= PHOTOS_PER_ROW; i++) {
+    row1.appendChild(buildSlot(charId, i));
+  }
+  for (let i = PHOTOS_PER_ROW + 1; i <= PHOTOS_PER_MODEL; i++) {
+    row2.appendChild(buildSlot(charId, i));
+  }
+}
+
+function buildSlot(charId, angleNum) {
+  const slot = document.createElement('div');
+  slot.className = 'slot';
+  slot.dataset.char = charId;
+  slot.dataset.angle = angleNum;
+  slot.innerHTML = `
+    <div class="badge">angle_${angleNum}</div>
+    <div class="label">Drop image</div>
+    <div class="hint">drag & drop</div>
+  `;
+
+  slot.addEventListener('dragover', e => {
+    e.preventDefault();
+    slot.classList.add('dragover');
+  });
+  slot.addEventListener('dragleave', () => slot.classList.remove('dragover'));
+  slot.addEventListener('drop', async e => {
+    e.preventDefault();
+    slot.classList.remove('dragover');
+    const file = e.dataTransfer.files[0];
+    if (!file || !file.type.startsWith('image/')) {
+      slot.classList.add('error');
+      setTimeout(() => slot.classList.remove('error'), 1500);
+      return;
+    }
+    await handleFile(slot, file);
+  });
+
+  slot.addEventListener('click', () => {
+    if (!portfolioHandle) {
+      alert('اضغط "Connect Portfolio Folder" أولاً');
+      return;
+    }
+    const input = document.createElement('input');
+    input.type = 'file';
+    input.accept = 'image/*';
+    input.onchange = async () => {
+      if (input.files[0]) await handleFile(slot, input.files[0]);
+    };
+    input.click();
+  });
+
+  return slot;
+}
+
+async function handleFile(slot, file) {
+  if (!portfolioHandle) {
+    alert('اضغط "Connect Portfolio Folder" أولاً');
+    return;
+  }
+
+  const charId = slot.dataset.char;
+  const angleNum = slot.dataset.angle;
+
+  // Show preview immediately
+  const url = URL.createObjectURL(file);
+  let img = slot.querySelector('img');
+  if (!img) {
+    img = document.createElement('img');
+    slot.appendChild(img);
+  }
+  img.src = url;
+
+  try {
+    // Convert to JPG + scale
+    const jpgBlob = await convertToJpg(file, 1000);
+
+    // Get char folder handle
+    const charHandle = await trainedHandle.getDirectoryHandle(charId, { create: true });
+
+    // Write file
+    const fileHandle = await charHandle.getFileHandle(`angle_${angleNum}.jpg`, { create: true });
+    const writable = await fileHandle.createWritable();
+    await writable.write(jpgBlob);
+    await writable.close();
+
+    slot.classList.add('uploaded');
+    slot.classList.remove('error');
+    slotState[`${charId}_angle_${angleNum}`] = true;
+    updateSummary();
+  } catch (e) {
+    console.error(e);
+    slot.classList.add('error');
+    alert('فشل الحفظ: ' + e.message);
+  }
+}
+
+function convertToJpg(file, maxW) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => {
+      const img = new Image();
+      img.onload = () => {
+        const canvas = document.createElement('canvas');
+        const scale = Math.min(1, maxW / img.width);
+        canvas.width = img.width * scale;
+        canvas.height = img.height * scale;
+        const ctx = canvas.getContext('2d');
+        ctx.fillStyle = '#fff';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+        canvas.toBlob(b => b ? resolve(b) : reject(new Error('toBlob failed')), 'image/jpeg', 0.85);
+      };
+      img.onerror = () => reject(new Error('Image load failed'));
+      img.src = reader.result;
+    };
+    reader.onerror = () => reject(new Error('Read failed'));
+    reader.readAsDataURL(file);
+  });
+}
+
+function updateSummary() {
+  const count = Object.keys(slotState).filter(k => slotState[k]).length;
+  uploadedCount.textContent = count;
+}
+
+// Connect to Portfolio folder
+connectBtn.addEventListener('click', async () => {
+  if (!('showDirectoryPicker' in window)) {
+    alert('متصفحك ما يدعم File System Access API. استخدم Chrome أو Edge.');
+    return;
+  }
+  try {
+    const handle = await window.showDirectoryPicker({ mode: 'readwrite' });
+    // Verify it's the Portfolio folder by looking for index.html
+    let foundIndex = false;
+    for await (const entry of handle.values()) {
+      if (entry.name === 'index.html') { foundIndex = true; break; }
+    }
+    if (!foundIndex) {
+      alert('هذا مو فولدر Portfolio. اختر الفولدر اللي فيه index.html');
+      return;
+    }
+    portfolioHandle = handle;
+    // Get/create images/trained_models
+    const imagesHandle = await handle.getDirectoryHandle('images', { create: true });
+    trainedHandle = await imagesHandle.getDirectoryHandle('trained_models', { create: true });
+
+    status.textContent = `Connected: ${handle.name}`;
+    status.classList.add('connected');
+    connectBtn.disabled = true;
+
+    // Pre-load existing files to show what's already uploaded
+    await preloadExisting();
+  } catch (e) {
+    if (e.name !== 'AbortError') {
+      console.error(e);
+      alert('خطأ في الاتصال: ' + e.message);
+    }
+  }
+});
+
+async function preloadExisting() {
+  for (let m = 1; m <= MODELS_COUNT; m++) {
+    const charId = `char_${String(m).padStart(2, '0')}`;
+    try {
+      const charHandle = await trainedHandle.getDirectoryHandle(charId, { create: false });
+      for await (const entry of charHandle.values()) {
+        const match = entry.name.match(/^angle_(\d+)\.jpg$/);
+        if (match) {
+          const num = parseInt(match[1], 10);
+          const slot = document.querySelector(`.slot[data-char="${charId}"][data-angle="${num}"]`);
+          if (slot) {
+            const file = await entry.getFile();
+            const img = document.createElement('img');
+            img.src = URL.createObjectURL(file);
+            slot.appendChild(img);
+            slot.classList.add('uploaded');
+            slotState[`${charId}_angle_${num}`] = true;
+          }
+        }
+      }
+    } catch (e) { /* folder doesn't exist yet */ }
+  }
+  updateSummary();
+}
+
+openPortfolioBtn.addEventListener('click', () => {
+  window.location.href = 'index.html';
+});
+
+// Prevent default drop on body (otherwise browser opens the image)
+document.body.addEventListener('dragover', e => e.preventDefault());
+document.body.addEventListener('drop', e => e.preventDefault());
+</script>
+
+</body>
+</html>
