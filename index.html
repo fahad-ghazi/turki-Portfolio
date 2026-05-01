@@ -58,7 +58,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<link rel="preload" href="fonts/thmanyahsans-Regular.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/thmanyahseriftext-Regular.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/thmanyahserifdisplay-Black.woff2" as="font" type="font/woff2" crossorigin>
 
 <!-- JSON-LD: Person + WebSite + Organization (for Google Knowledge Panel + AI engines) -->
@@ -201,11 +201,19 @@
 }
 </script>
 <style>
+/* Thmanyah Sans — UI, navigation, captions */
 @font-face { font-family: 'Thmanyah Sans'; src: url('fonts/thmanyahsans-Light.woff2') format('woff2'); font-weight: 300; font-style: normal; font-display: swap; }
 @font-face { font-family: 'Thmanyah Sans'; src: url('fonts/thmanyahsans-Regular.woff2') format('woff2'); font-weight: 400; font-style: normal; font-display: swap; }
 @font-face { font-family: 'Thmanyah Sans'; src: url('fonts/thmanyahsans-Medium.woff2') format('woff2'); font-weight: 500; font-style: normal; font-display: swap; }
 @font-face { font-family: 'Thmanyah Sans'; src: url('fonts/thmanyahsans-Bold.woff2') format('woff2'); font-weight: 700; font-style: normal; font-display: swap; }
 @font-face { font-family: 'Thmanyah Sans'; src: url('fonts/thmanyahsans-Black.woff2') format('woff2'); font-weight: 900; font-style: normal; font-display: swap; }
+/* Thmanyah Text — body prose, "as if a calligrapher wrote it" */
+@font-face { font-family: 'Thmanyah Text'; src: url('fonts/thmanyahseriftext-Light.woff2') format('woff2'); font-weight: 300; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Thmanyah Text'; src: url('fonts/thmanyahseriftext-Regular.woff2') format('woff2'); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Thmanyah Text'; src: url('fonts/thmanyahseriftext-Medium.woff2') format('woff2'); font-weight: 500; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Thmanyah Text'; src: url('fonts/thmanyahseriftext-Bold.woff2') format('woff2'); font-weight: 700; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Thmanyah Text'; src: url('fonts/thmanyahseriftext-Black.woff2') format('woff2'); font-weight: 900; font-style: normal; font-display: swap; }
+/* Thmanyah Display — large headings, hero typography */
 @font-face { font-family: 'Thmanyah Display'; src: url('fonts/thmanyahserifdisplay-Light.woff2') format('woff2'); font-weight: 300; font-style: normal; font-display: swap; }
 @font-face { font-family: 'Thmanyah Display'; src: url('fonts/thmanyahserifdisplay-Regular.woff2') format('woff2'); font-weight: 400; font-style: normal; font-display: swap; }
 @font-face { font-family: 'Thmanyah Display'; src: url('fonts/thmanyahserifdisplay-Medium.woff2') format('woff2'); font-weight: 500; font-style: normal; font-display: swap; }
@@ -225,11 +233,13 @@
 html { scroll-behavior: smooth; }
 
 body {
-  font-family: 'Thmanyah Sans', 'Inter', system-ui, sans-serif;
+  font-family: 'Thmanyah Text', 'Inter', system-ui, sans-serif;
   background: var(--bg);
   color: var(--ink);
-  line-height: 1.6;
+  line-height: 1.7;
   overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 /* ===== NAVIGATION ===== */
@@ -261,6 +271,7 @@ nav {
   display: flex;
   gap: 32px;
   list-style: none;
+  font-family: 'Thmanyah Sans', 'Inter', sans-serif;
 }
 
 .nav-links a {
@@ -325,12 +336,13 @@ nav {
 }
 
 .hero-tagline {
-  font-size: clamp(18px, 2.2vw, 26px);
+  font-family: 'Thmanyah Text', serif;
+  font-size: clamp(20px, 2.4vw, 28px);
   color: var(--ink-soft);
   margin-top: 30px;
-  max-width: 720px;
-  font-weight: 400;
-  line-height: 1.4;
+  max-width: 760px;
+  font-weight: 500;
+  line-height: 1.55;
 }
 
 .hero-tagline-en {
@@ -661,10 +673,13 @@ nav {
 }
 
 .about-text {
-  font-size: clamp(16px, 1.8vw, 20px);
+  font-family: 'Thmanyah Text', serif;
+  font-size: clamp(17px, 1.9vw, 22px);
   color: var(--ink-soft);
-  line-height: 1.8;
-  margin-bottom: 40px;
+  line-height: 1.9;
+  font-weight: 400;
+  margin-bottom: 24px;
+  text-align: start;
 }
 
 .about-text-en {
