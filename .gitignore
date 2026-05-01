@@ -10,3 +10,7 @@ desktop.ini
 # Temp
 *.tmp
 *.log
+.claude/
+Thmanyah-Font-Family.zip
+.DS_Store
+*.zip

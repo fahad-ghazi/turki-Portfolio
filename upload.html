@@ -4,8 +4,16 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Upload — Trained Models</title>
-<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;900&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;700;900&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
+@font-face { font-family: 'Thmanyah Sans'; src: url('fonts/thmanyahsans-Regular.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: 'Thmanyah Sans'; src: url('fonts/thmanyahsans-Medium.woff2') format('woff2'); font-weight: 500; font-display: swap; }
+@font-face { font-family: 'Thmanyah Sans'; src: url('fonts/thmanyahsans-Bold.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: 'Thmanyah Display'; src: url('fonts/thmanyahserifdisplay-Bold.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: 'Thmanyah Display'; src: url('fonts/thmanyahserifdisplay-Black.woff2') format('woff2'); font-weight: 900; font-display: swap; }
+
 :root {
   --bg: #F5F1E8;
   --ink: #0a0a0a;
@@ -19,7 +27,7 @@
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
-  font-family: 'Tajawal', 'Inter', system-ui, sans-serif;
+  font-family: 'Thmanyah Sans', 'Inter', system-ui, sans-serif;
   background: var(--bg);
   color: var(--ink);
   line-height: 1.6;
@@ -35,7 +43,7 @@ body {
 }
 
 h1 {
-  font-family: 'Playfair Display', serif;
+  font-family: 'Thmanyah Display', serif;
   font-size: 48px;
   font-weight: 900;
   letter-spacing: -1.5px;
@@ -105,7 +113,7 @@ button.secondary:hover { background: var(--ink); color: var(--bg); border-color:
 }
 
 .model-name {
-  font-family: 'Playfair Display', serif;
+  font-family: 'Thmanyah Display', serif;
   font-size: 26px;
   font-weight: 700;
   letter-spacing: -0.5px;
