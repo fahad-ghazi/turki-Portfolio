@@ -240,20 +240,16 @@ body {
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  /* Activate Thmanyah's signature kashida + contextual alternates */
-  font-feature-settings: "kern" 1, "liga" 1, "calt" 1, "dlig" 1, "salt" 1, "ss01" 1, "ss02" 1, "ss03" 1, "ss04" 1;
+  /* Standard typography enhancements only — no over-stylized alternates */
+  font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
   text-rendering: optimizeLegibility;
   font-kerning: normal;
 }
 
-/* Justified Arabic text triggers kashida — the soul of the typeface */
-.hero-tagline,
-.about-text,
-.case-text {
+/* Only justify long prose — short lines look bad with kashida-induced gaps */
+.about-text {
   text-align: justify;
   text-justify: inter-word;
-  -ms-text-justify: distribute;
-  word-spacing: 0.05em;
   hanging-punctuation: first last;
 }
 
@@ -333,11 +329,13 @@ nav {
 
 .hero-name {
   font-family: 'Thmanyah Display', serif;
-  font-size: clamp(48px, 8vw, 96px);
+  font-size: clamp(56px, 9vw, 120px);
   font-weight: 900;
-  line-height: 0.95;
-  letter-spacing: -2px;
+  line-height: 1;
+  letter-spacing: 0;
   color: var(--ink);
+  /* Standard typography only — no aggressive stylistic alternates */
+  font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
 }
 
 .hero-name-en {
@@ -352,25 +350,12 @@ nav {
 
 .hero-tagline {
   font-family: 'Thmanyah Text', serif;
-  font-size: clamp(20px, 2.4vw, 28px);
+  font-size: clamp(18px, 2vw, 24px);
   color: var(--ink-soft);
-  margin-top: 30px;
-  max-width: 760px;
-  font-weight: 500;
-  line-height: 1.55;
-}
-
-.hero-feature {
-  font-family: 'Thmanyah Display', serif;
-  font-weight: 900;
-  font-size: clamp(38px, 6.5vw, 88px);
-  line-height: 1.05;
-  letter-spacing: -1px;
-  color: var(--ink);
-  margin-top: 80px;
-  max-width: 1100px;
-  /* Kashida-friendly rendering */
-  font-feature-settings: "salt" 1, "ss01" 1, "ss02" 1, "ss03" 1, "calt" 1, "dlig" 1;
+  margin-top: 24px;
+  max-width: 640px;
+  font-weight: 400;
+  line-height: 1.7;
 }
 
 .hero-tagline-en {
@@ -1298,8 +1283,7 @@ footer {
 <!-- ===== HERO ===== -->
 <section class="hero" id="top">
   <h1 class="hero-name">تركي النفيعي</h1>
-  <p class="hero-tagline">فنان بصري سعودي · يصنع عوالم بالذكاء الاصطناعي · الرياض</p>
-  <div class="hero-feature" aria-hidden="true">يـمـتـدّ المـشـهـد حـسـب تـعـبـيـرك</div>
+  <p class="hero-tagline">فنان بصري سعودي يصنع عوالم بالذكاء الاصطناعي، من الرياض.</p>
 </section>
 
 <!-- ===== FILMS SECTION ===== -->

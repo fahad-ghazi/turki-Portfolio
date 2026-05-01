@@ -244,10 +244,10 @@ body {
   font-kerning: normal;
 }
 
-/* Inline Arabic snippets (titleAr, etc.) get Thmanyah Text + kashida features */
+/* Inline Arabic snippets (titleAr, etc.) get Thmanyah Text */
 [lang="ar"], [dir="rtl"], .section-title-ar {
   font-family: 'Thmanyah Text', 'Thmanyah Sans', serif;
-  font-feature-settings: "kern" 1, "liga" 1, "calt" 1, "dlig" 1, "salt" 1, "ss01" 1, "ss02" 1, "ss03" 1, "ss04" 1;
+  font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
 }
 
 /* ===== NAVIGATION ===== */
@@ -325,11 +325,11 @@ nav {
 }
 
 .hero-name {
-  font-family: 'Thmanyah Display', serif;
-  font-size: clamp(48px, 8vw, 96px);
-  font-weight: 900;
-  line-height: 0.95;
-  letter-spacing: -2px;
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(56px, 9vw, 120px);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -3px;
   color: var(--ink);
 }
 
@@ -344,12 +344,13 @@ nav {
 }
 
 .hero-tagline {
-  font-size: clamp(18px, 2.2vw, 26px);
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(17px, 1.9vw, 22px);
   color: var(--ink-soft);
-  margin-top: 30px;
-  max-width: 720px;
+  margin-top: 24px;
+  max-width: 580px;
   font-weight: 400;
-  line-height: 1.4;
+  line-height: 1.6;
 }
 
 .hero-tagline-en {
@@ -1272,8 +1273,8 @@ footer {
 
 <!-- ===== HERO ===== -->
 <section class="hero" id="top">
-  <h1 class="hero-name" style="font-family: 'Inter', sans-serif; letter-spacing: -3px;">Turki Alnefaie</h1>
-  <p class="hero-tagline">Saudi visual artist · Building worlds with AI · Riyadh</p>
+  <h1 class="hero-name">Turki Alnefaie</h1>
+  <p class="hero-tagline">A Saudi visual artist building worlds with AI, from Riyadh.</p>
 </section>
 
 <!-- ===== FILMS SECTION ===== -->
