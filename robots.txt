@@ -1,0 +1,72 @@
+# https://turkistudio.ai
+# Turki Alnefaie — Saudi AI Visual Storyteller
+
+User-agent: *
+Allow: /
+Disallow: /upload.html
+Disallow: /upload
+
+# Allow all major search engines explicit full crawl
+User-agent: Googlebot
+Allow: /
+
+User-agent: Googlebot-Image
+Allow: /
+
+User-agent: Googlebot-Video
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+# AI training and answer engines (explicit allow — we want to be cited)
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: Meta-ExternalAgent
+Allow: /
+
+User-agent: FacebookBot
+Allow: /
+
+# Sitemap
+Sitemap: https://turkistudio.ai/sitemap.xml
+
+# Host
+Host: turkistudio.ai

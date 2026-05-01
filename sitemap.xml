@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml"
+  xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+  xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
+
+  <url>
+    <loc>https://turkistudio.ai/</loc>
+    <lastmod>2026-05-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://turkistudio.ai/"/>
+    <xhtml:link rel="alternate" hreflang="ar-SA" href="https://turkistudio.ai/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://turkistudio.ai/en/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://turkistudio.ai/"/>
+
+    <image:image>
+      <image:loc>https://turkistudio.ai/images/og-cover.jpg</image:loc>
+      <image:title>تركي النفيعي — فنان بصري بالذكاء الاصطناعي</image:title>
+    </image:image>
+
+    <video:video>
+      <video:thumbnail_loc>https://turkistudio.ai/images/poster_01_saudi_joker.jpg</video:thumbnail_loc>
+      <video:title>Saudi Joker — The Dark Knight Saudi Edition</video:title>
+      <video:description>فيلم قصير بالذكاء الاصطناعي يعيد تخيّل ذا دارك نايت في الرياض.</video:description>
+      <video:content_loc>https://turkistudio.ai/videos/01_saudi_joker.mp4</video:content_loc>
+      <video:duration>110</video:duration>
+      <video:publication_date>2026-01-15T00:00:00+03:00</video:publication_date>
+      <video:family_friendly>yes</video:family_friendly>
+    </video:video>
+
+    <video:video>
+      <video:thumbnail_loc>https://turkistudio.ai/images/poster_05_disorders.jpg</video:thumbnail_loc>
+      <video:title>Disorders — الاضطرابات</video:title>
+      <video:description>كليب موسيقي بالذكاء الاصطناعي عن سبعة اضطرابات نفسية.</video:description>
+      <video:content_loc>https://turkistudio.ai/videos/05_disorders.mp4</video:content_loc>
+      <video:publication_date>2026-02-20T00:00:00+03:00</video:publication_date>
+    </video:video>
+
+    <video:video>
+      <video:thumbnail_loc>https://turkistudio.ai/images/poster_02_human_snail.jpg</video:thumbnail_loc>
+      <video:title>The Human Snail — الحلزون البشري</video:title>
+      <video:description>فيلم خيال علمي قصير عن ديستوبيا سعودية.</video:description>
+      <video:content_loc>https://turkistudio.ai/videos/02_human_snail.mp4</video:content_loc>
+      <video:publication_date>2026-02-01T00:00:00+03:00</video:publication_date>
+    </video:video>
+
+    <video:video>
+      <video:thumbnail_loc>https://turkistudio.ai/images/poster_03_mohammed_writer.jpg</video:thumbnail_loc>
+      <video:title>Mohammed the Writer — عقل محمد كاتب</video:title>
+      <video:description>فيلم درامي قصير في مصحّة نفسية.</video:description>
+      <video:content_loc>https://turkistudio.ai/videos/03_mohammed_writer.mp4</video:content_loc>
+      <video:publication_date>2026-02-10T00:00:00+03:00</video:publication_date>
+    </video:video>
+
+    <video:video>
+      <video:thumbnail_loc>https://turkistudio.ai/images/poster_06_saudi_harley.jpg</video:thumbnail_loc>
+      <video:title>Saudi Harley Quinn — هارلي كوين سعودية</video:title>
+      <video:description>كليب موسيقي عن شخصية مضادة سعودية.</video:description>
+      <video:content_loc>https://turkistudio.ai/videos/06_saudi_harley.mp4</video:content_loc>
+      <video:publication_date>2026-03-01T00:00:00+03:00</video:publication_date>
+    </video:video>
+
+    <video:video>
+      <video:thumbnail_loc>https://turkistudio.ai/images/poster_07_glasses_cinematic.jpg</video:thumbnail_loc>
+      <video:title>The Glasses — Cinematic</video:title>
+      <video:description>إعلان نظارات بأسلوب سينمائي إيديتوريال.</video:description>
+      <video:content_loc>https://turkistudio.ai/videos/07_glasses_cinematic.mp4</video:content_loc>
+      <video:publication_date>2026-03-15T00:00:00+03:00</video:publication_date>
+    </video:video>
+
+    <video:video>
+      <video:thumbnail_loc>https://turkistudio.ai/images/poster_08_glasses_ugc.jpg</video:thumbnail_loc>
+      <video:title>The Glasses — UGC</video:title>
+      <video:description>إعلان نظارات بأسلوب UGC.</video:description>
+      <video:content_loc>https://turkistudio.ai/videos/08_glasses_ugc.mp4</video:content_loc>
+      <video:publication_date>2026-03-20T00:00:00+03:00</video:publication_date>
+    </video:video>
+
+    <video:video>
+      <video:thumbnail_loc>https://turkistudio.ai/images/poster_09_generations.jpg</video:thumbnail_loc>
+      <video:title>Every Generation Has an Artist — كل جيل عنده فنان</video:title>
+      <video:description>سلسلة بورتريه عن أجيال الفن.</video:description>
+      <video:content_loc>https://turkistudio.ai/videos/09_generations.mp4</video:content_loc>
+      <video:publication_date>2026-04-01T00:00:00+03:00</video:publication_date>
+    </video:video>
+
+    <video:video>
+      <video:thumbnail_loc>https://turkistudio.ai/images/poster_04_studies_fragments.jpg</video:thumbnail_loc>
+      <video:title>Studies / 01 — Fragments</video:title>
+      <video:description>دراسات بصرية تجريبية — سلسلة لحظات بلا حكاية.</video:description>
+      <video:content_loc>https://turkistudio.ai/videos/04_studies_fragments.mp4</video:content_loc>
+      <video:publication_date>2026-04-10T00:00:00+03:00</video:publication_date>
+    </video:video>
+  </url>
+
+  <url>
+    <loc>https://turkistudio.ai/en/</loc>
+    <lastmod>2026-05-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://turkistudio.ai/"/>
+    <xhtml:link rel="alternate" hreflang="ar-SA" href="https://turkistudio.ai/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://turkistudio.ai/en/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://turkistudio.ai/"/>
+
+    <image:image>
+      <image:loc>https://turkistudio.ai/images/og-cover.jpg</image:loc>
+      <image:title>Turki Alnefaie — Saudi AI Visual Storyteller</image:title>
+    </image:image>
+  </url>
+</urlset>

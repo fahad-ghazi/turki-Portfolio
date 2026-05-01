@@ -1,0 +1,25 @@
+{
+  "name": "Turki Studio — تركي النفيعي",
+  "short_name": "Turki Studio",
+  "description": "Turki Alnefaie — Saudi AI Visual Storyteller. تركي النفيعي — فنان بصري بالذكاء الاصطناعي.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#F5F1E8",
+  "theme_color": "#F5F1E8",
+  "lang": "ar",
+  "dir": "rtl",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}
