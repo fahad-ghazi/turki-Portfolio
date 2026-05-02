@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>تركي غازي — ستوديو بصري · الرياض</title>
+  <meta name="description" content="تركي غازي، فنان بصري سعودي يعمل في تقاطع السينما والذكاء الاصطناعي من الرياض." />
+  <link rel="icon" href="../../favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ── Font Faces ────────────────────────────────────────────── */
+    @font-face {
+      font-family: 'Thmanyah Display';
+      src: url('../../fonts/thmanyahserifdisplay-Black.woff2') format('woff2');
+      font-weight: 900;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'Thmanyah Display';
+      src: url('../../fonts/thmanyahserifdisplay-Regular.woff2') format('woff2');
+      font-weight: 400;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'Thmanyah Text';
+      src: url('../../fonts/thmanyahseriftext-Regular.woff2') format('woff2');
+      font-weight: 400;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'Thmanyah Text';
+      src: url('../../fonts/thmanyahseriftext-Light.woff2') format('woff2');
+      font-weight: 300;
+      font-display: swap;
+    }
+
+    /* ── Reset & Base ──────────────────────────────────────────── */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+
+    body {
+      background-color: #000000;
+      color: #ffffff;
+      font-family: 'Thmanyah Text', Georgia, serif;
+      font-weight: 300;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
+    }
+
+    /* ── Design Tokens ─────────────────────────────────────────── */
+    :root {
+      --gold: #C9A961;
+      --white: #ffffff;
+      --muted: rgba(255, 255, 255, 0.45);
+      --muted-body: rgba(255, 255, 255, 0.65);
+      --border: rgba(255, 255, 255, 0.08);
+      --font-display: 'Thmanyah Display', Georgia, serif;
+      --font-text: 'Thmanyah Text', Georgia, serif;
+      --font-label: 'Inter', system-ui, sans-serif;
+    }
+
+    /* ── Utility ───────────────────────────────────────────────── */
+    .label {
+      font-family: var(--font-label);
+      font-size: 9px;
+      font-weight: 400;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    .label--muted {
+      color: var(--muted);
+    }
+
+    /* ── Navigation ────────────────────────────────────────────── */
+    .nav {
+      position: fixed;
+      top: 0;
+      right: 0;
+      left: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 32px 60px;
+      background: transparent;
+    }
+
+    .nav__logo {
+      font-family: var(--font-display);
+      font-weight: 400;
+      font-size: 14px;
+      color: var(--white);
+      letter-spacing: 0.02em;
+      text-decoration: none;
+    }
+
+    .nav__lang {
+      font-family: var(--font-label);
+      font-size: 10px;
+      font-weight: 400;
+      letter-spacing: 4px;
+      color: var(--muted);
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: color 0.3s ease;
+    }
+
+    .nav__lang:hover {
+      color: var(--white);
+    }
+
+    /* ── Hero ──────────────────────────────────────────────────── */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 120px 60px 80px;
+      overflow: hidden;
+    }
+
+    .hero__top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+    }
+
+    .hero__location {
+      /* label class applied inline */
+    }
+
+    .hero__available {
+      font-family: var(--font-label);
+      font-size: 9px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .hero__available::before {
+      content: '';
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background-color: var(--gold);
+      animation: pulse 2.5s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.8); }
+    }
+
+    /* Art object — central poster */
+    .hero__art {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 100%;
+      max-width: 480px;
+      pointer-events: none;
+    }
+
+    .hero__art img {
+      width: 100%;
+      height: auto;
+      display: block;
+      box-shadow: 0 40px 120px rgba(201, 169, 97, 0.15), 0 0 80px rgba(0, 0, 0, 0.8);
+    }
+
+    /* Bottom name block */
+    .hero__bottom {
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero__studio {
+      font-family: var(--font-display);
+      font-weight: 400;
+      font-size: clamp(48px, 8vw, 96px);
+      line-height: 1;
+      color: rgba(255, 255, 255, 0.6);
+      display: block;
+    }
+
+    .hero__name {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: clamp(48px, 8vw, 96px);
+      line-height: 1.05;
+      color: var(--white);
+      display: block;
+    }
+
+    .hero__tagline {
+      margin-top: 20px;
+      font-family: var(--font-label);
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    /* ── Selected Works ────────────────────────────────────────── */
+    .works {
+      padding: 160px 60px;
+    }
+
+    .works__header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 80px;
+    }
+
+    .works__counter {
+      font-family: var(--font-display);
+      font-weight: 400;
+      font-size: 13px;
+      color: var(--muted);
+      letter-spacing: 0.05em;
+    }
+
+    .works__list {
+      list-style: none;
+    }
+
+    .works__item {
+      display: grid;
+      grid-template-columns: 80px 1fr auto;
+      align-items: center;
+      gap: 40px;
+      padding: 36px 0;
+      border-bottom: 1px solid var(--border);
+      cursor: default;
+      position: relative;
+      transition: all 0.35s ease;
+    }
+
+    .works__item::before {
+      content: '';
+      position: absolute;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      width: 0;
+      background-color: var(--gold);
+      transition: width 0.35s ease;
+    }
+
+    /* RTL: gold border on right side for RTL layout */
+    [dir="rtl"] .works__item::before {
+      right: auto;
+      left: 0;
+    }
+
+    .works__item:hover::before {
+      width: 3px;
+    }
+
+    .works__item:hover .works__title {
+      opacity: 0.55;
+    }
+
+    .works__date {
+      font-family: var(--font-label);
+      font-size: 10px;
+      letter-spacing: 2px;
+      color: var(--muted);
+    }
+
+    .works__title {
+      font-family: var(--font-display);
+      font-weight: 400;
+      font-size: clamp(28px, 3.5vw, 52px);
+      color: var(--white);
+      letter-spacing: -0.01em;
+      line-height: 1.1;
+      transition: opacity 0.35s ease;
+    }
+
+    .works__cat {
+      font-family: var(--font-label);
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold);
+      text-align: left;
+      white-space: nowrap;
+    }
+
+    /* ── Featured Image ────────────────────────────────────────── */
+    .featured {
+      position: relative;
+      height: 60vh;
+      overflow: hidden;
+      cursor: zoom-in;
+    }
+
+    .featured__img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.6s ease;
+    }
+
+    .featured:hover .featured__img {
+      transform: scale(1.02);
+    }
+
+    .featured__overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.25) 0%,
+        rgba(0, 0, 0, 0.6) 100%
+      );
+    }
+
+    .featured__caption {
+      position: absolute;
+      bottom: 40px;
+      right: 60px;
+      font-family: var(--font-label);
+      font-size: 9px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.55);
+    }
+
+    /* ── About ─────────────────────────────────────────────────── */
+    .about {
+      padding: 160px 60px;
+      display: grid;
+      grid-template-columns: 40% 60%;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .about__left {
+      position: sticky;
+      top: 120px;
+    }
+
+    .about__quote {
+      margin-top: 32px;
+      font-family: var(--font-display);
+      font-weight: 400;
+      font-size: clamp(18px, 2vw, 26px);
+      color: var(--gold);
+      font-style: italic;
+      line-height: 1.5;
+    }
+
+    .about__right {
+      padding-top: 8px;
+    }
+
+    .about__body {
+      font-family: var(--font-text);
+      font-weight: 300;
+      font-size: 16px;
+      line-height: 2;
+      color: var(--muted-body);
+    }
+
+    .about__stats {
+      display: flex;
+      align-items: center;
+      gap: 48px;
+      margin-top: 64px;
+      padding-top: 40px;
+      border-top: 1px solid var(--border);
+    }
+
+    .about__stat {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .about__stat-num {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: 36px;
+      color: var(--white);
+      line-height: 1;
+    }
+
+    .about__stat-label {
+      font-family: var(--font-label);
+      font-size: 9px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    /* ── Services ──────────────────────────────────────────────── */
+    .services {
+      padding: 80px 60px 160px;
+    }
+
+    .services__header {
+      margin-bottom: 60px;
+    }
+
+    .services__list {
+      list-style: none;
+    }
+
+    .services__item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 32px 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .services__item:last-child {
+      border-bottom: 1px solid var(--border);
+    }
+
+    .services__name {
+      font-family: var(--font-display);
+      font-weight: 400;
+      font-size: 24px;
+      color: var(--white);
+      letter-spacing: -0.01em;
+    }
+
+    .services__desc {
+      font-family: var(--font-text);
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--muted);
+      text-align: left;
+    }
+
+    /* ── Contact ───────────────────────────────────────────────── */
+    .contact {
+      padding: 280px 60px;
+      text-align: center;
+    }
+
+    .contact__label {
+      margin-bottom: 40px;
+    }
+
+    .contact__heading {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: clamp(64px, 9vw, 100px);
+      color: var(--white);
+      line-height: 1;
+      letter-spacing: -0.02em;
+    }
+
+    .contact__info {
+      margin-top: 48px;
+      font-family: var(--font-text);
+      font-size: 15px;
+      font-weight: 300;
+      color: var(--muted);
+      line-height: 2;
+    }
+
+    .contact__email {
+      color: var(--gold);
+      text-decoration: underline;
+      text-underline-offset: 4px;
+      text-decoration-color: rgba(201, 169, 97, 0.4);
+      transition: text-decoration-color 0.3s ease;
+    }
+
+    .contact__email:hover {
+      text-decoration-color: var(--gold);
+    }
+
+    /* ── Footer ────────────────────────────────────────────────── */
+    .footer {
+      padding: 48px 60px;
+      border-top: 1px solid var(--border);
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      align-items: center;
+      gap: 40px;
+    }
+
+    .footer__brand {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .footer__brand-name {
+      font-family: var(--font-display);
+      font-weight: 400;
+      font-size: 13px;
+      color: var(--white);
+    }
+
+    .footer__brand-sub {
+      font-family: var(--font-label);
+      font-size: 9px;
+      letter-spacing: 3px;
+      color: var(--muted);
+    }
+
+    .footer__nav {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .footer__nav-link {
+      font-family: var(--font-label);
+      font-size: 9px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .footer__nav-link:hover {
+      color: var(--white);
+    }
+
+    .footer__rights {
+      font-family: var(--font-label);
+      font-size: 9px;
+      letter-spacing: 2px;
+      color: var(--muted);
+      font-style: italic;
+      text-align: left;
+    }
+
+    /* ── Responsive ────────────────────────────────────────────── */
+    @media (max-width: 900px) {
+      .nav {
+        padding: 24px 28px;
+      }
+
+      .hero {
+        padding: 100px 28px 60px;
+      }
+
+      .hero__art {
+        max-width: 300px;
+      }
+
+      .works {
+        padding: 100px 28px;
+      }
+
+      .works__item {
+        grid-template-columns: 50px 1fr;
+        gap: 20px;
+      }
+
+      .works__cat {
+        display: none;
+      }
+
+      .about {
+        padding: 100px 28px;
+        grid-template-columns: 1fr;
+        gap: 48px;
+      }
+
+      .about__left {
+        position: static;
+      }
+
+      .services {
+        padding: 60px 28px 100px;
+      }
+
+      .contact {
+        padding: 160px 28px;
+      }
+
+      .footer {
+        padding: 40px 28px;
+        grid-template-columns: 1fr;
+        gap: 28px;
+        text-align: center;
+      }
+
+      .footer__nav {
+        flex-wrap: wrap;
+        gap: 20px;
+      }
+
+      .footer__rights {
+        text-align: center;
+      }
+
+      .featured__caption {
+        right: 28px;
+        bottom: 24px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .hero__art {
+        max-width: 240px;
+      }
+
+      .works__title {
+        font-size: clamp(22px, 6vw, 36px);
+      }
+
+      .about__stats {
+        gap: 28px;
+        flex-wrap: wrap;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ═══════════════════════════════════════════
+       NAV
+  ══════════════════════════════════════════════ -->
+  <nav class="nav" role="navigation" aria-label="القائمة الرئيسية">
+    <a href="#" class="nav__logo">TG ستوديو</a>
+    <a href="../../en/index.html" class="nav__lang">EN</a>
+  </nav>
+
+
+  <!-- ═══════════════════════════════════════════
+       HERO
+  ══════════════════════════════════════════════ -->
+  <section class="hero" aria-label="مقدمة">
+
+    <!-- Top row: location + availability -->
+    <div class="hero__top">
+      <span class="label">RIYADH · SAUDI ARABIA · ٢٠٢٦</span>
+      <span class="hero__available">متاح للمشاريع</span>
+    </div>
+
+    <!-- Central art object -->
+    <div class="hero__art" aria-hidden="true">
+      <img
+        src="../../images/poster_01_saudi_joker.jpg"
+        alt="جوكر سعودي — تركي غازي"
+        loading="eager"
+        decoding="async"
+      />
+    </div>
+
+    <!-- Bottom name block -->
+    <div class="hero__bottom">
+      <span class="hero__studio">ستوديو تركي</span>
+      <span class="hero__name">غازي</span>
+      <p class="hero__tagline">فنان بصري بالذكاء الاصطناعي · الرياض</p>
+    </div>
+
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════
+       SELECTED WORKS
+  ══════════════════════════════════════════════ -->
+  <section class="works" id="works" aria-label="أعمال مختارة">
+
+    <div class="works__header">
+      <span class="label">أعمال مختارة</span>
+      <span class="works__counter">٠٩</span>
+    </div>
+
+    <ul class="works__list">
+
+      <li class="works__item">
+        <span class="works__date">٢٠٢٦</span>
+        <span class="works__title">جوكر سعودي</span>
+        <span class="works__cat">فيلم قصير</span>
+      </li>
+
+      <li class="works__item">
+        <span class="works__date">٢٠٢٦</span>
+        <span class="works__title">الاضطرابات</span>
+        <span class="works__cat">كليب موسيقي</span>
+      </li>
+
+      <li class="works__item">
+        <span class="works__date">٢٠٢٦</span>
+        <span class="works__title">الحلزون البشري</span>
+        <span class="works__cat">خيال علمي</span>
+      </li>
+
+      <li class="works__item">
+        <span class="works__date">٢٠٢٦</span>
+        <span class="works__title">عقل محمد كاتب</span>
+        <span class="works__cat">دراما</span>
+      </li>
+
+      <li class="works__item">
+        <span class="works__date">٢٠٢٦</span>
+        <span class="works__title">هارلي كوين سعودية</span>
+        <span class="works__cat">كليب موسيقي</span>
+      </li>
+
+      <li class="works__item">
+        <span class="works__date">٢٠٢٦</span>
+        <span class="works__title">كل جيل عنده فنان</span>
+        <span class="works__cat">سلسلة بورتريه</span>
+      </li>
+
+      <li class="works__item">
+        <span class="works__date">٢٠٢٦</span>
+        <span class="works__title">دراسات بصرية / ٠١</span>
+        <span class="works__cat">تجريبي</span>
+      </li>
+
+      <li class="works__item">
+        <span class="works__date">٢٠٢٦</span>
+        <span class="works__title">النظارات (سينمائي)</span>
+        <span class="works__cat">إعلان</span>
+      </li>
+
+      <li class="works__item">
+        <span class="works__date">٢٠٢٦</span>
+        <span class="works__title">النظارات (UGC)</span>
+        <span class="works__cat">إعلان</span>
+      </li>
+
+    </ul>
+
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════
+       FEATURED IMAGE
+  ══════════════════════════════════════════════ -->
+  <div class="featured" aria-label="صورة مختارة: الاضطرابات">
+    <img
+      class="featured__img"
+      src="../../images/poster_05_disorders.jpg"
+      alt="الاضطرابات — كليب موسيقي"
+      loading="lazy"
+      decoding="async"
+    />
+    <div class="featured__overlay" aria-hidden="true"></div>
+    <span class="featured__caption">الاضطرابات · كليب موسيقي · ٢٠٢٦</span>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════
+       ABOUT
+  ══════════════════════════════════════════════ -->
+  <section class="about" id="about" aria-label="عن الستوديو">
+
+    <div class="about__left">
+      <span class="label">عن الستوديو</span>
+      <blockquote class="about__quote">
+        «أصنع الرياض كما أراها في الحلم»
+      </blockquote>
+    </div>
+
+    <div class="about__right">
+      <p class="about__body">
+        تركي غازي فنان بصري سعودي يعمل من الرياض في تقاطع السينما والذكاء الاصطناعي. يبني عوالم بصرية تستحضر الثقافة السعودية والذاكرة المحلية، ويحوّل الشخصيات والأمكنة إلى لغة سينمائية نابضة تتجاوز الحدود بين الواقع والخيال.
+      </p>
+
+      <div class="about__stats" role="list">
+
+        <div class="about__stat" role="listitem">
+          <span class="about__stat-num">٩</span>
+          <span class="about__stat-label">أفلام</span>
+        </div>
+
+        <div class="about__stat" role="listitem">
+          <span class="about__stat-num">٨</span>
+          <span class="about__stat-label">شخصيات</span>
+        </div>
+
+        <div class="about__stat" role="listitem">
+          <span class="about__stat-num">٢٩٠+</span>
+          <span class="about__stat-label">صورة</span>
+        </div>
+
+      </div>
+    </div>
+
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════
+       SERVICES
+  ══════════════════════════════════════════════ -->
+  <section class="services" id="services" aria-label="الخدمات">
+
+    <div class="services__header">
+      <span class="label">ما نقدمه</span>
+    </div>
+
+    <ul class="services__list">
+
+      <li class="services__item">
+        <span class="services__name">أفلام قصيرة</span>
+        <span class="services__desc">سرد بصري كامل بالذكاء الاصطناعي</span>
+      </li>
+
+      <li class="services__item">
+        <span class="services__name">كليبات موسيقية</span>
+        <span class="services__desc">تصور حركي ومونتاج سينمائي</span>
+      </li>
+
+      <li class="services__item">
+        <span class="services__name">حملات إعلانية</span>
+        <span class="services__desc">محتوى بصري للعلامات التجارية</span>
+      </li>
+
+      <li class="services__item">
+        <span class="services__name">تصور عقاري</span>
+        <span class="services__desc">تصوير معماري واستشراف المساحات</span>
+      </li>
+
+      <li class="services__item">
+        <span class="services__name">إيديتوريال فاشن</span>
+        <span class="services__desc">تصوير أزياء بتوجيه ذكاء اصطناعي</span>
+      </li>
+
+      <li class="services__item">
+        <span class="services__name">شخصيات مُدرَّبة</span>
+        <span class="services__desc">نماذج بصرية مخصصة وقابلة للتوسع</span>
+      </li>
+
+    </ul>
+
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════
+       CONTACT
+  ══════════════════════════════════════════════ -->
+  <section class="contact" id="contact" aria-label="تواصل">
+    <p class="label contact__label">CONTACT</p>
+    <h2 class="contact__heading">تواصل معي</h2>
+    <p class="contact__info">
+      <a class="contact__email" href="mailto:turkig1101999@gmail.com">turkig1101999@gmail.com</a>
+      <br />
+      <span>+966 50 958 8702</span>
+    </p>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════
+       FOOTER
+  ══════════════════════════════════════════════ -->
+  <footer class="footer" role="contentinfo">
+
+    <div class="footer__brand">
+      <span class="footer__brand-name">ستوديو تركي غازي</span>
+      <span class="footer__brand-sub">الرياض، السعودية · ٢٠٢٦</span>
+    </div>
+
+    <nav aria-label="روابط التنقل">
+      <ul class="footer__nav">
+        <li><a href="#" class="footer__nav-link">الرئيسية</a></li>
+        <li><a href="#works" class="footer__nav-link">أفلام</a></li>
+        <li><a href="#contact" class="footer__nav-link">تواصل</a></li>
+        <li><a href="../../en/index.html" class="footer__nav-link">EN</a></li>
+      </ul>
+    </nav>
+
+    <p class="footer__rights">
+      جميع الأعمال بالذكاء الاصطناعي الوليد
+    </p>
+
+  </footer>
+
+</body>
+</html>

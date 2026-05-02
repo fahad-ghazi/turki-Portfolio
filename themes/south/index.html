@@ -1,0 +1,1171 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>تركي غازي — فنان بصري وراوي قصص</title>
+  <meta name="description" content="تركي غازي، فنان بصري سعودي يعمل في تقاطع السينما والذكاء الاصطناعي — الرياض" />
+
+  <style>
+    /* ============================================================
+       FONTS
+    ============================================================ */
+    @font-face {
+      font-family: 'Thmanyah Display';
+      src: url('../../fonts/thmanyahserifdisplay-Black.woff2') format('woff2');
+      font-weight: 900;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'Thmanyah Display';
+      src: url('../../fonts/thmanyahserifdisplay-Bold.woff2') format('woff2');
+      font-weight: 700;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'Thmanyah Text';
+      src: url('../../fonts/thmanyahseriftext-Regular.woff2') format('woff2');
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'Thmanyah Text';
+      src: url('../../fonts/thmanyahseriftext-Medium.woff2') format('woff2');
+      font-weight: 500;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    /* ============================================================
+       RESET & BASE
+    ============================================================ */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --cream:  #F5F1E8;
+      --ink:    #0a0a0a;
+      --gold:   #C9A961;
+      --gold-hover: #b8943d;
+      --border: rgba(10,10,10,0.12);
+      --nav-h:  64px;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--cream);
+      color: var(--ink);
+      font-family: 'Thmanyah Text', serif;
+      font-weight: 400;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
+    }
+
+    /* ============================================================
+       UTILITIES
+    ============================================================ */
+    .label {
+      font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 3.5px;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    .label--ink {
+      color: var(--ink);
+    }
+
+    /* ============================================================
+       NAV
+    ============================================================ */
+    nav {
+      position: fixed;
+      top: 0;
+      right: 0;
+      left: 0;
+      z-index: 100;
+      height: var(--nav-h);
+      background-color: var(--cream);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 40px;
+    }
+
+    .nav-logo {
+      font-family: 'Thmanyah Display', serif;
+      font-weight: 900;
+      font-size: 22px;
+      color: var(--gold);
+      letter-spacing: -1px;
+      text-decoration: none;
+      flex-shrink: 0;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 36px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+      font-size: 12px;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--ink);
+      text-decoration: none;
+      opacity: 0.65;
+      transition: opacity 0.2s;
+    }
+
+    .nav-links a:hover {
+      opacity: 1;
+    }
+
+    .nav-lang {
+      font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--ink);
+      text-decoration: none;
+      opacity: 0.45;
+      transition: opacity 0.2s;
+      flex-shrink: 0;
+    }
+
+    .nav-lang:hover {
+      opacity: 1;
+    }
+
+    /* ============================================================
+       HERO
+    ============================================================ */
+    .hero {
+      padding-top: calc(var(--nav-h) + 80px);
+      padding-bottom: 80px;
+      padding-right: 40px;
+      padding-left: 40px;
+    }
+
+    .hero-name {
+      font-family: 'Thmanyah Display', serif;
+      font-weight: 900;
+      font-size: clamp(88px, 13vw, 200px);
+      line-height: 0.9;
+      letter-spacing: -4px;
+      color: var(--ink);
+      text-align: right;
+      margin-right: -6px;
+      /* Slight overflow intentional per brief */
+    }
+
+    .hero-meta {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      margin-top: 48px;
+      align-items: start;
+    }
+
+    /* RTL: right col is the text side */
+    .hero-meta-text {
+      grid-column: 1;
+      font-family: 'Thmanyah Text', serif;
+      font-size: clamp(15px, 1.5vw, 18px);
+      line-height: 1.7;
+      color: var(--ink);
+      opacity: 0.75;
+      max-width: 380px;
+    }
+
+    .hero-meta-stats {
+      grid-column: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .hero-availability {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .hero-availability::before {
+      content: '';
+      display: inline-block;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--gold);
+    }
+
+    .hero-counters {
+      font-family: 'Thmanyah Text', serif;
+      font-size: clamp(14px, 1.4vw, 17px);
+      color: var(--ink);
+      opacity: 0.55;
+      line-height: 1.8;
+    }
+
+    /* ============================================================
+       PHOTO STRIP
+    ============================================================ */
+    .photo-strip-wrapper {
+      width: 100%;
+      overflow-x: auto;
+      overflow-y: hidden;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      direction: ltr; /* keep strip left-to-right regardless of RTL */
+    }
+
+    .photo-strip-wrapper::-webkit-scrollbar {
+      display: none;
+    }
+
+    .photo-strip {
+      display: flex;
+      gap: 0;
+      height: 360px;
+    }
+
+    .photo-strip-item {
+      flex-shrink: 0;
+      height: 360px;
+      width: auto;
+      aspect-ratio: 3 / 4;
+      scroll-snap-align: start;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .photo-strip-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.6s ease;
+    }
+
+    .photo-strip-item:hover img {
+      transform: scale(1.04);
+    }
+
+    /* ============================================================
+       CAPABILITIES
+    ============================================================ */
+    .capabilities {
+      padding: 100px 40px;
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 60px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .capabilities-label-col {
+      padding-top: 6px;
+    }
+
+    .capabilities-rows {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .capability-row {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 40px;
+      padding: 32px 0;
+      border-bottom: 1px solid var(--border);
+      align-items: baseline;
+    }
+
+    .capability-row:last-child {
+      border-bottom: none;
+    }
+
+    .capability-name {
+      font-family: 'Thmanyah Display', serif;
+      font-weight: 700;
+      font-size: clamp(20px, 2vw, 26px);
+      color: var(--ink);
+    }
+
+    .capability-desc {
+      font-family: 'Thmanyah Text', serif;
+      font-size: 15px;
+      line-height: 1.65;
+      color: var(--ink);
+      opacity: 0.6;
+    }
+
+    /* ============================================================
+       FILMS LIST
+    ============================================================ */
+    .films {
+      padding: 100px 40px 0;
+    }
+
+    .films-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 0;
+      padding-bottom: 24px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .films-counter {
+      font-family: 'Thmanyah Display', serif;
+      font-weight: 900;
+      font-size: clamp(28px, 3vw, 40px);
+      color: var(--ink);
+      opacity: 0.18;
+      letter-spacing: -2px;
+    }
+
+    .film-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 0;
+      border-bottom: 2px solid var(--ink);
+      text-decoration: none;
+      color: var(--ink);
+      transition: background-color 0.15s ease, color 0.15s ease, padding 0.15s ease;
+      cursor: default;
+    }
+
+    .film-row:hover {
+      background-color: var(--gold);
+      color: var(--ink);
+      padding-right: 24px;
+      padding-left: 24px;
+      margin-right: -24px;
+      margin-left: -24px;
+      border-bottom-color: var(--gold-hover);
+    }
+
+    .film-row:hover .film-type,
+    .film-row:hover .film-year {
+      color: var(--ink);
+      opacity: 0.7;
+    }
+
+    .film-title {
+      font-family: 'Thmanyah Display', serif;
+      font-weight: 900;
+      font-size: clamp(36px, 5.5vw, 80px);
+      line-height: 1;
+      letter-spacing: -2px;
+      flex: 0 0 auto;
+      width: 70%;
+    }
+
+    .film-meta {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 4px;
+    }
+
+    .film-type {
+      font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold);
+      transition: color 0.15s;
+    }
+
+    .film-year {
+      font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+      font-size: 11px;
+      letter-spacing: 2px;
+      color: var(--ink);
+      opacity: 0.35;
+      transition: color 0.15s, opacity 0.15s;
+    }
+
+    .films-spacer {
+      height: 80px;
+    }
+
+    /* ============================================================
+       PROCESS
+    ============================================================ */
+    .process {
+      padding: 100px 40px;
+      border-top: 1px solid var(--border);
+    }
+
+    .process-label {
+      margin-bottom: 60px;
+    }
+
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+    }
+
+    .process-cell {
+      padding: 40px 32px 40px 0;
+      border-right: 1px solid var(--border);
+      position: relative;
+    }
+
+    .process-cell:first-child {
+      border-right-color: transparent;
+      /* RTL: first child is rightmost */
+    }
+
+    .process-cell:last-child {
+      padding-right: 0;
+      padding-left: 32px;
+      border-right: none;
+    }
+
+    .process-cell:nth-child(2),
+    .process-cell:nth-child(3) {
+      padding-right: 32px;
+      padding-left: 32px;
+    }
+
+    /* In RTL, last two share a row */
+    .process-cell--wide {
+      /* 05 — المونتاج: just normal cell in 4-col grid */
+    }
+
+    .process-num {
+      font-family: 'Thmanyah Display', serif;
+      font-weight: 900;
+      font-size: clamp(48px, 5vw, 80px);
+      color: var(--gold);
+      line-height: 1;
+      letter-spacing: -3px;
+      margin-bottom: 16px;
+      display: block;
+    }
+
+    .process-title {
+      font-family: 'Thmanyah Text', serif;
+      font-weight: 500;
+      font-size: 18px;
+      color: var(--ink);
+    }
+
+    /* Row 2 for overflow step */
+    .process-row2 {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .process-row2 .process-cell {
+      padding-top: 40px;
+    }
+
+    /* ============================================================
+       TOOLS MARQUEE
+    ============================================================ */
+    .tools-marquee {
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 18px 0;
+      overflow: hidden;
+      white-space: nowrap;
+      direction: ltr;
+    }
+
+    .tools-track {
+      display: inline-flex;
+      align-items: center;
+      gap: 0;
+      animation: marquee-scroll 30s linear infinite;
+      will-change: transform;
+    }
+
+    .tools-track:hover {
+      animation-play-state: paused;
+    }
+
+    @keyframes marquee-scroll {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    .tools-item {
+      font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--ink);
+      padding: 0 36px;
+      flex-shrink: 0;
+    }
+
+    .tools-sep {
+      color: var(--gold);
+      font-size: 10px;
+      padding: 0;
+      flex-shrink: 0;
+      opacity: 0.6;
+    }
+
+    /* ============================================================
+       TESTIMONIAL
+    ============================================================ */
+    .testimonial {
+      padding: 120px 40px;
+      text-align: center;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .testimonial-quote {
+      font-family: 'Thmanyah Display', serif;
+      font-weight: 700;
+      font-style: italic;
+      font-size: clamp(28px, 4vw, 56px);
+      color: var(--gold);
+      line-height: 1.3;
+      letter-spacing: -1px;
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    /* ============================================================
+       CONTACT
+    ============================================================ */
+    .contact {
+      padding: 100px 40px 80px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: start;
+    }
+
+    .contact-title {
+      font-family: 'Thmanyah Display', serif;
+      font-weight: 900;
+      font-size: clamp(60px, 8vw, 120px);
+      line-height: 0.9;
+      letter-spacing: -4px;
+      color: var(--ink);
+    }
+
+    .contact-info {
+      padding-top: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .contact-line {
+      font-family: 'Thmanyah Text', serif;
+      font-size: 17px;
+      color: var(--ink);
+      opacity: 0.75;
+      text-decoration: none;
+      transition: opacity 0.2s;
+      direction: ltr;
+      text-align: right;
+    }
+
+    .contact-line:hover {
+      opacity: 1;
+    }
+
+    .contact-status {
+      font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold);
+      direction: rtl;
+    }
+
+    .contact-btn {
+      display: inline-block;
+      margin-top: 12px;
+      background-color: var(--ink);
+      color: var(--cream);
+      font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 16px 32px;
+      transition: background-color 0.2s, color 0.2s;
+      cursor: pointer;
+      border: none;
+      width: fit-content;
+    }
+
+    .contact-btn:hover {
+      background-color: var(--gold);
+      color: var(--ink);
+    }
+
+    /* ============================================================
+       FOOTER
+    ============================================================ */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 28px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-copy {
+      font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+      font-size: 11px;
+      letter-spacing: 2px;
+      color: var(--ink);
+      opacity: 0.4;
+      text-transform: uppercase;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+    }
+
+    .footer-links a {
+      font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--ink);
+      opacity: 0.4;
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+
+    .footer-links a:hover {
+      opacity: 1;
+    }
+
+    /* ============================================================
+       RESPONSIVE — TABLET
+    ============================================================ */
+    @media (max-width: 900px) {
+      nav {
+        padding: 0 24px;
+      }
+
+      .nav-links {
+        gap: 20px;
+      }
+
+      .hero {
+        padding: calc(var(--nav-h) + 48px) 24px 60px;
+      }
+
+      .hero-meta {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+
+      .hero-meta-text {
+        grid-column: 1;
+      }
+
+      .hero-meta-stats {
+        grid-column: 1;
+      }
+
+      .capabilities {
+        grid-template-columns: 1fr;
+        gap: 32px;
+        padding: 60px 24px;
+      }
+
+      .capability-row {
+        grid-template-columns: 140px 1fr;
+        gap: 24px;
+      }
+
+      .films {
+        padding: 60px 24px 0;
+      }
+
+      .film-row:hover {
+        padding-right: 16px;
+        padding-left: 16px;
+        margin-right: -16px;
+        margin-left: -16px;
+      }
+
+      .process {
+        padding: 60px 24px;
+      }
+
+      .process-grid,
+      .process-row2 {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .process-cell {
+        border-top: 1px solid var(--border);
+        padding: 32px 20px;
+      }
+
+      .process-cell:nth-child(odd) {
+        border-right: 1px solid var(--border);
+      }
+
+      .process-cell:nth-child(even) {
+        border-right: none;
+      }
+
+      .contact {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        padding: 60px 24px;
+      }
+
+      footer {
+        padding: 24px;
+        flex-direction: column;
+        gap: 16px;
+        align-items: flex-end;
+      }
+    }
+
+    /* ============================================================
+       RESPONSIVE — MOBILE
+    ============================================================ */
+    @media (max-width: 600px) {
+      .nav-links {
+        display: none;
+      }
+
+      .hero-name {
+        letter-spacing: -2px;
+      }
+
+      .photo-strip {
+        height: 260px;
+      }
+
+      .photo-strip-item {
+        height: 260px;
+      }
+
+      .process-grid,
+      .process-row2 {
+        grid-template-columns: 1fr;
+      }
+
+      .process-cell {
+        border-right: none !important;
+      }
+
+      .film-title {
+        width: 65%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ============================================================
+       NAV
+  ============================================================ -->
+  <nav>
+    <a href="../../index.html" class="nav-logo">TA</a>
+
+    <ul class="nav-links">
+      <li><a href="#films">أفلام</a></li>
+      <li><a href="#capabilities">ستوديو</a></li>
+      <li><a href="#contact">عن تركي</a></li>
+      <li><a href="#contact">تواصل</a></li>
+    </ul>
+
+    <a href="../../en/" class="nav-lang">EN</a>
+  </nav>
+
+  <!-- ============================================================
+       HERO
+  ============================================================ -->
+  <section class="hero">
+    <h1 class="hero-name">تركي غازي</h1>
+
+    <div class="hero-meta">
+      <p class="hero-meta-text">
+        فنان بصري وراوي قصص سعودي من الرياض، يعمل في تقاطع السينما والذكاء الاصطناعي.
+      </p>
+
+      <div class="hero-meta-stats">
+        <span class="label hero-availability">متاح للمشاريع &nbsp;·&nbsp; Q3 ٢٠٢٦</span>
+        <p class="hero-counters">
+          ٩ أفلام &nbsp;·&nbsp; ٨ شخصيات &nbsp;·&nbsp; ٢٩٠+ صورة
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       PHOTO STRIP
+  ============================================================ -->
+  <div class="photo-strip-wrapper">
+    <div class="photo-strip">
+      <div class="photo-strip-item">
+        <img src="../../images/poster_01_saudi_joker.jpg" alt="جوكر سعودي" loading="lazy" />
+      </div>
+      <div class="photo-strip-item">
+        <img src="../../images/poster_05_disorders.jpg" alt="الاضطرابات" loading="lazy" />
+      </div>
+      <div class="photo-strip-item">
+        <img src="../../images/poster_02_human_snail.jpg" alt="الحلزون البشري" loading="lazy" />
+      </div>
+      <div class="photo-strip-item">
+        <img src="../../images/poster_03_mohammed_writer.jpg" alt="عقل محمد كاتب" loading="lazy" />
+      </div>
+      <div class="photo-strip-item">
+        <img src="../../images/poster_06_saudi_harley.jpg" alt="هارلي كوين سعودية" loading="lazy" />
+      </div>
+      <div class="photo-strip-item">
+        <img src="../../images/poster_09_generations.jpg" alt="كل جيل عنده فنان" loading="lazy" />
+      </div>
+      <div class="photo-strip-item">
+        <img src="../../images/poster_04_studies_fragments.jpg" alt="دراسات بصرية" loading="lazy" />
+      </div>
+      <div class="photo-strip-item">
+        <img src="../../images/poster_07_glasses_cinematic.jpg" alt="النظارات — سينمائي" loading="lazy" />
+      </div>
+      <div class="photo-strip-item">
+        <img src="../../images/poster_08_glasses_ugc.jpg" alt="النظارات — UGC" loading="lazy" />
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       CAPABILITIES
+  ============================================================ -->
+  <section class="capabilities" id="capabilities">
+    <div class="capabilities-label-col">
+      <span class="label">القدرات</span>
+    </div>
+
+    <div class="capabilities-rows">
+      <div class="capability-row">
+        <div class="capability-name">الإخراج</div>
+        <div class="capability-desc">
+          سيناريو، لوحة، LoRA، توليد، مونتاج — العملية بالكامل
+        </div>
+      </div>
+
+      <div class="capability-row">
+        <div class="capability-name">الإعلانات</div>
+        <div class="capability-desc">
+          حملات كاملة: سينمائي + UGC + إيديتوريال
+        </div>
+      </div>
+
+      <div class="capability-row">
+        <div class="capability-name">الاستراتيجية</div>
+        <div class="capability-desc">
+          تدريب شخصيات ثابتة لهوية بصرية متسقة
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       FILMS LIST
+  ============================================================ -->
+  <section class="films" id="films">
+    <div class="films-header">
+      <span class="label">أعمال مختارة</span>
+      <span class="films-counter">٠٩</span>
+    </div>
+
+    <div class="film-row">
+      <div class="film-title">جوكر سعودي</div>
+      <div class="film-meta">
+        <span class="film-type">فيلم قصير</span>
+        <span class="film-year">٢٠٢٦</span>
+      </div>
+    </div>
+
+    <div class="film-row">
+      <div class="film-title">الاضطرابات</div>
+      <div class="film-meta">
+        <span class="film-type">كليب موسيقي</span>
+        <span class="film-year">٢٠٢٦</span>
+      </div>
+    </div>
+
+    <div class="film-row">
+      <div class="film-title">الحلزون البشري</div>
+      <div class="film-meta">
+        <span class="film-type">خيال علمي</span>
+        <span class="film-year">٢٠٢٦</span>
+      </div>
+    </div>
+
+    <div class="film-row">
+      <div class="film-title">عقل محمد كاتب</div>
+      <div class="film-meta">
+        <span class="film-type">دراما</span>
+        <span class="film-year">٢٠٢٦</span>
+      </div>
+    </div>
+
+    <div class="film-row">
+      <div class="film-title">هارلي كوين سعودية</div>
+      <div class="film-meta">
+        <span class="film-type">كليب موسيقي</span>
+        <span class="film-year">٢٠٢٦</span>
+      </div>
+    </div>
+
+    <div class="film-row">
+      <div class="film-title">كل جيل عنده فنان</div>
+      <div class="film-meta">
+        <span class="film-type">سلسلة بورتريه</span>
+        <span class="film-year">٢٠٢٦</span>
+      </div>
+    </div>
+
+    <div class="film-row">
+      <div class="film-title">دراسات بصرية / ٠١</div>
+      <div class="film-meta">
+        <span class="film-type">تجريبي</span>
+        <span class="film-year">٢٠٢٦</span>
+      </div>
+    </div>
+
+    <div class="film-row">
+      <div class="film-title">النظارات</div>
+      <div class="film-meta">
+        <span class="film-type">إعلان سينمائي</span>
+        <span class="film-year">٢٠٢٦</span>
+      </div>
+    </div>
+
+    <div class="film-row">
+      <div class="film-title">النظارات</div>
+      <div class="film-meta">
+        <span class="film-type">UGC</span>
+        <span class="film-year">٢٠٢٦</span>
+      </div>
+    </div>
+
+    <div class="films-spacer"></div>
+  </section>
+
+  <!-- ============================================================
+       PROCESS
+  ============================================================ -->
+  <section class="process">
+    <div class="process-label">
+      <span class="label">العملية</span>
+    </div>
+
+    <div class="process-grid">
+      <div class="process-cell">
+        <span class="process-num">٠١</span>
+        <div class="process-title">القراءة</div>
+      </div>
+      <div class="process-cell">
+        <span class="process-num">٠٢</span>
+        <div class="process-title">السيناريو</div>
+      </div>
+      <div class="process-cell">
+        <span class="process-num">٠٣</span>
+        <div class="process-title">التدريب</div>
+      </div>
+      <div class="process-cell">
+        <span class="process-num">٠٤</span>
+        <div class="process-title">التوليد</div>
+      </div>
+    </div>
+
+    <div class="process-row2">
+      <div class="process-cell">
+        <span class="process-num">٠٥</span>
+        <div class="process-title">المونتاج</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       TOOLS MARQUEE
+  ============================================================ -->
+  <div class="tools-marquee">
+    <div class="tools-track">
+      <!-- First copy -->
+      <span class="tools-item">Sora</span>
+      <span class="tools-sep">◆</span>
+      <span class="tools-item">Runway Gen-3</span>
+      <span class="tools-sep">◆</span>
+      <span class="tools-item">Midjourney v6</span>
+      <span class="tools-sep">◆</span>
+      <span class="tools-item">FLUX LoRA</span>
+      <span class="tools-sep">◆</span>
+      <span class="tools-item">ComfyUI</span>
+      <span class="tools-sep">◆</span>
+      <span class="tools-item">Premiere Pro</span>
+      <span class="tools-sep">◆</span>
+      <span class="tools-item">DaVinci Resolve</span>
+      <span class="tools-sep">◆</span>
+      <span class="tools-item">Topaz Video AI</span>
+      <span class="tools-sep">◆</span>
+      <span class="tools-item">Sora</span>
+      <span class="tools-sep">◆</span>
+      <span class="tools-item">Runway Gen-3</span>
+      <span class="tools-sep">◆</span>
+      <span class="tools-item">Midjourney v6</span>
+      <span class="tools-sep">◆</span>
+      <span class="tools-item">FLUX LoRA</span>
+      <span class="tools-sep">◆</span>
+      <span class="tools-item">ComfyUI</span>
+      <span class="tools-sep">◆</span>
+      <span class="tools-item">Premiere Pro</span>
+      <span class="tools-sep">◆</span>
+      <span class="tools-item">DaVinci Resolve</span>
+      <span class="tools-sep">◆</span>
+      <span class="tools-item">Topaz Video AI</span>
+      <span class="tools-sep">◆</span>
+      <!-- Duplicate for seamless loop -->
+      <span class="tools-item">Sora</span>
+      <span class="tools-sep">◆</span>
+      <span class="tools-item">Runway Gen-3</span>
+      <span class="tools-sep">◆</span>
+      <span class="tools-item">Midjourney v6</span>
+      <span class="tools-sep">◆</span>
+      <span class="tools-item">FLUX LoRA</span>
+      <span class="tools-sep">◆</span>
+      <span class="tools-item">ComfyUI</span>
+      <span class="tools-sep">◆</span>
+      <span class="tools-item">Premiere Pro</span>
+      <span class="tools-sep">◆</span>
+      <span class="tools-item">DaVinci Resolve</span>
+      <span class="tools-sep">◆</span>
+      <span class="tools-item">Topaz Video AI</span>
+      <span class="tools-sep">◆</span>
+      <span class="tools-item">Sora</span>
+      <span class="tools-sep">◆</span>
+      <span class="tools-item">Runway Gen-3</span>
+      <span class="tools-sep">◆</span>
+      <span class="tools-item">Midjourney v6</span>
+      <span class="tools-sep">◆</span>
+      <span class="tools-item">FLUX LoRA</span>
+      <span class="tools-sep">◆</span>
+      <span class="tools-item">ComfyUI</span>
+      <span class="tools-sep">◆</span>
+      <span class="tools-item">Premiere Pro</span>
+      <span class="tools-sep">◆</span>
+      <span class="tools-item">DaVinci Resolve</span>
+      <span class="tools-sep">◆</span>
+      <span class="tools-item">Topaz Video AI</span>
+      <span class="tools-sep">◆</span>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       TESTIMONIAL
+  ============================================================ -->
+  <section class="testimonial">
+    <blockquote class="testimonial-quote">
+      «أصنع الرياض كما أراها في الحلم»
+    </blockquote>
+  </section>
+
+  <!-- ============================================================
+       CONTACT
+  ============================================================ -->
+  <section class="contact" id="contact">
+    <div class="contact-title">تواصل</div>
+
+    <div class="contact-info">
+      <a href="mailto:turkig1101999@gmail.com" class="contact-line">
+        turkig1101999@gmail.com
+      </a>
+      <a href="tel:+966509588702" class="contact-line">
+        +966 50 958 8702
+      </a>
+      <p class="contact-status">متاح للمشاريع &nbsp;·&nbsp; الربع الثالث ٢٠٢٦</p>
+      <a href="mailto:turkig1101999@gmail.com" class="contact-btn">
+        ابدأ مشروعك
+      </a>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       FOOTER
+  ============================================================ -->
+  <footer>
+    <span class="footer-copy">تركي غازي · ٢٠٢٦</span>
+    <ul class="footer-links">
+      <li><a href="../../index.html">الموقع الرئيسي</a></li>
+      <li><a href="../../en/">EN</a></li>
+    </ul>
+  </footer>
+
+  <!-- ============================================================
+       LENIS SMOOTH SCROLL (desktop only, deferred)
+  ============================================================ -->
+  <script>
+    (function() {
+      var isMobile = /Mobi|Android|iPhone|iPad/i.test(navigator.userAgent) ||
+                     window.innerWidth < 768;
+      if (!isMobile) {
+        var s = document.createElement('script');
+        s.src = '../../vendor/lenis.min.js';
+        s.defer = true;
+        s.onload = function() {
+          if (typeof Lenis === 'undefined') return;
+          var lenis = new Lenis({
+            duration: 1.2,
+            easing: function(t) { return Math.min(1, 1.001 - Math.pow(2, -10 * t)); },
+            smooth: true,
+          });
+          function raf(time) {
+            lenis.raf(time);
+            requestAnimationFrame(raf);
+          }
+          requestAnimationFrame(raf);
+        };
+        document.body.appendChild(s);
+      }
+    })();
+  </script>
+
+</body>
+</html>

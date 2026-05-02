@@ -1,5 +1,5 @@
 # https://turkistudio.ai
-# Turki Alnefaie — Saudi AI Visual Storyteller
+# Turki Ghazi — Saudi AI Visual Storyteller
 
 User-agent: *
 Allow: /

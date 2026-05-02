@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="تركي غازي — فنان بصري بالذكاء الاصطناعي من الرياض" />
+  <title>تركي غازي · فنان بصري</title>
+
+  <style>
+    /* ─── FONTS ─────────────────────────────────────────────── */
+    @font-face {
+      font-family: 'Thmanyah Display';
+      src: url('../../fonts/thmanyahserifdisplay-Black.woff2') format('woff2');
+      font-weight: 900;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'Thmanyah Display';
+      src: url('../../fonts/thmanyahserifdisplay-Bold.woff2') format('woff2');
+      font-weight: 700;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'Thmanyah Text';
+      src: url('../../fonts/thmanyahseriftext-Regular.woff2') format('woff2');
+      font-weight: 400;
+      font-display: swap;
+    }
+
+    /* ─── RESET & BASE ──────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+
+    body {
+      background: #FAF8F3;
+      color: #1a1a1a;
+      font-family: 'Thmanyah Text', Georgia, serif;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* ─── TOKENS ────────────────────────────────────────────── */
+    :root {
+      --cream: #FAF8F3;
+      --ink: #1a1a1a;
+      --gold: #C9A961;
+      --border: #e0dbd0;
+      --display: 'Thmanyah Display', Georgia, serif;
+      --text: 'Thmanyah Text', Georgia, serif;
+      --label-font: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+    }
+
+    img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* ─── LABEL UTILITY ─────────────────────────────────────── */
+    .label {
+      font-family: var(--label-font);
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold);
+      display: block;
+    }
+
+    /* ─── NAV ───────────────────────────────────────────────── */
+    .nav {
+      position: fixed;
+      top: 0;
+      right: 0;
+      left: 0;
+      z-index: 100;
+      background: transparent;
+      padding: 28px 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: background 0.35s ease, border-bottom 0.35s ease;
+    }
+
+    .nav.scrolled {
+      background: #FAF8F3;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav__name {
+      font-family: var(--label-font);
+      font-size: 11px;
+      letter-spacing: 2px;
+      color: var(--ink);
+      text-transform: uppercase;
+    }
+
+    .nav__lang {
+      font-family: var(--label-font);
+      font-size: 10px;
+      letter-spacing: 2px;
+      color: #999;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .nav__lang:hover {
+      color: var(--ink);
+    }
+
+    /* ─── HERO ──────────────────────────────────────────────── */
+    .hero {
+      position: relative;
+      min-height: 90vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 0 48px 72px;
+      overflow: hidden;
+    }
+
+    .hero__cards {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -56%);
+      width: clamp(320px, 52vw, 740px);
+      aspect-ratio: 3/4;
+    }
+
+    /* Back card */
+    .hero__card--back {
+      position: absolute;
+      inset: 0;
+      transform: rotate(2deg) translate(-20px, -20px);
+      border-radius: 3px;
+      overflow: hidden;
+      z-index: 1;
+      filter: brightness(0.72);
+      box-shadow: 0 24px 64px rgba(0,0,0,0.18);
+    }
+
+    /* Front card */
+    .hero__card--front {
+      position: absolute;
+      inset: 0;
+      border-radius: 3px;
+      overflow: hidden;
+      z-index: 2;
+      box-shadow: 0 32px 80px rgba(0,0,0,0.22);
+    }
+
+    .hero__meta {
+      position: relative;
+      z-index: 10;
+      max-width: 560px;
+    }
+
+    .hero__location {
+      margin-bottom: 14px;
+    }
+
+    .hero__name {
+      font-family: var(--display);
+      font-weight: 900;
+      font-size: clamp(48px, 7vw, 80px);
+      line-height: 1.05;
+      letter-spacing: -1px;
+      color: var(--ink);
+      margin-bottom: 12px;
+    }
+
+    .hero__title {
+      font-family: var(--text);
+      font-size: 15px;
+      color: #666;
+      letter-spacing: 0.3px;
+    }
+
+    .hero__arrow {
+      position: absolute;
+      bottom: 72px;
+      left: 48px;
+      width: 48px;
+      height: 48px;
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      background: var(--cream);
+      transition: background 0.2s, border-color 0.2s;
+      z-index: 10;
+      font-size: 18px;
+      color: var(--ink);
+    }
+
+    .hero__arrow:hover {
+      background: var(--ink);
+      border-color: var(--ink);
+      color: #FAF8F3;
+    }
+
+    /* ─── ABOUT ─────────────────────────────────────────────── */
+    .about {
+      background: #fff;
+      padding: 120px 48px;
+    }
+
+    .about__grid {
+      display: grid;
+      grid-template-columns: 40% 60%;
+      gap: 64px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .about__left {}
+
+    .about__label {
+      margin-bottom: 20px;
+    }
+
+    .about__name {
+      font-family: var(--display);
+      font-weight: 900;
+      font-size: clamp(32px, 3.5vw, 44px);
+      line-height: 1.1;
+      color: var(--ink);
+      margin-bottom: 28px;
+    }
+
+    .about__quote {
+      font-family: var(--text);
+      font-style: italic;
+      font-size: 20px;
+      color: var(--gold);
+      line-height: 1.6;
+    }
+
+    .about__right {}
+
+    .about__para {
+      font-family: var(--text);
+      font-size: 17px;
+      line-height: 1.85;
+      color: #444;
+      margin-bottom: 24px;
+    }
+
+    .about__para:last-of-type {
+      margin-bottom: 0;
+    }
+
+    .about__stats {
+      display: flex;
+      gap: 40px;
+      border-top: 1px solid var(--border);
+      margin-top: 40px;
+      padding-top: 32px;
+      flex-wrap: wrap;
+    }
+
+    .about__stat {}
+
+    .about__stat-number {
+      font-family: var(--display);
+      font-weight: 900;
+      font-size: 36px;
+      color: var(--ink);
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .about__stat-label {
+      font-family: var(--label-font);
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #999;
+    }
+
+    .about__stats-sep {
+      display: flex;
+      align-items: center;
+      color: var(--border);
+      font-size: 20px;
+      padding-top: 4px;
+    }
+
+    /* ─── PORTFOLIO ─────────────────────────────────────────── */
+    .portfolio {
+      padding: 120px 48px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .portfolio__header {
+      margin-bottom: 64px;
+    }
+
+    .portfolio__label {
+      margin-bottom: 0;
+    }
+
+    /* Full-width item */
+    .portfolio__item--full {
+      margin-bottom: 32px;
+    }
+
+    .portfolio__img-wrap--full {
+      width: 100%;
+      aspect-ratio: 16/9;
+      overflow: hidden;
+      border-radius: 2px;
+    }
+
+    .portfolio__img-wrap--full img {
+      transition: transform 0.4s ease;
+    }
+
+    .portfolio__img-wrap--full:hover img {
+      transform: scale(1.02);
+    }
+
+    /* Pair items */
+    .portfolio__pair {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-bottom: 32px;
+    }
+
+    .portfolio__item--pair {}
+
+    .portfolio__img-wrap--pair {
+      width: 100%;
+      aspect-ratio: 1/1;
+      overflow: hidden;
+      border-radius: 2px;
+    }
+
+    .portfolio__img-wrap--pair img {
+      transition: transform 0.4s ease;
+    }
+
+    .portfolio__img-wrap--pair:hover img {
+      transform: scale(1.02);
+    }
+
+    /* Caption */
+    .portfolio__caption {
+      padding: 14px 0 0;
+    }
+
+    .portfolio__caption-label {
+      /* gold label */
+      margin-bottom: 6px;
+    }
+
+    .portfolio__caption-title {
+      font-family: var(--display);
+      font-weight: 700;
+      font-size: 18px;
+      color: var(--ink);
+      line-height: 1.2;
+    }
+
+    /* ─── SERVICES ──────────────────────────────────────────── */
+    .services {
+      padding: 120px 48px;
+      background: #fff;
+      border-top: 1px solid var(--border);
+    }
+
+    .services__inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .services__label {
+      margin-bottom: 64px;
+    }
+
+    .services__list {
+      list-style: none;
+    }
+
+    .services__item {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 40px;
+      border-bottom: 1px solid var(--border);
+      padding: 28px 16px;
+      transition: background 0.2s ease;
+      border-radius: 2px;
+    }
+
+    .services__item:hover {
+      background: #f5f0e6;
+    }
+
+    .services__name {
+      font-family: var(--display);
+      font-weight: 700;
+      font-size: clamp(20px, 2.2vw, 28px);
+      color: var(--ink);
+      flex-shrink: 0;
+    }
+
+    .services__desc {
+      font-family: var(--text);
+      font-size: 13px;
+      color: #777;
+      text-align: left;
+      max-width: 320px;
+      line-height: 1.6;
+    }
+
+    /* ─── CONTACT ───────────────────────────────────────────── */
+    .contact {
+      padding: 160px 48px;
+      text-align: center;
+    }
+
+    .contact__label {
+      display: inline-block;
+      margin-bottom: 24px;
+    }
+
+    .contact__heading {
+      font-family: var(--display);
+      font-weight: 900;
+      font-size: clamp(40px, 6vw, 72px);
+      color: var(--ink);
+      line-height: 1.05;
+      margin-bottom: 48px;
+      letter-spacing: -0.5px;
+    }
+
+    .contact__links {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 40px;
+    }
+
+    .contact__link {
+      font-family: var(--display);
+      font-size: clamp(20px, 2.5vw, 28px);
+      color: var(--ink);
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.2s, color 0.2s;
+      padding-bottom: 2px;
+    }
+
+    .contact__link:hover {
+      color: var(--gold);
+      border-color: var(--gold);
+    }
+
+    .contact__note {
+      font-family: var(--label-font);
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #bbb;
+    }
+
+    /* ─── FOOTER ────────────────────────────────────────────── */
+    .footer {
+      border-top: 1px solid var(--border);
+      padding: 28px 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .footer__copy {
+      font-family: var(--label-font);
+      font-size: 11px;
+      letter-spacing: 1.5px;
+      color: #aaa;
+      text-align: center;
+      flex: 1;
+    }
+
+    .footer__back {
+      font-family: var(--label-font);
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #bbb;
+      transition: color 0.2s;
+    }
+
+    .footer__back:hover {
+      color: var(--ink);
+    }
+
+    /* ─── SCROLLED NAV (JS) ─────────────────────────────────── */
+
+    /* ─── RESPONSIVE ────────────────────────────────────────── */
+    @media (max-width: 900px) {
+      .nav {
+        padding: 20px 24px;
+      }
+
+      .hero {
+        padding: 0 24px 60px;
+        min-height: 95vh;
+      }
+
+      .hero__cards {
+        width: clamp(260px, 80vw, 480px);
+        transform: translate(-50%, -54%);
+      }
+
+      .hero__arrow {
+        left: 24px;
+        bottom: 60px;
+      }
+
+      .about {
+        padding: 80px 24px;
+      }
+
+      .about__grid {
+        grid-template-columns: 1fr;
+        gap: 48px;
+      }
+
+      .portfolio {
+        padding: 80px 24px;
+      }
+
+      .portfolio__pair {
+        grid-template-columns: 1fr;
+      }
+
+      .services {
+        padding: 80px 24px;
+      }
+
+      .services__item {
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .services__desc {
+        text-align: right;
+        max-width: 100%;
+      }
+
+      .contact {
+        padding: 100px 24px;
+      }
+
+      .footer {
+        padding: 24px;
+        flex-direction: column;
+        gap: 12px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .hero__cards {
+        width: 78vw;
+      }
+
+      .hero__name {
+        font-size: 40px;
+      }
+
+      .about__stats {
+        gap: 24px;
+      }
+
+      .about__stats-sep {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ══════════════════════════════════
+       NAV
+  ══════════════════════════════════ -->
+  <nav class="nav" id="nav">
+    <span class="nav__name">تركي غازي</span>
+    <a class="nav__lang" href="../../en/" aria-label="English version">EN</a>
+  </nav>
+
+  <!-- ══════════════════════════════════
+       HERO
+  ══════════════════════════════════ -->
+  <section class="hero" id="hero">
+
+    <!-- Stacked editorial cards -->
+    <div class="hero__cards" aria-hidden="true">
+      <!-- Back card: slightly rotated, darker -->
+      <div class="hero__card--back">
+        <img
+          src="../../images/poster_05_disorders.jpg"
+          alt="اضطرابات — تركي غازي"
+          loading="eager"
+        />
+      </div>
+      <!-- Front card: straight, sharp -->
+      <div class="hero__card--front">
+        <img
+          src="../../images/poster_01_saudi_joker.jpg"
+          alt="جوكر سعودي — تركي غازي"
+          loading="eager"
+        />
+      </div>
+    </div>
+
+    <!-- Text block -->
+    <div class="hero__meta">
+      <span class="label hero__location">RIYADH · ٢٠٢٦</span>
+      <h1 class="hero__name">تركي غازي</h1>
+      <p class="hero__title">فنان بصري بالذكاء الاصطناعي</p>
+    </div>
+
+    <!-- Scroll arrow -->
+    <a class="hero__arrow" href="#about" aria-label="التالي">→</a>
+
+  </section>
+
+  <!-- ══════════════════════════════════
+       ABOUT
+  ══════════════════════════════════ -->
+  <section class="about" id="about">
+    <div class="about__grid">
+
+      <!-- Left column -->
+      <div class="about__left">
+        <span class="label about__label">عن المخرج</span>
+        <h2 class="about__name">تركي غازي</h2>
+        <p class="about__quote">«أصنع الرياض كما أراها في الحلم»</p>
+      </div>
+
+      <!-- Right column -->
+      <div class="about__right">
+        <p class="about__para">
+          فنان بصري وراوي قصص سعودي، يعمل من الرياض في تقاطع السينما والذكاء الاصطناعي. يبني عوالم بصرية تستحضر الثقافة السعودية والذاكرة المحلية.
+        </p>
+        <p class="about__para">
+          منذ ٢٠٢٥، أنتج ٩ أفلام قصيرة، درّب ٨ نماذج شخصيات، وأخرج أكثر من ٢٩٠ صورة فنية للعلامات التجارية ومطوّري العقار.
+        </p>
+
+        <!-- Stats -->
+        <div class="about__stats">
+          <div class="about__stat">
+            <div class="about__stat-number">٩</div>
+            <div class="about__stat-label">أفلام</div>
+          </div>
+          <div class="about__stats-sep">·</div>
+          <div class="about__stat">
+            <div class="about__stat-number">٨</div>
+            <div class="about__stat-label">شخصيات</div>
+          </div>
+          <div class="about__stats-sep">·</div>
+          <div class="about__stat">
+            <div class="about__stat-number">٢٩٠+</div>
+            <div class="about__stat-label">صورة</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════
+       PORTFOLIO
+  ══════════════════════════════════ -->
+  <section class="portfolio" id="portfolio">
+
+    <div class="portfolio__header">
+      <span class="label portfolio__label">أعمال مختارة</span>
+    </div>
+
+    <!-- 1. Full width: Saudi Joker -->
+    <div class="portfolio__item--full">
+      <div class="portfolio__img-wrap--full">
+        <img
+          src="../../images/poster_01_saudi_joker.jpg"
+          alt="جوكر سعودي"
+          loading="lazy"
+        />
+      </div>
+      <div class="portfolio__caption">
+        <span class="label portfolio__caption-label">فيلم قصير · ٢٠٢٦</span>
+        <h3 class="portfolio__caption-title">جوكر سعودي</h3>
+      </div>
+    </div>
+
+    <!-- 2. Pair: Disorders + Human Snail -->
+    <div class="portfolio__pair">
+      <div class="portfolio__item--pair">
+        <div class="portfolio__img-wrap--pair">
+          <img
+            src="../../images/poster_05_disorders.jpg"
+            alt="اضطرابات"
+            loading="lazy"
+          />
+        </div>
+        <div class="portfolio__caption">
+          <span class="label portfolio__caption-label">تجربة بصرية · ٢٠٢٦</span>
+          <h3 class="portfolio__caption-title">اضطرابات</h3>
+        </div>
+      </div>
+      <div class="portfolio__item--pair">
+        <div class="portfolio__img-wrap--pair">
+          <img
+            src="../../images/poster_02_human_snail.jpg"
+            alt="إنسان حلزون"
+            loading="lazy"
+          />
+        </div>
+        <div class="portfolio__caption">
+          <span class="label portfolio__caption-label">فيلم قصير · ٢٠٢٥</span>
+          <h3 class="portfolio__caption-title">إنسان حلزون</h3>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. Full width: Mohammed Writer -->
+    <div class="portfolio__item--full">
+      <div class="portfolio__img-wrap--full">
+        <img
+          src="../../images/poster_03_mohammed_writer.jpg"
+          alt="عقل محمد كاتب"
+          loading="lazy"
+        />
+      </div>
+      <div class="portfolio__caption">
+        <span class="label portfolio__caption-label">دراما · ٢٠٢٥</span>
+        <h3 class="portfolio__caption-title">عقل محمد كاتب</h3>
+      </div>
+    </div>
+
+    <!-- 4. Pair: Saudi Harley + Generations -->
+    <div class="portfolio__pair">
+      <div class="portfolio__item--pair">
+        <div class="portfolio__img-wrap--pair">
+          <img
+            src="../../images/poster_06_saudi_harley.jpg"
+            alt="هارلي سعودي"
+            loading="lazy"
+          />
+        </div>
+        <div class="portfolio__caption">
+          <span class="label portfolio__caption-label">إعلان · ٢٠٢٦</span>
+          <h3 class="portfolio__caption-title">هارلي سعودي</h3>
+        </div>
+      </div>
+      <div class="portfolio__item--pair">
+        <div class="portfolio__img-wrap--pair">
+          <img
+            src="../../images/poster_09_generations.jpg"
+            alt="أجيال"
+            loading="lazy"
+          />
+        </div>
+        <div class="portfolio__caption">
+          <span class="label portfolio__caption-label">تأمل بصري · ٢٠٢٥</span>
+          <h3 class="portfolio__caption-title">أجيال</h3>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5. Full width: Glasses Cinematic -->
+    <div class="portfolio__item--full">
+      <div class="portfolio__img-wrap--full">
+        <img
+          src="../../images/poster_07_glasses_cinematic.jpg"
+          alt="النظارات — إعلان سينمائي"
+          loading="lazy"
+        />
+      </div>
+      <div class="portfolio__caption">
+        <span class="label portfolio__caption-label">إعلان سينمائي · ٢٠٢٦</span>
+        <h3 class="portfolio__caption-title">النظارات</h3>
+      </div>
+    </div>
+
+    <!-- 6. Pair: Glasses UGC + Studies Fragments -->
+    <div class="portfolio__pair">
+      <div class="portfolio__item--pair">
+        <div class="portfolio__img-wrap--pair">
+          <img
+            src="../../images/poster_08_glasses_ugc.jpg"
+            alt="النظارات — UGC"
+            loading="lazy"
+          />
+        </div>
+        <div class="portfolio__caption">
+          <span class="label portfolio__caption-label">UGC · ٢٠٢٦</span>
+          <h3 class="portfolio__caption-title">النظارات UGC</h3>
+        </div>
+      </div>
+      <div class="portfolio__item--pair">
+        <div class="portfolio__img-wrap--pair">
+          <img
+            src="../../images/poster_04_studies_fragments.jpg"
+            alt="شذرات من دراسات"
+            loading="lazy"
+          />
+        </div>
+        <div class="portfolio__caption">
+          <span class="label portfolio__caption-label">فيلم قصير · ٢٠٢٥</span>
+          <h3 class="portfolio__caption-title">شذرات من دراسات</h3>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ══════════════════════════════════
+       SERVICES
+  ══════════════════════════════════ -->
+  <section class="services" id="services">
+    <div class="services__inner">
+
+      <span class="label services__label">الخدمات</span>
+
+      <ul class="services__list">
+        <li class="services__item">
+          <span class="services__name">أفلام قصيرة</span>
+          <span class="services__desc">من السيناريو إلى المونتاج، بالذكاء الاصطناعي</span>
+        </li>
+        <li class="services__item">
+          <span class="services__name">كليبات موسيقية</span>
+          <span class="services__desc">سرد بصري مكثف لكل أغنية</span>
+        </li>
+        <li class="services__item">
+          <span class="services__name">حملات إعلانية</span>
+          <span class="services__desc">سينمائي + UGC، جاهز للنشر</span>
+        </li>
+        <li class="services__item">
+          <span class="services__name">تصور عقاري</span>
+          <span class="services__desc">صور معمارية واقعية للمطوّرين</span>
+        </li>
+        <li class="services__item">
+          <span class="services__name">إيديتوريال فاشن</span>
+          <span class="services__desc">photoshoot كامل بالذكاء الاصطناعي</span>
+        </li>
+        <li class="services__item">
+          <span class="services__name">شخصيات مُدرَّبة</span>
+          <span class="services__desc">نماذج LoRA للثبات البصري</span>
+        </li>
+      </ul>
+
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════
+       CONTACT
+  ══════════════════════════════════ -->
+  <section class="contact" id="contact">
+    <span class="label contact__label">تواصل</span>
+    <h2 class="contact__heading">هل عندك مشروع؟</h2>
+    <div class="contact__links">
+      <a class="contact__link" href="mailto:turki@turkistudio.ai">turki@turkistudio.ai</a>
+      <a class="contact__link" href="tel:+966500000000" dir="ltr">+966 50 000 0000</a>
+    </div>
+    <p class="contact__note">يستقبل مشاريع الربع الثالث ٢٠٢٦</p>
+  </section>
+
+  <!-- ══════════════════════════════════
+       FOOTER
+  ══════════════════════════════════ -->
+  <footer class="footer">
+    <a class="footer__back" href="../../" aria-label="العودة للرئيسية">← الرئيسية</a>
+    <p class="footer__copy">تركي غازي · ٢٠٢٦ · صُنع في الرياض</p>
+    <span style="width:90px"></span>
+  </footer>
+
+  <!-- ══════════════════════════════════
+       JS — NAV scroll state
+  ══════════════════════════════════ -->
+  <script>
+    (function () {
+      var nav = document.getElementById('nav');
+      var threshold = 60;
+
+      function onScroll() {
+        if (window.scrollY > threshold) {
+          nav.classList.add('scrolled');
+        } else {
+          nav.classList.remove('scrolled');
+        }
+      }
+
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+    })();
+  </script>
+
+</body>
+</html>

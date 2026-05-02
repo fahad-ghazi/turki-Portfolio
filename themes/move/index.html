@@ -1,0 +1,968 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="تركي غازي — فنان بصري بالذكاء الاصطناعي، الرياض ٢٠٢٦">
+<title>تركي غازي — فنان بصري</title>
+<link rel="preload" href="../../fonts/thmanyahserifdisplay-Black.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../../fonts/thmanyahserifdisplay-Bold.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../../fonts/thmanyahseriftext-Regular.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../../fonts/thmanyahseriftext-Medium.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../../fonts/thmanyahsans-Regular.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+@font-face { font-family: 'Thmanyah Display'; src: url('../../fonts/thmanyahserifdisplay-Black.woff2') format('woff2'); font-weight: 900; font-style: normal; }
+@font-face { font-family: 'Thmanyah Display'; src: url('../../fonts/thmanyahserifdisplay-Bold.woff2') format('woff2'); font-weight: 700; font-style: normal; }
+@font-face { font-family: 'Thmanyah Text'; src: url('../../fonts/thmanyahseriftext-Regular.woff2') format('woff2'); font-weight: 400; font-style: normal; }
+@font-face { font-family: 'Thmanyah Text'; src: url('../../fonts/thmanyahseriftext-Medium.woff2') format('woff2'); font-weight: 500; font-style: normal; }
+@font-face { font-family: 'Thmanyah Sans'; src: url('../../fonts/thmanyahsans-Regular.woff2') format('woff2'); font-weight: 400; font-style: normal; }
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --black: #0a0a0a;
+  --cream: #f5f1e8;
+  --gold: #C9A961;
+  --dim: rgba(245, 241, 232, 0.45);
+  --border: rgba(245, 241, 232, 0.1);
+}
+
+html {
+  scroll-behavior: auto;
+  font-size: 16px;
+}
+
+body {
+  background: var(--black);
+  color: var(--cream);
+  font-family: 'Thmanyah Text', serif;
+  font-weight: 400;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: var(--gold);
+  color: var(--black);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* ─── NAV ─── */
+#nav {
+  position: fixed;
+  top: 0;
+  inset-inline: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.5rem 2.5rem;
+  transition: background 0.4s ease, backdrop-filter 0.4s ease;
+}
+
+#nav.scrolled {
+  background: rgba(10, 10, 10, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+
+.nav-logo {
+  font-family: 'Inter', 'Thmanyah Sans', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--cream);
+  text-transform: uppercase;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+  list-style: none;
+}
+
+.nav-links a {
+  font-family: 'Thmanyah Text', serif;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--dim);
+  letter-spacing: 0.03em;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover {
+  color: var(--cream);
+}
+
+.nav-lang {
+  font-family: 'Inter', monospace;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: var(--gold);
+  text-transform: uppercase;
+  border: 1px solid var(--gold);
+  padding: 0.3rem 0.7rem;
+  transition: background 0.2s, color 0.2s;
+}
+
+.nav-lang:hover {
+  background: var(--gold);
+  color: var(--black);
+}
+
+@media (max-width: 768px) {
+  #nav {
+    padding: 1.2rem 1.5rem;
+  }
+  .nav-links {
+    display: none;
+  }
+}
+
+/* ─── HERO ─── */
+#hero {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  min-height: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-end;
+  padding: 0 2.5rem 5rem;
+  overflow: hidden;
+}
+
+.hero-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  z-index: 0;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(10, 10, 10, 0.92) 0%,
+    rgba(10, 10, 10, 0.55) 40%,
+    rgba(10, 10, 10, 0.25) 100%
+  );
+  z-index: 1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 900px;
+}
+
+.hero-label {
+  font-family: 'Inter', monospace;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+}
+
+.hero-name {
+  font-family: 'Thmanyah Display', serif;
+  font-weight: 900;
+  font-size: clamp(72px, 11vw, 160px);
+  line-height: 0.92;
+  letter-spacing: -0.03em;
+  color: var(--cream);
+  margin-bottom: 1.2rem;
+  display: block;
+}
+
+.hero-subtitle {
+  font-family: 'Thmanyah Text', serif;
+  font-weight: 400;
+  font-size: clamp(0.875rem, 1.5vw, 1.125rem);
+  letter-spacing: 0.12em;
+  color: var(--dim);
+  margin-bottom: 2.5rem;
+  text-transform: uppercase;
+}
+
+.hero-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-family: 'Thmanyah Text', serif;
+  font-weight: 500;
+  font-size: 1rem;
+  color: var(--cream);
+  border-bottom: 1px solid var(--gold);
+  padding-bottom: 0.25rem;
+  transition: color 0.2s, gap 0.2s;
+}
+
+.hero-cta:hover {
+  color: var(--gold);
+  gap: 1.1rem;
+}
+
+.hero-scroll-hint {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.hero-scroll-hint span {
+  font-family: 'Inter', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  color: var(--dim);
+  text-transform: uppercase;
+}
+
+.scroll-line {
+  width: 1px;
+  height: 48px;
+  background: linear-gradient(to bottom, var(--dim), transparent);
+  animation: scrollPulse 2s ease-in-out infinite;
+}
+
+@keyframes scrollPulse {
+  0%, 100% { opacity: 0.4; transform: scaleY(1); }
+  50% { opacity: 1; transform: scaleY(0.6); }
+}
+
+/* ─── FILMS LIST ─── */
+#films {
+  background: var(--black);
+  padding: 7rem 2.5rem 5rem;
+  position: relative;
+}
+
+.section-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 3rem;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 1.25rem;
+}
+
+.section-label {
+  font-family: 'Inter', monospace;
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  color: var(--gold);
+  text-transform: uppercase;
+}
+
+.section-count {
+  font-family: 'Inter', monospace;
+  font-size: 0.65rem;
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  color: var(--dim);
+}
+
+.films-list {
+  list-style: none;
+  position: relative;
+}
+
+.film-row {
+  display: grid;
+  grid-template-columns: 3rem 1fr auto auto;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1.6rem 0;
+  border-bottom: 1px solid var(--border);
+  cursor: pointer;
+  position: relative;
+  transition: border-color 0.2s;
+  opacity: 0;
+  transform: translateX(60px);
+}
+
+.film-row:hover {
+  border-color: rgba(201, 169, 97, 0.3);
+}
+
+.film-num {
+  font-family: 'Inter', monospace;
+  font-size: 0.65rem;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  color: var(--dim);
+  text-align: center;
+}
+
+.film-title {
+  font-family: 'Thmanyah Display', serif;
+  font-weight: 900;
+  font-size: clamp(1.8rem, 4.5vw, 3.75rem);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--cream);
+  transition: color 0.2s;
+}
+
+.film-row:hover .film-title {
+  color: var(--gold);
+}
+
+.film-type {
+  font-family: 'Thmanyah Text', serif;
+  font-weight: 400;
+  font-size: 0.75rem;
+  color: var(--dim);
+  white-space: nowrap;
+  text-align: center;
+}
+
+.film-cta {
+  font-family: 'Inter', monospace;
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  color: var(--dim);
+  text-transform: uppercase;
+  white-space: nowrap;
+  transition: color 0.2s;
+}
+
+.film-row:hover .film-cta {
+  color: var(--gold);
+}
+
+.film-poster-hover {
+  position: fixed;
+  width: 280px;
+  height: 370px;
+  object-fit: cover;
+  pointer-events: none;
+  z-index: 50;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  border: 1px solid var(--border);
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .film-row {
+    grid-template-columns: 2.5rem 1fr auto;
+    gap: 1rem;
+  }
+  .film-type {
+    display: none;
+  }
+  .film-title {
+    font-size: clamp(1.4rem, 6vw, 2rem);
+  }
+  .film-cta {
+    font-size: 0.6rem;
+  }
+}
+
+/* ─── ABOUT ─── */
+#about {
+  background: var(--black);
+  padding: 8rem 2.5rem;
+  text-align: center;
+  border-top: 1px solid var(--border);
+}
+
+.about-statement {
+  font-family: 'Thmanyah Display', serif;
+  font-weight: 900;
+  font-size: clamp(2rem, 5.5vw, 4.5rem);
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+  color: var(--cream);
+  max-width: 900px;
+  margin: 0 auto 4rem;
+}
+
+.about-stats {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 2.5rem 0;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 3rem;
+  border-left: 1px solid var(--border);
+}
+
+.stat-item:last-child {
+  border-right: 1px solid var(--border);
+}
+
+.stat-num {
+  font-family: 'Thmanyah Display', serif;
+  font-weight: 900;
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: var(--cream);
+  margin-bottom: 0.4rem;
+}
+
+.stat-label {
+  font-family: 'Thmanyah Text', serif;
+  font-weight: 400;
+  font-size: 0.75rem;
+  color: var(--dim);
+  letter-spacing: 0.05em;
+}
+
+@media (max-width: 768px) {
+  .stat-item {
+    padding: 1.5rem 1.5rem;
+    border-right: 1px solid var(--border);
+  }
+}
+
+/* ─── SERVICES ─── */
+#services {
+  background: var(--black);
+  padding: 7rem 2.5rem;
+  border-top: 1px solid var(--border);
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 4rem;
+  align-items: start;
+}
+
+.services-label-col {
+  padding-top: 0.5rem;
+}
+
+.services-list {
+  list-style: none;
+}
+
+.service-item {
+  font-family: 'Thmanyah Display', serif;
+  font-weight: 700;
+  font-size: clamp(1.6rem, 3.5vw, 3rem);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: var(--cream);
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--border);
+  transition: color 0.2s, padding-right 0.2s;
+  cursor: default;
+}
+
+.service-item:first-child {
+  border-top: 1px solid var(--border);
+}
+
+.service-item:hover {
+  color: var(--gold);
+  padding-right: 1rem;
+}
+
+@media (max-width: 768px) {
+  #services {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
+/* ─── CONTACT ─── */
+#contact {
+  background: var(--black);
+  padding: 8rem 2.5rem;
+  text-align: center;
+  border-top: 1px solid var(--border);
+}
+
+.contact-headline {
+  font-family: 'Thmanyah Display', serif;
+  font-weight: 900;
+  font-size: clamp(3rem, 9vw, 8rem);
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+  color: var(--cream);
+  margin-bottom: 3rem;
+}
+
+.contact-details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 3rem;
+}
+
+.contact-email {
+  font-family: 'Thmanyah Text', serif;
+  font-weight: 500;
+  font-size: clamp(0.9rem, 2vw, 1.2rem);
+  color: var(--dim);
+  transition: color 0.2s;
+  direction: ltr;
+}
+
+.contact-email:hover {
+  color: var(--gold);
+}
+
+.contact-phone {
+  font-family: 'Inter', monospace;
+  font-size: 0.9rem;
+  color: var(--dim);
+  direction: ltr;
+  letter-spacing: 0.05em;
+}
+
+.contact-btn {
+  display: inline-block;
+  font-family: 'Thmanyah Text', serif;
+  font-weight: 500;
+  font-size: 0.875rem;
+  letter-spacing: 0.08em;
+  color: var(--black);
+  background: var(--gold);
+  padding: 1rem 2.5rem;
+  transition: background 0.2s, color 0.2s;
+}
+
+.contact-btn:hover {
+  background: var(--cream);
+  color: var(--black);
+}
+
+/* ─── FOOTER ─── */
+#footer {
+  background: var(--black);
+  border-top: 1px solid var(--border);
+  padding: 2rem 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.footer-copy {
+  font-family: 'Inter', monospace;
+  font-size: 0.65rem;
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  color: var(--dim);
+  text-transform: uppercase;
+}
+
+.footer-back {
+  font-family: 'Inter', monospace;
+  font-size: 0.65rem;
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  color: var(--dim);
+  text-transform: uppercase;
+  transition: color 0.2s;
+}
+
+.footer-back:hover {
+  color: var(--gold);
+}
+
+/* ─── CURSOR POSTER ─── */
+#cursor-poster {
+  position: fixed;
+  width: 280px;
+  height: 370px;
+  pointer-events: none;
+  z-index: 999;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  will-change: transform, opacity;
+  top: 0;
+  left: 0;
+}
+
+#cursor-poster img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border: 1px solid rgba(201, 169, 97, 0.2);
+}
+
+</style>
+</head>
+<body>
+
+<!-- CURSOR POSTER ELEMENT -->
+<div id="cursor-poster" aria-hidden="true">
+  <img src="" alt="" id="cursor-poster-img">
+</div>
+
+<!-- ─── NAV ─── -->
+<nav id="nav">
+  <a href="../../" class="nav-logo">TA</a>
+  <ul class="nav-links">
+    <li><a href="#films">أفلام</a></li>
+    <li><a href="#services">ستوديو</a></li>
+    <li><a href="#about">عن تركي</a></li>
+    <li><a href="#contact">تواصل</a></li>
+  </ul>
+  <a href="../../en/" class="nav-lang">EN</a>
+</nav>
+
+<!-- ─── HERO ─── -->
+<section id="hero">
+  <video class="hero-video" src="../../videos/hero-loop.mp4" autoplay muted loop playsinline poster="../../images/hero-poster.jpg"></video>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <p class="hero-label">RIYADH · ٢٠٢٦</p>
+    <span class="hero-name">تركي&nbsp;غازي</span>
+    <p class="hero-subtitle">فنان بصري بالذكاء الاصطناعي</p>
+    <a href="#films" class="hero-cta">اكتشف الأعمال ↓</a>
+  </div>
+  <div class="hero-scroll-hint" aria-hidden="true">
+    <div class="scroll-line"></div>
+    <span>scroll</span>
+  </div>
+</section>
+
+<!-- ─── FILMS LIST ─── -->
+<section id="films">
+  <div class="section-header">
+    <span class="section-label">أفلام</span>
+    <span class="section-count">٧ أعمال</span>
+  </div>
+  <ul class="films-list">
+
+    <li class="film-row"
+        data-poster="../../images/poster_01_saudi_joker.jpg"
+        data-video="../../videos/01_saudi_joker.mp4">
+      <span class="film-num">٠١</span>
+      <span class="film-title">جوكر سعودي</span>
+      <span class="film-type">فيلم قصير · ١:٥٠</span>
+      <span class="film-cta">شاهد ←</span>
+    </li>
+
+    <li class="film-row"
+        data-poster="../../images/poster_05_disorders.jpg"
+        data-video="../../videos/05_disorders.mp4">
+      <span class="film-num">٠٢</span>
+      <span class="film-title">الاضطرابات</span>
+      <span class="film-type">كليب موسيقي</span>
+      <span class="film-cta">شاهد ←</span>
+    </li>
+
+    <li class="film-row"
+        data-poster="../../images/poster_02_human_snail.jpg"
+        data-video="../../videos/02_human_snail.mp4">
+      <span class="film-num">٠٣</span>
+      <span class="film-title">الحلزون البشري</span>
+      <span class="film-type">خيال علمي</span>
+      <span class="film-cta">شاهد ←</span>
+    </li>
+
+    <li class="film-row"
+        data-poster="../../images/poster_03_mohammed_writer.jpg"
+        data-video="../../videos/03_mohammed_writer.mp4">
+      <span class="film-num">٠٤</span>
+      <span class="film-title">عقل محمد كاتب</span>
+      <span class="film-type">دراما</span>
+      <span class="film-cta">شاهد ←</span>
+    </li>
+
+    <li class="film-row"
+        data-poster="../../images/poster_06_saudi_harley.jpg"
+        data-video="../../videos/06_saudi_harley.mp4">
+      <span class="film-num">٠٥</span>
+      <span class="film-title">هارلي كوين سعودية</span>
+      <span class="film-type">كليب موسيقي</span>
+      <span class="film-cta">شاهد ←</span>
+    </li>
+
+    <li class="film-row"
+        data-poster="../../images/poster_09_generations.jpg"
+        data-video="../../videos/09_generations.mp4">
+      <span class="film-num">٠٦</span>
+      <span class="film-title">كل جيل عنده فنان</span>
+      <span class="film-type">سلسلة بورتريه</span>
+      <span class="film-cta">شاهد ←</span>
+    </li>
+
+    <li class="film-row"
+        data-poster="../../images/poster_04_studies_fragments.jpg"
+        data-video="../../videos/04_studies_fragments.mp4">
+      <span class="film-num">٠٧</span>
+      <span class="film-title">دراسات / ٠١</span>
+      <span class="film-type">تجريبي</span>
+      <span class="film-cta">شاهد ←</span>
+    </li>
+
+  </ul>
+</section>
+
+<!-- ─── ABOUT ─── -->
+<section id="about">
+  <p class="about-statement">أصنع الرياض كما أراها في الحلم.</p>
+  <div class="about-stats">
+    <div class="stat-item">
+      <span class="stat-num">٩</span>
+      <span class="stat-label">أفلام</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num">٨</span>
+      <span class="stat-label">شخصيات</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num">٢٩٠+</span>
+      <span class="stat-label">صورة</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num">٢٠٢٦</span>
+      <span class="stat-label">الرياض</span>
+    </div>
+  </div>
+</section>
+
+<!-- ─── SERVICES ─── -->
+<section id="services">
+  <div class="services-label-col">
+    <span class="section-label">الخدمات</span>
+  </div>
+  <ul class="services-list">
+    <li class="service-item">أفلام قصيرة</li>
+    <li class="service-item">كليبات موسيقية</li>
+    <li class="service-item">حملات إعلانية</li>
+    <li class="service-item">تصور عقاري</li>
+    <li class="service-item">إيديتوريال فاشن</li>
+    <li class="service-item">شخصيات مُدرَّبة</li>
+  </ul>
+</section>
+
+<!-- ─── CONTACT ─── -->
+<section id="contact">
+  <h2 class="contact-headline">هل عندك مشروع؟</h2>
+  <div class="contact-details">
+    <a href="mailto:turki@turkistudio.ai" class="contact-email">turki@turkistudio.ai</a>
+    <span class="contact-phone">+966 5X XXX XXXX</span>
+  </div>
+  <a href="mailto:turki@turkistudio.ai" class="contact-btn">تواصل الآن</a>
+</section>
+
+<!-- ─── FOOTER ─── -->
+<footer id="footer">
+  <span class="footer-copy">صُنع في الرياض · ٢٠٢٦</span>
+  <a href="../../" class="footer-back">الموقع الرئيسي ←</a>
+</footer>
+
+<!-- ─── SCRIPTS ─── -->
+<script src="../../vendor/gsap.min.js"></script>
+<script src="../../vendor/ScrollTrigger.min.js"></script>
+<script src="../../vendor/lenis.min.js"></script>
+<script>
+(function () {
+  'use strict';
+
+  // ── Lenis smooth scroll (desktop/precise pointer only) ──
+  var lenis = null;
+  if (window.matchMedia('(pointer: fine)').matches && typeof Lenis !== 'undefined') {
+    lenis = new Lenis({
+      duration: 1.2,
+      easing: function (t) { return Math.min(1, 1.001 - Math.pow(2, -10 * t)); },
+      direction: 'vertical',
+      smooth: true
+    });
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+    requestAnimationFrame(raf);
+  }
+
+  // ── Nav scroll state ──
+  var nav = document.getElementById('nav');
+  var heroEl = document.getElementById('hero');
+
+  function onScroll() {
+    var heroH = heroEl ? heroEl.offsetHeight : 0;
+    if (window.scrollY > heroH * 0.85) {
+      nav.classList.add('scrolled');
+    } else {
+      nav.classList.remove('scrolled');
+    }
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  // ── Hero CTA smooth scroll ──
+  document.querySelector('.hero-cta').addEventListener('click', function (e) {
+    e.preventDefault();
+    var target = document.getElementById('films');
+    if (lenis) {
+      lenis.scrollTo(target, { offset: 0 });
+    } else {
+      target.scrollIntoView({ behavior: 'smooth' });
+    }
+  });
+
+  // ── Nav smooth scroll ──
+  document.querySelectorAll('.nav-links a[href^="#"]').forEach(function (link) {
+    link.addEventListener('click', function (e) {
+      e.preventDefault();
+      var id = this.getAttribute('href').slice(1);
+      var target = document.getElementById(id);
+      if (!target) return;
+      if (lenis) {
+        lenis.scrollTo(target, { offset: -80 });
+      } else {
+        target.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  });
+
+  // ── GSAP ScrollTrigger film rows ──
+  if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+    gsap.registerPlugin(ScrollTrigger);
+
+    if (lenis) {
+      ScrollTrigger.scrollerProxy(document.documentElement, {
+        scrollTop: function (value) {
+          if (arguments.length) {
+            lenis.scrollTo(value, { immediate: true });
+          }
+          return lenis.scroll;
+        },
+        getBoundingClientRect: function () {
+          return {
+            top: 0,
+            left: 0,
+            width: window.innerWidth,
+            height: window.innerHeight
+          };
+        }
+      });
+      lenis.on('scroll', ScrollTrigger.update);
+    }
+
+    var rows = document.querySelectorAll('.film-row');
+    rows.forEach(function (row, i) {
+      gsap.to(row, {
+        opacity: 1,
+        x: 0,
+        duration: 0.7,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: row,
+          start: 'top 88%',
+          toggleActions: 'play none none none'
+        },
+        delay: i * 0.06
+      });
+    });
+
+    ScrollTrigger.refresh();
+  } else {
+    // fallback: just show all rows
+    document.querySelectorAll('.film-row').forEach(function (r) {
+      r.style.opacity = '1';
+      r.style.transform = 'none';
+    });
+  }
+
+  // ── Film row poster hover ──
+  var poster = document.getElementById('cursor-poster');
+  var posterImg = document.getElementById('cursor-poster-img');
+  var currentRow = null;
+  var mouseX = 0;
+  var mouseY = 0;
+  var raf2;
+
+  function updatePosterPosition() {
+    var pw = poster.offsetWidth;
+    var ph = poster.offsetHeight;
+    var vw = window.innerWidth;
+    var vh = window.innerHeight;
+    var offset = 24;
+
+    var x = mouseX + offset;
+    var y = mouseY - ph / 2;
+
+    // Keep inside viewport
+    if (x + pw > vw - 16) x = mouseX - pw - offset;
+    if (y < 8) y = 8;
+    if (y + ph > vh - 8) y = vh - ph - 8;
+
+    poster.style.transform = 'translate3d(' + x + 'px,' + y + 'px,0)';
+  }
+
+  function onMouseMove(e) {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+    if (currentRow) {
+      cancelAnimationFrame(raf2);
+      raf2 = requestAnimationFrame(updatePosterPosition);
+    }
+  }
+
+  document.addEventListener('mousemove', onMouseMove, { passive: true });
+
+  document.querySelectorAll('.film-row').forEach(function (row) {
+    row.addEventListener('mouseenter', function () {
+      var src = row.dataset.poster;
+      if (!src) return;
+      currentRow = row;
+      posterImg.src = src;
+      poster.style.opacity = '1';
+      updatePosterPosition();
+    });
+
+    row.addEventListener('mouseleave', function () {
+      currentRow = null;
+      poster.style.opacity = '0';
+    });
+
+    // touch/mobile: navigate on tap (no poster)
+    row.addEventListener('click', function () {
+      var vid = row.dataset.video;
+      if (vid && window.matchMedia('(pointer: coarse)').matches) {
+        // on mobile open video directly
+        window.open(vid, '_blank');
+      }
+    });
+  });
+
+})();
+</script>
+</body>
+</html>

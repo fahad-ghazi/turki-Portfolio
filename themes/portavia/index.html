@@ -1,0 +1,991 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>تركي غازي — Portavia</title>
+
+<!-- Fonts: Inter -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+/* ─── FONT FACES ─── */
+@font-face {
+  font-family: 'Thmanyah Display';
+  src: url('../../fonts/thmanyahserifdisplay-Black.woff2') format('woff2');
+  font-weight: 900;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Thmanyah Display';
+  src: url('../../fonts/thmanyahserifdisplay-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Thmanyah Text';
+  src: url('../../fonts/thmanyahseriftext-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Thmanyah Text';
+  src: url('../../fonts/thmanyahseriftext-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-display: swap;
+}
+
+/* ─── RESET & BASE ─── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:       #0f0f0f;
+  --bg2:      #1a1a1a;
+  --text:     #f0ece2;
+  --gold:     #C9A961;
+  --muted:    #888070;
+  --border:   #2a2a2a;
+  --font-display: 'Thmanyah Display', serif;
+  --font-text:    'Thmanyah Text', serif;
+  --font-label:   'Inter', sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-text);
+  font-size: 16px;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* ─── NAV ─── */
+nav {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 48px;
+  height: 64px;
+  background: rgba(15, 15, 15, 0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+
+.nav-logo {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 22px;
+  color: var(--gold);
+  text-decoration: none;
+  letter-spacing: 2px;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 36px;
+  list-style: none;
+}
+
+.nav-links a {
+  font-family: var(--font-label);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--text);
+  text-decoration: none;
+  opacity: 0.7;
+  transition: opacity 0.2s, color 0.2s;
+}
+.nav-links a:hover { opacity: 1; color: var(--gold); }
+
+.nav-en a {
+  color: var(--gold);
+  opacity: 1;
+  border: 1px solid rgba(201,169,97,0.4);
+  padding: 4px 12px;
+  border-radius: 2px;
+  transition: background 0.2s;
+}
+.nav-en a:hover { background: rgba(201,169,97,0.1); color: var(--gold); }
+
+/* ─── HERO ─── */
+#hero {
+  min-height: 100vh;
+  padding-top: 64px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-split {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 30% 40% 30%;
+  min-height: calc(100vh - 64px - 80px);
+}
+
+/* Left column: rotated label */
+.hero-left {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 24px;
+  border-left: 1px solid var(--border);
+}
+
+.hero-rotated-label {
+  font-family: var(--font-label);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--gold);
+  transform: rotate(-90deg);
+  white-space: nowrap;
+  writing-mode: horizontal-tb;
+}
+
+/* Center column: portrait image */
+.hero-center {
+  position: relative;
+  overflow: hidden;
+  border-right: 1px solid var(--border);
+  border-left: 1px solid var(--border);
+}
+
+.hero-center img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+  filter: grayscale(15%);
+}
+
+.hero-center::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(15,15,15,0.2) 0%,
+    transparent 20%,
+    transparent 70%,
+    rgba(15,15,15,0.5) 100%
+  );
+  pointer-events: none;
+}
+
+/* Right column: big display text */
+.hero-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 48px 32px;
+  border-right: 1px solid var(--border);
+}
+
+.hero-word {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: clamp(52px, 7vw, 108px);
+  line-height: 0.92;
+  color: var(--text);
+  letter-spacing: -2px;
+}
+
+.hero-word:first-child { align-self: flex-start; }
+.hero-word:nth-child(2) { align-self: center; color: var(--gold); }
+.hero-word:last-child { align-self: flex-end; }
+
+/* Hero bottom bar */
+.hero-bottom {
+  display: grid;
+  grid-template-columns: 30% 40% 30%;
+  height: 80px;
+  border-top: 1px solid var(--border);
+}
+
+.hero-name-cell {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 32px;
+  border-left: 1px solid var(--border);
+}
+
+.hero-name {
+  font-family: var(--font-label);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 6px;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.hero-location {
+  font-family: var(--font-label);
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: var(--muted);
+  margin-top: 4px;
+}
+
+.hero-cta-cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 24px;
+}
+
+.hero-cta {
+  font-family: var(--font-label);
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--text);
+  text-decoration: none;
+  opacity: 0.6;
+  transition: opacity 0.2s, color 0.2s;
+}
+.hero-cta:hover { opacity: 1; color: var(--gold); }
+
+/* ─── STATS BAR ─── */
+#stats {
+  background: var(--bg2);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 32px 48px;
+}
+
+.stats-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.stat-item {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  flex: 1;
+  justify-content: center;
+  padding: 0 24px;
+  border-left: 1px solid var(--border);
+}
+.stat-item:last-child { border-right: 1px solid var(--border); }
+
+.stat-number {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 48px;
+  color: var(--gold);
+  line-height: 1;
+  letter-spacing: -1px;
+}
+
+.stat-label {
+  font-family: var(--font-text);
+  font-size: 14px;
+  color: var(--muted);
+  font-weight: 400;
+}
+
+/* ─── SECTION COMMON ─── */
+.section-label {
+  font-family: var(--font-label);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 48px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.section-label::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+/* ─── FILMS GRID ─── */
+#films {
+  padding: 96px 48px;
+}
+
+.films-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+}
+
+.film-card {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  cursor: pointer;
+  background: var(--bg2);
+}
+
+.film-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94), filter 0.4s;
+  filter: grayscale(20%) brightness(0.85);
+}
+
+.film-card:hover img {
+  transform: scale(1.04);
+  filter: grayscale(0%) brightness(0.95);
+}
+
+.film-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(15,15,15,0.88) 0%,
+    rgba(15,15,15,0.4) 40%,
+    transparent 70%
+  );
+  z-index: 1;
+  transition: opacity 0.4s;
+}
+
+.film-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 2px;
+  background: var(--gold);
+  transform: scaleX(0);
+  transform-origin: right;
+  z-index: 3;
+  transition: transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.film-card:hover::after {
+  transform: scaleX(1);
+}
+
+.film-info {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  padding: 24px 28px;
+  z-index: 2;
+}
+
+.film-title {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 22px;
+  color: var(--text);
+  margin-bottom: 6px;
+  line-height: 1.1;
+  transition: color 0.2s;
+}
+
+.film-card:hover .film-title {
+  color: var(--gold);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-color: rgba(201,169,97,0.5);
+}
+
+.film-type {
+  font-family: var(--font-label);
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: rgba(201,169,97,0.8);
+}
+
+/* ─── CAPABILITIES ─── */
+#capabilities {
+  padding: 96px 48px;
+  border-top: 1px solid var(--border);
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 80px;
+  align-items: start;
+}
+
+.capabilities-sidebar {
+  position: sticky;
+  top: 96px;
+}
+
+.capabilities-sidebar .section-label {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  margin-bottom: 0;
+}
+
+.capabilities-sidebar .section-label::after { display: none; }
+
+.cap-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.cap-item {
+  padding: 28px 0;
+  border-bottom: 1px solid var(--border);
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 24px;
+  transition: padding-right 0.2s;
+}
+
+.cap-item:first-child { border-top: 1px solid var(--border); }
+
+.cap-item:hover { padding-right: 8px; }
+
+.cap-name {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 24px;
+  color: var(--text);
+  margin-bottom: 4px;
+  line-height: 1.1;
+}
+
+.cap-desc {
+  font-family: var(--font-text);
+  font-size: 14px;
+  color: var(--muted);
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+.cap-arrow {
+  font-size: 20px;
+  color: var(--border);
+  transition: color 0.2s, transform 0.2s;
+  flex-shrink: 0;
+}
+
+.cap-item:hover .cap-arrow {
+  color: var(--gold);
+  transform: translateX(-4px);
+}
+
+/* ─── PROCESS ─── */
+#process {
+  padding: 96px 48px;
+  border-top: 1px solid var(--border);
+  background: var(--bg2);
+}
+
+.process-steps {
+  display: flex;
+  gap: 2px;
+  margin-top: 64px;
+}
+
+.process-step {
+  flex: 1;
+  padding: 40px 32px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  transition: background 0.3s, border-color 0.3s;
+  cursor: default;
+}
+
+.process-step:hover {
+  background: var(--bg2);
+  border-color: rgba(201,169,97,0.3);
+}
+
+.step-number {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: clamp(56px, 6vw, 80px);
+  color: rgba(201,169,97,0.2);
+  line-height: 1;
+  margin-bottom: 20px;
+  transition: color 0.3s;
+  letter-spacing: -2px;
+}
+
+.process-step:hover .step-number {
+  color: rgba(201,169,97,0.6);
+}
+
+.step-title {
+  font-family: var(--font-label);
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--text);
+  opacity: 0.8;
+}
+
+/* ─── CONTACT ─── */
+#contact {
+  padding: 120px 48px;
+  border-top: 1px solid var(--border);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+}
+
+.contact-label {
+  font-family: var(--font-label);
+  font-size: 10px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.contact-heading {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: clamp(64px, 10vw, 120px);
+  color: var(--text);
+  line-height: 0.9;
+  letter-spacing: -3px;
+}
+
+.contact-details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.contact-details a {
+  font-family: var(--font-text);
+  font-size: 16px;
+  color: var(--muted);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.contact-details a:hover { color: var(--gold); }
+
+.contact-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--font-label);
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gold);
+  text-decoration: none;
+  padding: 18px 48px;
+  border: 1px solid var(--gold);
+  transition: background 0.3s, color 0.3s;
+  margin-top: 8px;
+}
+
+.contact-btn:hover {
+  background: var(--gold);
+  color: var(--bg);
+}
+
+/* ─── FOOTER ─── */
+footer {
+  padding: 32px 48px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.footer-copy {
+  font-family: var(--font-label);
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: var(--muted);
+  text-transform: uppercase;
+}
+
+.footer-links {
+  display: flex;
+  gap: 24px;
+}
+
+.footer-links a {
+  font-family: var(--font-label);
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--muted);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.footer-links a:hover { color: var(--gold); }
+
+/* ─── SCROLL INDICATOR ─── */
+.scroll-line {
+  position: fixed;
+  top: 64px;
+  right: 0;
+  width: 2px;
+  background: var(--gold);
+  z-index: 99;
+  transform-origin: top;
+  transition: height 0.1s;
+}
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 1024px) {
+  nav { padding: 0 24px; }
+  .hero-split { grid-template-columns: 24px 1fr 30%; }
+  .hero-left { padding: 24px 8px; }
+  .hero-word { font-size: clamp(40px, 6vw, 80px); }
+  .hero-bottom { grid-template-columns: auto 1fr auto; }
+  #stats { padding: 32px 24px; }
+  .stat-number { font-size: 36px; }
+  #films { padding: 64px 24px; }
+  #capabilities { padding: 64px 24px; gap: 48px; }
+  #process { padding: 64px 24px; }
+  .process-steps { flex-wrap: wrap; }
+  .process-step { flex: 1 1 calc(50% - 2px); }
+  #contact { padding: 80px 24px; }
+  footer { padding: 24px; }
+}
+
+@media (max-width: 768px) {
+  .hero-split { grid-template-columns: 0 1fr 40%; }
+  .hero-left { display: none; }
+  .hero-word { font-size: clamp(36px, 10vw, 64px); }
+  .hero-bottom { grid-template-columns: 1fr; height: auto; }
+  .hero-name-cell { padding: 20px 24px; border-left: none; border-bottom: 1px solid var(--border); }
+  .hero-cta-cell { padding: 16px 24px; justify-content: flex-start; }
+  .stats-row { flex-wrap: wrap; gap: 0; }
+  .stat-item { flex: 1 1 50%; border-bottom: 1px solid var(--border); justify-content: flex-start; }
+  .films-grid { grid-template-columns: 1fr; }
+  #capabilities { grid-template-columns: 1fr; gap: 32px; }
+  .capabilities-sidebar { position: static; }
+  .process-step { flex: 1 1 100%; }
+  nav .nav-links { gap: 20px; }
+}
+</style>
+</head>
+<body>
+
+<!-- Scroll progress line -->
+<div class="scroll-line" id="scrollLine"></div>
+
+<!-- ─── NAV ─── -->
+<nav>
+  <a href="../../index.html" class="nav-logo">TG</a>
+  <ul class="nav-links">
+    <li><a href="#films">أفلام</a></li>
+    <li><a href="#capabilities">ستوديو</a></li>
+    <li><a href="#process">عن تركي</a></li>
+    <li><a href="#contact">تواصل</a></li>
+    <li class="nav-en"><a href="../../en/">EN</a></li>
+  </ul>
+</nav>
+
+<!-- ─── HERO ─── -->
+<section id="hero">
+  <div class="hero-split">
+
+    <!-- Left: rotated label -->
+    <div class="hero-left">
+      <span class="hero-rotated-label">AI · VISUAL · STORYTELLER</span>
+    </div>
+
+    <!-- Center: portrait image -->
+    <div class="hero-center">
+      <img
+        src="../../images/poster_01_saudi_joker.jpg"
+        alt="تركي غازي — فنان بصري سعودي"
+        loading="eager"
+        fetchpriority="high"
+      >
+    </div>
+
+    <!-- Right: large display text -->
+    <div class="hero-right">
+      <span class="hero-word">فنان</span>
+      <span class="hero-word">بصري</span>
+      <span class="hero-word">بالذكاء</span>
+      <span class="hero-word" style="font-size: clamp(36px, 4.5vw, 72px);">الاصطناعي</span>
+    </div>
+
+  </div>
+
+  <!-- Bottom bar -->
+  <div class="hero-bottom">
+    <div style="border-left: 1px solid var(--border);"></div>
+
+    <div class="hero-name-cell">
+      <div class="hero-name">تركي غازي</div>
+      <div class="hero-location">الرياض · السعودية · ٢٠٢٦</div>
+    </div>
+
+    <div class="hero-cta-cell">
+      <a href="#films" class="hero-cta">الأعمال ↓</a>
+    </div>
+  </div>
+</section>
+
+<!-- ─── STATS BAR ─── -->
+<section id="stats">
+  <div class="stats-row">
+    <div class="stat-item">
+      <span class="stat-number">٩</span>
+      <span class="stat-label">أفلام</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-number">٨</span>
+      <span class="stat-label">شخصيات مُدرَّبة</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-number">٢٩٠+</span>
+      <span class="stat-label">صورة منشورة</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-number">٣</span>
+      <span class="stat-label">سنوات خبرة</span>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FILMS GRID ─── -->
+<section id="films">
+  <div class="section-label">أعمال الفيلم</div>
+
+  <div class="films-grid">
+
+    <div class="film-card">
+      <img src="../../images/poster_01_saudi_joker.jpg" alt="جوكر سعودي" loading="lazy">
+      <div class="film-info">
+        <div class="film-title">جوكر سعودي</div>
+        <div class="film-type">فيلم قصير</div>
+      </div>
+    </div>
+
+    <div class="film-card">
+      <img src="../../images/poster_05_disorders.jpg" alt="الاضطرابات" loading="lazy">
+      <div class="film-info">
+        <div class="film-title">الاضطرابات</div>
+        <div class="film-type">كليب موسيقي</div>
+      </div>
+    </div>
+
+    <div class="film-card">
+      <img src="../../images/poster_02_human_snail.jpg" alt="الحلزون البشري" loading="lazy">
+      <div class="film-info">
+        <div class="film-title">الحلزون البشري</div>
+        <div class="film-type">خيال علمي</div>
+      </div>
+    </div>
+
+    <div class="film-card">
+      <img src="../../images/poster_03_mohammed_writer.jpg" alt="عقل محمد كاتب" loading="lazy">
+      <div class="film-info">
+        <div class="film-title">عقل محمد كاتب</div>
+        <div class="film-type">دراما</div>
+      </div>
+    </div>
+
+    <div class="film-card">
+      <img src="../../images/poster_06_saudi_harley.jpg" alt="هارلي كوين سعودية" loading="lazy">
+      <div class="film-info">
+        <div class="film-title">هارلي كوين سعودية</div>
+        <div class="film-type">كليب موسيقي</div>
+      </div>
+    </div>
+
+    <div class="film-card">
+      <img src="../../images/poster_09_generations.jpg" alt="كل جيل عنده فنان" loading="lazy">
+      <div class="film-info">
+        <div class="film-title">كل جيل عنده فنان</div>
+        <div class="film-type">سلسلة بورتريه</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ─── CAPABILITIES ─── -->
+<section id="capabilities">
+
+  <div class="capabilities-sidebar">
+    <div class="section-label" style="flex-direction: column; align-items: flex-start; gap: 12px; margin-bottom: 0;">
+      <span>ما أقدر أقدمه</span>
+    </div>
+    <p style="font-family: var(--font-text); font-size: 13px; color: var(--muted); margin-top: 20px; line-height: 1.7;">
+      من الفكرة إلى الإنتاج — بأدوات الذكاء الاصطناعي وخبرة السرد البصري.
+    </p>
+  </div>
+
+  <div class="cap-list">
+
+    <div class="cap-item">
+      <div>
+        <div class="cap-name">أفلام قصيرة</div>
+        <div class="cap-desc">من السيناريو للمونتاج بالكامل</div>
+      </div>
+      <div class="cap-arrow">←</div>
+    </div>
+
+    <div class="cap-item">
+      <div>
+        <div class="cap-name">كليبات موسيقية</div>
+        <div class="cap-desc">سرد بصري مكثف يخدم الأثر الموسيقي</div>
+      </div>
+      <div class="cap-arrow">←</div>
+    </div>
+
+    <div class="cap-item">
+      <div>
+        <div class="cap-name">حملات إعلانية</div>
+        <div class="cap-desc">سينمائي + UGC بجودة منشورات فعلية</div>
+      </div>
+      <div class="cap-arrow">←</div>
+    </div>
+
+    <div class="cap-item">
+      <div>
+        <div class="cap-name">تصور عقاري</div>
+        <div class="cap-desc">معمارية واقعية تبيع قبل البناء</div>
+      </div>
+      <div class="cap-arrow">←</div>
+    </div>
+
+    <div class="cap-item">
+      <div>
+        <div class="cap-name">إيديتوريال فاشن</div>
+        <div class="cap-desc">إيديتوريال بجودة احترافية للمجلات</div>
+      </div>
+      <div class="cap-arrow">←</div>
+    </div>
+
+    <div class="cap-item">
+      <div>
+        <div class="cap-name">شخصيات مُدرَّبة</div>
+        <div class="cap-desc">ثبات بصري عبر LoRA مخصص لكل علامة</div>
+      </div>
+      <div class="cap-arrow">←</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ─── PROCESS ─── -->
+<section id="process">
+  <div class="section-label">كيف أعمل</div>
+
+  <div class="process-steps">
+
+    <div class="process-step">
+      <div class="step-number">٠١</div>
+      <div class="step-title">القراءة</div>
+    </div>
+
+    <div class="process-step">
+      <div class="step-number">٠٢</div>
+      <div class="step-title">السيناريو</div>
+    </div>
+
+    <div class="process-step">
+      <div class="step-number">٠٣</div>
+      <div class="step-title">التدريب</div>
+    </div>
+
+    <div class="process-step">
+      <div class="step-number">٠٤</div>
+      <div class="step-title">التوليد</div>
+    </div>
+
+    <div class="process-step">
+      <div class="step-number">٠٥</div>
+      <div class="step-title">المونتاج</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ─── CONTACT ─── -->
+<section id="contact">
+  <div class="contact-label">تواصل</div>
+
+  <div class="contact-heading">ابدأ مشروعك</div>
+
+  <div class="contact-details">
+    <a href="mailto:turki@turkistudio.ai">turki@turkistudio.ai</a>
+    <a href="tel:+966500000000">+966 50 000 0000</a>
+  </div>
+
+  <a href="mailto:turki@turkistudio.ai" class="contact-btn">أرسل رسالة</a>
+</section>
+
+<!-- ─── FOOTER ─── -->
+<footer>
+  <div class="footer-copy">تركي غازي · ٢٠٢٦ · الرياض</div>
+  <div class="footer-links">
+    <a href="../../index.html">الموقع الرئيسي</a>
+    <a href="../../en/">EN</a>
+  </div>
+</footer>
+
+<!-- ─── SCRIPTS ─── -->
+<script>
+// Scroll progress line
+const scrollLine = document.getElementById('scrollLine');
+function updateScroll() {
+  const scrollTop = window.scrollY;
+  const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+  const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+  scrollLine.style.height = Math.min(pct, 100) + 'vh';
+}
+window.addEventListener('scroll', updateScroll, { passive: true });
+updateScroll();
+
+// Smooth reveal on scroll
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.style.opacity = '1';
+      entry.target.style.transform = 'translateY(0)';
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.08 });
+
+document.querySelectorAll('.film-card, .cap-item, .process-step, .stat-item').forEach(el => {
+  el.style.opacity = '0';
+  el.style.transform = 'translateY(24px)';
+  el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+  observer.observe(el);
+});
+</script>
+
+</body>
+</html>
