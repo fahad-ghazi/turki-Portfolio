@@ -43,6 +43,8 @@ USER app
 EXPOSE 3000
 ENV PORT=3000 HOST=0.0.0.0
 
-# Run migrations on boot, then start the server.
-# This is safe because Prisma migrate deploy is idempotent.
-CMD ["dumb-init", "sh", "-c", "npx prisma migrate deploy && node dist/server.js"]
+# Sync schema on boot, then start the server.
+# We use `prisma db push` (not `migrate deploy`) because we ship the
+# schema without migration files yet — prisma generates the tables
+# directly from prisma/schema.prisma. Idempotent for a matching schema.
+CMD ["dumb-init", "sh", "-c", "npx prisma db push --accept-data-loss --skip-generate && node dist/server.js"]
