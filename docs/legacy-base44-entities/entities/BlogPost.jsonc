@@ -1,0 +1,115 @@
+{
+  "name": "BlogPost",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string"
+    },
+    "seo_title": {
+      "type": "string"
+    },
+    "meta_title": {
+      "type": "string"
+    },
+    "meta_description": {
+      "type": "string"
+    },
+    "slug": {
+      "type": "string"
+    },
+    "h1": {
+      "type": "string"
+    },
+    "h2_sections": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "h3_sections": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "executive_summary": {
+      "type": "string"
+    },
+    "content": {
+      "type": "string"
+    },
+    "faq": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "question": {
+            "type": "string"
+          },
+          "answer": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "schema_markup": {
+      "type": "string"
+    },
+    "sources": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "cta_text": {
+      "type": "string"
+    },
+    "hero_image": {
+      "type": "string"
+    },
+    "alt_text": {
+      "type": "string"
+    },
+    "keywords": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "internal_links": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "publish_status": {
+      "type": "string",
+      "enum": [
+        "idea",
+        "draft",
+        "review",
+        "published",
+        "archived"
+      ],
+      "default": "idea"
+    },
+    "aeo_direct_answer": {
+      "type": "string"
+    },
+    "aeo_definition": {
+      "type": "string"
+    },
+    "aeo_bullets": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "quotable_summary": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "title"
+  ]
+}

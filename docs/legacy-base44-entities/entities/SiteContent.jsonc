@@ -1,0 +1,57 @@
+{
+  "name": "SiteContent",
+  "type": "object",
+  "properties": {
+    "key": {
+      "type": "string",
+      "description": "Unique content key"
+    },
+    "page": {
+      "type": "string"
+    },
+    "section": {
+      "type": "string"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "text",
+        "title",
+        "description",
+        "button",
+        "link",
+        "image",
+        "video",
+        "social"
+      ],
+      "default": "text"
+    },
+    "label": {
+      "type": "string"
+    },
+    "value": {
+      "type": "string"
+    },
+    "alt_text": {
+      "type": "string"
+    },
+    "order": {
+      "type": "number",
+      "default": 0
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "draft",
+        "published",
+        "archived"
+      ],
+      "default": "published"
+    }
+  },
+  "required": [
+    "key",
+    "page",
+    "type"
+  ]
+}

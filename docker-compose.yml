@@ -1,0 +1,51 @@
+# Local-dev compose for turki-vision-flow.
+# Boots Postgres + API together. The web app runs via `npm run dev`
+# in web/ for fast HMR (no need to dockerize during dev).
+#
+# Production deploy is via Dokploy — see docs/DEPLOY.md.
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: turki_postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: turki
+      POSTGRES_PASSWORD: turki
+      POSTGRES_DB: turki
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U turki -d turki"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  api:
+    build:
+      context: ./api
+      dockerfile: Dockerfile
+    container_name: turki_api
+    restart: unless-stopped
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      NODE_ENV: development
+      PORT: 3000
+      HOST: 0.0.0.0
+      DATABASE_URL: postgresql://turki:turki@postgres:5432/turki?schema=public
+      JWT_SECRET: dev-jwt-secret-replace-in-production-aaaaaa
+      COOKIE_SECRET: dev-cookie-secret-replace-aaaaa
+      CORS_ORIGINS: http://localhost:5173,http://localhost:4173
+      PUBLIC_SITE_URL: http://localhost:5173
+      ADMIN_EMAIL: admin@turki.local
+      ADMIN_PASSWORD: ChangeMeOnFirstBoot!
+      LOG_LEVEL: info
+    ports:
+      - "3000:3000"
+
+volumes:
+  postgres_data:

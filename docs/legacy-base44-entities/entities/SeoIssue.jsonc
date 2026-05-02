@@ -1,0 +1,54 @@
+{
+  "name": "SeoIssue",
+  "type": "object",
+  "properties": {
+    "page_url": {
+      "type": "string"
+    },
+    "issue_type": {
+      "type": "string",
+      "enum": [
+        "missing_title",
+        "missing_description",
+        "missing_alt",
+        "broken_link",
+        "404",
+        "canonical",
+        "schema",
+        "open_graph",
+        "twitter_card",
+        "sitemap",
+        "robots",
+        "performance",
+        "internal_link"
+      ],
+      "default": "missing_title"
+    },
+    "severity": {
+      "type": "string",
+      "enum": [
+        "low",
+        "medium",
+        "high",
+        "critical"
+      ],
+      "default": "medium"
+    },
+    "details": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "open",
+        "in_progress",
+        "resolved"
+      ],
+      "default": "open"
+    }
+  },
+  "required": [
+    "page_url",
+    "issue_type"
+  ]
+}

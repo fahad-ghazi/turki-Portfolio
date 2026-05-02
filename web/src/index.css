@@ -1,0 +1,225 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --font-cinzel: 'Cinzel', serif;
+    --font-cormorant: 'Cormorant Garamond', serif;
+    --font-noto: 'IBM Plex Sans Arabic', sans-serif;
+    --gold: #C9A961;
+    --gold-dim: rgba(201, 169, 97, 0.55);
+    --gold-glow: rgba(201, 169, 97, 0.18);
+
+    --background: 42 39% 94%;
+    --foreground: 0 0% 5%;
+    --card: 42 39% 94%;
+    --card-foreground: 0 0% 10%;
+    --popover: 42 39% 94%;
+    --popover-foreground: 0 0% 10%;
+    --primary: 40 45% 58%;
+    --primary-foreground: 0 0% 10%;
+    --secondary: 39 35% 87%;
+    --secondary-foreground: 0 0% 10%;
+    --muted: 39 35% 87%;
+    --muted-foreground: 0 0% 12%;
+    --accent: 40 45% 58%;
+    --accent-foreground: 0 0% 10%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 30 10% 18%;
+    --input: 30 10% 18%;
+    --ring: 40 45% 58%;
+    --chart-1: 40 45% 58%;
+    --chart-2: 30 40% 45%;
+    --chart-3: 20 30% 30%;
+    --chart-4: 35 50% 65%;
+    --chart-5: 25 35% 50%;
+    --radius: 0.5rem;
+    --sidebar-background: 42 39% 94%;
+    --sidebar-foreground: 0 0% 10%;
+    --sidebar-primary: 40 45% 58%;
+    --sidebar-primary-foreground: 0 0% 10%;
+    --sidebar-accent: 39 35% 87%;
+    --sidebar-accent-foreground: 0 0% 10%;
+    --sidebar-border: 40 45% 58%;
+    --sidebar-ring: 40 45% 58%;
+  }
+
+  .dark {
+    --background: 42 39% 94%;
+    --foreground: 0 0% 5%;
+    --card: 42 39% 94%;
+    --card-foreground: 0 0% 10%;
+    --popover: 42 39% 94%;
+    --popover-foreground: 0 0% 10%;
+    --primary: 40 45% 58%;
+    --primary-foreground: 0 0% 10%;
+    --secondary: 39 35% 87%;
+    --secondary-foreground: 0 0% 10%;
+    --muted: 39 35% 87%;
+    --muted-foreground: 0 0% 12%;
+    --accent: 40 45% 58%;
+    --accent-foreground: 0 0% 10%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 30 10% 18%;
+    --input: 30 10% 18%;
+    --ring: 40 45% 58%;
+    --chart-1: 40 45% 58%;
+    --chart-2: 30 40% 45%;
+    --chart-3: 20 30% 30%;
+    --chart-4: 35 50% 65%;
+    --chart-5: 25 35% 50%;
+    --sidebar-background: 42 39% 94%;
+    --sidebar-foreground: 0 0% 10%;
+    --sidebar-primary: 40 45% 58%;
+    --sidebar-primary-foreground: 0 0% 10%;
+    --sidebar-accent: 39 35% 87%;
+    --sidebar-accent-foreground: 0 0% 10%;
+    --sidebar-border: 40 45% 58%;
+    --sidebar-ring: 40 45% 58%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-noto);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: geometricPrecision;
+  }
+
+  a, button, input, textarea, select {
+    font-family: var(--font-noto);
+  }
+
+  p, li, input, textarea, select {
+    color: hsl(var(--foreground));
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    color: #0B0B0B;
+  }
+
+  input, textarea, select {
+    background-color: rgba(233, 226, 211, 0.72);
+    border-color: rgba(11, 11, 11, 0.32);
+  }
+
+  ::placeholder {
+    color: rgba(11, 11, 11, 0.78);
+    opacity: 1;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* High contrast for Light Luxury surfaces */
+[class*="text-[#1A1A1A]/"],
+[class*="text-[#0F0F0F]/"],
+[class*="text-black/"],
+[class*="text-muted-foreground"] {
+  color: rgba(11, 11, 11, 0.88) !important;
+}
+
+[class*="border-[#1A1A1A]/"],
+[class*="border-black/"] {
+  border-color: rgba(11, 11, 11, 0.34) !important;
+}
+
+[class*="bg-[#E9E2D3]/"],
+[class*="bg-[#F5F1E8]/"] {
+  background-color: rgba(245, 241, 232, 0.96) !important;
+}
+
+.bg-[#F5F1E8] button:not(.menu-icon):not(.social-icon):not(.action-icon),
+.bg-[#E9E2D3] button:not(.menu-icon):not(.social-icon):not(.action-icon),
+.bg-[#F5F1E8] a:not(.social-icon),
+.bg-[#E9E2D3] a:not(.social-icon) {
+  font-weight: 600;
+}
+
+/* Floating Icon Style */
+.floating-icon,
+.menu-icon,
+.social-icon,
+.action-icon {
+  color: #C9A961 !important;
+  opacity: 0.85 !important;
+  width: 44px !important;
+  height: 44px !important;
+  min-width: 44px !important;
+  min-height: 44px !important;
+  padding: 0 !important;
+  border-radius: 50% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background: rgba(26, 26, 26, 0.72) !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  border: 1px solid rgba(201, 169, 97, 0.55) !important;
+  box-shadow: none !important;
+  transition: opacity 0.25s ease, transform 0.25s ease, border-color 0.25s ease !important;
+  cursor: pointer;
+}
+
+.floating-icon svg,
+.menu-icon svg,
+.social-icon svg,
+.action-icon svg {
+  width: 20px !important;
+  height: 20px !important;
+  color: #C9A961 !important;
+  stroke-width: 1.6 !important;
+}
+
+.floating-icon span,
+.menu-icon span,
+.social-icon span,
+.action-icon span {
+  color: #C9A961 !important;
+}
+
+.menu-icon .icon-line {
+  display: block;
+  height: 1px;
+  background: #C9A961 !important;
+  border-radius: 999px;
+  flex: none;
+}
+
+.floating-icon:hover,
+.menu-icon:hover,
+.social-icon:hover,
+.action-icon:hover,
+.floating-icon:active,
+.menu-icon:active,
+.social-icon:active,
+.action-icon:active {
+  opacity: 1 !important;
+  transform: scale(1.04) !important;
+  border-color: rgba(201, 169, 97, 0.55) !important;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: #F5F1E8;
+}
+::-webkit-scrollbar-thumb {
+  background: hsl(40 45% 58%);
+  border-radius: 2px;
+}

@@ -1,0 +1,60 @@
+{
+  "name": "SourceIdea",
+  "type": "object",
+  "properties": {
+    "source_title": {
+      "type": "string"
+    },
+    "source_url": {
+      "type": "string"
+    },
+    "source_type": {
+      "type": "string",
+      "enum": [
+        "tech_site",
+        "ai_article",
+        "marketing_report",
+        "tool_news",
+        "official_tool_source",
+        "case_study"
+      ],
+      "default": "ai_article"
+    },
+    "credibility": {
+      "type": "string",
+      "enum": [
+        "high",
+        "medium",
+        "low"
+      ],
+      "default": "medium"
+    },
+    "summary": {
+      "type": "string"
+    },
+    "draft_angle": {
+      "type": "string"
+    },
+    "seo_notes": {
+      "type": "string"
+    },
+    "aeo_notes": {
+      "type": "string"
+    },
+    "workflow_status": {
+      "type": "string",
+      "enum": [
+        "source",
+        "summarized",
+        "draft_generated",
+        "seo_optimized",
+        "review",
+        "published"
+      ],
+      "default": "source"
+    }
+  },
+  "required": [
+    "source_title"
+  ]
+}

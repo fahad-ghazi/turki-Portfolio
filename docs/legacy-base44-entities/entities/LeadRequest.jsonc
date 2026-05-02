@@ -1,0 +1,63 @@
+{
+  "name": "LeadRequest",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "email": {
+      "type": "string"
+    },
+    "phone": {
+      "type": "string"
+    },
+    "company": {
+      "type": "string"
+    },
+    "request_type": {
+      "type": "string",
+      "enum": [
+        "meeting",
+        "call",
+        "quote",
+        "collaboration",
+        "job_opportunity"
+      ],
+      "default": "meeting"
+    },
+    "project_type": {
+      "type": "string"
+    },
+    "approx_budget": {
+      "type": "string"
+    },
+    "preferred_time": {
+      "type": "string"
+    },
+    "message": {
+      "type": "string"
+    },
+    "source": {
+      "type": "string"
+    },
+    "source_page": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "new",
+        "contacted",
+        "qualified",
+        "not_fit",
+        "closed"
+      ],
+      "default": "new"
+    }
+  },
+  "required": [
+    "name",
+    "email",
+    "request_type"
+  ]
+}

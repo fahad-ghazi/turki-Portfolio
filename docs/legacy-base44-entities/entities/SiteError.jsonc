@@ -1,0 +1,58 @@
+{
+  "name": "SiteError",
+  "type": "object",
+  "properties": {
+    "page": {
+      "type": "string"
+    },
+    "error_type": {
+      "type": "string",
+      "enum": [
+        "javascript",
+        "api",
+        "failed_request",
+        "image_loading",
+        "video_loading",
+        "performance",
+        "broken_link"
+      ],
+      "default": "javascript"
+    },
+    "message": {
+      "type": "string"
+    },
+    "device": {
+      "type": "string"
+    },
+    "browser": {
+      "type": "string"
+    },
+    "count": {
+      "type": "number",
+      "default": 1
+    },
+    "severity": {
+      "type": "string",
+      "enum": [
+        "low",
+        "medium",
+        "high",
+        "critical"
+      ],
+      "default": "medium"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "open",
+        "resolved"
+      ],
+      "default": "open"
+    }
+  },
+  "required": [
+    "page",
+    "error_type",
+    "message"
+  ]
+}

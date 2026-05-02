@@ -1,0 +1,80 @@
+{
+  "name": "PortfolioProject",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string"
+    },
+    "short_description": {
+      "type": "string"
+    },
+    "detailed_description": {
+      "type": "string"
+    },
+    "work_type": {
+      "type": "string"
+    },
+    "tools_used": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "year": {
+      "type": "string"
+    },
+    "images": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "video_url": {
+      "type": "string"
+    },
+    "keywords": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "alt_text": {
+      "type": "string"
+    },
+    "publish_status": {
+      "type": "string",
+      "enum": [
+        "draft",
+        "review",
+        "published",
+        "archived"
+      ],
+      "default": "draft"
+    },
+    "display_order": {
+      "type": "number",
+      "default": 0
+    },
+    "seo_title": {
+      "type": "string"
+    },
+    "meta_description": {
+      "type": "string"
+    },
+    "canonical_url": {
+      "type": "string"
+    },
+    "schema_markup": {
+      "type": "string"
+    },
+    "aeo_answer": {
+      "type": "string"
+    },
+    "cta_text": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "title"
+  ]
+}

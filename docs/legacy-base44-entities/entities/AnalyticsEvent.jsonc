@@ -1,0 +1,58 @@
+{
+  "name": "AnalyticsEvent",
+  "type": "object",
+  "properties": {
+    "event_name": {
+      "type": "string"
+    },
+    "event_type": {
+      "type": "string",
+      "enum": [
+        "page_view",
+        "project_view",
+        "article_read",
+        "button_click",
+        "share",
+        "like",
+        "lead",
+        "error"
+      ],
+      "default": "page_view"
+    },
+    "page": {
+      "type": "string"
+    },
+    "section": {
+      "type": "string"
+    },
+    "target_id": {
+      "type": "string"
+    },
+    "referrer": {
+      "type": "string"
+    },
+    "device": {
+      "type": "string"
+    },
+    "browser": {
+      "type": "string"
+    },
+    "country": {
+      "type": "string"
+    },
+    "city": {
+      "type": "string"
+    },
+    "session_duration": {
+      "type": "number"
+    },
+    "privacy_consent": {
+      "type": "boolean",
+      "default": false
+    }
+  },
+  "required": [
+    "event_name",
+    "event_type"
+  ]
+}

@@ -1,0 +1,59 @@
+{
+  "name": "MediaAsset",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string"
+    },
+    "file_url": {
+      "type": "string"
+    },
+    "media_type": {
+      "type": "string",
+      "enum": [
+        "image",
+        "video"
+      ],
+      "default": "image"
+    },
+    "category": {
+      "type": "string"
+    },
+    "alt_text": {
+      "type": "string"
+    },
+    "thumbnail_url": {
+      "type": "string"
+    },
+    "format": {
+      "type": "string"
+    },
+    "optimization_status": {
+      "type": "string",
+      "enum": [
+        "original",
+        "compressed",
+        "webp_ready",
+        "avif_ready"
+      ],
+      "default": "original"
+    },
+    "usage_page": {
+      "type": "string"
+    },
+    "publish_status": {
+      "type": "string",
+      "enum": [
+        "draft",
+        "published",
+        "archived"
+      ],
+      "default": "published"
+    }
+  },
+  "required": [
+    "title",
+    "file_url",
+    "media_type"
+  ]
+}

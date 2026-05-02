@@ -1,0 +1,27 @@
+{
+  "name": "ProjectInteraction",
+  "type": "object",
+  "properties": {
+    "project_id": {
+      "type": "string"
+    },
+    "category_id": {
+      "type": "string"
+    },
+    "action": {
+      "type": "string",
+      "enum": [
+        "like",
+        "share"
+      ]
+    },
+    "user_identifier": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "project_id",
+    "category_id",
+    "action"
+  ]
+}

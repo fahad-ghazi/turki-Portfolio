@@ -1,0 +1,418 @@
+// Prisma schema for turki-vision-flow API
+// Mirrors the original base44 entities but owned by us.
+// All field names are exposed in snake_case via @map to match the
+// existing frontend's expectations (e.g. created_date, updated_date).
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ─────────────────────────────────────────────────────────
+// Auth — admin only (single user model, JWT-based)
+// ─────────────────────────────────────────────────────────
+model Admin {
+  id           String    @id @default(cuid())
+  email        String    @unique
+  passwordHash String    @map("password_hash")
+  name         String?
+  lastLoginAt  DateTime? @map("last_login_at")
+  createdAt    DateTime  @default(now()) @map("created_at")
+  updatedAt    DateTime  @updatedAt @map("updated_at")
+
+  @@map("admins")
+}
+
+// ─────────────────────────────────────────────────────────
+// Content (managed via /admin)
+// ─────────────────────────────────────────────────────────
+enum PublishStatus {
+  draft
+  review
+  published
+  archived
+}
+
+enum BlogPublishStatus {
+  idea
+  draft
+  review
+  published
+  archived
+}
+
+model PortfolioProject {
+  id                  String        @id @default(cuid())
+  title               String
+  shortDescription    String?       @map("short_description")
+  detailedDescription String?       @map("detailed_description") @db.Text
+  workType            String?       @map("work_type")
+  toolsUsed           String[]      @map("tools_used")
+  year                String?
+  images              String[]
+  videoUrl            String?       @map("video_url")
+  keywords            String[]
+  altText             String?       @map("alt_text")
+  publishStatus       PublishStatus @default(draft) @map("publish_status")
+  displayOrder        Int           @default(0) @map("display_order")
+  seoTitle            String?       @map("seo_title")
+  metaDescription     String?       @map("meta_description")
+  canonicalUrl        String?       @map("canonical_url")
+  schemaMarkup        String?       @map("schema_markup") @db.Text
+  aeoAnswer           String?       @map("aeo_answer") @db.Text
+  ctaText             String?       @map("cta_text")
+  createdAt           DateTime      @default(now()) @map("created_date")
+  updatedAt           DateTime      @updatedAt @map("updated_date")
+
+  interactions ProjectInteraction[]
+
+  @@index([publishStatus, displayOrder])
+  @@map("portfolio_projects")
+}
+
+model Film {
+  id            String        @id @default(cuid())
+  title         String
+  description   String?       @db.Text
+  duration      String?
+  year          String?
+  videoUrl      String?       @map("video_url")
+  thumbnail     String
+  displayOrder  Int           @default(0) @map("display_order")
+  publishStatus PublishStatus @default(published) @map("publish_status")
+  createdAt     DateTime      @default(now()) @map("created_date")
+  updatedAt     DateTime      @updatedAt @map("updated_date")
+
+  @@index([publishStatus, displayOrder])
+  @@map("films")
+}
+
+model BlogPost {
+  id               String            @id @default(cuid())
+  title            String
+  slug             String?           @unique
+  seoTitle         String?           @map("seo_title")
+  metaTitle        String?           @map("meta_title")
+  metaDescription  String?           @map("meta_description")
+  h1               String?
+  h2Sections       String[]          @map("h2_sections")
+  h3Sections       String[]          @map("h3_sections")
+  executiveSummary String?           @map("executive_summary") @db.Text
+  content          String?           @db.Text
+  faq              Json?
+  schemaMarkup     String?           @map("schema_markup") @db.Text
+  sources          String[]
+  ctaText          String?           @map("cta_text")
+  heroImage        String?           @map("hero_image")
+  altText          String?           @map("alt_text")
+  keywords         String[]
+  internalLinks    String[]          @map("internal_links")
+  publishStatus    BlogPublishStatus @default(idea) @map("publish_status")
+  aeoDirectAnswer  String?           @map("aeo_direct_answer") @db.Text
+  aeoDefinition    String?           @map("aeo_definition") @db.Text
+  aeoBullets       String[]          @map("aeo_bullets")
+  quotableSummary  String?           @map("quotable_summary") @db.Text
+  createdAt        DateTime          @default(now()) @map("created_date")
+  updatedAt        DateTime          @updatedAt @map("updated_date")
+
+  @@index([publishStatus])
+  @@map("blog_posts")
+}
+
+enum MediaType {
+  image
+  video
+}
+
+enum OptimizationStatus {
+  original
+  compressed
+  webp_ready
+  avif_ready
+}
+
+model MediaAsset {
+  id                 String             @id @default(cuid())
+  title              String
+  fileUrl            String             @map("file_url")
+  mediaType          MediaType          @default(image) @map("media_type")
+  category           String?
+  altText            String?            @map("alt_text")
+  thumbnailUrl       String?            @map("thumbnail_url")
+  format             String?
+  optimizationStatus OptimizationStatus @default(original) @map("optimization_status")
+  usagePage          String?            @map("usage_page")
+  publishStatus      PublishStatus      @default(published) @map("publish_status")
+  createdAt          DateTime           @default(now()) @map("created_date")
+  updatedAt          DateTime           @updatedAt @map("updated_date")
+
+  @@index([category, publishStatus])
+  @@map("media_assets")
+}
+
+enum SiteContentType {
+  text
+  title
+  description
+  button
+  link
+  image
+  video
+  social
+}
+
+enum SiteContentStatus {
+  draft
+  published
+  archived
+}
+
+model SiteContent {
+  id        String            @id @default(cuid())
+  key       String            @unique
+  page      String
+  section   String?
+  type      SiteContentType   @default(text)
+  label     String?
+  value     String?           @db.Text
+  altText   String?           @map("alt_text")
+  order     Int               @default(0)
+  status    SiteContentStatus @default(published)
+  createdAt DateTime          @default(now()) @map("created_date")
+  updatedAt DateTime          @updatedAt @map("updated_date")
+
+  @@index([page, status, order])
+  @@map("site_content")
+}
+
+// ─────────────────────────────────────────────────────────
+// Leads / form submissions (public write, admin read)
+// ─────────────────────────────────────────────────────────
+enum LeadRequestType {
+  meeting
+  call
+  quote
+  collaboration
+  job_opportunity
+}
+
+enum LeadStatus {
+  new
+  contacted
+  qualified
+  not_fit
+  closed
+}
+
+model LeadRequest {
+  id            String          @id @default(cuid())
+  name          String
+  email         String
+  phone         String?
+  company       String?
+  requestType   LeadRequestType @default(meeting) @map("request_type")
+  projectType   String?         @map("project_type")
+  approxBudget  String?         @map("approx_budget")
+  preferredTime String?         @map("preferred_time")
+  message       String?         @db.Text
+  source        String?
+  sourcePage    String?         @map("source_page")
+  status        LeadStatus      @default(new)
+  ipHash        String?         @map("ip_hash")
+  userAgent     String?         @map("user_agent") @db.Text
+  createdAt     DateTime        @default(now()) @map("created_date")
+  updatedAt     DateTime        @updatedAt @map("updated_date")
+
+  @@index([status, createdAt(sort: Desc)])
+  @@map("lead_requests")
+}
+
+// ─────────────────────────────────────────────────────────
+// Interactions (anonymous like/share, public write)
+// ─────────────────────────────────────────────────────────
+enum ProjectInteractionAction {
+  like
+  share
+}
+
+model ProjectInteraction {
+  id             String                   @id @default(cuid())
+  projectId      String                   @map("project_id")
+  categoryId     String                   @map("category_id")
+  action         ProjectInteractionAction
+  userIdentifier String?                  @map("user_identifier")
+  createdAt      DateTime                 @default(now()) @map("created_date")
+
+  // Optional FK to PortfolioProject (project_id can also reference category items not in DB)
+  project PortfolioProject? @relation(fields: [projectId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@index([projectId, action])
+  @@index([categoryId, action])
+  @@map("project_interactions")
+}
+
+// ─────────────────────────────────────────────────────────
+// Analytics events (public write, batched, rate-limited)
+// ─────────────────────────────────────────────────────────
+enum AnalyticsEventType {
+  page_view
+  project_view
+  article_read
+  button_click
+  share
+  like
+  lead
+  error
+}
+
+model AnalyticsEvent {
+  id              String             @id @default(cuid())
+  eventName       String             @map("event_name")
+  eventType       AnalyticsEventType @default(page_view) @map("event_type")
+  page            String?
+  section         String?
+  targetId        String?            @map("target_id")
+  referrer        String?
+  device          String?
+  browser         String?
+  country         String?
+  city            String?
+  sessionDuration Float?             @map("session_duration")
+  privacyConsent  Boolean            @default(false) @map("privacy_consent")
+  ipHash          String?            @map("ip_hash")
+  createdAt       DateTime           @default(now()) @map("created_date")
+
+  @@index([eventType, createdAt(sort: Desc)])
+  @@index([page, createdAt(sort: Desc)])
+  @@map("analytics_events")
+}
+
+// ─────────────────────────────────────────────────────────
+// Site errors (public write, admin read)
+// ─────────────────────────────────────────────────────────
+enum SiteErrorType {
+  javascript
+  api
+  failed_request
+  image_loading
+  video_loading
+  performance
+  broken_link
+}
+
+enum Severity {
+  low
+  medium
+  high
+  critical
+}
+
+enum ErrorStatus {
+  open
+  resolved
+}
+
+model SiteError {
+  id        String        @id @default(cuid())
+  page      String
+  errorType SiteErrorType @default(javascript) @map("error_type")
+  message   String        @db.Text
+  device    String?
+  browser   String?
+  count     Int           @default(1)
+  severity  Severity      @default(medium)
+  status    ErrorStatus   @default(open)
+  createdAt DateTime      @default(now()) @map("created_date")
+  updatedAt DateTime      @updatedAt @map("updated_date")
+
+  @@index([status, severity])
+  @@map("site_errors")
+}
+
+// ─────────────────────────────────────────────────────────
+// SEO issues (admin only)
+// ─────────────────────────────────────────────────────────
+enum SeoIssueType {
+  missing_title
+  missing_description
+  missing_alt
+  broken_link
+  not_found
+  canonical
+  schema
+  open_graph
+  twitter_card
+  sitemap
+  robots
+  performance
+  internal_link
+}
+
+enum SeoIssueStatus {
+  open
+  in_progress
+  resolved
+}
+
+model SeoIssue {
+  id        String         @id @default(cuid())
+  pageUrl   String         @map("page_url")
+  issueType SeoIssueType   @default(missing_title) @map("issue_type")
+  severity  Severity       @default(medium)
+  details   String?        @db.Text
+  status    SeoIssueStatus @default(open)
+  createdAt DateTime       @default(now()) @map("created_date")
+  updatedAt DateTime       @updatedAt @map("updated_date")
+
+  @@index([status, severity])
+  @@map("seo_issues")
+}
+
+// ─────────────────────────────────────────────────────────
+// Source ideas / content pipeline (admin only)
+// ─────────────────────────────────────────────────────────
+enum SourceType {
+  tech_site
+  ai_article
+  marketing_report
+  tool_news
+  official_tool_source
+  case_study
+}
+
+enum Credibility {
+  high
+  medium
+  low
+}
+
+enum WorkflowStatus {
+  source
+  summarized
+  draft_generated
+  seo_optimized
+  review
+  published
+}
+
+model SourceIdea {
+  id             String         @id @default(cuid())
+  sourceTitle    String         @map("source_title")
+  sourceUrl      String?        @map("source_url")
+  sourceType     SourceType     @default(ai_article) @map("source_type")
+  credibility    Credibility    @default(medium)
+  summary        String?        @db.Text
+  draftAngle     String?        @map("draft_angle") @db.Text
+  seoNotes       String?        @map("seo_notes") @db.Text
+  aeoNotes       String?        @map("aeo_notes") @db.Text
+  workflowStatus WorkflowStatus @default(source) @map("workflow_status")
+  createdAt      DateTime       @default(now()) @map("created_date")
+  updatedAt      DateTime       @updatedAt @map("updated_date")
+
+  @@index([workflowStatus])
+  @@map("source_ideas")
+}
