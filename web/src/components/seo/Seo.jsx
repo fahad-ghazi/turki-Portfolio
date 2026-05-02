@@ -1,6 +1,6 @@
 import { Helmet } from 'react-helmet-async';
 
-const SITE_URL = (import.meta.env?.VITE_PUBLIC_SITE_URL || 'https://turkighazi.com').replace(/\/$/, '');
+const SITE_URL = (import.meta.env?.VITE_PUBLIC_SITE_URL || 'https://turkistudio.ai').replace(/\/$/, '');
 const DEFAULT_TITLE = 'تركي غازي — مصمم بصري بالذكاء الاصطناعي';
 const DEFAULT_DESCRIPTION =
   'تركي غازي — مصمم ومبدع بصري متخصص في صناعة العوالم السينمائية والإعلانات والأزياء والعقار والتراث باستخدام الذكاء الاصطناعي.';

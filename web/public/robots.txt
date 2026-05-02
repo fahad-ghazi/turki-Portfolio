@@ -1,4 +1,7 @@
 User-agent: *
 Allow: /
+Disallow: /admin
+Disallow: /admin/login
+Disallow: /booking
 
-Sitemap: https://turkighazi.com/sitemap.xml
+Sitemap: https://turkistudio.ai/sitemap.xml

@@ -33,7 +33,7 @@ export default function Heritage() {
           "@type": "CollectionPage",
           "name": "Heritage — Turki Ghazi",
           "description": category.seoDescription,
-          "url": "https://turkighazi.com/heritage",
+          "url": "https://turkistudio.ai/heritage",
           "author": { "@type": "Person", "name": "Turki Ghazi" },
         })}</script>
       </div>

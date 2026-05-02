@@ -37,7 +37,7 @@ export default function AiFashion() {
           "@type": "CollectionPage",
           "name": "AI Fashion — Turki Ghazi",
           "description": category.seoDescription,
-          "url": "https://turkighazi.com/ai-fashion",
+          "url": "https://turkistudio.ai/ai-fashion",
           "author": { "@type": "Person", "name": "Turki Ghazi" },
         })}</script>
       </div>

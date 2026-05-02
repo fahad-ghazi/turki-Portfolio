@@ -2,7 +2,7 @@ import React from "react";
 import DualNav from "../components/experience/DualNav";
 import Seo from "@/components/seo/Seo";
 
-const SITE_URL = (import.meta.env?.VITE_PUBLIC_SITE_URL || "https://turkighazi.com").replace(/\/$/, "");
+const SITE_URL = (import.meta.env?.VITE_PUBLIC_SITE_URL || "https://turkistudio.ai").replace(/\/$/, "");
 
 const personJsonLd = {
   "@context": "https://schema.org",

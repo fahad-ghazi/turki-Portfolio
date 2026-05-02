@@ -33,7 +33,7 @@ export default function RealEstate() {
           "@type": "CollectionPage",
           "name": "Real Estate — Turki Ghazi",
           "description": category.seoDescription,
-          "url": "https://turkighazi.com/real-estate",
+          "url": "https://turkistudio.ai/real-estate",
           "author": { "@type": "Person", "name": "Turki Ghazi" },
         })}</script>
       </div>

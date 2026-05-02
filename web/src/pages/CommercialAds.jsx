@@ -33,7 +33,7 @@ export default function CommercialAds() {
           "@type": "CollectionPage",
           "name": "Commercial Ads — Turki Ghazi",
           "description": category.seoDescription,
-          "url": "https://turkighazi.com/commercial-ads",
+          "url": "https://turkistudio.ai/commercial-ads",
           "author": { "@type": "Person", "name": "Turki Ghazi" },
         })}</script>
       </div>
