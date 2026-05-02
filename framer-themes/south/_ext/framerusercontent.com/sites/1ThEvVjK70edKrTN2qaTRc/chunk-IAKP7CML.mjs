@@ -1,0 +1,2 @@
+function e(t,a){return{description:"South is a modern portfolio template for those in design and technology. Whether you're a creative studio, independent designer, or digital agency, South provides a perfect canvas to showcase your work with clarity and impact.",favicon:"https://framerusercontent.com/assets/YA2QiLqch3BxI8JEXWJpbrAk.svg",robots:"max-image-preview:large",socialImage:"/_ext/framerusercontent.com/assets/NPspWZEHKCkm600yKhvJkyeTzOg.png",title:"South Framer Template"}}export{e as a};
+//# sourceMappingURL=chunk-IAKP7CML.mjs.map

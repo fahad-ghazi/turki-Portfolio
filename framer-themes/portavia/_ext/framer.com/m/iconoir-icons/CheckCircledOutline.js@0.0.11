@@ -1,0 +1,8 @@
+/*
+ * CheckCircledOutline (iconoir-icons/CheckCircledOutline@0.0.11)
+ *
+ * Learn More: https://www.framer.com/asset-urls
+ */
+
+export * from "/_ext/framerusercontent.com/modules/n5MBQdqZxCRKGx3GiO24/rqHLwnY7xlC5SHF1qgW8/CheckCircledOutline.js"
+export { default } from "/_ext/framerusercontent.com/modules/n5MBQdqZxCRKGx3GiO24/rqHLwnY7xlC5SHF1qgW8/CheckCircledOutline.js"

@@ -1,3 +1,11 @@
+# Framer themes — analysis files (large, not needed for serving)
+framer-themes/*/capture.har
+framer-themes/*/_manifest.json
+framer-themes/*/_animations.json
+framer-themes/*/_full-page.png
+framer-themes/*/_offline-test.png
+framer-themes/*/_rendered.html
+
 # OS
 .DS_Store
 Thumbs.db
