@@ -1,6 +1,11 @@
 import React, { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Calendar, Linkedin, Mail } from "lucide-react";
+import { trackEvent } from "@/utils/trackEvent";
+
+const LINKEDIN_URL = import.meta.env?.VITE_LINKEDIN_URL || "";
+const INSTAGRAM_URL = import.meta.env?.VITE_INSTAGRAM_URL || "";
+const CONTACT_EMAIL = import.meta.env?.VITE_CONTACT_EMAIL || "contact@turkighazi.com";
 import { Link } from "react-router-dom";
 import { useLang } from "@/lib/LanguageContext";
 import TGLogo from "@/components/brand/TGLogo";
@@ -86,20 +91,39 @@ export default function HeroFeedItem({ isActive, onEnter }) {
         </motion.div>
       </div>
 
-      {/* Social icons */}
+      {/* Social icons — only render real links; placeholders are hidden via env */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={isActive ? { opacity: 1 } : { opacity: 0 }}
         transition={{ duration: 1, delay: 0.65 }}
         className="absolute left-6 bottom-[31%] z-20 flex flex-col gap-4"
       >
-        <a className="social-icon" href="https://www.linkedin.com/" target="_blank" rel="noreferrer" aria-label="LinkedIn">
-          <Linkedin />
-        </a>
-        <Link className="social-icon" to="/booking" aria-label="Booking">
+        {LINKEDIN_URL && (
+          <a
+            className="social-icon"
+            href={LINKEDIN_URL}
+            target="_blank"
+            rel="noreferrer"
+            aria-label="LinkedIn"
+            onClick={() => trackEvent("social_click", { event_type: "share", target_id: "linkedin", section: "hero" })}
+          >
+            <Linkedin />
+          </a>
+        )}
+        <Link
+          className="social-icon"
+          to="/booking"
+          aria-label={isAr ? "احجز مشروع" : "Book a project"}
+          onClick={() => trackEvent("booking_open_clicked", { event_type: "button_click", target_id: "hero_calendar", section: "hero" })}
+        >
           <Calendar />
         </Link>
-        <a className="social-icon" href="mailto:contact@turkighazi.com" aria-label="Email">
+        <a
+          className="social-icon"
+          href={`mailto:${CONTACT_EMAIL}`}
+          aria-label="Email"
+          onClick={() => trackEvent("contact_email_clicked", { event_type: "button_click", target_id: "hero_email", section: "hero" })}
+        >
           <Mail />
         </a>
       </motion.div>

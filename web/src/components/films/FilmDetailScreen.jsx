@@ -5,10 +5,19 @@ import useContentTimeTracker from "../../hooks/useContentTimeTracker";
 
 const GOLD = "#C9A961";
 
+function formatTime(seconds) {
+  if (!Number.isFinite(seconds) || seconds < 0) return "00:00";
+  const m = Math.floor(seconds / 60);
+  const s = Math.floor(seconds % 60);
+  return `${String(m).padStart(2, "0")}:${String(s).padStart(2, "0")}`;
+}
+
 export default function FilmDetailScreen({ film, films, onBack, onSelect }) {
   const videoRef = useRef(null);
   const [playing, setPlaying] = useState(true);
   const [progress, setProgress] = useState(0);
+  const [currentTime, setCurrentTime] = useState(0);
+  const [duration, setDuration] = useState(0);
 
   const togglePlay = () => {
     const video = videoRef.current;
@@ -25,6 +34,8 @@ export default function FilmDetailScreen({ film, films, onBack, onSelect }) {
   const updateProgress = () => {
     const video = videoRef.current;
     if (!video?.duration) return;
+    setCurrentTime(video.currentTime);
+    setDuration(video.duration);
     setProgress((video.currentTime / video.duration) * 100);
   };
 
@@ -46,6 +57,7 @@ export default function FilmDetailScreen({ film, films, onBack, onSelect }) {
         muted
         playsInline
         onTimeUpdate={updateProgress}
+        onLoadedMetadata={updateProgress}
         poster={film.thumbnail}
         className="absolute inset-0 h-full w-full object-cover"
       />
@@ -72,7 +84,9 @@ export default function FilmDetailScreen({ film, films, onBack, onSelect }) {
           <div className="h-px flex-1 bg-[#F5F1E8]/22">
             <div className="h-px transition-all duration-150" style={{ width: `${progress}%`, background: GOLD }} />
           </div>
-          <span className="font-cinzel text-[10px] text-[#F5F1E8]/70">{film.duration}</span>
+          <span className="font-cinzel text-[10px] text-[#F5F1E8]/70 tabular-nums">
+            {duration > 0 ? `${formatTime(currentTime)} / ${formatTime(duration)}` : (film.duration || "")}
+          </span>
         </div>
 
         <a href="/booking" className="mt-7 inline-flex items-center justify-center rounded-full bg-[#F5F1E8] px-6 py-3 font-noto text-sm font-bold text-[#1A1A1A] transition hover:bg-[#C9A961]">
