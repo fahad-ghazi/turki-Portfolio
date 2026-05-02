@@ -1419,7 +1419,7 @@ footer {
   position: relative;
   overflow: hidden;
 }
-.scene--reverse { direction: ltr; }
+.scene--reverse { }
 .scene__media {
   position: relative;
   height: 70vh;
@@ -1994,8 +1994,8 @@ body.dc-active { overflow: hidden; }
   font-family: 'Inter', sans-serif;
   font-size: 11px;
   font-weight: 500;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  text-transform: none;
   color: var(--ink-soft);
   border: 1px solid var(--line);
   padding: 6px 14px;
@@ -2082,6 +2082,14 @@ body.dc-active { overflow: hidden; }
   line-height: 1.4;
   font-style: italic;
 }
+.about-coin {
+  display: block;
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  margin-top: 32px;
+  opacity: 0.85;
+}
 .about-text {
   font-family: 'Thmanyah Text', serif;
   font-size: clamp(16px, 1.3vw, 18px);
@@ -2142,7 +2150,7 @@ body.dc-active { overflow: hidden; }
 .process-steps {
   list-style: none;
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 1px;
   background: var(--line);
   border: 1px solid var(--line);
@@ -2191,6 +2199,7 @@ body.dc-active { overflow: hidden; }
 
 @media (max-width: 1024px) {
   .process-steps { grid-template-columns: repeat(3, 1fr); }
+  /* 3-column default — no change needed at this breakpoint */
 }
 @media (max-width: 768px) {
   .process-steps { grid-template-columns: 1fr; }
@@ -2364,12 +2373,8 @@ select.contact-field__input option { color: var(--ink); background: var(--bg); }
 <div class="tile-cursor" id="tile-cursor">تشغيل</div>
 
 <!-- ===== SECTION COUNTER ===== -->
-<div class="section-counter" id="section-counter"><span class="current">٠١</span> / <span id="total-sections">١٠</span> · <span id="section-name">أفلام</span></div>
+<div class="section-counter" id="section-counter" dir="ltr"><span class="current">٠١</span> / <span id="total-sections">١٠</span> · <span id="section-name" dir="rtl">أفلام</span></div>
 
-<!-- ===== KEYBOARD HINT ===== -->
-<div class="keyboard-hint">
-  <kbd>J</kbd>/<kbd>K</kbd> تنقّل · <kbd>1</kbd>–<kbd>9</kbd> قفز · <kbd>ESC</kbd> إغلاق
-</div>
 
 <!-- ===== SECTION DOTS RAIL ===== -->
 <div class="section-dots" id="section-dots"></div>
@@ -2379,7 +2384,7 @@ select.contact-field__input option { color: var(--ink); background: var(--bg); }
 
 <!-- ===== NAVIGATION ===== -->
 <nav>
-  <a href="#top" class="logo" aria-label="تركي غازي — الرئيسية">TA</a>
+  <a href="#top" class="logo" aria-label="تركي غازي — الرئيسية">TG</a>
   <ul class="nav-links">
     <li><a href="#films">أفلام</a></li>
     <li><a href="#trained">شخصيات</a></li>
@@ -2400,10 +2405,10 @@ select.contact-field__input option { color: var(--ink); background: var(--bg); }
   <div class="hero__content">
     <div class="hero__status">
       <span class="hero__status-dot"></span>
-      <span>متاح · يستقبل مشاريع الربع الثالث ٢٠٢٦</span>
+      <span>متاح · مشاريع الربع الثالث ٢٠٢٦</span>
     </div>
     <h1 class="hero-name">تركي غازي</h1>
-    <p class="hero-tagline">الذاكرة السعودية، بعينٍ سينمائيّة صناعيّة. أصنع المدينة كما أراها في الحلم.</p>
+    <p class="hero-tagline">أصنع صورًا وفيديوهات إعلانية وسينمائية بالذكاء الاصطناعي، وأحوّل الأفكار إلى مشاهد تجذب الانتباه.</p>
     <div class="hero__ctas">
       <a href="#films" class="hero-cta hero-cta--primary" data-magnetic>
         <span>شاهد الأعمال</span>
@@ -2496,7 +2501,7 @@ select.contact-field__input option { color: var(--ink); background: var(--bg); }
           <div class="scene__media"><img src="images/poster_03_mohammed_writer.jpg" alt="ورقة الجوكر"></div>
           <div class="scene__text">
             <div class="scene__num">المشهد ٠٥</div>
-            <p class="scene__caption">ورقة JORER تسقط على شخصية سعودية.</p>
+            <p class="scene__caption">ورقة JOKER تسقط على شخصية سعودية.</p>
           </div>
         </article>
 
@@ -2633,7 +2638,7 @@ select.contact-field__input option { color: var(--ink); background: var(--bg); }
     <span class="section-meta">٨ شخصيات · ٥ زوايا لكل شخصية</span>
   </div>
   <p class="section-lede">
-    التوقيع التقني للستوديو. كل شخصية مُدرَّبة باستخدام نماذج LoRA مخصّصة، وتُولَّد بثبات بصري عبر خمس زوايا — للحفاظ على هويتها في الأفلام، الإيديتوريال، والحملات.
+    البصمة التقنية للستوديو. لكل شخصية نموذج LoRA مخصّص وخمس زوايا — هوية بصرية ثابتة عبر الأفلام والحملات.
   </p>
   <div class="tool-tags" aria-label="الأدوات">
     <span class="tool-tag">FLUX LoRA Training</span>
@@ -2715,22 +2720,23 @@ select.contact-field__input option { color: var(--ink); background: var(--bg); }
     <div class="about-new__lead">
       <span class="section-num">٠٤</span>
       <h2 class="section-title" id="about-title">عن تركي</h2>
-      <p class="about-new__manifesto">«أصنع الرياض كما أراها في الحلم.»</p>
+      <p class="about-new__manifesto">«مخرج محتوى بصري بالذكاء الاصطناعي»</p>
+      <img src="images/logo-coin.png" alt="TG" class="about-coin" width="120" height="120" loading="lazy">
     </div>
 
     <div class="about-new__body">
       <p class="about-text">
-        تركي غازي فنان بصري وراوي قصص سعودي، يعمل من الرياض في تقاطع السينما والذكاء الاصطناعي. يبني عوالم بصرية تستحضر الثقافة السعودية والذاكرة المحلية بأدوات الجيل الجديد من الـ generative AI.
+        أعمل في صناعة الصور والفيديوهات بالذكاء الاصطناعي، لكن تركيزي الحقيقي ليس على الأداة — تركيزي على الفكرة والإحساس، وبناء مشهد واضح يلفت المشاهد ويخدم الهدف.
       </p>
       <p class="about-text">
-        منذ ٢٠٢٥، أنتج تركي ٩ أفلام قصيرة، درّب ٨ نماذج شخصيات بـ ٥ زوايا لكل واحدة، وأخرج أكثر من ٢٩٠ صورة فنية للعلامات التجارية ومطوّري العقار والمحتوى الثقافي.
+        اشتغلت على مشاريع في الأفلام القصيرة، الإعلانات، الفاشن، والكليبات، من الفكرة الأولى إلى الشكل النهائي.
       </p>
 
       <ul class="stat-row">
         <li><span class="stat-num">٩</span><span class="stat-label">أفلام قصيرة</span></li>
-        <li><span class="stat-num">٨</span><span class="stat-label">شخصيات مدرَّبة</span></li>
-        <li><span class="stat-num">٢٩٠+</span><span class="stat-label">صورة فنية</span></li>
-        <li><span class="stat-num">٢٠٢٦</span><span class="stat-label">بدأ</span></li>
+        <li><span class="stat-num">٨</span><span class="stat-label">شخصيات بصرية</span></li>
+        <li><span class="stat-num">٢٩٠+</span><span class="stat-label">عمل بصري</span></li>
+        <li><span class="stat-num">٢٠٢٥</span><span class="stat-label">بدأ</span></li>
       </ul>
     </div>
   </div>
@@ -2744,34 +2750,24 @@ select.contact-field__input option { color: var(--ink); background: var(--bg); }
         <span class="section-num">٠٥</span>
         <h2 class="section-title" id="process-title">كيف أشتغل</h2>
       </div>
-      <span class="section-meta">منهجية إنتاج لا prompts عشوائية</span>
+      <span class="section-meta">من الفكرة إلى الشكل النهائي</span>
     </div>
 
     <ol class="process-steps">
       <li class="process-step">
         <div class="process-step__num">٠١</div>
-        <h3 class="process-step__title">القراءة</h3>
-        <p class="process-step__text">أبدأ من المرجع الثقافي. الفيلم لا يولد من prompt، يولد من قراءة عميقة لمشهد الرياض، الذاكرة الشعبية، والرمز.</p>
+        <h3 class="process-step__title">الفكرة والهدف</h3>
+        <p class="process-step__text">أبدأ بفهم الفكرة والهدف — ما الذي يراه المشاهد، وما الذي يشعر به بعد.</p>
       </li>
       <li class="process-step">
         <div class="process-step__num">٠٢</div>
-        <h3 class="process-step__title">السيناريو + اللوحة</h3>
-        <p class="process-step__text">سيناريو مكتوب، storyboard مرسوم، moodboard للألوان والإضاءة. كل لقطة تُحدَّد قبل أن أفتح أي أداة.</p>
+        <h3 class="process-step__title">الإحساس والأسلوب</h3>
+        <p class="process-step__text">أحدد الإحساس البصري والأسلوب والشكل المناسب للمشروع قبل أي أداة.</p>
       </li>
       <li class="process-step">
         <div class="process-step__num">٠٣</div>
-        <h3 class="process-step__title">تدريب الشخصيات</h3>
-        <p class="process-step__text">إن احتاج المشروع شخصية ثابتة، أُدرِّب نموذج LoRA مخصّصاً عليها بـ ٤٠-٦٠ صورة. النتيجة: ثبات بصري عبر زوايا متعددة.</p>
-      </li>
-      <li class="process-step">
-        <div class="process-step__num">٠٤</div>
-        <h3 class="process-step__title">التوليد + التحرير</h3>
-        <p class="process-step__text">أستخدم Sora، Runway Gen-3، Midjourney، وComfyUI workflows. كل لقطة تُولَّد ٢٠-٤٠ مرة قبل اختيار الـ keeper.</p>
-      </li>
-      <li class="process-step">
-        <div class="process-step__num">٠٥</div>
-        <h3 class="process-step__title">المونتاج + الصوت</h3>
-        <p class="process-step__text">المونتاج في Premiere، الـ color grading في DaVinci، تصميم الصوت يُفصَّل لكل مشهد. الفيلم لا يُسلَّم حتى يُختم بالصوت.</p>
+        <h3 class="process-step__title">البناء والتسليم</h3>
+        <p class="process-step__text">أبني المشاهد خطوة بخطوة حتى يخرج العمل متماسكًا، واضحًا، وقابلًا للاستخدام.</p>
       </li>
     </ol>
 
@@ -2797,8 +2793,8 @@ select.contact-field__input option { color: var(--ink); background: var(--bg); }
   <div class="contact-new__inner">
     <div class="contact-new__lead">
       <span class="section-num">٠٦</span>
-      <h2 class="section-title" id="contact-title">احكِ لي عن مشروعك</h2>
-      <p class="contact-new__lede">حالياً أستقبل مشاريع الربع الثالث ٢٠٢٦. أفلام قصيرة، حملات إعلانية، كليبات موسيقية، وتصور عقاري.</p>
+      <h2 class="section-title" id="contact-title">حدّثني عن مشروعك</h2>
+      <p class="contact-new__lede">عندك فكرة تحتاج صور أو فيديوهات بالذكاء الاصطناعي؟ تواصل معي — أفلام قصيرة، إعلانات، فاشن، وكليبات.</p>
     </div>
 
     <form class="contact-form" id="contact-form" action="https://formspree.io/f/xpwgnzqv" method="POST" novalidate>
@@ -2827,7 +2823,7 @@ select.contact-field__input option { color: var(--ink); background: var(--bg); }
       </label>
 
       <label class="contact-field">
-        <span class="contact-field__label">احكِ لي أكثر</span>
+        <span class="contact-field__label">التفاصيل</span>
         <textarea class="contact-field__input contact-field__input--textarea" name="message" rows="5" required placeholder="الفكرة، الموعد، الميزانية إن أمكن…"></textarea>
       </label>
 
@@ -2837,7 +2833,7 @@ select.contact-field__input option { color: var(--ink); background: var(--bg); }
           أو مباشرة:
           <a href="mailto:turkig1101999@gmail.com">turkig1101999@gmail.com</a>
           ·
-          <a href="tel:+966509588702">+٩٦٦ ٥٠ ٩٥٨ ٨٧٠٢</a>
+          <a href="tel:+966509588702" dir="ltr">‎+966 50 958 8702</a>
         </div>
       </div>
     </form>
@@ -2847,8 +2843,8 @@ select.contact-field__input option { color: var(--ink); background: var(--bg); }
 <!-- ===== FOOTER · COLOPHON ===== -->
 <footer class="footer-new">
   <div class="footer-new__line">صُنع في الرياض.</div>
-  <div class="footer-new__line">بخط ثمانية.</div>
-  <div class="footer-new__line">كل العوالم متخيّلة.</div>
+  <div class="footer-new__line">كل مشهد يبدأ بفكرة.</div>
+  <div class="footer-new__line">وينتهي بانتباه.</div>
   <div class="footer-new__meta">
     تركي غازي · ٢٠٢٦ · <a href="/en/" hreflang="en" rel="alternate">English</a>
   </div>
@@ -2891,7 +2887,7 @@ const caseStudies = {
       'الجوكر يدخل البنك — شماغ، دهان، صمت',
       'رقصة العرضة بالسيف تتحوّل إلى رشاش',
       'الباتموبيل يخترق جدرانًا خرسانية هندسية',
-      'ورقة JORER تسقط على شخصية سعودية',
+      'ورقة JOKER تسقط على شخصية سعودية',
       'المواجهة الأخيرة: باتمان، برج المملكة، المدينة تتفرج'
     ]
   },
