@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import HorizontalSwiper from "../components/feed/HorizontalSwiper";
 import { CATEGORIES } from "../components/feed/categoriesData";
+import Seo from "@/components/seo/Seo";
 
 const category = CATEGORIES.find((c) => c.id === "ai-fashion");
 
@@ -13,6 +14,11 @@ export default function AiFashion() {
 
   return (
     <>
+      <Seo
+        title="أزياء بالذكاء الاصطناعي"
+        description={category.seoDescription}
+        canonical="/ai-fashion"
+      />
       {/* SEO Text Layer — hidden visually but indexable */}
       <div className="sr-only">
         <h1>Turki Ghazi — AI Fashion Visual Design Portfolio</h1>

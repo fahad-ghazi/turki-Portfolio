@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { base44 } from "@/api/base44Client";
 import { Briefcase, Download, Mail, Palette, Sparkles } from "lucide-react";
+import Seo from "@/components/seo/Seo";
 
 const GOLD = "#C9A961";
 
@@ -15,6 +16,11 @@ const sections = [
 export default function CV() {
   return (
     <div className="min-h-screen bg-[#F5F1E8] px-6 py-12 text-[#1A1A1A]" dir="rtl">
+      <Seo
+        title="السيرة الذاتية"
+        description="سيرة تركي غازي — مصمم بصري بالذكاء الاصطناعي. خبرات، أسلوب، خدمات، وروابط أعمال مختارة."
+        canonical="/cv"
+      />
       <Link to="/" className="fixed right-6 top-6 z-30 flex min-h-[44px] items-center rounded-full border border-[#C9A961]/45 bg-[#1A1A1A] px-5 py-2 font-noto text-sm font-bold text-[#F5F1E8] transition hover:text-[#C9A961]">الرئيسية</Link>
       <div className="mx-auto max-w-3xl">
         <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} className="rounded-[2rem] border border-[#C9A961]/16 bg-[#F5F1E8] p-7 md:p-12">

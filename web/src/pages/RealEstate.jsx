@@ -2,6 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import HorizontalSwiper from "../components/feed/HorizontalSwiper";
 import { CATEGORIES } from "../components/feed/categoriesData";
+import Seo from "@/components/seo/Seo";
 
 const category = CATEGORIES.find((c) => c.id === "real-estate");
 
@@ -10,6 +11,11 @@ export default function RealEstate() {
 
   return (
     <>
+      <Seo
+        title="عقارات بالذكاء الاصطناعي"
+        description={category.seoDescription}
+        canonical="/real-estate"
+      />
       <div className="sr-only">
         <h1>Turki Ghazi — Real Estate & Architectural Visual Portfolio</h1>
         <p>{category.seoDescription}</p>

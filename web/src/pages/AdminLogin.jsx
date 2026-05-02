@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '@/lib/AuthContext';
 import { ApiError } from '@/api/client';
+import Seo from '@/components/seo/Seo';
 
 export default function AdminLogin() {
   const { login } = useAuth();
@@ -36,6 +37,7 @@ export default function AdminLogin() {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-slate-50 px-4">
+      <Seo title="دخول الإدارة" canonical="/admin/login" noIndex={true} />
       <form
         onSubmit={onSubmit}
         className="w-full max-w-sm space-y-5 rounded-2xl border border-slate-200 bg-white p-8 shadow-sm"

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { base44 } from "@/api/base44Client";
 import { Calendar, Mail } from "lucide-react";
+import Seo from "@/components/seo/Seo";
 
 export default function Booking() {
   const [saved, setSaved] = useState(false);
@@ -41,6 +42,12 @@ export default function Booking() {
 
   return (
     <div className="min-h-screen bg-[#F5F1E8] px-6 py-10 text-[#1A1A1A]" dir="rtl">
+      <Seo
+        title="احجز مشروع"
+        description="نموذج طلب مشروع أو حجز اجتماع مع تركي غازي. شارك التفاصيل ونتواصل معك."
+        canonical="/booking"
+        noIndex={true}
+      />
       <Link to="/" className="fixed right-6 top-6 z-30 flex min-h-[44px] items-center rounded-full border border-[#C9A961]/45 bg-[#1A1A1A] px-5 py-2 font-noto text-sm font-bold text-[#F5F1E8] transition hover:text-[#C9A961]">الرئيسية</Link>
       <div className="mx-auto max-w-3xl rounded-[2rem] border border-[#C9A961]/16 bg-[#F5F1E8] p-7 md:p-12">
         <Calendar className="h-6 w-6 text-[#C9A961]" strokeWidth={1.4} />

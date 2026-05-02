@@ -5,6 +5,7 @@ import CharacterRoster from "@/components/characters/CharacterRoster";
 import CharacterShowcase from "@/components/characters/CharacterShowcase";
 import { trainedCharacters } from "@/components/characters/trainedCharactersData";
 import TGLogo from "@/components/brand/TGLogo";
+import Seo from "@/components/seo/Seo";
 
 export default function TrainedModels() {
   const featuredCharacters = trainedCharacters.filter((character) => ["layla-03", "omar-04"].includes(character.id));
@@ -18,6 +19,11 @@ export default function TrainedModels() {
 
   return (
     <main className="min-h-screen bg-[#F5F1E8] px-4 py-6 text-[#1A1A1A] md:px-8" dir="rtl">
+      <Seo
+        title="الشخصيات المدرّبة"
+        description="مجموعة شخصيات بصرية مدرّبة على الذكاء الاصطناعي بهوية ثابتة عبر الحملات والمشاريع."
+        canonical="/trained-models"
+      />
       <div className="mx-auto max-w-7xl">
         <aside className="fixed left-4 top-1/2 z-40 hidden -translate-y-1/2 flex-col gap-4 rounded-full border border-[#C9A961]/25 bg-[#1A1A1A]/80 p-2 shadow-2xl shadow-black/20 backdrop-blur-xl md:flex">
           {trainedCharacters.map((character) => (

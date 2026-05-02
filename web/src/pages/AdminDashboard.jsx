@@ -6,6 +6,7 @@ import AdminTable from "../components/admin/AdminTable";
 import AdminQuickForm from "../components/admin/AdminQuickForm";
 import SmartAnalyticsPanel from "../components/admin/SmartAnalyticsPanel";
 import AdminSidebar from "../components/admin/AdminSidebar";
+import Seo from "@/components/seo/Seo";
 
 const queries = {
   content: () => base44.entities.SiteContent.list("-updated_date", 50),
@@ -96,6 +97,7 @@ export default function AdminDashboard() {
 
   return (
     <div className="min-h-screen bg-white text-slate-950" dir="rtl">
+      <Seo title="لوحة الإدارة" canonical="/admin" noIndex={true} />
       <AdminSidebar activeTab={tab} onChange={setTab} />
 
       <main className="min-h-screen px-5 py-6 lg:mr-72 lg:px-8">

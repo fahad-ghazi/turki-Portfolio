@@ -6,6 +6,7 @@ import FilmsListScreen from "../components/films/FilmsListScreen";
 import FilmDetailScreen from "../components/films/FilmDetailScreen";
 import { FILMS } from "../components/films/filmsData";
 import { sortByBehavior, trackContentInteraction } from "../utils/behaviorTracking";
+import Seo from "@/components/seo/Seo";
 
 export default function Films() {
   const [selectedFilm, setSelectedFilm] = useState(null);
@@ -36,12 +37,19 @@ export default function Films() {
   };
 
   return (
-    <AnimatePresence mode="wait">
-      {selectedFilm ? (
-        <FilmDetailScreen key={selectedFilm.id} film={selectedFilm} films={rankedFilms} onBack={() => setSelectedFilm(null)} onSelect={handleSelectFilm} />
-      ) : (
-        <FilmsListScreen key="films-list" films={rankedFilms} onSelect={handleSelectFilm} />
-      )}
-    </AnimatePresence>
+    <>
+      <Seo
+        title="الأفلام"
+        description="مجموعة أفلام قصيرة سينمائية من تركي استديو — قصص بصرية مصنوعة بالذكاء الاصطناعي."
+        canonical="/films"
+      />
+      <AnimatePresence mode="wait">
+        {selectedFilm ? (
+          <FilmDetailScreen key={selectedFilm.id} film={selectedFilm} films={rankedFilms} onBack={() => setSelectedFilm(null)} onSelect={handleSelectFilm} />
+        ) : (
+          <FilmsListScreen key="films-list" films={rankedFilms} onSelect={handleSelectFilm} />
+        )}
+      </AnimatePresence>
+    </>
   );
 }

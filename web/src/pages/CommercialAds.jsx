@@ -2,6 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import HorizontalSwiper from "../components/feed/HorizontalSwiper";
 import { CATEGORIES } from "../components/feed/categoriesData";
+import Seo from "@/components/seo/Seo";
 
 const category = CATEGORIES.find((c) => c.id === "commercial-ads");
 
@@ -10,6 +11,11 @@ export default function CommercialAds() {
 
   return (
     <>
+      <Seo
+        title="إعلانات تجارية"
+        description={category.seoDescription}
+        canonical="/commercial-ads"
+      />
       <div className="sr-only">
         <h1>Turki Ghazi — Commercial Advertising & Product Visual Portfolio</h1>
         <p>{category.seoDescription}</p>

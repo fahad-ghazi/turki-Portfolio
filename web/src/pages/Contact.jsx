@@ -2,12 +2,18 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Download, Mail } from "lucide-react";
+import Seo from "@/components/seo/Seo";
 
 const GOLD = "#C9A961";
 
 export default function Contact() {
   return (
     <div className="min-h-screen bg-[#F5F1E8] px-6 py-10 text-[#1A1A1A]" dir="rtl">
+      <Seo
+        title="تواصل"
+        description="تواصل مع تركي غازي — مصمم بصري بالذكاء الاصطناعي. ابدأ مشروعك أو احجز مكالمة."
+        canonical="/contact"
+      />
       <Link to="/" className="fixed right-6 top-6 z-30 flex min-h-[44px] items-center rounded-full border border-[#C9A961]/45 bg-[#1A1A1A] px-5 py-2 font-noto text-sm font-bold text-[#F5F1E8] transition hover:text-[#C9A961]">الرئيسية</Link>
       <div className="mx-auto flex min-h-[calc(100vh-5rem)] max-w-xl flex-col justify-center">
         <motion.p initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} className="font-cinzel text-[10px] tracking-[0.45em] uppercase" style={{ color: GOLD }}>
