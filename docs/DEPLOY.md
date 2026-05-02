@@ -1,63 +1,60 @@
 # DEPLOY — Dokploy on 204.168.178.180 (turkistudio environment)
 
-> **Audience:** the operator deploying this stack (you, or whoever has SSH/Dokploy access).
-> Claude does NOT have SSH from this conversation; this guide is what gets handed off.
+> **Audience:** the operator deploying this stack (server-conversation agent or human).
+> The site **has not been publicly launched yet** — direct cutover is fine, no staging needed.
 
-## Existing state (as of 2026-05-03)
+## Existing state (verify before acting)
 
-The Dokploy project **`turkistudio`** already exists with:
-- A **Frontend** service serving the current `turkistudio.ai` (legacy Framer build).
-- An **existing Postgres database** (details to confirm with the operator before first API boot).
+The Dokploy project **`turkistudio`** has a service named **`turkistudio-frontend`** (or similar)
+that currently serves the legacy Framer static site at `turkistudio.ai`. There may also be an
+existing Postgres service.
 
-We do NOT replace the Frontend service immediately. We add the new stack in parallel,
-verify it on a staging subdomain, then cut over.
+**Decisions taken (override prior staging-first guidance):**
+- Create a **fresh** Postgres service `turki-postgres`. Do NOT reuse a shared Postgres — clean
+  isolation, no risk of clashing with anything else in this Dokploy instance.
+- **Modify the existing `turkistudio-frontend` service in place** to build the new React app
+  from `web/`. Do NOT create a parallel staging service — the site has no public users yet,
+  and a clean swap is simpler than maintaining two URLs.
+- Add a new `turki-api` service for the backend.
+- Cutover is immediate once the three services pass health checks.
 
-## TL;DR — services to add
+## TL;DR — services after this deploy
 
-| Service | Type | Build path | Port | Domain | Status |
-|---|---|---|---|---|---|
-| `turki-postgres` | (existing) Postgres | — | 5432 | internal | already deployed — use it |
-| `turki-api` | Application (Dockerfile) | `api/` | 3000 | `api.turkistudio.ai` | **new** |
-| `turki-web-staging` | Application (Dockerfile) | `web/` | 80 | `staging.turkistudio.ai` | **new** (parallel to current Frontend) |
-| `Frontend` (existing) | … | — | — | `turkistudio.ai` | leave as-is until cutover |
-
----
-
-## 1) Postgres service — use the existing one
-
-You already have a Postgres DB in the `turkistudio` Dokploy project. Reuse it:
-
-1. In Dokploy → `turkistudio` → Postgres service → copy the internal connection string.
-   It will look like:
-   ```
-   postgresql://<user>:<password>@<service-name>:5432/<db>
-   ```
-   (the `<service-name>` is the Dokploy hostname inside the docker network — usually
-   the lowercase service name).
-
-2. **Decide:** does this DB already hold data we need to preserve, or can we create a
-   fresh schema?
-   - If the existing DB is empty / unused → we can `prisma migrate deploy` straight against it.
-   - If it has data we must preserve → create a separate logical database in the same
-     Postgres instance: `CREATE DATABASE turki;` and use that in `DATABASE_URL`.
-
-   Confirm with the operator before first API boot.
-
-3. Use that connection string as `DATABASE_URL` in step 2.
+| Service | Action | Build path | Port | Domain |
+|---|---|---|---|---|
+| `turki-postgres` | **create new** (Database → PostgreSQL 16) | — | 5432 | internal only |
+| `turki-api` | **create new** (Application → Dockerfile) | `./api` | 3000 | `api.turkistudio.ai` |
+| `turkistudio-frontend` | **modify in place** (switch to Dockerfile build) | `./web` | 80 | `turkistudio.ai` (existing) |
 
 ---
 
-## 2) API service (`turki-api`)
+## 1) Postgres service — `turki-postgres`
 
-Dokploy → **Add Service → Application → Dockerfile**.
+Dokploy → project `turkistudio` → **Add Service → Database → PostgreSQL**.
+
+- Name: `turki-postgres`
+- Version: `16`
+- Database: `turki`
+- User: `turki`
+- Password: **generate a strong one** (`openssl rand -hex 24`) — copy for step 2
+- External port: leave unexposed (internal only)
+
+Daily backups: enable in Dokploy after first successful API deploy.
+
+---
+
+## 2) API service — `turki-api`
+
+Dokploy → project `turkistudio` → **Add Service → Application**.
 
 - Name: `turki-api`
-- Repository: `https://github.com/<you>/turki-Portfolio` (after we push)
-- Branch: `main`
-- Build path: `/api`
-- Dockerfile path: `/api/Dockerfile`
+- Source: `https://github.com/fahad-ghazi/turki-Portfolio` (the repo Dokploy already uses)
+- Branch: `main` (the new code is now on main, commit `b283ae5` or later)
+- Build Type: **Dockerfile**
+- Build Path / Context: `./api`
+- Dockerfile Path: `./api/Dockerfile`
 - Port: `3000`
-- Domain: `api.turkistudio.ai` (or chosen subdomain) — let Dokploy auto-issue the cert
+- Domain: `api.turkistudio.ai` — let Dokploy issue the cert via Let's Encrypt
 
 ### Environment variables (required)
 
@@ -67,24 +64,24 @@ PORT=3000
 HOST=0.0.0.0
 LOG_LEVEL=info
 
-# DATABASE_URL — paste the connection string from the existing Postgres service.
-# Inside Dokploy's docker network, the host is the service name (NOT the public IP).
-# Example shape:
-DATABASE_URL=postgresql://<user>:<password>@<existing-postgres-service>:5432/<db>?schema=public
+# Use the Postgres service hostname inside Dokploy's docker network.
+# It's the lowercase service name. Confirm in Dokploy after step 1.
+DATABASE_URL=postgresql://turki:<PASSWORD_FROM_STEP_1>@turki-postgres:5432/turki?schema=public
 
-# Generate with:  openssl rand -hex 32
-JWT_SECRET=<32+ char random string>
-COOKIE_SECRET=<32+ char random string>
+# openssl rand -hex 32  for both
+JWT_SECRET=<32+ char random hex>
+COOKIE_SECRET=<32+ char random hex>
 JWT_EXPIRES_IN=12h
 
-# Comma-separated. Put the production web origin first.
+# The new public origin (and any aliases). Frontend lives here.
 CORS_ORIGINS=https://turkistudio.ai,https://www.turkistudio.ai
 PUBLIC_SITE_URL=https://turkistudio.ai
 
-# First-time admin seed — only used if no admin exists yet.
-# After first boot, change the password from the admin UI and rotate this var.
+# First-boot admin seed — used ONCE if the admins table is empty.
+# Change the password from the admin UI after first login, then clear
+# ADMIN_PASSWORD from this env so it doesn't sit in plain text.
 ADMIN_EMAIL=fgoafaf@gmail.com
-ADMIN_PASSWORD=<strong password — not committed anywhere>
+ADMIN_PASSWORD=<strong, set here only for first boot>
 
 # Optional — lead-notification email
 SMTP_HOST=
@@ -95,7 +92,8 @@ SMTP_FROM=
 LEAD_NOTIFY_TO=fgoafaf@gmail.com
 ```
 
-The Dockerfile runs `prisma migrate deploy` on boot. First start will create all tables and seed the admin.
+The Dockerfile runs `npx prisma migrate deploy` on boot. First start creates all tables and
+seeds the admin idempotently.
 
 ### Health check
 
@@ -103,34 +101,32 @@ The Dockerfile runs `prisma migrate deploy` on boot. First start will create all
 GET https://api.turkistudio.ai/health → { ok: true, version: "0.1.0" }
 ```
 
+If this fails, check container logs first — the most common failures are a wrong
+`DATABASE_URL` (host unreachable) or a too-short `JWT_SECRET`.
+
 ---
 
-## 3) Web service (`turki-web-staging`) — parallel to existing Frontend
+## 3) Frontend service — modify the existing `turkistudio-frontend`
 
-Dokploy → **Add Service → Application → Dockerfile**.
+This is the **existing** service that currently builds Framer. Edit its config in place:
 
-- Name: `turki-web-staging`
-- Repository: same repo, same branch
-- Build path: `/web`
-- Dockerfile path: `/web/Dockerfile`
-- Port: `80`
-- Domain: `staging.turkistudio.ai` (or any non-production subdomain you control)
-
-**Do NOT touch the existing Frontend service** until the staging deploy is verified.
-After verification (see §5), the cutover is one of:
-- Repoint `turkistudio.ai` to this service in Dokploy and decommission Frontend, OR
-- Replace the Frontend service's repo/Dockerfile to use `web/` from this repo.
+| Field | Old value | **New value** |
+|---|---|---|
+| Branch | (likely `main`) | `main` (no change — main now has the new code) |
+| Build Type | Static / Buildpack | **Dockerfile** |
+| Build Path / Context | `./` | `./web` |
+| Dockerfile Path | (none) | `./web/Dockerfile` |
+| Port | (whatever) | `80` |
+| Domain | `turkistudio.ai` | `turkistudio.ai` (no change) |
 
 ### Build args (Vite inlines these at build time, NOT runtime env)
 
+In Dokploy, set these under **Build → Build Args** (NOT Environment):
+
 ```
 VITE_API_URL=https://api.turkistudio.ai
-VITE_PUBLIC_SITE_URL=https://staging.turkistudio.ai
+VITE_PUBLIC_SITE_URL=https://turkistudio.ai
 ```
-
-After cutover, change `VITE_PUBLIC_SITE_URL` to `https://turkistudio.ai` and rebuild.
-
-In Dokploy, set these under **Build → Build Args**, not **Environment**.
 
 ### Health check
 
@@ -142,47 +138,53 @@ GET https://turkistudio.ai/ → returns the SPA HTML
 
 ## 4) DNS
 
-Cloudflare zone `turkistudio.ai` (zone id is in `~/.claude/.env`):
+Cloudflare zone `turkistudio.ai` (zone-manager conversation handles this).
 
+**New record needed:**
 ```
-turkistudio.ai            A     <Dokploy server IP>   (already configured — leave as-is)
-www.turkistudio.ai        CNAME turkistudio.ai        (already configured — leave as-is)
-api.turkistudio.ai        A     <Dokploy server IP>   (NEW)
-staging.turkistudio.ai    A     <Dokploy server IP>   (NEW, can remove after cutover)
+api.turkistudio.ai      A → <Dokploy server IP>   (Proxied — orange cloud)
 ```
 
-The two new records should be **proxied** (orange cloud) for free WAF + caching.
-Do NOT modify the two existing records until cutover.
+Existing records (`turkistudio.ai`, `www.turkistudio.ai`) stay as-is — the existing
+`turkistudio-frontend` service keeps the same domain, only its build pipeline changes.
 
 ---
 
-## 5) First-boot checklist
+## 5) Suggested order of operations
 
-- [ ] Postgres healthy
-- [ ] API `/health` returns 200
-- [ ] API logs show `seeded initial admin` exactly once
-- [ ] Web loads, `/admin/login` accepts the seeded admin credentials
-- [ ] Submitting `/booking` form creates a `lead_requests` row (`docker exec -it turki-postgres psql -U turki -d turki -c "select id, name, email, created_date from lead_requests order by created_date desc limit 5"`)
-- [ ] Lighthouse mobile ≥ 80 on `/` (run `psi https://turkistudio.ai`)
+1. Create `turki-postgres`. Wait until healthy.
+2. Add the `api.turkistudio.ai` DNS record.
+3. Create `turki-api` with the env vars above. Deploy.
+4. Verify `https://api.turkistudio.ai/health` returns `{ ok: true }`.
+5. Modify `turkistudio-frontend` config (Build Type / Path / Dockerfile / Build Args).
+6. Trigger Redeploy on `turkistudio-frontend`.
+7. Verify `https://turkistudio.ai/` loads the new React app and `/admin/login` accepts
+   the seeded admin credentials.
+8. Submit a test booking from `/booking` and confirm a row appears in the API logs (or
+   `psql -c "select id, name, created_date from lead_requests order by created_date desc limit 1"`).
+
+If step 7 fails, the most common cause is `VITE_API_URL` not being set as a Build Arg
+(it must be a build-time arg, not a runtime env — Vite inlines it into the JS bundle).
 
 ---
 
 ## 6) Rollback
 
-Each Dokploy deploy is a separate Docker image. To roll back:
+The legacy Framer build is still in git history (commit `aba36ab` and earlier). If the
+new Frontend deploy fails, in Dokploy → `turkistudio-frontend` → **Deployments** → pick the
+last green deployment → **Redeploy**. That brings Framer back instantly.
 
-1. Dokploy UI → service → Deployments → select previous deployment → **Redeploy**.
-2. If a migration broke something, restore the DB from snapshot (Dokploy daily backups).
-
-**Migrations are forward-only.** Never roll back the DB schema by re-running an old image — only data restore.
+If a DB migration broke something, the migrations are forward-only — restore from
+Dokploy's daily Postgres backup rather than rolling back the schema.
 
 ---
 
 ## 7) Post-deploy hardening
 
-After first successful deploy:
+Once the three services are green:
 
-1. Change the admin password from the UI; clear `ADMIN_PASSWORD` from Dokploy env.
-2. Rotate `JWT_SECRET` and `COOKIE_SECRET` (will log everyone out — fine for a 1-admin app).
+1. Change the admin password from the UI; remove `ADMIN_PASSWORD` from Dokploy env vars.
+2. Rotate `JWT_SECRET` and `COOKIE_SECRET` (logs everyone out — fine for a 1-admin app).
 3. Enable Dokploy daily backups for `turki-postgres`.
-4. Add Cloudflare rate-limit rule for `/api/leads` and `/api/admin/login` as a second layer.
+4. Add a Cloudflare rate-limit rule for `/api/leads` and `/api/admin/login` as a second
+   layer of spam/brute-force protection (the API also rate-limits itself).
