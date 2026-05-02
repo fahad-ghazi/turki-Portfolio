@@ -6,8 +6,8 @@
 FROM node:22-alpine AS deps
 WORKDIR /app
 RUN apk add --no-cache openssl libc6-compat
-COPY package.json package-lock.json* ./
-RUN npm ci --ignore-scripts
+COPY package.json ./
+RUN npm install --no-audit --no-fund --ignore-scripts
 
 # ──────────────────────────────────────────────────────────
 # Stage 2 — generate prisma client + build TS
@@ -16,7 +16,7 @@ FROM node:22-alpine AS build
 WORKDIR /app
 RUN apk add --no-cache openssl libc6-compat
 COPY --from=deps /app/node_modules ./node_modules
-COPY package.json package-lock.json* tsconfig.json ./
+COPY package.json tsconfig.json ./
 COPY prisma ./prisma
 COPY src ./src
 RUN npx prisma generate
@@ -31,8 +31,8 @@ ENV NODE_ENV=production
 RUN apk add --no-cache openssl libc6-compat dumb-init && \
     addgroup -S app && adduser -S app -G app
 
-COPY package.json package-lock.json* ./
-RUN npm ci --omit=dev --ignore-scripts && npm cache clean --force
+COPY package.json ./
+RUN npm install --omit=dev --no-audit --no-fund --ignore-scripts && npm cache clean --force
 
 COPY --from=build /app/dist ./dist
 COPY --from=build /app/node_modules/.prisma ./node_modules/.prisma
