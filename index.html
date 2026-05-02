@@ -2380,7 +2380,7 @@ select.contact-field__input option { color: var(--ink); background: var(--bg); }
 <div class="section-dots" id="section-dots"></div>
 
 <!-- ===== BACK TO TOP ===== -->
-<button class="back-to-top" id="back-to-top" aria-label="Back to top">↑</button>
+<button class="back-to-top" id="back-to-top" aria-label="العودة إلى الأعلى">↑</button>
 
 <!-- ===== NAVIGATION ===== -->
 <nav>
@@ -2863,7 +2863,7 @@ select.contact-field__input option { color: var(--ink); background: var(--bg); }
 
 <!-- ===== CASE STUDY MODAL ===== -->
 <div class="case-modal" id="case-modal">
-  <button class="case-close" id="case-close" aria-label="Close case study">×</button>
+  <button class="case-close" id="case-close" aria-label="إغلاق دراسة الحالة">×</button>
   <div class="case-modal-inner" id="case-modal-content"></div>
 </div>
 
@@ -2965,7 +2965,7 @@ const openCaseStudy = (key) => {
       <div class="case-scenes">
         ${cs.scenes.map((s, i) => `
           <div class="case-scene">
-            <div class="case-scene-num">${String(i + 1).padStart(2, '0')}</div>
+            <div class="case-scene-num">${toArDigits(String(i + 1).padStart(2, '0'))}</div>
             <div class="case-scene-text">${s}</div>
           </div>`).join('')}
       </div>
@@ -3089,7 +3089,7 @@ for (let i = 1; i <= totalRealEstate; i++) {
   const num = String(i).padStart(3, '0');
   const img = document.createElement('img');
   img.src = `images/realestate/r_${num}.jpg`;
-  img.alt = `Real Estate ${i}`;
+  img.alt = `تصوير عقاري ${i}`;
   img.loading = 'lazy';
   img.dataset.full = `images/realestate/r_${num}.jpg`;
   realestateGrid.appendChild(img);
@@ -3102,7 +3102,7 @@ for (let i = 1; i <= totalHeritage; i++) {
   const num = String(i).padStart(3, '0');
   const img = document.createElement('img');
   img.src = `images/heritage/h_${num}.jpg`;
-  img.alt = `Heritage ${i}`;
+  img.alt = `صورة تراثية ${i}`;
   img.loading = 'lazy';
   img.dataset.full = `images/heritage/h_${num}.jpg`;
   heritageGrid.appendChild(img);
@@ -3115,7 +3115,7 @@ for (let i = 1; i <= totalAds; i++) {
   const num = String(i).padStart(3, '0');
   const img = document.createElement('img');
   img.src = `images/ads/a_${num}.jpg`;
-  img.alt = `Ad ${i}`;
+  img.alt = `إعلان ${i}`;
   img.loading = 'lazy';
   img.dataset.full = `images/ads/a_${num}.jpg`;
   adsGrid.appendChild(img);
@@ -3148,7 +3148,7 @@ characterNames.forEach(char => {
   for (let i = 1; i <= char.count; i++) {
     const img = document.createElement('img');
     img.src = `images/trained_models/${char.id}/angle_${i}.jpg`;
-    img.alt = `${char.name} angle ${i}`;
+    img.alt = `${char.name} زاوية ${i}`;
     img.loading = 'lazy';
     img.dataset.full = `images/trained_models/${char.id}/angle_${i}.jpg`;
     row.appendChild(img);
@@ -3176,7 +3176,7 @@ const renderFashionBatch = () => {
   for (let i = fashionLoaded; i < end; i++) {
     const img = document.createElement('img');
     img.src = fashionAllItems[i];
-    img.alt = `Editorial ${i + 1}`;
+    img.alt = `إيديتوريال فاشن ${i + 1}`;
     img.loading = 'lazy';
     img.decoding = 'async';
     img.dataset.full = fashionAllItems[i];
