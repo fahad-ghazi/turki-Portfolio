@@ -1505,6 +1505,288 @@ body.dc-active { overflow: hidden; }
   .dc-chrome { padding: 16px 20px; }
 }
 
+/* Hero status pill */
+.hero__status {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-family: 'Inter', sans-serif; font-size: 11px;
+  letter-spacing: 2px; text-transform: uppercase;
+  color: rgba(245,241,232,0.75); margin-bottom: 28px;
+}
+.hero__status-dot {
+  width: 8px; height: 8px; border-radius: 50%; background: #4CAF50;
+  box-shadow: 0 0 0 0 rgba(76,175,80,0.6);
+  animation: pulse-green 2.4s ease-in-out infinite;
+}
+@keyframes pulse-green {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(76,175,80,0.6); }
+  50%       { box-shadow: 0 0 0 8px rgba(76,175,80,0); }
+}
+
+/* Hero CTA text variant */
+.hero-cta--text {
+  background: transparent; color: rgba(245,241,232,0.72); border: none;
+  padding: 14px 0; font-size: 13px; letter-spacing: 1px; font-weight: 500;
+}
+.hero-cta--text:hover { color: #C9A961; transform: none; box-shadow: none; }
+.hero-cta--text .cta-icon { font-size: 8px; opacity: 0.7; }
+.hero-cta--text:hover .cta-icon { opacity: 1; }
+.hero-cta--primary:hover .cta-arrow { transform: translateY(3px); }
+
+/* Section lede */
+.section-lede {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(15px, 1.3vw, 17px);
+  line-height: 1.75; color: var(--ink-soft);
+  max-width: 680px; margin-bottom: 32px;
+}
+
+/* Tool tags */
+.tool-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 48px; }
+.tool-tag {
+  font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 500;
+  letter-spacing: 1.5px; text-transform: uppercase;
+  color: var(--ink-soft); border: 1px solid var(--line);
+  padding: 6px 14px; border-radius: 2px; transition: border-color 0.2s, color 0.2s;
+}
+.tool-tag:hover { border-color: var(--gold); color: var(--gold); }
+
+/* Case study badge */
+.case-study-badge {
+  position: absolute; top: 18px; right: 18px; z-index: 3;
+  font-family: 'Inter', sans-serif; font-size: 10px;
+  letter-spacing: 2px; text-transform: uppercase; font-weight: 600;
+  color: var(--ink); background: var(--gold); padding: 5px 10px; pointer-events: none;
+}
+
+/* Section num */
+.section-num {
+  display: inline-block; font-family: 'Inter', sans-serif;
+  font-size: 11px; letter-spacing: 4px; color: var(--gold); margin-bottom: 8px;
+}
+
+/* Editorial films */
+.section--films { padding-top: 100px; padding-bottom: 100px; }
+.film-hero {
+  position: relative; width: 100%; aspect-ratio: 21 / 10;
+  margin-bottom: 28px; overflow: hidden; cursor: pointer; background: #1a1a1a;
+}
+.film-hero img, .film-hero video {
+  position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+}
+.film-hero video { opacity: 0; transition: opacity 0.3s; }
+.film-hero:hover video { opacity: 1; }
+.film-hero__overlay {
+  position: absolute; inset: auto 0 0 0;
+  padding: 60px 48px 44px;
+  background: linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.85) 100%);
+  color: #f5f1e8; z-index: 2;
+}
+.film-hero__meta {
+  font-family: 'Inter', sans-serif; font-size: 11px;
+  letter-spacing: 4px; text-transform: uppercase;
+  color: rgba(245,241,232,0.65); margin-bottom: 14px;
+}
+.film-hero__title {
+  font-family: 'Inter', sans-serif; font-size: clamp(36px, 5vw, 64px);
+  font-weight: 800; line-height: 1.05; margin-bottom: 14px; letter-spacing: -2px;
+}
+.film-hero__caption {
+  font-family: 'Inter', sans-serif; font-size: clamp(15px, 1.3vw, 18px);
+  line-height: 1.6; color: rgba(245,241,232,0.85); max-width: 620px;
+}
+.film-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px; }
+.film-card { position: relative; cursor: pointer; background: #f0ece2; }
+.film-card--wide { grid-column: 1 / -1; }
+.film-card > img, .film-card > video {
+  width: 100%; aspect-ratio: 16 / 10; object-fit: cover; display: block;
+}
+.film-card--wide > img, .film-card--wide > video { aspect-ratio: 21 / 9; }
+.film-card > video { position: absolute; inset: 0; height: auto; opacity: 0; transition: opacity 0.3s; }
+.film-card:hover > video { opacity: 1; }
+.film-card__body { padding: 24px 4px 8px; }
+.film-card__meta {
+  font-family: 'Inter', sans-serif; font-size: 10px;
+  letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 8px;
+}
+.film-card__title {
+  font-family: 'Inter', sans-serif; font-size: clamp(20px, 2.2vw, 28px);
+  font-weight: 700; color: var(--ink); line-height: 1.2; margin-bottom: 10px; letter-spacing: -0.5px;
+}
+.film-card__caption {
+  font-family: 'Inter', sans-serif; font-size: clamp(13px, 1vw, 15px);
+  color: var(--ink-soft); line-height: 1.6; max-width: 480px;
+}
+@media (max-width: 768px) {
+  .film-hero { aspect-ratio: 4/5; margin-bottom: 16px; }
+  .film-hero__overlay { padding: 36px 24px 28px; }
+  .film-grid { grid-template-columns: 1fr; gap: 32px; }
+  .film-card--wide { grid-column: 1; }
+}
+
+/* Studio tabs */
+.section--studio { padding-top: 100px; padding-bottom: 100px; }
+.studio-tabs {
+  display: flex; flex-wrap: wrap; gap: 0;
+  border-bottom: 1px solid var(--line); margin-bottom: 40px;
+}
+.studio-tab {
+  font-family: 'Inter', sans-serif; font-size: clamp(13px, 1vw, 15px);
+  color: var(--ink-soft); background: none; border: none;
+  border-bottom: 2px solid transparent; padding: 14px 22px;
+  cursor: pointer; transition: color 0.2s, border-color 0.2s;
+  margin-bottom: -1px; white-space: nowrap;
+}
+.studio-tab:hover { color: var(--ink); }
+.studio-tab.is-active { color: var(--ink); border-bottom-color: var(--ink); font-weight: 600; }
+.studio-tab__count {
+  font-family: 'Inter', sans-serif; font-size: 10px;
+  letter-spacing: 1px; color: var(--gold); margin-left: 6px; font-weight: 500;
+}
+.studio-pane { display: none; }
+.studio-pane.is-active { display: block; }
+@media (max-width: 768px) {
+  .studio-tabs { overflow-x: auto; flex-wrap: nowrap; }
+  .studio-tab { padding: 12px 16px; font-size: 13px; }
+}
+
+/* About new */
+.about-new {
+  padding: 100px clamp(24px, 6vw, 80px);
+  background: var(--ink); color: var(--bg);
+}
+.about-new__inner {
+  max-width: 1200px; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 1.6fr;
+  gap: 80px; align-items: start;
+}
+.about-new__lead .section-num { color: rgba(245,241,232,0.45); }
+.about-new__lead .section-title { color: var(--bg); margin-bottom: 24px; }
+.about-new__manifesto {
+  font-family: 'Inter', sans-serif; font-size: clamp(20px, 2.2vw, 28px);
+  font-weight: 700; color: var(--gold); line-height: 1.4; font-style: italic;
+}
+.about-text {
+  font-family: 'Inter', sans-serif; font-size: clamp(15px, 1.2vw, 17px);
+  line-height: 1.8; color: rgba(245,241,232,0.78); margin-bottom: 20px;
+  text-align: left;
+}
+.about-text:last-of-type { margin-bottom: 40px; }
+.stat-row {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  list-style: none; border-top: 1px solid rgba(245,241,232,0.15); padding-top: 32px;
+}
+.stat-row li { padding-right: 24px; border-right: 1px solid rgba(245,241,232,0.15); }
+.stat-row li:first-child { border-right: none; padding-right: 0; }
+.stat-num {
+  display: block; font-family: 'Inter', sans-serif;
+  font-size: clamp(32px, 3.5vw, 48px); font-weight: 800;
+  color: var(--bg); line-height: 1; margin-bottom: 6px; letter-spacing: -1px;
+}
+.stat-label {
+  display: block; font-family: 'Inter', sans-serif;
+  font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
+  color: rgba(245,241,232,0.5);
+}
+@media (max-width: 900px) {
+  .about-new__inner { grid-template-columns: 1fr; gap: 48px; }
+  .stat-row { grid-template-columns: repeat(2, 1fr); gap: 24px; }
+  .stat-row li { border: none; padding: 0; }
+}
+
+/* Process */
+.process { padding: 100px clamp(24px, 6vw, 80px); background: #f0ece2; }
+.process__inner { max-width: 1200px; margin: 0 auto; }
+.process-steps {
+  list-style: none; display: grid; grid-template-columns: repeat(5, 1fr);
+  gap: 1px; background: var(--line); border: 1px solid var(--line); margin-bottom: 48px;
+}
+.process-step { background: #f0ece2; padding: 36px 28px; }
+.process-step__num {
+  font-family: 'Inter', sans-serif; font-size: 11px;
+  letter-spacing: 3px; color: var(--gold); font-weight: 600; margin-bottom: 16px;
+}
+.process-step__title {
+  font-family: 'Inter', sans-serif; font-size: clamp(17px, 1.5vw, 21px);
+  font-weight: 700; color: var(--ink); margin-bottom: 12px;
+}
+.process-step__text {
+  font-family: 'Inter', sans-serif; font-size: clamp(12px, 0.9vw, 14px);
+  line-height: 1.7; color: var(--ink-soft);
+}
+.process-tools { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+.process-tools__label {
+  font-family: 'Inter', sans-serif; font-size: 11px;
+  letter-spacing: 3px; text-transform: uppercase; color: var(--ink-soft); white-space: nowrap;
+}
+@media (max-width: 1024px) { .process-steps { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 768px) {
+  .process-steps { grid-template-columns: 1fr; }
+  .process-step { padding: 28px 20px; }
+}
+
+/* Contact */
+.contact-new { padding: 100px clamp(24px, 6vw, 80px); background: var(--bg); }
+.contact-new__inner {
+  max-width: 1200px; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 1.8fr; gap: 80px; align-items: start;
+}
+.contact-new__lead .section-num { display: block; margin-bottom: 8px; }
+.contact-new__lead .section-title { margin-bottom: 20px; }
+.contact-new__lede {
+  font-family: 'Inter', sans-serif; font-size: clamp(14px, 1.1vw, 16px);
+  line-height: 1.75; color: var(--ink-soft);
+}
+.contact-form { display: flex; flex-direction: column; gap: 24px; }
+.contact-form__row { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.contact-field { display: flex; flex-direction: column; gap: 8px; }
+.contact-field__label {
+  font-family: 'Inter', sans-serif; font-size: 11px;
+  letter-spacing: 2px; text-transform: uppercase; color: var(--ink-soft); font-weight: 500;
+}
+.contact-field__input {
+  font-family: 'Inter', sans-serif; font-size: 15px; color: var(--ink);
+  background: transparent; border: none; border-bottom: 1px solid var(--line);
+  padding: 12px 0; outline: none; transition: border-color 0.2s;
+  -webkit-appearance: none; border-radius: 0; width: 100%;
+}
+.contact-field__input:focus { border-bottom-color: var(--ink); }
+.contact-field__input--textarea { resize: vertical; min-height: 120px; }
+select.contact-field__input option { color: var(--ink); background: var(--bg); }
+.contact-form__footer {
+  display: flex; align-items: center; gap: 32px; flex-wrap: wrap; padding-top: 8px;
+}
+.contact-form__submit {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: var(--ink); color: var(--bg); border: none;
+  padding: 18px 36px; font-family: 'Inter', sans-serif;
+  font-size: 15px; font-weight: 600; cursor: pointer; transition: background 0.25s, transform 0.2s;
+}
+.contact-form__submit:hover { background: var(--gold); color: var(--ink); transform: translateY(-2px); }
+.contact-direct { font-family: 'Inter', sans-serif; font-size: 13px; color: var(--ink-soft); }
+.contact-direct a { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; }
+.contact-direct a:hover { color: var(--gold); }
+@media (max-width: 900px) {
+  .contact-new__inner { grid-template-columns: 1fr; gap: 48px; }
+  .contact-form__row { grid-template-columns: 1fr; }
+}
+
+/* Footer colophon */
+.footer-new {
+  padding: 80px clamp(24px, 6vw, 80px) 60px;
+  background: var(--ink); color: var(--bg); text-align: center;
+}
+.footer-new__line {
+  font-family: 'Inter', sans-serif; font-size: clamp(20px, 2.3vw, 30px);
+  font-weight: 700; line-height: 1.5; color: rgba(245,241,232,0.9);
+}
+.footer-new__meta {
+  margin-top: 40px; font-family: 'Inter', sans-serif;
+  font-size: 12px; letter-spacing: 2px; text-transform: uppercase;
+  color: rgba(245,241,232,0.4);
+}
+.footer-new__meta a { color: rgba(245,241,232,0.4); text-decoration: none; transition: color 0.2s; }
+.footer-new__meta a:hover { color: var(--gold); }
+
 </style>
 
 <!-- Cinematic Journey libs -->
@@ -1540,38 +1822,40 @@ body.dc-active { overflow: hidden; }
   <a href="/en/" class="logo" aria-label="Turki Alnefaie — Home">TA</a>
   <ul class="nav-links">
     <li><a href="#films">Films</a></li>
-    <li><a href="#fashion">Fashion</a></li>
-    <li><a href="#commercial">Commercial</a></li>
-    <li><a href="#ads">Ads</a></li>
-    <li><a href="#realestate">Real Estate</a></li>
-    <li><a href="#heritage">Heritage</a></li>
-    <li><a href="#trained">Models</a></li>
-    <li><a href="#studies">Studies</a></li>
+    <li><a href="#trained">Characters</a></li>
+    <li><a href="#studio">Studio</a></li>
     <li><a href="#about">About</a></li>
+    <li><a href="#contact">Contact</a></li>
   </ul>
   <a href="/" class="lang-switch" hreflang="ar" rel="alternate" aria-label="النسخة العربية">عربي</a>
 </nav>
 
 <!-- ===== HERO — CINEMATIC ===== -->
 <section class="hero hero--cinematic" id="top">
-  <video class="hero__bg-video" id="hero-bg-video" autoplay muted loop playsinline preload="metadata" poster="/images/poster_01_saudi_joker.jpg">
-    <source src="/videos/01_saudi_joker.mp4" type="video/mp4">
+  <video class="hero__bg-video" id="hero-bg-video" autoplay muted loop playsinline preload="auto" poster="/images/hero-poster.jpg">
+    <source src="/videos/hero-loop.webm" type="video/webm">
+    <source src="/videos/hero-loop.mp4" type="video/mp4">
   </video>
   <div class="hero__veil" aria-hidden="true"></div>
   <div class="hero__content">
-    <div class="hero__eyebrow">Turki Studio · Riyadh</div>
+    <div class="hero__status">
+      <span class="hero__status-dot"></span>
+      <span>Available · Accepting Q3 2026 projects</span>
+    </div>
     <h1 class="hero-name">Turki Alnefaie</h1>
-    <p class="hero-tagline">A Saudi visual artist building worlds with AI.<br>Films, fashion, advertising, imagined architecture.</p>
+    <p class="hero-tagline">Saudi memory, through a cinematic AI eye. I build the city as I see it in a dream.</p>
     <div class="hero__ctas">
-      <a href="#films" class="hero-cta hero-cta--primary">View the work <span class="cta-arrow">↓</span></a>
-      <button type="button" class="hero-cta hero-cta--ghost" id="open-dc">
+      <a href="#films" class="hero-cta hero-cta--primary" data-magnetic>
+        <span>View the work</span>
+        <span class="cta-arrow">↓</span>
+      </a>
+      <button type="button" class="hero-cta hero-cta--text" id="open-dc">
         <span class="cta-icon">▶</span>
-        Director's Cut
+        Director's Cut · 3 min
       </button>
     </div>
   </div>
   <div class="hero__scroll-hint" aria-hidden="true">
-    <span>Scroll</span>
     <span class="hero__scroll-line"></span>
   </div>
 </section>
@@ -1679,256 +1963,334 @@ body.dc-active { overflow: hidden; }
   </div>
 </div>
 
-<!-- ===== FILMS SECTION ===== -->
-<section class="section" id="films" aria-labelledby="films-title">
+<!-- ===== FILMS SECTION (editorial layout) ===== -->
+<section class="section section--films" id="films" aria-labelledby="films-title">
   <div class="section-header">
     <div>
-      <h2 class="section-title" id="films-title">Films</h2>
-      <div class="section-title-ar">أفلام</div>
+      <span class="section-num">01</span>
+      <h2 class="section-title" id="films-title">Selected Films</h2>
     </div>
-    <span class="section-meta">2026 · Selected Work</span>
+    <span class="section-meta">2026 · 9 works</span>
   </div>
 
-  <div class="grid">
-    <!-- Saudi Joker -->
-    <div class="tile" data-video="/videos/01_saudi_joker.mp4" data-case="joker">
+  <div class="film-hero tile" data-video="/videos/01_saudi_joker.mp4" data-case="joker" data-magnetic>
+    <span class="case-study-badge">Case Study</span>
+    <img src="/images/poster_01_saudi_joker.jpg" alt="Saudi Joker — short film">
+    <video muted loop playsinline preload="none">
+      <source src="/videos/01_saudi_joker.mp4" type="video/mp4">
+    </video>
+    <div class="film-hero__overlay">
+      <div class="film-hero__meta">Short Film · 1:50 · 2026</div>
+      <h3 class="film-hero__title">Saudi Joker</h3>
+      <p class="film-hero__caption">What if Gotham were Riyadh? A cinematic reading of popular memory and universal myth.</p>
+    </div>
+  </div>
+
+  <div class="film-grid">
+    <article class="film-card tile" data-video="/videos/05_disorders.mp4" data-case="disorders" data-magnetic>
       <span class="case-study-badge">Case Study</span>
-      <img src="/images/poster_01_saudi_joker.jpg" alt="Saudi Joker">
-      <video muted loop playsinline preload="none">
-        <source src="/videos/01_saudi_joker.mp4" type="video/mp4">
-      </video>
-      <div class="tile-caption">
-        <div class="tile-title">Saudi Joker</div>
-        <div class="tile-meta">Cinematic Tribute · 2026</div>
-      </div>
-    </div>
-
-    <!-- Mohammed the Writer -->
-    <div class="tile" data-video="/videos/03_mohammed_writer.mp4">
-      <img src="/images/poster_03_mohammed_writer.jpg" alt="Mohammed the Writer — drama short film">
-      <video muted loop playsinline preload="none">
-        <source src="/videos/03_mohammed_writer.mp4" type="video/mp4">
-      </video>
-      <div class="tile-caption">
-        <div class="tile-title">Mohammed the Writer</div>
-        <div class="tile-meta">Drama · Mental Institution</div>
-      </div>
-    </div>
-
-    <!-- The Human Snail -->
-    <div class="tile" data-video="/videos/02_human_snail.mp4">
-      <img src="/images/poster_02_human_snail.jpg" alt="The Human Snail — sci-fi short film">
-      <video muted loop playsinline preload="none">
-        <source src="/videos/02_human_snail.mp4" type="video/mp4">
-      </video>
-      <div class="tile-caption">
-        <div class="tile-title">The Human Snail</div>
-        <div class="tile-meta">Sci-Fi · Dystopia</div>
-      </div>
-    </div>
-
-    <!-- Disorders -->
-    <div class="tile" data-video="/videos/05_disorders.mp4" data-case="disorders">
-      <span class="case-study-badge">Case Study</span>
-      <img src="/images/poster_05_disorders.jpg" alt="Disorders — music video about mental health">
+      <img src="/images/poster_05_disorders.jpg" alt="Disorders — music video">
       <video muted loop playsinline preload="none">
         <source src="/videos/05_disorders.mp4" type="video/mp4">
       </video>
-      <div class="tile-caption">
-        <div class="tile-title">Disorders</div>
-        <div class="tile-meta">Music Video · Mental Health</div>
+      <div class="film-card__body">
+        <div class="film-card__meta">Music Video · 2026</div>
+        <h3 class="film-card__title">Disorders</h3>
+        <p class="film-card__caption">Seven portraits, seven mental disorders, one message about awareness.</p>
       </div>
-    </div>
+    </article>
 
-    <!-- Saudi Harley Quinn -->
-    <div class="tile" data-video="/videos/06_saudi_harley.mp4">
+    <article class="film-card tile" data-video="/videos/02_human_snail.mp4" data-magnetic>
+      <img src="/images/poster_02_human_snail.jpg" alt="The Human Snail">
+      <video muted loop playsinline preload="none">
+        <source src="/videos/02_human_snail.mp4" type="video/mp4">
+      </video>
+      <div class="film-card__body">
+        <div class="film-card__meta">Sci-Fi · 2026</div>
+        <h3 class="film-card__title">The Human Snail</h3>
+        <p class="film-card__caption">A Saudi dystopia where rhythm goes extinct.</p>
+      </div>
+    </article>
+
+    <article class="film-card tile" data-video="/videos/03_mohammed_writer.mp4" data-magnetic>
+      <img src="/images/poster_03_mohammed_writer.jpg" alt="Mohammed the Writer">
+      <video muted loop playsinline preload="none">
+        <source src="/videos/03_mohammed_writer.mp4" type="video/mp4">
+      </video>
+      <div class="film-card__body">
+        <div class="film-card__meta">Drama · 2026</div>
+        <h3 class="film-card__title">Mohammed the Writer</h3>
+        <p class="film-card__caption">In a psychiatric ward, a man writes stories no one reads.</p>
+      </div>
+    </article>
+
+    <article class="film-card tile" data-video="/videos/06_saudi_harley.mp4" data-magnetic>
       <img src="/images/poster_06_saudi_harley.jpg" alt="Saudi Harley Quinn">
       <video muted loop playsinline preload="none">
         <source src="/videos/06_saudi_harley.mp4" type="video/mp4">
       </video>
-      <div class="tile-caption">
-        <div class="tile-title">Saudi Harley Quinn</div>
-        <div class="tile-meta">Music Video · Anti-Hero</div>
+      <div class="film-card__body">
+        <div class="film-card__meta">Music Video · 2026</div>
+        <h3 class="film-card__title">Saudi Harley Quinn</h3>
+        <p class="film-card__caption">An anti-hero who walks out of the screen into the street.</p>
       </div>
-    </div>
+    </article>
 
-    <!-- Every Generation Has an Artist -->
-    <div class="tile" data-video="/videos/09_generations.mp4">
-      <img src="/images/poster_09_generations.jpg" alt="Every Generation Has an Artist — portrait series">
+    <article class="film-card tile" data-video="/videos/09_generations.mp4" data-magnetic>
+      <img src="/images/poster_09_generations.jpg" alt="Every Generation Has an Artist">
       <video muted loop playsinline preload="none">
         <source src="/videos/09_generations.mp4" type="video/mp4">
       </video>
-      <div class="tile-caption">
-        <div class="tile-title">Every Generation Has an Artist</div>
-        <div class="tile-meta">Portrait Series · Generations</div>
+      <div class="film-card__body">
+        <div class="film-card__meta">Portrait Series · 2026</div>
+        <h3 class="film-card__title">Every Generation Has an Artist</h3>
+        <p class="film-card__caption">From the 70s artist to the TikTok creator. The evolution of the Saudi creative.</p>
       </div>
-    </div>
-  </div>
-</section>
+    </article>
 
-<!-- ===== FASHION & EDITORIAL ===== -->
-<section class="section" id="fashion" aria-labelledby="fashion-title">
-  <div class="section-header">
-    <div>
-      <h2 class="section-title" id="fashion-title">Fashion &amp; Editorial</h2>
-      <div class="section-title-ar">أزياء وإيديتوريال</div>
-    </div>
-    <span class="section-meta">Photoshoots · Lookbooks · 2026</span>
-  </div>
-  <p style="color: var(--ink-soft); margin-bottom: 24px; font-size: 14px; max-width: 700px;">
-    Editorial photoshoots and fashion sessions composed entirely as AI imagery — styling, lighting, and atmosphere built for designers and brands.
-  </p>
-  <div class="masonry-grid" id="fashion-grid"></div>
-</section>
-
-<!-- ===== COMMERCIAL CAMPAIGN ===== -->
-<section class="section" id="commercial" aria-labelledby="commercial-title">
-  <div class="section-header">
-    <div>
-      <h2 class="section-title" id="commercial-title">Commercial</h2>
-      <div class="section-title-ar">إعلانات تجارية</div>
-    </div>
-    <span class="section-meta">Brand Campaigns · 2026</span>
-  </div>
-
-  <div class="grid">
-    <!-- Glasses Cinematic -->
-    <div class="tile" data-video="/videos/07_glasses_cinematic.mp4" style="aspect-ratio: 9/16;">
-      <img src="/images/poster_07_glasses_cinematic.jpg" alt="The Glasses — cinematic ad">
-      <video muted loop playsinline preload="none">
-        <source src="/videos/07_glasses_cinematic.mp4" type="video/mp4">
-      </video>
-      <div class="tile-caption">
-        <div class="tile-title">The Glasses</div>
-        <div class="tile-meta">Editorial · Cinematic</div>
-      </div>
-    </div>
-
-    <!-- Glasses UGC -->
-    <div class="tile" data-video="/videos/08_glasses_ugc.mp4" style="aspect-ratio: 9/16;">
-      <img src="/images/poster_08_glasses_ugc.jpg" alt="The Glasses — UGC ad">
-      <video muted loop playsinline preload="none">
-        <source src="/videos/08_glasses_ugc.mp4" type="video/mp4">
-      </video>
-      <div class="tile-caption">
-        <div class="tile-title">The Glasses</div>
-        <div class="tile-meta">UGC · Talking Head</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== STUDIES SECTION ===== -->
-<section class="section" id="studies" aria-labelledby="studies-title">
-  <div class="section-header">
-    <div>
-      <h2 class="section-title" id="studies-title">Studies</h2>
-      <div class="section-title-ar">دراسات بصرية</div>
-    </div>
-    <span class="section-meta">Experimental · Fragments</span>
-  </div>
-
-  <div class="grid" style="grid-template-columns: 1fr;">
-    <div class="tile" data-video="/videos/04_studies_fragments.mp4" style="aspect-ratio: 21/9;">
-      <img src="/images/poster_04_studies_fragments.jpg" alt="Studies — visual fragments">
+    <article class="film-card film-card--wide tile" data-video="/videos/04_studies_fragments.mp4" data-magnetic>
+      <img src="/images/poster_04_studies_fragments.jpg" alt="Studies — Fragments">
       <video muted loop playsinline preload="none">
         <source src="/videos/04_studies_fragments.mp4" type="video/mp4">
       </video>
-      <div class="tile-caption">
-        <div class="tile-title">Studies / 01 — Fragments</div>
-        <div class="tile-meta">A series of moments without narrative</div>
+      <div class="film-card__body">
+        <div class="film-card__meta">Experimental · Fragments</div>
+        <h3 class="film-card__title">Studies / 01 — Fragments</h3>
+        <p class="film-card__caption">A series of moments without narrative. Visual exercises without endings.</p>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ===== TRAINED MODELS — position #2 ===== -->
+<section class="section section--trained" id="trained" aria-labelledby="trained-title">
+  <div class="section-header">
+    <div>
+      <span class="section-num">02</span>
+      <h2 class="section-title" id="trained-title">Trained Characters</h2>
+    </div>
+    <span class="section-meta">8 characters · 5 angles each</span>
+  </div>
+  <p class="section-lede">
+    The studio's technical signature. Each character is trained with a custom LoRA model and generated with visual consistency across five angles — preserving identity across films, editorial, and campaigns.
+  </p>
+  <div class="tool-tags" aria-label="Tools">
+    <span class="tool-tag">FLUX LoRA Training</span>
+    <span class="tool-tag">ComfyUI</span>
+    <span class="tool-tag">Runway Gen-3</span>
+    <span class="tool-tag">Sora</span>
+    <span class="tool-tag">Midjourney v6</span>
+  </div>
+  <div id="trained-models-container"></div>
+</section>
+
+<!-- ===== STUDIO — tabbed ===== -->
+<section class="section section--studio" id="studio" aria-labelledby="studio-title">
+  <div class="section-header">
+    <div>
+      <span class="section-num">03</span>
+      <h2 class="section-title" id="studio-title">Studio</h2>
+    </div>
+    <span class="section-meta">Work for brands and agencies</span>
+  </div>
+  <p class="section-lede">
+    Full visual direction for fashion, advertising, real estate, and heritage — all in the same cinematic language.
+  </p>
+
+  <div class="studio-tabs" role="tablist">
+    <button type="button" class="studio-tab is-active" data-tab="fashion" role="tab" aria-selected="true">Fashion &amp; Editorial <span class="studio-tab__count">159</span></button>
+    <button type="button" class="studio-tab" data-tab="commercial" role="tab">Commercial <span class="studio-tab__count">2</span></button>
+    <button type="button" class="studio-tab" data-tab="ads" role="tab">Products &amp; Ads <span class="studio-tab__count">71</span></button>
+    <button type="button" class="studio-tab" data-tab="realestate" role="tab">Real Estate <span class="studio-tab__count">41</span></button>
+    <button type="button" class="studio-tab" data-tab="heritage" role="tab">Heritage <span class="studio-tab__count">21</span></button>
+    <button type="button" class="studio-tab" data-tab="studies" role="tab">Studies</button>
+  </div>
+
+  <div class="studio-pane is-active" data-pane="fashion">
+    <div class="masonry-grid" id="fashion-grid"></div>
+  </div>
+
+  <div class="studio-pane" data-pane="commercial">
+    <div class="grid">
+      <div class="tile" data-video="/videos/07_glasses_cinematic.mp4" style="aspect-ratio: 9/16;">
+        <img src="/images/poster_07_glasses_cinematic.jpg" alt="The Glasses — cinematic">
+        <video muted loop playsinline preload="none"><source src="/videos/07_glasses_cinematic.mp4" type="video/mp4"></video>
+        <div class="tile-caption"><div class="tile-title">The Glasses</div><div class="tile-meta">Editorial · Cinematic</div></div>
+      </div>
+      <div class="tile" data-video="/videos/08_glasses_ugc.mp4" style="aspect-ratio: 9/16;">
+        <img src="/images/poster_08_glasses_ugc.jpg" alt="The Glasses — UGC">
+        <video muted loop playsinline preload="none"><source src="/videos/08_glasses_ugc.mp4" type="video/mp4"></video>
+        <div class="tile-caption"><div class="tile-title">The Glasses</div><div class="tile-meta">UGC · Talking Head</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="studio-pane" data-pane="ads">
+    <div class="masonry-grid" id="ads-grid"></div>
+  </div>
+
+  <div class="studio-pane" data-pane="realestate">
+    <div class="masonry-grid" id="realestate-grid"></div>
+  </div>
+
+  <div class="studio-pane" data-pane="heritage">
+    <div class="masonry-grid" id="heritage-grid"></div>
+  </div>
+
+  <div class="studio-pane" data-pane="studies">
+    <div class="grid" style="grid-template-columns: 1fr;">
+      <div class="tile" data-video="/videos/04_studies_fragments.mp4" style="aspect-ratio: 21/9;">
+        <img src="/images/poster_04_studies_fragments.jpg" alt="Studies — Fragments">
+        <video muted loop playsinline preload="none"><source src="/videos/04_studies_fragments.mp4" type="video/mp4"></video>
+        <div class="tile-caption"><div class="tile-title">Studies / 01 — Fragments</div><div class="tile-meta">A series of moments without narrative</div></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ===== REAL ESTATE ===== -->
-<section class="section" id="realestate" aria-labelledby="realestate-title">
-  <div class="section-header">
-    <div>
-      <h2 class="section-title" id="realestate-title">Real Estate</h2>
-      <div class="section-title-ar">عقارات</div>
-    </div>
-    <span class="section-meta">Property Visualization · 2026</span>
-  </div>
-  <p style="color: var(--ink-soft); margin-bottom: 24px; font-size: 14px; max-width: 700px;">
-    Photoreal architectural and property visualizations for Saudi real estate developers — interior, exterior, and full AI-driven property marketing campaigns.
-  </p>
-  <div class="masonry-grid" id="realestate-grid"></div>
-</section>
-
-<!-- ===== HERITAGE ===== -->
-<section class="section" id="heritage" aria-labelledby="heritage-title">
-  <div class="section-header">
-    <div>
-      <h2 class="section-title" id="heritage-title">Heritage</h2>
-      <div class="section-title-ar">تراث</div>
-    </div>
-    <span class="section-meta">Saudi Classical · Nostalgia</span>
-  </div>
-  <p style="color: var(--ink-soft); margin-bottom: 24px; font-size: 14px; max-width: 700px;">
-    Imagery that channels Saudi heritage and traditional spaces — neighborhood life, majlis interiors, traditional dress, and classical scenes rendered with a contemporary visual sense.
-  </p>
-  <div class="masonry-grid" id="heritage-grid"></div>
-</section>
-
-<!-- ===== PRODUCTS & ADS ===== -->
-<section class="section" id="ads" aria-labelledby="ads-title">
-  <div class="section-header">
-    <div>
-      <h2 class="section-title" id="ads-title">Products &amp; Ads</h2>
-      <div class="section-title-ar">منتجات وإعلانات</div>
-    </div>
-    <span class="section-meta">Commercial · Brand Campaigns</span>
-  </div>
-  <p style="color: var(--ink-soft); margin-bottom: 24px; font-size: 14px; max-width: 700px;">
-    Photoreal product photography and brand advertising visuals built entirely with AI — ready for social, paid media, and product catalogs.
-  </p>
-  <div class="masonry-grid" id="ads-grid"></div>
-</section>
-
-<!-- ===== TRAINED MODELS ===== -->
-<section class="section" id="trained" aria-labelledby="trained-title">
-  <div class="section-header">
-    <div>
-      <h2 class="section-title" id="trained-title">Trained Models</h2>
-      <div class="section-title-ar">شخصيات مُدرَّبة</div>
-    </div>
-    <span class="section-meta">Custom Characters · 5-Angle Consistency</span>
-  </div>
-  <p style="color: var(--ink-soft); margin-bottom: 36px; font-size: 14px; max-width: 700px;">
-    Custom-trained AI character models — each rendered across multiple angles to maintain photorealistic identity consistency for film, editorial, and brand work.
-  </p>
-  <div id="trained-models-container"></div>
-</section>
-
-
 <!-- ===== ABOUT ===== -->
-<section class="about" id="about" aria-labelledby="about-title">
-  <h2 class="section-title" id="about-title" style="margin-bottom: 8px;">About</h2>
-  <div class="section-title-ar" style="margin-bottom: 30px;">عن تركي</div>
-  <p class="about-text">
-    Turki Alnefaie is a Saudi visual artist based in Riyadh, working at the intersection
-    of cinema and artificial intelligence. He produces short films, editorial imagery,
-    advertising, and AI-built worlds that channel Saudi culture and local memory using
-    the new generation of generative AI tools.
-  </p>
-  <p class="about-text" style="margin-top: 18px;">
-    Turki collaborates with brands, real estate developers, and producers on projects
-    spanning music videos, advertising campaigns, editorial fashion, and architectural
-    visualization — with a cinematic visual language and a contemporary Saudi identity.
-  </p>
+<section class="about-new" id="about" aria-labelledby="about-title">
+  <div class="about-new__inner">
+    <div class="about-new__lead">
+      <span class="section-num">04</span>
+      <h2 class="section-title" id="about-title">About</h2>
+      <p class="about-new__manifesto">"I make Riyadh as I see it in a dream."</p>
+    </div>
 
-  <div class="contact">
-    <div class="contact-label">CONTACT</div>
-    <a href="mailto:turkig1101999@gmail.com" rel="me">turkig1101999@gmail.com</a>
-    <a href="tel:+966509588702" rel="me">+966 50 958 8702</a>
+    <div class="about-new__body">
+      <p class="about-text">
+        Turki Alnefaie is a Saudi visual artist and storyteller based in Riyadh, working at the intersection of cinema and artificial intelligence. He builds visual worlds that channel Saudi culture and local memory using the latest generation of generative AI tools.
+      </p>
+      <p class="about-text">
+        Since 2025, Turki has produced 9 short films, trained 8 character models at 5 angles each, and directed more than 290 editorial images for brands, real estate developers, and cultural content.
+      </p>
+
+      <ul class="stat-row">
+        <li><span class="stat-num">9</span><span class="stat-label">Short Films</span></li>
+        <li><span class="stat-num">8</span><span class="stat-label">Trained Characters</span></li>
+        <li><span class="stat-num">290+</span><span class="stat-label">Editorial Images</span></li>
+        <li><span class="stat-num">2026</span><span class="stat-label">Started</span></li>
+      </ul>
+    </div>
   </div>
 </section>
 
-<!-- ===== FOOTER ===== -->
-<footer>
-  TURKI ALNEFAIE · ALL RIGHTS RESERVED · 2026 · <a href="/" hreflang="ar" rel="alternate" style="color:inherit; text-decoration:underline;">عربي</a>
+<!-- ===== PROCESS ===== -->
+<section class="process" id="process" aria-labelledby="process-title">
+  <div class="process__inner">
+    <div class="section-header">
+      <div>
+        <span class="section-num">05</span>
+        <h2 class="section-title" id="process-title">How I Work</h2>
+      </div>
+      <span class="section-meta">Production methodology, not random prompts</span>
+    </div>
+
+    <ol class="process-steps">
+      <li class="process-step">
+        <div class="process-step__num">01</div>
+        <h3 class="process-step__title">Reading</h3>
+        <p class="process-step__text">I start from the cultural reference. The film isn't born from a prompt — it's born from a deep reading of Riyadh's scene, popular memory, and symbol.</p>
+      </li>
+      <li class="process-step">
+        <div class="process-step__num">02</div>
+        <h3 class="process-step__title">Script + Board</h3>
+        <p class="process-step__text">Written script, sketched storyboard, moodboard for color and lighting. Every shot is defined before I open any tool.</p>
+      </li>
+      <li class="process-step">
+        <div class="process-step__num">03</div>
+        <h3 class="process-step__title">Character Training</h3>
+        <p class="process-step__text">If the project needs a consistent character, I train a custom LoRA model on 40–60 images. The result: visual consistency across multiple angles.</p>
+      </li>
+      <li class="process-step">
+        <div class="process-step__num">04</div>
+        <h3 class="process-step__title">Generation + Editing</h3>
+        <p class="process-step__text">I use Sora, Runway Gen-3, Midjourney, and ComfyUI workflows. Each shot is generated 20–40 times before selecting the keeper.</p>
+      </li>
+      <li class="process-step">
+        <div class="process-step__num">05</div>
+        <h3 class="process-step__title">Cut + Sound</h3>
+        <p class="process-step__text">Edit in Premiere, color grading in DaVinci, sound design crafted scene by scene. A film is not delivered until the sound is sealed.</p>
+      </li>
+    </ol>
+
+    <div class="process-tools">
+      <span class="process-tools__label">Tools</span>
+      <div class="tool-tags">
+        <span class="tool-tag">Sora</span>
+        <span class="tool-tag">Runway Gen-3</span>
+        <span class="tool-tag">Midjourney v6</span>
+        <span class="tool-tag">FLUX</span>
+        <span class="tool-tag">ComfyUI</span>
+        <span class="tool-tag">LoRA Training</span>
+        <span class="tool-tag">Premiere Pro</span>
+        <span class="tool-tag">DaVinci Resolve</span>
+        <span class="tool-tag">Topaz Video AI</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CONTACT ===== -->
+<section class="contact-new" id="contact" aria-labelledby="contact-title">
+  <div class="contact-new__inner">
+    <div class="contact-new__lead">
+      <span class="section-num">06</span>
+      <h2 class="section-title" id="contact-title">Tell me about your project</h2>
+      <p class="contact-new__lede">Currently accepting Q3 2026 projects. Short films, advertising campaigns, music videos, and real estate visualization.</p>
+    </div>
+
+    <form class="contact-form" id="contact-form" action="https://formspree.io/f/xpwgnzqv" method="POST" novalidate>
+      <div class="contact-form__row">
+        <label class="contact-field">
+          <span class="contact-field__label">Your Name</span>
+          <input class="contact-field__input" type="text" name="name" required autocomplete="name">
+        </label>
+        <label class="contact-field">
+          <span class="contact-field__label">Email</span>
+          <input class="contact-field__input" type="email" name="email" required autocomplete="email">
+        </label>
+      </div>
+
+      <label class="contact-field">
+        <span class="contact-field__label">Project Type</span>
+        <select class="contact-field__input" name="project_type" required>
+          <option value="">Choose…</option>
+          <option>Short Film</option>
+          <option>Music Video</option>
+          <option>Advertising Campaign</option>
+          <option>Real Estate Visualization</option>
+          <option>Fashion Editorial</option>
+          <option>Custom Project</option>
+        </select>
+      </label>
+
+      <label class="contact-field">
+        <span class="contact-field__label">Tell me more</span>
+        <textarea class="contact-field__input contact-field__input--textarea" name="message" rows="5" required placeholder="The concept, timeline, budget if possible…"></textarea>
+      </label>
+
+      <div class="contact-form__footer">
+        <button type="submit" class="contact-form__submit" data-magnetic>Send message <span class="cta-arrow">→</span></button>
+        <div class="contact-direct">
+          Or directly:
+          <a href="mailto:turkig1101999@gmail.com">turkig1101999@gmail.com</a>
+          ·
+          <a href="tel:+966509588702">+966 50 958 8702</a>
+        </div>
+      </div>
+    </form>
+  </div>
+</section>
+
+<!-- ===== FOOTER · COLOPHON ===== -->
+<footer class="footer-new">
+  <div class="footer-new__line">Made in Riyadh.</div>
+  <div class="footer-new__line">Set in Thmanyah.</div>
+  <div class="footer-new__line">Every world is imagined.</div>
+  <div class="footer-new__meta">
+    Turki Alnefaie · 2026 · <a href="/" hreflang="ar" rel="alternate">عربي</a>
+  </div>
 </footer>
 
 <!-- ===== MODAL (Video) ===== -->
@@ -2091,6 +2453,37 @@ document.querySelectorAll('.tile[data-video]').forEach(tile => {
       modal.classList.add('active');
       modalVideo.play().catch(() => {});
     }
+  });
+});
+
+// === Studio Tabs ===
+document.querySelectorAll('.studio-tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    const target = tab.dataset.tab;
+    document.querySelectorAll('.studio-tab').forEach(t => {
+      t.classList.remove('is-active');
+      t.setAttribute('aria-selected', 'false');
+    });
+    document.querySelectorAll('.studio-pane').forEach(p => p.classList.remove('is-active'));
+    tab.classList.add('is-active');
+    tab.setAttribute('aria-selected', 'true');
+    const pane = document.querySelector(`.studio-pane[data-pane="${target}"]`);
+    if (pane) pane.classList.add('is-active');
+  });
+});
+
+// === Magnetic CTAs ===
+document.querySelectorAll('[data-magnetic]').forEach(el => {
+  el.addEventListener('mousemove', (e) => {
+    const rect = el.getBoundingClientRect();
+    const cx = rect.left + rect.width / 2;
+    const cy = rect.top + rect.height / 2;
+    const dx = (e.clientX - cx) * 0.28;
+    const dy = (e.clientY - cy) * 0.28;
+    el.style.transform = `translate(${dx}px, ${dy}px)`;
+  });
+  el.addEventListener('mouseleave', () => {
+    el.style.transform = '';
   });
 });
 
