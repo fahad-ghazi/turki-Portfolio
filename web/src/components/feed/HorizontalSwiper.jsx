@@ -1,8 +1,10 @@
 import React, { useState, useRef, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import SmartNextBar from "./SmartNextBar";
 import useContentTimeTracker from "../../hooks/useContentTimeTracker";
 import { sortByBehavior, trackContentInteraction } from "../../utils/behaviorTracking";
+import { trackEvent } from "@/utils/trackEvent";
 
 function MediaItem({ item, isActive, isAdjacent }) {
   const [loaded, setLoaded] = useState(false);
@@ -30,11 +32,17 @@ function MediaItem({ item, isActive, isAdjacent }) {
   );
 }
 
-export default function HorizontalSwiper({ items, onExit, categoryTitle }) {
+export default function HorizontalSwiper({ items, onExit, categoryTitle, categoryId }) {
   const rankedItems = sortByBehavior(items);
+  // Audit #47: append a synthetic CTA slide at the end of every section.
+  // After a visitor walks through all the work in a category, the next
+  // swipe lands on a clear "أريد مشروعاً مشابهاً" call-to-action instead
+  // of silently exiting the section.
+  const totalSlots = rankedItems.length + 1; // +1 = the end CTA slot
   const [current, setCurrent] = useState(0);
   const touchStartX = useRef(null);
-  const isLast = current === rankedItems.length - 1;
+  const isCta = current === rankedItems.length;
+  const isLast = current === totalSlots - 1; // = isCta
 
   const goNext = () => {
     if (isLast) {
@@ -73,7 +81,18 @@ export default function HorizontalSwiper({ items, onExit, categoryTitle }) {
   }, [current]);
 
   const item = rankedItems[current];
-  useContentTimeTracker(item?.id, Boolean(item), 2);
+  useContentTimeTracker(item?.id, Boolean(item) && !isCta, 2);
+
+  // Fire once when the CTA slide appears so we can measure how many
+  // visitors actually reach it from each section.
+  useEffect(() => {
+    if (isCta) {
+      trackEvent("section_cta_shown", {
+        event_type: "page_view",
+        section: categoryId || categoryTitle,
+      });
+    }
+  }, [isCta, categoryId, categoryTitle]);
 
   const selectSmartNext = (nextItem) => {
     const nextIndex = rankedItems.findIndex((entry) => entry.id === nextItem.id);
@@ -89,7 +108,7 @@ export default function HorizontalSwiper({ items, onExit, categoryTitle }) {
       onTouchStart={onTouchStart}
       onTouchEnd={onTouchEnd}
     >
-      {/* Media */}
+      {/* Media or end-of-section CTA */}
       <AnimatePresence mode="wait">
         <motion.div
           key={current}
@@ -99,11 +118,45 @@ export default function HorizontalSwiper({ items, onExit, categoryTitle }) {
           transition={{ duration: 0.4, ease: "easeOut" }}
           className="absolute inset-2 overflow-hidden rounded-[1.35rem] border border-[#C9A961]/18 bg-black"
         >
-          <MediaItem item={item} isActive={true} isAdjacent={false} />
-          <div
-            className="absolute inset-0 pointer-events-none"
-            style={{ background: "linear-gradient(to bottom, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.20) 55%, rgba(0,0,0,0.45) 100%)" }}
-          />
+          {isCta ? (
+            <div
+              className="flex h-full w-full flex-col items-center justify-center bg-gradient-to-br from-[#1A1A1A] via-[#2a2520] to-[#1A1A1A] px-8 text-center"
+              dir="rtl"
+            >
+              <span className="font-cinzel text-[10px] tracking-[0.45em] text-[#C9A961]">
+                {categoryTitle}
+              </span>
+              <h3 className="mt-6 max-w-md font-noto text-4xl font-bold leading-tight text-[#F5F1E8] md:text-5xl">
+                أعجبك ما رأيت؟
+              </h3>
+              <p className="mt-5 max-w-md font-noto text-base leading-9 text-[#F5F1E8]/72">
+                نصمم لك نفس الأسلوب — مخصصاً لمشروعك ولعلامتك التجارية.
+              </p>
+              <div className="mt-10 flex flex-col gap-3 sm:flex-row">
+                <Link
+                  to="/booking"
+                  onClick={() => trackEvent("section_cta_book_clicked", { event_type: "button_click", section: categoryId || categoryTitle })}
+                  className="rounded-full border-2 border-[#C9A961] bg-[#C9A961] px-8 py-3.5 font-noto text-base font-bold text-[#1A1A1A] transition hover:bg-[#F5F1E8] hover:text-[#1A1A1A]"
+                >
+                  أريد مشروعاً مشابهاً
+                </Link>
+                <button
+                  onClick={onExit}
+                  className="rounded-full border-2 border-[#F5F1E8]/35 bg-transparent px-8 py-3.5 font-noto text-base font-bold text-[#F5F1E8] transition hover:border-[#C9A961] hover:text-[#C9A961]"
+                >
+                  العودة للأقسام
+                </button>
+              </div>
+            </div>
+          ) : (
+            <>
+              <MediaItem item={item} isActive={true} isAdjacent={false} />
+              <div
+                className="absolute inset-0 pointer-events-none"
+                style={{ background: "linear-gradient(to bottom, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.20) 55%, rgba(0,0,0,0.45) 100%)" }}
+              />
+            </>
+          )}
         </motion.div>
       </AnimatePresence>
 
@@ -117,11 +170,12 @@ export default function HorizontalSwiper({ items, onExit, categoryTitle }) {
         </button>
         <span className="text-[#F5F1E8]/65 text-xs font-cinzel tracking-widest">{categoryTitle}</span>
         <span className="text-[#F5F1E8]/65 text-xs font-cinzel">
-          {current + 1} / {rankedItems.length}
+          {isCta ? `${rankedItems.length} / ${rankedItems.length}` : `${current + 1} / ${rankedItems.length}`}
         </span>
       </div>
 
-      {/* Bottom Info */}
+      {/* Bottom Info — only on media slides, not the CTA slot */}
+      {!isCta && (
       <motion.div
         key={`info-${current}`}
         initial={{ opacity: 0, y: 12 }}
@@ -137,12 +191,13 @@ export default function HorizontalSwiper({ items, onExit, categoryTitle }) {
           {item.description}
         </p>
       </motion.div>
+      )}
 
-      <SmartNextBar items={rankedItems} currentId={item.id} onSelect={selectSmartNext} />
+      {!isCta && <SmartNextBar items={rankedItems} currentId={item.id} onSelect={selectSmartNext} />}
 
-      {/* Progress dots */}
+      {/* Progress dots — show one extra dot for the CTA slot */}
       <div className="absolute bottom-7 left-1/2 z-30 flex -translate-x-1/2 gap-1.5">
-        {rankedItems.map((_, i) => (
+        {Array.from({ length: totalSlots }).map((_, i) => (
           <button
             key={i}
             onClick={() => setCurrent(i)}

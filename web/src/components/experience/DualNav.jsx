@@ -6,6 +6,7 @@ import TinderMode from "./TinderMode";
 import HeroFeedItem from "./HeroFeedItem";
 import MicroContext from "./MicroContext";
 import FinalSlide from "./FinalSlide";
+import TopNav from "./TopNav";
 import { CATEGORIES } from "../feed/categoriesData";
 
 const SECTION_ORDER = { films: 0 };
@@ -107,6 +108,38 @@ export default function DualNav() {
 
   return (
     <div className="fixed inset-0 overflow-hidden bg-[#F5F1E8]">
+      {/* Audit #6/#7/#19: persistent top nav so users always see a way to
+          works/services/CV/booking, regardless of where they are in the
+          cinematic scroll. The hero slide gets a translucent treatment;
+          everything else gets solid for legibility over images. */}
+      <TopNav solid={currentSlide !== 0 || activeCategoryIndex !== null} />
+
+      {/* SR-only indexable description for crawlers — the cinematic
+          experience itself is JS-driven so search engines need this
+          static block to understand what the page is about. */}
+      <div className="sr-only">
+        <h1>تركي غازي — مصمم بصري بالذكاء الاصطناعي | Turki Studio</h1>
+        <p>
+          تركي استديو بقيادة تركي غازي يصمم محتوى بصري سينمائي للعلامات
+          التجارية في السعودية والخليج باستخدام الذكاء الاصطناعي. نقدّم
+          إعلانات تجارية، أزياء editorial، تصورات عقارية ومعمارية، محتوى
+          تراثي سعودي، وأفلاماً قصيرة سينمائية، إضافة إلى شخصيات بصرية
+          مدرّبة بهوية ثابتة عبر الحملات.
+        </p>
+        <ul>
+          <li><a href="/services">قائمة الخدمات</a></li>
+          <li><a href="/commercial-ads">إعلانات تجارية</a></li>
+          <li><a href="/ai-fashion">أزياء بالذكاء الاصطناعي</a></li>
+          <li><a href="/real-estate">تصورات عقارية</a></li>
+          <li><a href="/heritage">تراث بصري</a></li>
+          <li><a href="/films">أفلام قصيرة</a></li>
+          <li><a href="/trained-models">شخصيات مدرّبة</a></li>
+          <li><a href="/cv">السيرة الذاتية</a></li>
+          <li><a href="/booking">احجز مشروع</a></li>
+          <li><a href="/contact">تواصل</a></li>
+        </ul>
+      </div>
+
       {/* ── TikTok vertical feed ── */}
       <div
         ref={containerRef}

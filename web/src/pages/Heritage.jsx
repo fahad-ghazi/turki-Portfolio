@@ -41,6 +41,7 @@ export default function Heritage() {
       <HorizontalSwiper
         items={category.items}
         categoryTitle={category.titleEn}
+        categoryId={category.id}
         onExit={() => navigate("/")}
       />
     </>
