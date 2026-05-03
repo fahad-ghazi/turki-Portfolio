@@ -1,4 +1,4 @@
-import { base44 } from "@/api/base44Client";
+import { apiClient } from "@/api/client";
 
 const STORAGE_KEY = "tg_behavior_scores";
 
@@ -16,7 +16,7 @@ export function trackContentInteraction(id, weight = 1) {
   scores[id] = (scores[id] || 0) + weight;
   writeScores(scores);
 
-  base44.entities.AnalyticsEvent.create({
+  apiClient.entities.AnalyticsEvent.create({
     event_name: "project_visit",
     event_type: "project_view",
     page: window.location.pathname,
@@ -31,7 +31,7 @@ export function trackContentTime(id, seconds = 1, weight = 1) {
   const timeWeight = Math.max(1, seconds) * weight;
   trackContentInteraction(id, timeWeight);
 
-  base44.entities.AnalyticsEvent.create({
+  apiClient.entities.AnalyticsEvent.create({
     event_name: "project_time_spent",
     event_type: "project_view",
     page: window.location.pathname,

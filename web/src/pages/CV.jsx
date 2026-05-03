@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { base44 } from "@/api/base44Client";
+import { apiClient } from "@/api/client";
 import { Download, Globe, Mail, Sparkles, User } from "lucide-react";
 import Seo from "@/components/seo/Seo";
 import Eyebrow from "@/components/brand/Eyebrow";
@@ -192,7 +192,7 @@ export default function CV() {
               size="lg"
               icon={Download}
               onClick={() =>
-                base44.analytics.track({
+                apiClient.analytics.track({
                   eventName: "cv_download_clicked",
                   properties: { page: "cv" },
                 })

@@ -4,10 +4,11 @@ import {
   useMotionValue, useTransform
 } from "framer-motion";
 import { X, Heart, Share2 } from "lucide-react";
-import { base44 } from "@/api/base44Client";
+import { apiClient } from "@/api/client";
 import { useLang } from "@/lib/LanguageContext";
 import { sortByBehavior, trackContentInteraction } from "../../utils/behaviorTracking";
 import useContentTimeTracker from "../../hooks/useContentTimeTracker";
+import Picture from "@/components/brand/Picture";
 
 // ── Physics constants ────────────────────────────────────────────
 const SWIPE_THRESHOLD = 90;
@@ -50,11 +51,12 @@ function CardImage({ src, alt }) {
   }, [src]);
   return (
     <div className="absolute inset-0 overflow-hidden rounded-3xl">
-      <img
+      <Picture
         ref={ref}
         src={src}
         alt={alt}
         draggable={false}
+        loading="eager"
         onLoad={() => setLoaded(true)}
         className={`w-full h-full object-cover transition-opacity duration-200 ${loaded ? "opacity-100" : "opacity-0"}`}
       />
@@ -111,13 +113,13 @@ function ActionBar({ item, categoryId }) {
     setLiked(next);
     if (next) {
       // Persist the interaction
-      await base44.entities.ProjectInteraction.create({
+      await apiClient.entities.ProjectInteraction.create({
         project_id: item.id, category_id: categoryId,
         action: "like", user_identifier: "anonymous",
       });
       // Audit #29: also fire an analytics event so likes show up in the
       // unified events stream alongside clicks and submissions.
-      base44.analytics.track({
+      apiClient.analytics.track({
         eventName: "project_like",
         properties: { event_type: "like", target_id: item.id, section: categoryId },
       });
@@ -127,11 +129,11 @@ function ActionBar({ item, categoryId }) {
   const handleShare = async (e) => {
     e.stopPropagation();
     if (navigator.vibrate) navigator.vibrate([5, 5, 5]);
-    await base44.entities.ProjectInteraction.create({
+    await apiClient.entities.ProjectInteraction.create({
       project_id: item.id, category_id: categoryId,
       action: "share", user_identifier: "anonymous",
     });
-    base44.analytics.track({
+    apiClient.analytics.track({
       eventName: "project_share",
       properties: { event_type: "share", target_id: item.id, section: categoryId },
     });

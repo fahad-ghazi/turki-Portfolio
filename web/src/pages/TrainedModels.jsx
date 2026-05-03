@@ -8,7 +8,7 @@ import TGLogo from "@/components/brand/TGLogo";
 import Eyebrow from "@/components/brand/Eyebrow";
 import Seo from "@/components/seo/Seo";
 import useCharacters from "@/hooks/useCharacters";
-
+import Picture from "@/components/brand/Picture";
 export default function TrainedModels() {
   // Phase 2: characters come from /api/characters with the static array
   // as a fallback. The admin manages them from /admin → characters.
@@ -43,7 +43,7 @@ export default function TrainedModels() {
               className={`group relative h-16 w-16 overflow-hidden rounded-full border transition-all duration-300 ${selectedCharacter.id === character.id ? "scale-110 border-[#C9A961] shadow-lg shadow-[#C9A961]/25" : "border-[#C9A961]/25 opacity-70 hover:scale-105 hover:opacity-100"}`}
               aria-label={`عرض معرض ${character.name}`}
             >
-              <img src={character.cover} alt={character.name} className="h-full w-full object-cover object-top" />
+              <Picture src={character.cover} alt={character.name} className="h-full w-full object-cover object-top" />
               <span className="absolute inset-0 bg-gradient-to-tr from-[#C9A961]/55 via-transparent to-black/45 opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
               <span className="absolute -bottom-1 left-1/2 -translate-x-1/2 rounded-full bg-[#F5F1E8] px-2 py-0.5 font-noto text-[9px] font-bold text-[#1A1A1A]">{character.name}</span>
             </button>
@@ -91,7 +91,7 @@ export default function TrainedModels() {
               onClick={() => selectCharacter(character)}
               className={`group relative min-h-72 overflow-hidden rounded-[2rem] border text-right transition-all duration-500 ${selectedCharacter.id === character.id ? "border-[#C9A961] shadow-xl shadow-[#C9A961]/15" : "border-[#C9A961]/20 hover:border-[#C9A961]/70"}`}
             >
-              <img src={character.cover} alt={character.name} className="absolute inset-0 h-full w-full object-cover object-top transition duration-700 group-hover:scale-105" />
+              <Picture src={character.cover} alt={character.name} className="absolute inset-0 h-full w-full object-cover object-top transition duration-700 group-hover:scale-105" />
               <span className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent" />
               <span className="absolute inset-0 bg-gradient-to-tr from-[#C9A961]/35 via-transparent to-black/20 opacity-0 transition duration-500 group-hover:opacity-100" />
               <div className="absolute bottom-0 right-0 left-0 p-6 text-[#F5F1E8]">
@@ -114,7 +114,7 @@ export default function TrainedModels() {
               onClick={() => selectCharacter(character)}
               className={`flex min-w-fit items-center gap-2 rounded-full border px-3 py-2 ${selectedCharacter.id === character.id ? "border-[#C9A961] bg-[#1A1A1A] text-[#F5F1E8]" : "border-[#1A1A1A]/15 bg-[#E9E2D3]/60 text-[#1A1A1A]"}`}
             >
-              <img src={character.cover} alt={character.name} className="h-8 w-8 rounded-full object-cover object-top" />
+              <Picture src={character.cover} alt={character.name} className="h-8 w-8 rounded-full object-cover object-top" />
               <span className="font-noto text-xs font-bold">{character.name}</span>
             </button>
           ))}

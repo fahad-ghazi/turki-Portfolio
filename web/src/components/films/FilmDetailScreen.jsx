@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { ArrowLeft, Maximize2, Pause, Play } from "lucide-react";
 import useContentTimeTracker from "../../hooks/useContentTimeTracker";
 import { trackEvent } from "@/utils/trackEvent";
-
+import Picture from "@/components/brand/Picture";
 const GOLD = "#C9A961";
 
 function formatTime(seconds) {
@@ -114,7 +114,7 @@ export default function FilmDetailScreen({ film, films, onBack, onSelect }) {
         <div className="mt-7 flex gap-3 overflow-x-auto pb-1">
           {films.filter((item) => item.id !== film.id).slice(0, 6).map((item) => (
             <button key={item.id} onClick={() => onSelect(item)} className="h-20 min-w-16 overflow-hidden rounded-xl border border-[#F5F1E8]/18 transition hover:border-[#C9A961]">
-              <img src={item.thumbnail} alt={item.title} loading="lazy" decoding="async" className="h-full w-full object-cover" />
+              <Picture src={item.thumbnail} alt={item.title} loading="lazy" decoding="async" className="h-full w-full object-cover" />
             </button>
           ))}
         </div>

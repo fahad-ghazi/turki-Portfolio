@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
-import { base44 } from "@/api/base44Client";
+import { apiClient } from "@/api/client";
 import Seo from "@/components/seo/Seo";
 import Eyebrow from "@/components/brand/Eyebrow";
 
@@ -15,7 +15,7 @@ const GOLD = "#C9A961";
 export default function Blog() {
   const { data: posts = [], isLoading, isError } = useQuery({
     queryKey: ["blog", "list"],
-    queryFn: () => base44.entities.BlogPost.list("-updated_date", 50),
+    queryFn: () => apiClient.entities.BlogPost.list("-updated_date", 50),
   });
 
   const hasPosts = posts.length > 0;

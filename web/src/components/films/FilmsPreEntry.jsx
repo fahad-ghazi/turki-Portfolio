@@ -3,9 +3,9 @@ import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import TGLogo from "@/components/brand/TGLogo";
-
+import Picture from "@/components/brand/Picture";
 const GOLD = "#C9A961";
-const BG = "https://media.base44.com/images/public/69f618d78f528f5ed96d2f9c/85671f43f_hero-poster.jpg";
+const BG = "https://media.apiClient.com/images/public/69f618d78f528f5ed96d2f9c/85671f43f_hero-poster.jpg";
 
 export default function FilmsPreEntry({ onEnter }) {
   return (
@@ -18,7 +18,7 @@ export default function FilmsPreEntry({ onEnter }) {
       dir="rtl"
     >
       <div className="relative h-full overflow-hidden rounded-[1.35rem] bg-[#E9E2D3]">
-        <img src={BG} alt="الأفلام السينمائية" className="absolute inset-0 h-full w-full object-cover" />
+        <Picture src={BG} alt="الأفلام السينمائية" className="absolute inset-0 h-full w-full object-cover" />
         <div
           className="absolute inset-0 pointer-events-none"
           style={{ background: "linear-gradient(to bottom, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.20) 55%, rgba(0,0,0,0.45) 100%)" }}

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-
+import Picture from "@/components/brand/Picture";
 const cinematicTileClasses = [
   "col-span-4 row-span-3",
   "col-span-2 row-span-2",
@@ -63,7 +63,7 @@ export default function CharacterShowcase({ character }) {
               onClick={() => setActiveImage(image)}
               className={`group relative h-[54vh] min-w-[78vw] snap-center overflow-hidden rounded-2xl border transition-all duration-500 sm:min-w-[56vw] md:h-auto md:min-w-0 ${cinematicTileClasses[index % cinematicTileClasses.length]} ${activeImage === image ? "border-[#C9A961] shadow-lg shadow-[#C9A961]/20" : "border-transparent hover:border-[#C9A961]/60"}`}
             >
-              <img src={image} alt={`${character.name} angle ${index + 1}`} className="h-full w-full object-cover object-top transition duration-700 group-hover:scale-110" />
+              <Picture src={image} alt={`${character.name} angle ${index + 1}`} className="h-full w-full object-cover object-top transition duration-700 group-hover:scale-110" />
               <span className="absolute inset-0 bg-gradient-to-t from-[#C9A961]/45 via-black/10 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
               {isFeaturedProfile && (
                 <span

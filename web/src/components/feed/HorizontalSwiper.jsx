@@ -5,6 +5,7 @@ import SmartNextBar from "./SmartNextBar";
 import useContentTimeTracker from "../../hooks/useContentTimeTracker";
 import { sortByBehavior, trackContentInteraction } from "../../utils/behaviorTracking";
 import { trackEvent } from "@/utils/trackEvent";
+import Picture from "@/components/brand/Picture";
 
 function MediaItem({ item, isActive, isAdjacent }) {
   const [loaded, setLoaded] = useState(false);
@@ -19,13 +20,12 @@ function MediaItem({ item, isActive, isAdjacent }) {
         />
       )}
       {shouldLoad && (
-        <img
-        src={item.src}
-        alt={item.alt || item.title}
-        loading={isActive ? "eager" : "lazy"}
-        decoding="async"
-        onLoad={() => setLoaded(true)}
-        className={`w-full h-full object-cover transition-opacity duration-700 ${loaded ? "opacity-100" : "opacity-0"}`}
+        <Picture
+          src={item.src}
+          alt={item.alt || item.title}
+          loading={isActive ? "eager" : "lazy"}
+          onLoad={() => setLoaded(true)}
+          className={`w-full h-full object-cover transition-opacity duration-700 ${loaded ? "opacity-100" : "opacity-0"}`}
         />
       )}
     </div>

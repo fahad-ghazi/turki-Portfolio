@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { base44 } from "@/api/base44Client";
+import { apiClient } from "@/api/client";
 import { Calendar, Mail } from "lucide-react";
 import Seo from "@/components/seo/Seo";
 
@@ -29,8 +29,8 @@ export default function Booking() {
     setIsSubmitting(true);
     try {
       const { website, ...payload } = form;
-      await base44.entities.LeadRequest.create({ ...payload, source: document.referrer || "direct", source_page: window.location.pathname });
-      base44.analytics.track({ eventName: "booking_form_submitted", properties: { request_type: form.request_type, source_page: window.location.pathname } });
+      await apiClient.entities.LeadRequest.create({ ...payload, source: document.referrer || "direct", source_page: window.location.pathname });
+      apiClient.analytics.track({ eventName: "booking_form_submitted", properties: { request_type: form.request_type, source_page: window.location.pathname } });
       localStorage.setItem("last_lead_submit", String(Date.now()));
       setSaved(true);
     } catch {

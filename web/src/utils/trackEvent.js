@@ -1,7 +1,7 @@
-import { base44 } from "@/api/base44Client";
+import { apiClient } from "@/api/client";
 
 export async function trackEvent(eventName, data = {}) {
-  await base44.entities.AnalyticsEvent.create({
+  await apiClient.entities.AnalyticsEvent.create({
     event_name: eventName,
     event_type: data.event_type || "button_click",
     page: data.page || window.location.pathname,

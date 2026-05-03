@@ -1,7 +1,7 @@
 import React, { useMemo, useState } from "react";
 import { AnimatePresence } from "framer-motion";
 import { useQuery } from "@tanstack/react-query";
-import { base44 } from "@/api/base44Client";
+import { apiClient } from "@/api/client";
 import FilmsListScreen from "../components/films/FilmsListScreen";
 import FilmDetailScreen from "../components/films/FilmDetailScreen";
 import { FILMS } from "../components/films/filmsData";
@@ -12,7 +12,7 @@ export default function Films() {
   const [selectedFilm, setSelectedFilm] = useState(null);
   const { data: adminFilms = [] } = useQuery({
     queryKey: ["films"],
-    queryFn: () => base44.entities.Film.list("display_order", 50),
+    queryFn: () => apiClient.entities.Film.list("display_order", 50),
   });
 
   const films = useMemo(() => {

@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { ArrowLeft, Play } from "lucide-react";
 import { Link } from "react-router-dom";
 import TGLogo from "@/components/brand/TGLogo";
-
+import Picture from "@/components/brand/Picture";
 const GOLD = "#C9A961";
 
 export default function FilmsListScreen({ films, onSelect }) {
@@ -19,7 +19,7 @@ export default function FilmsListScreen({ films, onSelect }) {
       className="fixed inset-0 overflow-hidden bg-[#0B0B0B] text-[#F5F1E8]"
       dir="rtl"
     >
-      <img src={activeFilm?.thumbnail} alt={activeFilm?.title} className="absolute inset-0 h-full w-full object-cover opacity-70 transition-all duration-700" />
+      <Picture src={activeFilm?.thumbnail} alt={activeFilm?.title} className="absolute inset-0 h-full w-full object-cover opacity-70 transition-all duration-700" />
       <div className="absolute inset-0 bg-gradient-to-b from-black/35 via-black/45 to-black/88" />
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_68%_24%,rgba(201,169,97,0.22),transparent_34%)]" />
 
@@ -61,7 +61,7 @@ export default function FilmsListScreen({ films, onSelect }) {
             onClick={() => onSelect(activeFilm)}
             className="group relative mx-auto hidden aspect-[3/4] w-full max-w-[360px] overflow-hidden rounded-[2rem] border border-[#C9A961]/45 bg-black/30 shadow-2xl shadow-black/40 md:block"
           >
-            <img src={activeFilm?.thumbnail} alt={activeFilm?.title} className="h-full w-full object-cover transition duration-700 group-hover:scale-105" />
+            <Picture src={activeFilm?.thumbnail} alt={activeFilm?.title} className="h-full w-full object-cover transition duration-700 group-hover:scale-105" />
             <span className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
             <span className="absolute inset-0 m-auto flex h-16 w-16 items-center justify-center rounded-full border border-[#C9A961] bg-black/35 text-[#C9A961] backdrop-blur-sm transition group-hover:scale-110">
               <Play className="h-6 w-6" fill="currentColor" strokeWidth={1.4} />
@@ -78,7 +78,7 @@ export default function FilmsListScreen({ films, onSelect }) {
               onClick={() => onSelect(film)}
               className={`group relative h-32 min-w-[92px] overflow-hidden rounded-2xl border transition duration-300 md:h-36 md:min-w-[108px] ${activeFilm?.id === film.id ? "border-[#C9A961] shadow-lg shadow-[#C9A961]/15" : "border-[#F5F1E8]/16 hover:border-[#C9A961]/70"}`}
             >
-              <img src={film.thumbnail} alt={film.title} className="h-full w-full object-cover transition duration-700 group-hover:scale-110" />
+              <Picture src={film.thumbnail} alt={film.title} className="h-full w-full object-cover transition duration-700 group-hover:scale-110" />
               <span className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/15 to-transparent" />
               <span className="absolute bottom-3 right-3 font-cinzel text-[10px] tracking-[0.18em] text-[#F5F1E8]">{String(index + 1).padStart(2, "0")}</span>
               <span className="absolute bottom-3 left-3 flex h-6 w-6 items-center justify-center rounded-full bg-[#F5F1E8]/90 text-[#1A1A1A] opacity-0 transition group-hover:opacity-100">

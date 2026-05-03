@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
-import { base44 } from "@/api/base44Client";
+import { apiClient } from "@/api/client";
 import Seo from "@/components/seo/Seo";
 import Eyebrow from "@/components/brand/Eyebrow";
 import ReactMarkdown from "react-markdown";
@@ -12,7 +12,7 @@ export default function BlogPost() {
   const { slug } = useParams();
   const { data: post, isLoading, isError } = useQuery({
     queryKey: ["blog", "post", slug],
-    queryFn: () => base44.entities.BlogPost.get(slug),
+    queryFn: () => apiClient.entities.BlogPost.get(slug),
     enabled: Boolean(slug),
     retry: false,
   });

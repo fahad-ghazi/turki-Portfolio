@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { base44 } from "@/api/base44Client";
+import { apiClient } from "@/api/client";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { BarChart3, FileText, Image, Search, Settings, ShieldAlert, Users } from "lucide-react";
 import AdminTable from "../components/admin/AdminTable";
@@ -10,18 +10,18 @@ import ChangePasswordForm from "../components/admin/ChangePasswordForm";
 import Seo from "@/components/seo/Seo";
 
 const queries = {
-  content: () => base44.entities.SiteContent.list("-updated_date", 50),
-  projects: () => base44.entities.PortfolioProject.list("display_order", 50),
-  films: () => base44.entities.Film.list("display_order", 50),
-  characters: () => base44.entities.Character.list("display_order", 50),
-  blog: () => base44.entities.BlogPost.list("-updated_date", 50),
-  sources: () => base44.entities.SourceIdea.list("-updated_date", 50),
-  seo: () => base44.entities.SeoIssue.list("-created_date", 50),
-  analytics: () => base44.entities.AnalyticsEvent.list("-created_date", 100),
-  leads: () => base44.entities.LeadRequest.list("-created_date", 50),
-  errors: () => base44.entities.SiteError.list("-created_date", 50),
-  media: () => base44.entities.MediaAsset.list("-updated_date", 50),
-  audit: () => base44.entities.AdminAction.list("-created_at", 100),
+  content: () => apiClient.entities.SiteContent.list("-updated_date", 50),
+  projects: () => apiClient.entities.PortfolioProject.list("display_order", 50),
+  films: () => apiClient.entities.Film.list("display_order", 50),
+  characters: () => apiClient.entities.Character.list("display_order", 50),
+  blog: () => apiClient.entities.BlogPost.list("-updated_date", 50),
+  sources: () => apiClient.entities.SourceIdea.list("-updated_date", 50),
+  seo: () => apiClient.entities.SeoIssue.list("-created_date", 50),
+  analytics: () => apiClient.entities.AnalyticsEvent.list("-created_date", 100),
+  leads: () => apiClient.entities.LeadRequest.list("-created_date", 50),
+  errors: () => apiClient.entities.SiteError.list("-created_date", 50),
+  media: () => apiClient.entities.MediaAsset.list("-updated_date", 50),
+  audit: () => apiClient.entities.AdminAction.list("-created_at", 100),
 };
 
 const columns = {
@@ -45,7 +45,7 @@ export default function AdminDashboard() {
 
   const { data: user, isLoading: isLoadingUser } = useQuery({
     queryKey: ["admin-user"],
-    queryFn: () => base44.auth.me(),
+    queryFn: () => apiClient.auth.me(),
   });
 
   // The /api/admin/me endpoint is itself gated by requireAdmin, so any
@@ -62,7 +62,7 @@ export default function AdminDashboard() {
     }
   });
 
-  const createMutation = useMutation({ mutationFn: ({ entity, payload }) => base44.entities[entity].create(payload), onSuccess: () => queryClient.invalidateQueries({ queryKey: ["admin-dashboard"] }) });
+  const createMutation = useMutation({ mutationFn: ({ entity, payload }) => apiClient.entities[entity].create(payload), onSuccess: () => queryClient.invalidateQueries({ queryKey: ["admin-dashboard"] }) });
 
   const stats = [
     ["المحتوى", data.content?.length || 0, FileText],
