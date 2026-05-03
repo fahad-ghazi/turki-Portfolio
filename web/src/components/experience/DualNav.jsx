@@ -145,6 +145,7 @@ export default function DualNav() {
       {/* ── TikTok vertical feed ── */}
       <div
         ref={containerRef}
+        data-scroll-container="dual-nav"
         className="w-full h-full"
         style={{
           overflowY: activeCategoryIndex !== null ? "hidden" : "scroll",

@@ -292,6 +292,30 @@ export default function TinderMode({ category, onExit, onNextCategory, closeOnCo
     };
   }, []);
 
+  // Bug fix (mobile): when TinderMode opens from MicroContext, the
+  // DualNav scroll container behind it stays scrollable. The card's
+  // horizontal drag gesture is interpreted as a touch on the scroll
+  // container, scroll-snap then re-snaps to the nearest slide (often
+  // Hero/slide 0), and when TinderMode closes the user is back at
+  // the home slide instead of where they were.
+  //
+  // Lock the scroll container while TinderMode is mounted, restore
+  // on unmount. Also save and restore scrollTop so we don't lose the
+  // user's position on close.
+  useEffect(() => {
+    const container = document.querySelector('[data-scroll-container="dual-nav"]');
+    if (!container) return;
+    const savedOverflow = container.style.overflowY;
+    const savedScrollTop = container.scrollTop;
+    container.style.overflowY = 'hidden';
+    return () => {
+      container.style.overflowY = savedOverflow;
+      // Restore the original scroll position so the user lands back on
+      // the slide they were viewing, not on the snap-mandatory closest.
+      container.scrollTop = savedScrollTop;
+    };
+  }, []);
+
   const goNext = () => {
     if (index >= items.length - 1) {
       if (closeOnComplete) {
