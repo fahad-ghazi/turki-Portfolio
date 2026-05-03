@@ -55,9 +55,7 @@ export default function About() {
 
       <article className="mx-auto max-w-4xl">
         {/* Heading */}
-        <p className="font-cinzel text-[10px] tracking-[0.45em] uppercase" style={{ color: GOLD }}>
-          About
-        </p>
+        <Eyebrow ar="عن تركي" en="About" />
         <h1 className="mt-5 font-noto text-6xl font-bold leading-tight tracking-tight md:text-7xl">
           عن تركي استديو
         </h1>
@@ -84,9 +82,7 @@ export default function About() {
 
         {/* What we do */}
         <section className="mt-16">
-          <p className="font-cinzel text-[10px] tracking-[0.45em] uppercase" style={{ color: GOLD }}>
-            What we do
-          </p>
+          <Eyebrow ar="ماذا نقدّم" en="What we do" />
           <h2 className="mt-3 font-noto text-4xl font-bold leading-tight md:text-5xl">
             ست مسارات. أسلوب واحد.
           </h2>
@@ -114,9 +110,7 @@ export default function About() {
 
         {/* How we work */}
         <section className="mt-16">
-          <p className="font-cinzel text-[10px] tracking-[0.45em] uppercase" style={{ color: GOLD }}>
-            How we work
-          </p>
+          <Eyebrow ar="كيف نعمل" en="How we work" />
           <h2 className="mt-3 font-noto text-4xl font-bold leading-tight md:text-5xl">
             كيف نعمل
           </h2>

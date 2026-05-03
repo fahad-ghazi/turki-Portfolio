@@ -161,12 +161,14 @@ export default function HorizontalSwiper({ items, onExit, categoryTitle, categor
       <div className="absolute top-0 left-0 right-0 z-30 flex items-center justify-between px-5 pt-12 pb-4 bg-gradient-to-b from-black/35 to-transparent">
         <button
           onClick={onExit}
-          className="text-[#F5F1E8]/80 hover:text-[#C9A961] text-xs tracking-widest font-cinzel transition-colors"
+          aria-label="رجوع"
+          className="flex items-center gap-1.5 rounded-full px-2 py-1 text-[#F5F1E8]/80 transition-colors hover:text-[#C9A961]"
         >
-          ← BACK
+          <span aria-hidden="true" className="text-base leading-none">←</span>
+          <span className="font-noto text-xs font-medium">رجوع</span>
         </button>
         <span className="text-[#F5F1E8]/65 text-xs font-cinzel tracking-widest">{categoryTitle}</span>
-        <span className="text-[#F5F1E8]/65 text-xs font-cinzel">
+        <span className="text-[#F5F1E8]/65 text-xs font-cinzel tabular-nums">
           {isCta ? `${rankedItems.length} / ${rankedItems.length}` : `${current + 1} / ${rankedItems.length}`}
         </span>
       </div>
