@@ -1,6 +1,7 @@
-#env
+#env — keep secrets out, but track .env.example as a documented template
 .env
 .env.*
+!.env.example
 
 # Logs
 /logs
