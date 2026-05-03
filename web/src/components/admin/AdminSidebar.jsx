@@ -1,11 +1,12 @@
 import React from "react";
-import { BarChart3, FileText, Film, Image, Inbox, KeyRound, LayoutDashboard, Search, Settings, Users } from "lucide-react";
+import { BarChart3, FileText, Film, Image, Inbox, KeyRound, LayoutDashboard, Search, Settings, ShieldCheck, Sparkles, Users } from "lucide-react";
 
 const tabs = [
   { id: "overview", label: "نظرة عامة", icon: LayoutDashboard },
   { id: "content", label: "المحتوى", icon: FileText },
   { id: "projects", label: "المشاريع", icon: Image },
   { id: "films", label: "الأفلام", icon: Film },
+  { id: "characters", label: "الشخصيات", icon: Sparkles },
   { id: "blog", label: "المقالات", icon: FileText },
   { id: "sources", label: "المصادر", icon: Search },
   { id: "seo", label: "SEO", icon: Search },
@@ -13,6 +14,7 @@ const tabs = [
   { id: "leads", label: "الطلبات", icon: Users },
   { id: "errors", label: "الأخطاء", icon: Settings },
   { id: "media", label: "الوسائط", icon: Inbox },
+  { id: "audit", label: "سجل الإدارة", icon: ShieldCheck },
   { id: "settings", label: "الإعدادات", icon: KeyRound },
 ];
 
