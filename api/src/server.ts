@@ -21,6 +21,7 @@ import { publicFilmsRoutes } from './routes/public/films.js';
 import { publicProjectsRoutes } from './routes/public/projects.js';
 import { publicBlogRoutes } from './routes/public/blog.js';
 import { publicContentRoutes } from './routes/public/content.js';
+import { publicCharactersRoutes } from './routes/public/characters.js';
 
 import { adminAuthRoutes } from './routes/admin/auth.js';
 import { adminEntityRoutes } from './routes/admin/entities.js';
@@ -74,6 +75,7 @@ async function main() {
   await app.register(publicProjectsRoutes, { prefix: '/api' });
   await app.register(publicBlogRoutes, { prefix: '/api' });
   await app.register(publicContentRoutes, { prefix: '/api' });
+  await app.register(publicCharactersRoutes, { prefix: '/api' });
 
   // Admin routes (under /api/admin)
   await app.register(adminAuthRoutes, { prefix: '/api/admin' });

@@ -1,16 +1,25 @@
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight, Sparkles } from "lucide-react";
 import CharacterRoster from "@/components/characters/CharacterRoster";
 import CharacterShowcase from "@/components/characters/CharacterShowcase";
-import { trainedCharacters } from "@/components/characters/trainedCharactersData";
+import { trainedCharacters as staticCharacters } from "@/components/characters/trainedCharactersData";
 import TGLogo from "@/components/brand/TGLogo";
 import Seo from "@/components/seo/Seo";
+import useCharacters from "@/hooks/useCharacters";
 
 export default function TrainedModels() {
-  const featuredCharacters = trainedCharacters.filter((character) => ["layla-03", "omar-04"].includes(character.id));
+  // Phase 2: characters come from /api/characters with the static array
+  // as a fallback. The admin manages them from /admin → characters.
+  const { characters: trainedCharacters } = useCharacters(staticCharacters);
+  const featuredCharacters = useMemo(
+    () => trainedCharacters.filter((character) => ["layla-03", "omar-04"].includes(character.id)),
+    [trainedCharacters],
+  );
   const initialId = new URLSearchParams(window.location.search).get("character");
-  const [selectedCharacter, setSelectedCharacter] = useState(trainedCharacters.find((character) => character.id === initialId) || trainedCharacters[0]);
+  const [selectedCharacter, setSelectedCharacter] = useState(
+    () => trainedCharacters.find((character) => character.id === initialId) || trainedCharacters[0],
+  );
 
   const selectCharacter = (character) => {
     setSelectedCharacter(character);

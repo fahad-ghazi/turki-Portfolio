@@ -416,3 +416,58 @@ model SourceIdea {
   @@index([workflowStatus])
   @@map("source_ideas")
 }
+
+// ─────────────────────────────────────────────────────────
+// Trained AI characters — used by /trained-models page
+// ─────────────────────────────────────────────────────────
+model Character {
+  id            String        @id @default(cuid())
+  code          String?       // "CH·01" public-facing code
+  name          String        // Arabic name
+  nameEn        String?       @map("name_en")
+  role          String?       // tagline / role in campaigns
+  tone          String?       // visual tone / look description
+  bio           String?       @db.Text
+  profileStory  String?       @map("profile_story") @db.Text
+  cover         String        // /works/trained_models/char_NN/angle_1.jpg
+  accent        String?       // hex color used in admin chrome
+  images        String[]      // ordered list of angle URLs
+  publishStatus PublishStatus @default(published) @map("publish_status")
+  displayOrder  Int           @default(0) @map("display_order")
+  createdAt     DateTime      @default(now()) @map("created_date")
+  updatedAt     DateTime      @updatedAt @map("updated_date")
+
+  @@index([publishStatus, displayOrder])
+  @@map("characters")
+}
+
+// ─────────────────────────────────────────────────────────
+// Audit log for admin actions
+// ─────────────────────────────────────────────────────────
+enum AdminActionType {
+  create
+  update
+  delete
+  login
+  logout
+  password_change
+  seed
+}
+
+model AdminAction {
+  id         String          @id @default(cuid())
+  adminId    String?         @map("admin_id")
+  adminEmail String?         @map("admin_email")
+  action     AdminActionType
+  entity     String?
+  entityId   String?         @map("entity_id")
+  payload    Json?
+  ipHash     String?         @map("ip_hash")
+  userAgent  String?         @map("user_agent") @db.Text
+  createdAt  DateTime        @default(now()) @map("created_at")
+
+  @@index([adminId, createdAt(sort: Desc)])
+  @@index([entity, entityId])
+  @@index([action, createdAt(sort: Desc)])
+  @@map("admin_actions")
+}

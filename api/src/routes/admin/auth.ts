@@ -1,6 +1,7 @@
 import type { FastifyInstance, FastifyPluginAsync } from 'fastify';
 import { z } from 'zod';
 import { hashPassword, verifyPassword } from '../../lib/hash.js';
+import { logAdminAction } from '../../lib/audit.js';
 import { env } from '../../env.js';
 
 const loginSchema = z.object({
@@ -54,6 +55,16 @@ export const adminAuthRoutes: FastifyPluginAsync = async (app: FastifyInstance) 
         data: { lastLoginAt: new Date() },
       });
 
+      // Stash the admin on the request before logging so the audit
+      // entry has a stable reference to who logged in. We don't go
+      // through requireAdmin here (the user wasn't authenticated when
+      // this request started) so we set the field manually.
+      (req as unknown as { admin: { id: string; email: string } }).admin = {
+        id: admin.id,
+        email: admin.email,
+      };
+      await logAdminAction(app.prisma, req, { action: 'login' });
+
       const token = app.jwt.sign({ sub: admin.id, email: admin.email, role: 'admin' });
       reply.setCookie(COOKIE_NAME, token, COOKIE_OPTS);
       return reply.send({ id: admin.id, email: admin.email, name: admin.name });
@@ -61,6 +72,20 @@ export const adminAuthRoutes: FastifyPluginAsync = async (app: FastifyInstance) 
   );
 
   app.post('/logout', async (req, reply) => {
+    // Best-effort: if the cookie is still valid, log who logged out.
+    try {
+      await req.jwtVerify();
+      const payload = req.user;
+      if (payload?.role === 'admin') {
+        (req as unknown as { admin: { id: string; email: string } }).admin = {
+          id: payload.sub,
+          email: payload.email,
+        };
+        await logAdminAction(app.prisma, req, { action: 'logout' });
+      }
+    } catch {
+      /* missing/expired token — nothing to log */
+    }
     reply.clearCookie(COOKIE_NAME, { path: '/' });
     return reply.send({ ok: true });
   });
@@ -111,6 +136,7 @@ export const adminAuthRoutes: FastifyPluginAsync = async (app: FastifyInstance) 
         where: { id: admin.id },
         data: { passwordHash: newHash },
       });
+      await logAdminAction(app.prisma, req, { action: 'password_change' });
       return reply.send({ ok: true });
     },
   );

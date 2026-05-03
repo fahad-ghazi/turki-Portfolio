@@ -68,6 +68,7 @@ const PUBLIC_LIST_ROUTES = {
   PortfolioProject: '/api/portfolio-projects',
   BlogPost: '/api/blog',
   SiteContent: '/api/site-content',
+  Character: '/api/characters',
 };
 
 // Frontend entity name → admin URL slug
@@ -83,6 +84,8 @@ const ADMIN_ENTITY_SLUG = {
   SiteError: 'site_errors',
   SeoIssue: 'seo_issues',
   SourceIdea: 'source_ideas',
+  Character: 'characters',
+  AdminAction: 'admin_actions',
 };
 
 // Auth state — best-effort tracking so list() chooses public vs admin.

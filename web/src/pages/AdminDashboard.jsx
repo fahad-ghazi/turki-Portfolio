@@ -13,6 +13,7 @@ const queries = {
   content: () => base44.entities.SiteContent.list("-updated_date", 50),
   projects: () => base44.entities.PortfolioProject.list("display_order", 50),
   films: () => base44.entities.Film.list("display_order", 50),
+  characters: () => base44.entities.Character.list("display_order", 50),
   blog: () => base44.entities.BlogPost.list("-updated_date", 50),
   sources: () => base44.entities.SourceIdea.list("-updated_date", 50),
   seo: () => base44.entities.SeoIssue.list("-created_date", 50),
@@ -20,12 +21,14 @@ const queries = {
   leads: () => base44.entities.LeadRequest.list("-created_date", 50),
   errors: () => base44.entities.SiteError.list("-created_date", 50),
   media: () => base44.entities.MediaAsset.list("-updated_date", 50),
+  audit: () => base44.entities.AdminAction.list("-created_at", 100),
 };
 
 const columns = {
   content: [{ key: "label", label: "العنصر" }, { key: "page", label: "الصفحة" }, { key: "type", label: "النوع" }, { key: "status", label: "الحالة" }],
   projects: [{ key: "title", label: "المشروع" }, { key: "work_type", label: "النوع" }, { key: "year", label: "السنة" }, { key: "publish_status", label: "النشر" }],
   films: [{ key: "title", label: "الفيلم" }, { key: "duration", label: "المدة" }, { key: "year", label: "السنة" }, { key: "video_url", label: "رابط الفيديو" }],
+  characters: [{ key: "name", label: "الاسم" }, { key: "code", label: "الكود" }, { key: "role", label: "الدور" }, { key: "publish_status", label: "النشر" }],
   blog: [{ key: "title", label: "المقال" }, { key: "slug", label: "Slug" }, { key: "publish_status", label: "الحالة" }, { key: "cta_text", label: "CTA" }],
   sources: [{ key: "source_title", label: "المصدر" }, { key: "source_type", label: "النوع" }, { key: "credibility", label: "الثقة" }, { key: "workflow_status", label: "المرحلة" }],
   seo: [{ key: "page_url", label: "الصفحة" }, { key: "issue_type", label: "المشكلة" }, { key: "severity", label: "الأهمية" }, { key: "status", label: "الحالة" }],
@@ -33,6 +36,7 @@ const columns = {
   leads: [{ key: "name", label: "الاسم" }, { key: "request_type", label: "الطلب" }, { key: "company", label: "الشركة" }, { key: "status", label: "الحالة" }],
   errors: [{ key: "page", label: "الصفحة" }, { key: "error_type", label: "الخطأ" }, { key: "severity", label: "الأهمية" }, { key: "count", label: "التكرار" }],
   media: [{ key: "title", label: "الملف" }, { key: "media_type", label: "النوع" }, { key: "category", label: "القسم" }, { key: "optimization_status", label: "التحسين" }],
+  audit: [{ key: "admin_email", label: "المسؤول" }, { key: "action", label: "الإجراء" }, { key: "entity", label: "الكيان" }, { key: "entity_id", label: "ID" }, { key: "created_at", label: "الوقت" }],
 };
 
 export default function AdminDashboard() {
@@ -73,6 +77,7 @@ export default function AdminDashboard() {
   const renderForm = () => {
     if (tab === "projects") return <AdminQuickForm title="إضافة مشروع" fields={[{ name: "title", label: "العنوان" }, { name: "work_type", label: "نوع العمل" }, { name: "year", label: "السنة" }, { name: "short_description", label: "وصف مختصر", type: "textarea" }]} onSubmit={(payload) => createMutation.mutateAsync({ entity: "PortfolioProject", payload })} />;
     if (tab === "films") return <AdminQuickForm title="إضافة فيلم أو رابط فيديو" fields={[{ name: "title", label: "اسم الفيلم" }, { name: "video_url", label: "رابط الفيديو" }, { name: "thumbnail", label: "رابط صورة البوستر" }, { name: "duration", label: "المدة" }, { name: "year", label: "السنة" }, { name: "display_order", label: "الترتيب", type: "number" }, { name: "description", label: "وصف الفيلم", type: "textarea" }]} onSubmit={(payload) => createMutation.mutateAsync({ entity: "Film", payload: { ...payload, display_order: Number(payload.display_order || 0) } })} />;
+    if (tab === "characters") return <AdminQuickForm title="إضافة شخصية مدرّبة" fields={[{ name: "name", label: "الاسم" }, { name: "name_en", label: "Name (EN)" }, { name: "code", label: "الكود (CH·NN)" }, { name: "cover", label: "صورة الغلاف" }, { name: "role", label: "الدور" }, { name: "tone", label: "النبرة البصرية" }, { name: "bio", label: "السيرة", type: "textarea" }]} onSubmit={(payload) => createMutation.mutateAsync({ entity: "Character", payload: { ...payload, images: [payload.cover].filter(Boolean) } })} />;
     if (tab === "blog") return <AdminQuickForm title="إنشاء مقال" fields={[{ name: "title", label: "العنوان" }, { name: "slug", label: "Slug" }, { name: "meta_description", label: "Meta description" }, { name: "executive_summary", label: "ملخص تنفيذي", type: "textarea" }]} onSubmit={(payload) => createMutation.mutateAsync({ entity: "BlogPost", payload })} />;
     if (tab === "sources") return <AdminQuickForm title="إضافة مصدر" fields={[{ name: "source_title", label: "عنوان المصدر" }, { name: "source_url", label: "الرابط" }, { name: "summary", label: "ملخص", type: "textarea" }]} onSubmit={(payload) => createMutation.mutateAsync({ entity: "SourceIdea", payload })} />;
     if (tab === "media") return <AdminQuickForm title="إضافة ملف وسائط" fields={[{ name: "title", label: "العنوان" }, { name: "file_url", label: "رابط الملف" }, { name: "category", label: "القسم" }, { name: "alt_text", label: "ALT text" }]} onSubmit={(payload) => createMutation.mutateAsync({ entity: "MediaAsset", payload })} />;

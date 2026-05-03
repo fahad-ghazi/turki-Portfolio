@@ -47,6 +47,21 @@ interface FilmRow {
   thumbnail: string;
 }
 
+interface CharacterRow {
+  id: string;
+  code?: string | null;
+  name: string;
+  nameEn?: string | null;
+  role?: string | null;
+  tone?: string | null;
+  bio?: string | null;
+  profileStory?: string | null;
+  cover: string;
+  accent?: string | null;
+  images: string[];
+  displayOrder?: number;
+}
+
 function readJson<T>(name: string): T {
   // In dev (tsx) we resolve relative to src/seed; in prod (built) the json
   // is also alongside the compiled file because we COPY it in the Dockerfile.
@@ -68,27 +83,35 @@ function readJson<T>(name: string): T {
 export async function seedContentIfEmpty(
   prisma: PrismaClient,
   log: FastifyBaseLogger,
-): Promise<{ projects: number; films: number; skipped: boolean }> {
-  const [projectCount, filmCount] = await Promise.all([
+): Promise<{ projects: number; films: number; characters: number; skipped: boolean }> {
+  const [projectCount, filmCount, characterCount] = await Promise.all([
     prisma.portfolioProject.count(),
     prisma.film.count(),
+    prisma.character.count(),
   ]);
 
-  if (projectCount > 0 && filmCount > 0) {
-    log.debug({ projectCount, filmCount }, 'seed-content: tables already populated, skipping');
-    return { projects: 0, films: 0, skipped: true };
+  if (projectCount > 0 && filmCount > 0 && characterCount > 0) {
+    log.debug(
+      { projectCount, filmCount, characterCount },
+      'seed-content: tables already populated, skipping',
+    );
+    return { projects: 0, films: 0, characters: 0, skipped: true };
   }
 
-  log.info({ projectCount, filmCount }, 'seed-content: bootstrapping from bundled JSON');
+  log.info(
+    { projectCount, filmCount, characterCount },
+    'seed-content: bootstrapping from bundled JSON',
+  );
   return seedContentForce(prisma, log);
 }
 
 export async function seedContentForce(
   prisma: PrismaClient,
   log: FastifyBaseLogger,
-): Promise<{ projects: number; films: number; skipped: false }> {
+): Promise<{ projects: number; films: number; characters: number; skipped: false }> {
   const categories = readJson<Category[]>('categories.json');
   const films = readJson<FilmRow[]>('films.json');
+  const characters = readJson<CharacterRow[]>('characters.json');
 
   let projectsUpserted = 0;
   for (const category of categories) {
@@ -139,9 +162,41 @@ export async function seedContentForce(
     order += 1;
   }
 
+  let charactersUpserted = 0;
+  let charOrder = 0;
+  for (const ch of characters) {
+    if (!ch.id || !ch.name) continue;
+    const data = {
+      code: ch.code ?? null,
+      name: ch.name,
+      nameEn: ch.nameEn ?? null,
+      role: ch.role ?? null,
+      tone: ch.tone ?? null,
+      bio: ch.bio ?? null,
+      profileStory: ch.profileStory ?? null,
+      cover: ch.cover,
+      accent: ch.accent ?? null,
+      images: ch.images ?? [],
+      publishStatus: 'published' as const,
+      displayOrder: ch.displayOrder ?? charOrder,
+    };
+    await prisma.character.upsert({
+      where: { id: ch.id },
+      create: { id: ch.id, ...data },
+      update: data,
+    });
+    charactersUpserted += 1;
+    charOrder += 1;
+  }
+
   log.info(
-    { projects: projectsUpserted, films: filmsUpserted },
+    { projects: projectsUpserted, films: filmsUpserted, characters: charactersUpserted },
     'seed-content: done',
   );
-  return { projects: projectsUpserted, films: filmsUpserted, skipped: false };
+  return {
+    projects: projectsUpserted,
+    films: filmsUpserted,
+    characters: charactersUpserted,
+    skipped: false,
+  };
 }
