@@ -3,11 +3,13 @@ import { useNavigate } from "react-router-dom";
 import HorizontalSwiper from "../components/feed/HorizontalSwiper";
 import { CATEGORIES } from "../components/feed/categoriesData";
 import Seo from "@/components/seo/Seo";
+import useSectionItems from "@/hooks/useSectionItems";
 
 const category = CATEGORIES.find((c) => c.id === "commercial-ads");
 
 export default function CommercialAds() {
   const navigate = useNavigate();
+  const { items } = useSectionItems("commercial-ads", category.items);
 
   return (
     <>
@@ -39,7 +41,7 @@ export default function CommercialAds() {
       </div>
 
       <HorizontalSwiper
-        items={category.items}
+        items={items}
         categoryTitle={category.titleEn}
         categoryId={category.id}
         onExit={() => navigate("/")}

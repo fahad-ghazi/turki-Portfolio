@@ -38,6 +38,10 @@ COPY --from=build /app/dist ./dist
 COPY --from=build /app/node_modules/.prisma ./node_modules/.prisma
 COPY --from=build /app/node_modules/@prisma ./node_modules/@prisma
 COPY --from=build /app/prisma ./prisma
+# Seed JSON files — read at runtime by seedContent.ts. They live in src/
+# in dev and beside the compiled JS in prod, so we copy them into both.
+COPY --from=build /app/src/seed ./src/seed
+COPY --from=build /app/src/seed ./dist/seed
 
 USER app
 EXPOSE 3000

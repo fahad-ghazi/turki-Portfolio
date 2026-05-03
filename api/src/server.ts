@@ -11,6 +11,7 @@ import { env } from './env.js';
 import { prismaPlugin } from './plugins/prisma.js';
 import { authPlugin } from './plugins/auth.js';
 import { ensureAdminSeed } from './lib/seed.js';
+import { seedContentIfEmpty } from './seed/seedContent.js';
 
 import { publicLeadsRoutes } from './routes/public/leads.js';
 import { publicAnalyticsRoutes } from './routes/public/analytics.js';
@@ -23,6 +24,7 @@ import { publicContentRoutes } from './routes/public/content.js';
 
 import { adminAuthRoutes } from './routes/admin/auth.js';
 import { adminEntityRoutes } from './routes/admin/entities.js';
+import { adminSeedRoutes } from './routes/admin/seed.js';
 
 async function main() {
   const app = Fastify({
@@ -76,9 +78,15 @@ async function main() {
   // Admin routes (under /api/admin)
   await app.register(adminAuthRoutes, { prefix: '/api/admin' });
   await app.register(adminEntityRoutes, { prefix: '/api/admin' });
+  await app.register(adminSeedRoutes, { prefix: '/api/admin' });
 
   // Seed admin if needed (idempotent)
   await ensureAdminSeed(app.prisma, app.log);
+  // Seed portfolio + films from bundled JSON if the tables are empty
+  // (idempotent; safe to leave on for the lifetime of the service)
+  await seedContentIfEmpty(app.prisma, app.log).catch((err) => {
+    app.log.error({ err }, 'content seed failed (non-fatal)');
+  });
 
   app.setErrorHandler((err: FastifyError, req, reply) => {
     req.log.error({ err }, 'unhandled error');

@@ -1,0 +1,873 @@
+[
+  {
+    "id": "ai-fashion",
+    "slug": "/ai-fashion",
+    "title": "الأزياء والافتتاحيات",
+    "titleEn": "Fashion Editorials",
+    "subtitle": "افتتاحيات أزياء، حملات ستوديو، ستريت وير، مجوهرات، وهوية بصرية للعلامات",
+    "seoDescription": "Turki Ghazi fashion portfolio — cinematic fashion editorials, AI-assisted campaign art direction, luxury styling, streetwear visuals, jewelry stories, and Saudi fashion identity.",
+    "introText": "عالم أزياء محرّر بعين سينمائية ومزاج حملات عالمية",
+    "coverImage": "/works/banners/fashion.jpg",
+    "items": [
+      {
+        "id": "af-red-power",
+        "type": "image",
+        "src": "/works/fashion/f_159.jpg",
+        "alt": "Red power suit fashion editorial portrait with luxury styling",
+        "title": "RED POWER",
+        "description": "افتتاحية أزياء حادة باللون الأحمر، مناسبة لحملات القوة، الثقة، والحضور النسائي الفاخر.",
+        "descriptionEn": "A sharp red fashion editorial built for power, confidence, and premium feminine presence."
+      },
+      {
+        "id": "af-vogue-family",
+        "type": "image",
+        "src": "/works/fashion/f_146.jpg",
+        "alt": "Vogue inspired neutral fashion group editorial campaign",
+        "title": "EARTH EDITORIAL",
+        "description": "حملة جماعية بدرجات ترابية راقية تمنح العلامة إحساس المجلات العالمية والهدوء الفاخر.",
+        "descriptionEn": "A refined earth-toned group editorial with international magazine energy and quiet luxury."
+      },
+      {
+        "id": "af-couture-blue",
+        "type": "image",
+        "src": "/works/fashion/f_128.jpg",
+        "alt": "Couture fashion editorial with vivid blue architecture and pink gowns",
+        "title": "BLUE COUTURE",
+        "description": "تكوين معماري جريء يضع الفساتين كمنحوتات لونية داخل مساحة زرقاء عالية التذكّر.",
+        "descriptionEn": "A bold architectural couture story where dresses become color sculptures in a blue world."
+      },
+      {
+        "id": "af-jewelry-ruby",
+        "type": "image",
+        "src": "/works/fashion/f_143.jpg",
+        "alt": "Luxury ruby jewelry beauty editorial closeup",
+        "title": "RUBY JEWELS",
+        "description": "قصة مجوهرات فاخرة تركّز على البشرة، اللمعة، والحجر الأحمر كبطل بصري للحملة.",
+        "descriptionEn": "A luxury jewelry story focused on skin, sparkle, and ruby stones as the campaign hero."
+      },
+      {
+        "id": "af-black-chain",
+        "type": "image",
+        "src": "/works/fashion/f_121.jpg",
+        "alt": "Black leather fashion editorial with giant metallic chains",
+        "title": "CHAIN FORM",
+        "description": "افتتاحية جلد أسود بطابع مستقبلي، تستخدم السلاسل كعنصر قوة وحركة داخل الإطار.",
+        "descriptionEn": "A futuristic black leather editorial using oversized chains as power and movement cues."
+      },
+      {
+        "id": "af-denim-desert",
+        "type": "image",
+        "src": "/works/fashion/f_157.jpg",
+        "alt": "Surreal denim jacket fashion campaign in the desert",
+        "title": "DENIM MIRAGE",
+        "description": "فكرة أزياء سريالية تربط الدنيم بالصحراء، وتحوّل القطعة إلى عالم بصري قابل للتسويق.",
+        "descriptionEn": "A surreal denim campaign connecting fabric, scale, and desert into a marketable visual world."
+      },
+      {
+        "id": "af-urban-leather",
+        "type": "image",
+        "src": "/works/fashion/f_155.jpg",
+        "alt": "Urban fashion low angle leather and denim editorial between skyscrapers",
+        "title": "CITY ARMOR",
+        "description": "ستريت وير حضري بإحساس قوي وعدسة منخفضة تعطي الملابس حضورًا أكبر من الواقع.",
+        "descriptionEn": "Urban streetwear with a strong low-angle lens that gives the look larger-than-life presence."
+      },
+      {
+        "id": "af-red-studio",
+        "type": "image",
+        "src": "/works/fashion/f_130.jpg",
+        "alt": "Red studio denim fashion editorial with motion blur",
+        "title": "RED DENIM",
+        "description": "حملة دنيم شبابية بإضاءة حمراء وحركة خفيفة تصنع إحساس الموسيقى والسرعة.",
+        "descriptionEn": "A youth denim campaign with red lighting and motion blur for music-driven energy."
+      },
+      {
+        "id": "af-design-studies",
+        "type": "image",
+        "src": "/works/fashion/f_080.jpg",
+        "alt": "Fashion design study board with cargo pants sketches and fabric swatches",
+        "title": "DESIGN STUDIES",
+        "description": "توظيف ذكي لمرحلة ما قبل الإنتاج: باترونات، خامات، وملاحظات تصميم تُظهر عمق العملية الإبداعية.",
+        "descriptionEn": "A smart pre-production visual: patterns, fabrics, and design notes showing creative depth."
+      },
+      {
+        "id": "af-flower-bomber",
+        "type": "image",
+        "src": "/works/fashion/f_120.jpg",
+        "alt": "Conceptual floral bomber jacket fashion campaign in a meadow",
+        "title": "BLOOM JACKET",
+        "description": "حملة شاعرية لقطعة جاكيت، تجعل الأزهار جزءًا من بناء المنتج لا مجرد خلفية.",
+        "descriptionEn": "A poetic jacket campaign where flowers become part of the product story, not just decoration."
+      },
+      {
+        "id": "af-snail-pop",
+        "type": "image",
+        "src": "/works/fashion/f_135.jpg",
+        "alt": "Pastel fashion campaign with oversized surreal snail sculpture",
+        "title": "PASTEL CREATURE",
+        "description": "عالم أزياء مرح وسريالي مناسب للعلامات الشبابية التي تبحث عن صورة مختلفة ولا تُنسى.",
+        "descriptionEn": "A playful surreal fashion world for youth brands seeking a different, unforgettable image."
+      },
+      {
+        "id": "af-cloud-pink",
+        "type": "image",
+        "src": "/works/fashion/f_113.jpg",
+        "alt": "Pink loungewear fashion campaign model sitting on cloud",
+        "title": "CLOUDWEAR",
+        "description": "حملة مريحة وحالمة للملابس اليومية، تربط الراحة بالخيال والنعومة البصرية.",
+        "descriptionEn": "A soft dreamy loungewear campaign connecting comfort with imagination and visual softness."
+      },
+      {
+        "id": "af-monochrome-thobe",
+        "type": "image",
+        "src": "/works/fashion/f_134.jpg",
+        "alt": "Black and white Saudi menswear editorial seated on stairs",
+        "title": "SAUDI MINIMAL",
+        "description": "رجالي سعودي بأسلوب مينيمال أبيض وأسود، يعطي الثوب حضورًا معاصرًا وهادئًا.",
+        "descriptionEn": "A black-and-white Saudi menswear editorial giving traditional dress a calm modern presence."
+      },
+      {
+        "id": "af-heritage-luxury",
+        "type": "image",
+        "src": "/works/fashion/f_158.jpg",
+        "alt": "Luxury Gulf fashion portrait in embroidered black abaya styling",
+        "title": "GULF LUXURY",
+        "description": "إطلالة خليجية فاخرة تجمع التطريز والعباءة السوداء مع لغة ستوديو عالمية.",
+        "descriptionEn": "A luxury Gulf look merging embroidery, black abaya styling, and global studio language."
+      },
+      {
+        "id": "af-mint-future",
+        "type": "image",
+        "src": "/works/fashion/f_151.jpg",
+        "alt": "Mint futuristic modest fashion campaign in white desert set",
+        "title": "MINT FUTURE",
+        "description": "أزياء محتشمة مستقبلية بدرجات منعشة، مناسبة لحملات الصيف والهوية النظيفة.",
+        "descriptionEn": "Futuristic modest fashion in fresh mint tones for summer and clean brand identity campaigns."
+      },
+      {
+        "id": "af-studio-streetwear",
+        "type": "image",
+        "src": "/works/fashion/f_101.jpg",
+        "alt": "Studio streetwear fashion campaign with colorful lighting setup",
+        "title": "STUDIO STREET",
+        "description": "ستريت وير داخل ستوديو واضح العناصر، يعرض الإضاءة كجزء من هوية الحملة لا كخلفية فقط.",
+        "descriptionEn": "Studio streetwear where lighting equipment becomes part of the campaign identity."
+      },
+      {
+        "id": "af-burgundy-portrait",
+        "type": "image",
+        "src": "/works/fashion/f_148.jpg",
+        "alt": "Male fashion portrait with burgundy turtleneck and gold chain",
+        "title": "BURGUNDY PORTRAIT",
+        "description": "بورتريه أزياء رجالي كلاسيكي يركز على الخامة، اللون، وتعابير الوجه كهوية بصرية.",
+        "descriptionEn": "A classic menswear portrait focused on texture, color, and expression as visual identity."
+      },
+      {
+        "id": "af-black-fur",
+        "type": "image",
+        "src": "/works/fashion/f_116.jpg",
+        "alt": "Luxury dark fashion portrait with gray faux fur and purple neon glow",
+        "title": "NEON FUR",
+        "description": "فخامة ليلية بفراء رمادي وإضاءة بنفسجية، مناسبة لحملات الشتاء والموضة الجريئة.",
+        "descriptionEn": "Night luxury with gray fur and purple glow, ideal for winter and bold fashion campaigns."
+      }
+    ]
+  },
+  {
+    "id": "commercial-ads",
+    "slug": "/commercial-ads",
+    "title": "الإعلانات التجارية",
+    "titleEn": "Commercial Ads",
+    "subtitle": "حملات إعلانية للمنتجات، المطاعم، العطور، الأزياء، والهوية التجارية",
+    "seoDescription": "Turki Ghazi commercial advertising portfolio — cinematic AI-powered product campaigns, food advertising, fragrance visuals, fashion products, and branded content for Saudi and Gulf brands.",
+    "introText": "إعلانات تجارية مصممة كعوالم بصرية لكل علامة",
+    "coverImage": "/works/banners/ads.jpg",
+    "items": [
+      {
+        "id": "ca-watch-party",
+        "type": "image",
+        "src": "/works/ads/a_071.jpg",
+        "alt": "Cinematic football watch party food and beverage campaign",
+        "title": "WATCH PARTY",
+        "description": "حملة مطاعم ومشروبات بإحساس اجتماعي سريع، مبنية حول لحظة المشاهدة والحماس الجماعي.",
+        "descriptionEn": "A social F&B campaign built around match-day energy, reactions, and shared appetite."
+      },
+      {
+        "id": "ca-match-night",
+        "type": "image",
+        "src": "/works/ads/a_068.jpg",
+        "alt": "Night football food commercial with cinematic Saudi living room energy",
+        "title": "MATCH NIGHT",
+        "description": "مشهد إعلاني ليلي عالي الإحساس يربط المنتج بالترقب، الضحك، واللحظة العائلية.",
+        "descriptionEn": "A night commercial scene connecting the product with anticipation, laughter, and family moments."
+      },
+      {
+        "id": "ca-alwalimah",
+        "type": "image",
+        "src": "/works/ads/a_067.jpg",
+        "alt": "Saudi rice product campaign portrait with Alwalimah bag",
+        "title": "ALWALIMAH RICE",
+        "description": "حملة منتج غذائي بهوية سعودية واضحة، توازن بين الثقة الشعبية والحضور الإعلاني النظيف.",
+        "descriptionEn": "A Saudi food product campaign balancing familiar trust with clean commercial presence."
+      },
+      {
+        "id": "ca-feast-table",
+        "type": "image",
+        "src": "/works/ads/a_064.jpg",
+        "alt": "Hero food platter commercial for rice and feast campaign",
+        "title": "FEAST HERO",
+        "description": "لقطة طعام بطولية تضع المنتج في مركز الشهية، مناسبة للحملات الرمضانية والموسمية.",
+        "descriptionEn": "A heroic food visual placing the product at the center of appetite and seasonal campaigns."
+      },
+      {
+        "id": "ca-laverne",
+        "type": "image",
+        "src": "/works/ads/a_061.jpg",
+        "alt": "Luxury fragrance product advertising visual with cinematic lighting",
+        "title": "FRAGRANCE WORLD",
+        "description": "عالم عطري فاخر يعتمد على الضوء، الزجاج، واللون لصناعة إحساس راقٍ حول المنتج.",
+        "descriptionEn": "A luxury fragrance world using light, glass, and color to build premium product desire."
+      },
+      {
+        "id": "ca-natural-life",
+        "type": "image",
+        "src": "/works/ads/a_059.jpg",
+        "alt": "Lifestyle cafe brand campaign for Natural Life",
+        "title": "NATURAL LIFE",
+        "description": "حملة لايف ستايل تربط المكان بالشخصية، وتحوّل الزيارة اليومية إلى صورة قابلة للتسويق.",
+        "descriptionEn": "A lifestyle campaign connecting place and personality, turning daily visits into marketable visuals."
+      },
+      {
+        "id": "ca-leather-goods",
+        "type": "image",
+        "src": "/works/ads/a_041.jpg",
+        "alt": "Luxury leather bag product photography with warm premium styling",
+        "title": "LEATHER GOODS",
+        "description": "تصوير منتج فاخر يبرز الخامة والملمس والتفاصيل الصغيرة كقيمة أساسية للعلامة.",
+        "descriptionEn": "Premium product photography highlighting texture, material, and detail as brand value."
+      },
+      {
+        "id": "ca-skincare",
+        "type": "image",
+        "src": "/works/ads/a_026.jpg",
+        "alt": "Warm skincare product campaign with monochrome yellow art direction",
+        "title": "SKINCARE SET",
+        "description": "توجيه فني لمنتجات العناية بأسلوب لوني موحد يمنح الحملة وضوحًا وتذكّرًا سريعًا.",
+        "descriptionEn": "A skincare campaign with unified color direction for clarity, recall, and shelf appeal."
+      },
+      {
+        "id": "ca-burger-concept",
+        "type": "image",
+        "src": "/works/ads/a_010.jpg",
+        "alt": "Bold cinematic burger advertising concept with red restaurant lighting",
+        "title": "BOLD BURGER",
+        "description": "إعلان طعام جريء بطابع شبابي، يستخدم المبالغة البصرية لصناعة لقطة لا تُنسى.",
+        "descriptionEn": "A bold youth-driven food ad using visual exaggeration to create a memorable frame."
+      },
+      {
+        "id": "ca-cold-drinks",
+        "type": "image",
+        "src": "/works/ads/a_009.jpg",
+        "alt": "Refreshing beverage product campaign inside a chilled fridge",
+        "title": "COLD SHELF",
+        "description": "حملة مشروبات تركز على الإحساس البارد، الرف التجاري، ولحظة الاختيار السريعة.",
+        "descriptionEn": "A beverage campaign focused on cold freshness, retail shelves, and instant product choice."
+      },
+      {
+        "id": "ca-luxury-set",
+        "type": "image",
+        "src": "/works/ads/a_002.jpg",
+        "alt": "Luxury branded merchandise flat lay with hoodie, candle, bottle, and stationery",
+        "title": "BRAND OBJECTS",
+        "description": "توظيف الهوية على منتجات ملموسة بأسلوب هادئ وفاخر يصلح للعلامات الراقية والمتاجر الخاصة.",
+        "descriptionEn": "A refined branded merchandise setup for premium labels, private stores, and identity systems."
+      }
+    ]
+  },
+  {
+    "id": "trained-models",
+    "slug": "/trained-models",
+    "title": "الشخصيات المدرّبة",
+    "titleEn": "Trained Characters",
+    "subtitle": "شخصيات ثابتة الهوية، لكل شخصية ملف صور وزوايا مستقل",
+    "seoDescription": "Turki Ghazi trained AI characters portfolio — persistent character identities with separate galleries, facial angles, fashion, ads, films, and campaign-ready model references.",
+    "introText": "ادخل كتالوج الشخصيات واختر كل شخصية لاستعراض زواياها الخاصة",
+    "coverImage": "/works/trained_models/char_01/angle_1.jpg",
+    "items": []
+  },
+  {
+    "id": "films",
+    "slug": "/films",
+    "title": "الأفلام السينمائية",
+    "titleEn": "Films",
+    "subtitle": "تجربة مشاهدة مختارة بإيقاع سينمائي هادئ",
+    "seoDescription": "Turki Ghazi cinematic films portfolio — short AI-powered films, visual stories, and behind-the-scenes cinema experiments.",
+    "introText": "أفلام قصيرة تُشاهد كتجربة سينمائية لا كمعرض صور",
+    "coverImage": "/works/banners/films.jpg",
+    "items": []
+  },
+  {
+    "id": "real-estate",
+    "slug": "/real-estate",
+    "title": "العقار والتطوير",
+    "titleEn": "Real Estate Development",
+    "subtitle": "واجهات فاخرة، تجارب سكنية، إطلاق مشاريع، وتسويق عقاري سينمائي",
+    "seoDescription": "Turki Ghazi real estate portfolio — cinematic luxury property marketing, Riyadh residential developments, architectural façades, investor presentations, virtual tours, and premium real estate campaigns.",
+    "introText": "نحوّل المشروع العقاري إلى قصة بصرية تبيع الإحساس والقيمة معًا",
+    "coverImage": "/works/realestate/r_041.jpg",
+    "items": [
+      {
+        "id": "re-urban-luxury-tower",
+        "type": "image",
+        "src": "/works/realestate/r_041.jpg",
+        "alt": "Luxury Riyadh residential building at night with skyline",
+        "title": "URBAN LUXURY",
+        "description": "واجهة سكنية فاخرة بإضاءة ليلية تجعل العقار يبدو كعنوان للرفاهية لا مجرد مبنى.",
+        "descriptionEn": "A luxury night façade positioning the property as a statement of refined urban living."
+      },
+      {
+        "id": "re-najdi-modern",
+        "type": "image",
+        "src": "/works/realestate/r_040.jpg",
+        "alt": "Modern Najdi inspired residential building with city skyline",
+        "title": "NAJDI MODERN",
+        "description": "مزج بين الزخرفة النجدية والعمارة الحديثة لصناعة مشروع يحمل هوية محلية عالية القيمة.",
+        "descriptionEn": "Najdi ornament meets modern architecture to create a locally rooted premium residence."
+      },
+      {
+        "id": "re-golden-residence",
+        "type": "image",
+        "src": "/works/realestate/r_039.jpg",
+        "alt": "Premium residential building glowing at golden hour",
+        "title": "GOLDEN RESIDENCE",
+        "description": "لقطة واجهة ذهبية تبرز دفء السكن، اتساع النوافذ، وحياة الداخل كعنصر بيع أساسي.",
+        "descriptionEn": "A golden façade frame highlighting warm interiors, wide glazing, and livable value."
+      },
+      {
+        "id": "re-balcony-moment",
+        "type": "image",
+        "src": "/works/realestate/r_038.jpg",
+        "alt": "Saudi couple on balcony overlooking sunset property view",
+        "title": "BALCONY MOMENT",
+        "description": "مشهد إنساني يبيع الإحساس قبل المساحة: عائلة، إطلالة، وقرار سكني مطمئن.",
+        "descriptionEn": "A human lifestyle moment selling feeling before square meters: view, family, and confidence."
+      },
+      {
+        "id": "re-client-tour",
+        "type": "image",
+        "src": "/works/realestate/r_037.jpg",
+        "alt": "Real estate consultants touring clients outside modern villa",
+        "title": "CLIENT TOUR",
+        "description": "تجربة المعاينة العقارية كقصة ثقة بين المستشار، العميل، والمكان.",
+        "descriptionEn": "A property viewing framed as a trust story between consultant, client, and place."
+      },
+      {
+        "id": "re-advisor-portrait",
+        "type": "image",
+        "src": "/works/realestate/r_036.jpg",
+        "alt": "Professional Saudi real estate advisor in front of premium building",
+        "title": "ADVISOR PRESENCE",
+        "description": "بورتريه مستشار عقاري يعطي العلامة وجهًا موثوقًا وحضورًا احترافيًا واضحًا.",
+        "descriptionEn": "A professional advisor portrait giving the brand a trusted, polished face."
+      },
+      {
+        "id": "re-coffee-meeting",
+        "type": "image",
+        "src": "/works/realestate/r_035.jpg",
+        "alt": "Real estate couple discussing investment with coffee in city street",
+        "title": "INVESTOR TALK",
+        "description": "لقطة حوارية مناسبة لحملات الاستثمار، تعكس القرار العقاري كجزء من نمط حياة عصري.",
+        "descriptionEn": "A conversational investment frame presenting real estate decisions as modern lifestyle moments."
+      },
+      {
+        "id": "re-terrace-living",
+        "type": "image",
+        "src": "/works/realestate/r_034.jpg",
+        "alt": "Residential terrace apartments with warm interiors at sunset",
+        "title": "TERRACE LIVING",
+        "description": "إظهار الشرفات والخضرة والإضاءة الداخلية لصناعة رغبة سكنية هادئة وفاخرة.",
+        "descriptionEn": "Terraces, greenery, and interior glow create quiet premium residential desire."
+      },
+      {
+        "id": "re-market-strategy",
+        "type": "image",
+        "src": "/works/realestate/r_033.jpg",
+        "alt": "Saudi real estate team planning market positioning strategy",
+        "title": "MARKET STRATEGY",
+        "description": "توظيف احترافي لخلفية التسويق العقاري: تحليل، تموضع، وتسعير قبل الإطلاق.",
+        "descriptionEn": "A professional real estate marketing frame: analysis, positioning, and launch planning."
+      },
+      {
+        "id": "re-signature-deal",
+        "type": "image",
+        "src": "/works/realestate/r_032.jpg",
+        "alt": "Miniature Saudi property deal scene with contracts and materials",
+        "title": "SIGNATURE DEAL",
+        "description": "لقطة رمزية ذكية تربط العقد، الخامات، والثقة المالية في صورة واحدة سهلة التذكّر.",
+        "descriptionEn": "A symbolic frame connecting contract, materials, and financial trust in one memorable image."
+      },
+      {
+        "id": "re-material-kit",
+        "type": "image",
+        "src": "/works/realestate/r_031.jpg",
+        "alt": "Real estate material sample kit contracts coffee and Saudi hospitality",
+        "title": "MATERIAL KIT",
+        "description": "تفاصيل الخامات والضيافة والعقود تظهر المشروع كمنظومة متكاملة وليست صور مبنى فقط.",
+        "descriptionEn": "Materials, hospitality, and paperwork present the project as a complete premium system."
+      },
+      {
+        "id": "re-desert-launch",
+        "type": "image",
+        "src": "/works/realestate/r_030.jpg",
+        "alt": "Luxury desert real estate launch event with open door installation",
+        "title": "DESERT LAUNCH",
+        "description": "إطلاق عقاري بصري في الصحراء؛ باب مفتوح، دائرة ضوء، وحضور خاص يصنع تجربة علامة.",
+        "descriptionEn": "A desert launch experience with an open door, light circle, and premium brand presence."
+      },
+      {
+        "id": "re-riyadh-door",
+        "type": "image",
+        "src": "/works/realestate/r_029.jpg",
+        "alt": "Saudi real estate deal in luxury interior with Riyadh skyline view",
+        "title": "RIYADH DOOR",
+        "description": "مجاز بصري قوي: باب تراثي يفتح على أفق الرياض، مثالي لحملات التحول والاستثمار.",
+        "descriptionEn": "A powerful metaphor: a heritage door opening to Riyadh skyline, ideal for investment campaigns."
+      },
+      {
+        "id": "re-hologram-masterplan",
+        "type": "image",
+        "src": "/works/realestate/r_028.jpg",
+        "alt": "Saudi developer presenting holographic residential masterplan",
+        "title": "SMART MASTERPLAN",
+        "description": "عرض مشروع بتقنية مستقبلية يرفع قيمة العرض ويحوّل المخطط إلى تجربة تفاعلية.",
+        "descriptionEn": "A futuristic project presentation turning the masterplan into an interactive sales experience."
+      },
+      {
+        "id": "re-table-model",
+        "type": "image",
+        "src": "/works/realestate/r_027.jpg",
+        "alt": "Saudi investors reviewing holographic architectural model",
+        "title": "MODEL REVIEW",
+        "description": "جلسة بيع راقية حول نموذج معماري مضيء؛ التقنية تخدم الثقة وتسهّل القرار.",
+        "descriptionEn": "A premium sales meeting around a glowing model where technology builds confidence."
+      },
+      {
+        "id": "re-boardroom-launch",
+        "type": "image",
+        "src": "/works/realestate/r_026.jpg",
+        "alt": "Saudi real estate boardroom project launch with skyline and analytics",
+        "title": "BOARDROOM LAUNCH",
+        "description": "مشهد إطلاق للمستثمرين يجمع النموذج، التحليلات، وأفق الرياض كدليل على الجدية.",
+        "descriptionEn": "An investor launch frame combining model, analytics, and Riyadh skyline as proof of seriousness."
+      },
+      {
+        "id": "re-brand-positioning",
+        "type": "image",
+        "src": "/works/realestate/r_025.jpg",
+        "alt": "Real estate brand positioning workshop with Saudi team",
+        "title": "BRAND POSITIONING",
+        "description": "تسويق عقاري يبدأ من الحضور المختلف؛ لوحة، فريق، ورسائل واضحة قبل الإعلان.",
+        "descriptionEn": "Real estate marketing begins with distinct positioning: team, board, and clear messaging."
+      },
+      {
+        "id": "re-development-journey",
+        "type": "image",
+        "src": "/works/realestate/r_024.jpg",
+        "alt": "Saudi real estate development journey from desert to skyline",
+        "title": "DEVELOPMENT JOURNEY",
+        "description": "صورة تلخص رحلة التطوير من الفكرة في الأرض إلى البناء ثم المدينة المكتملة.",
+        "descriptionEn": "A visual summary of development: land idea, construction progress, and completed city value."
+      },
+      {
+        "id": "re-seed-concept",
+        "type": "image",
+        "src": "/works/realestate/r_023.jpg",
+        "alt": "Minimal real estate concept seed growing into modern building",
+        "title": "SEED CONCEPT",
+        "description": "مجاز بصري ناعم للمشروع العقاري كاستثمار يبدأ صغيرًا وينمو إلى أصل واضح القيمة.",
+        "descriptionEn": "A soft metaphor for property investment: a seed growing into a valuable built asset."
+      },
+      {
+        "id": "re-launch-explainer",
+        "type": "image",
+        "src": "/works/realestate/r_022.jpg",
+        "alt": "Arabic real estate project launch explainer infographic",
+        "title": "LAUNCH EXPLAINER",
+        "description": "إنفوجرافيك تسويقي يشرح قيمة الإطلاق والتموضع بلغة بسيطة قابلة للنشر.",
+        "descriptionEn": "A marketing explainer that communicates launch value and positioning in a publishable format."
+      },
+      {
+        "id": "re-mobile-tour",
+        "type": "image",
+        "src": "/works/realestate/r_021.jpg",
+        "alt": "Mobile video property tour in front of apartment building",
+        "title": "MOBILE TOUR",
+        "description": "توظيف الهاتف كقناة بيع؛ العقار يظهر كمحتوى قابل للمشاهدة والمشاركة فورًا.",
+        "descriptionEn": "The phone as a sales channel — the property becomes instantly watchable and shareable."
+      },
+      {
+        "id": "re-mamsha-residence",
+        "type": "image",
+        "src": "/works/realestate/r_020.jpg",
+        "alt": "Al Mamsha residences urban mixed-use property exterior",
+        "title": "MAMSHA RESIDENCES",
+        "description": "واجهة حضرية قابلة للبيع بصريًا: مدخل واضح، حركة شارع، وخدمات بجانب السكن.",
+        "descriptionEn": "A sellable urban façade: clear entrance, street life, and services beside residences."
+      },
+      {
+        "id": "re-corridor-luxury",
+        "type": "image",
+        "src": "/works/realestate/r_019.jpg",
+        "alt": "Luxury residential corridor with ornate open apartment door",
+        "title": "PRIVATE CORRIDOR",
+        "description": "الرفاهية تبدأ من الممر؛ باب مفتوح وإضاءة دافئة تبيع الخصوصية قبل الداخل.",
+        "descriptionEn": "Luxury starts in the corridor: an open door and warm lighting sell privacy before the room."
+      },
+      {
+        "id": "re-architectural-model",
+        "type": "image",
+        "src": "/works/realestate/r_018.jpg",
+        "alt": "White architectural residential model under spotlight",
+        "title": "PHYSICAL MODEL",
+        "description": "نموذج معماري نظيف يعرض المشروع كمنتج ملموس ويزيد ثقة العميل قبل التنفيذ.",
+        "descriptionEn": "A clean architectural model making the project tangible and increasing buyer confidence."
+      },
+      {
+        "id": "re-pool-villa",
+        "type": "image",
+        "src": "/works/realestate/r_017.jpg",
+        "alt": "Luxury villa pool at sunset with palm landscape",
+        "title": "POOL VILLA",
+        "description": "لقطة نمط حياة فاخرة تجمع المسبح، النخيل، والغروب لصناعة رغبة السكن الخاص.",
+        "descriptionEn": "A premium lifestyle shot combining pool, palms, and sunset to create private-living desire."
+      },
+      {
+        "id": "re-sunset-villa",
+        "type": "image",
+        "src": "/works/realestate/r_016.jpg",
+        "alt": "Modern villa with pool and sunset reflection",
+        "title": "SUNSET VILLA",
+        "description": "فيلا حديثة بإضاءة غروب وانعكاس ماء؛ مثالية لإعلانات البيع العاطفي عالي القيمة.",
+        "descriptionEn": "A modern villa with sunset light and water reflection for high-value emotional property ads."
+      },
+      {
+        "id": "re-open-door",
+        "type": "image",
+        "src": "/works/realestate/r_015.jpg",
+        "alt": "Open wooden door into bright living room interior",
+        "title": "OPEN DOOR",
+        "description": "لقطة دخول ناعمة تبيع الإحساس بالبيت: مفتاح، خشب، ضوء، وراحة داخلية.",
+        "descriptionEn": "A soft entry frame selling the feeling of home: key, wood, light, and interior comfort."
+      },
+      {
+        "id": "re-premium-interior",
+        "type": "image",
+        "src": "/works/realestate/r_014.jpg",
+        "alt": "Bright premium apartment interior seen through black door",
+        "title": "PREMIUM INTERIOR",
+        "description": "الداخل كدليل جودة؛ لون هادئ، أثاث متوازن، وباب أسود يعطي قيمة فاخرة.",
+        "descriptionEn": "Interior as proof of quality: calm tones, balanced furniture, and a black door with premium value."
+      },
+      {
+        "id": "re-future-project",
+        "type": "image",
+        "src": "/works/realestate/r_013.jpg",
+        "alt": "Arabic future project residential community at sunrise",
+        "title": "FUTURE PROJECT",
+        "description": "صورة إطلاق مباشرة تحمل وعدًا واضحًا: مشروع المستقبل الجديد بلغة بسيطة وقوية.",
+        "descriptionEn": "A direct launch image with a clear promise: the new future project in strong simple language."
+      },
+      {
+        "id": "re-marble-detail",
+        "type": "image",
+        "src": "/works/realestate/r_012.jpg",
+        "alt": "Hand touching luxury marble wall in premium interior",
+        "title": "MARBLE TOUCH",
+        "description": "تفاصيل الخامة تبيع أكثر من اللقطة الواسعة؛ ملمس الرخام يصبح دليلًا على الفخامة.",
+        "descriptionEn": "Material detail sells beyond wide shots — marble touch becomes proof of luxury."
+      },
+      {
+        "id": "re-riyadh-overlook",
+        "type": "image",
+        "src": "/works/realestate/r_010.jpg",
+        "alt": "Saudi man overlooking Riyadh skyline from rooftop",
+        "title": "RIYADH OVERLOOK",
+        "description": "صورة طموح عقاري؛ الوقوف فوق المدينة يربط المشروع بالمستقبل والمكانة.",
+        "descriptionEn": "A property ambition frame: overlooking the city links the project to future and status."
+      },
+      {
+        "id": "re-live-broadcast",
+        "type": "image",
+        "src": "/works/realestate/r_009.jpg",
+        "alt": "Luxury property live broadcast production studio",
+        "title": "LIVE PROPERTY",
+        "description": "تسويق عقاري كإنتاج إعلامي كامل: بث مباشر، شاشات، وفريق تصوير لرفع الثقة.",
+        "descriptionEn": "Real estate marketing as full media production: live broadcast, screens, and film crew."
+      },
+      {
+        "id": "re-production-day",
+        "type": "image",
+        "src": "/works/realestate/r_008.jpg",
+        "alt": "Real estate video production set with drone and cinema camera outside villa",
+        "title": "PRODUCTION DAY",
+        "description": "ما وراء الكواليس يثبت الاحتراف: كاميرا سينما، درون، وفريق يرفع قيمة العرض العقاري.",
+        "descriptionEn": "Behind the scenes proves professionalism: cinema camera, drone, and crew elevating property value."
+      },
+      {
+        "id": "re-heritage-residence",
+        "type": "image",
+        "src": "/works/realestate/r_007.jpg",
+        "alt": "Heritage inspired modern residence with Riyadh skyline",
+        "title": "HERITAGE RESIDENCE",
+        "description": "عمارة مستوحاة من التراث بلغة معاصرة؛ مشروع يبيع الهوية بقدر ما يبيع المساحة.",
+        "descriptionEn": "Heritage-inspired modern architecture selling identity as much as space."
+      },
+      {
+        "id": "re-family-home",
+        "type": "image",
+        "src": "/works/realestate/r_006.jpg",
+        "alt": "Saudi family sitting together in bright home interior",
+        "title": "FAMILY HOME",
+        "description": "البيت كحياة: عائلة، دفء، وطمأنينة تجعل الرسالة العقارية إنسانية ومؤثرة.",
+        "descriptionEn": "Home as life: family, warmth, and reassurance make the property message human."
+      },
+      {
+        "id": "re-modern-buyer",
+        "type": "image",
+        "src": "/works/realestate/r_005.jpg",
+        "alt": "Modern Saudi buyer taking selfie near glass business towers",
+        "title": "MODERN BUYER",
+        "description": "المشتري الحديث حاضر رقميًا؛ صورة تربط العقار بالهوية الشخصية والمشاركة الاجتماعية.",
+        "descriptionEn": "The modern buyer is digitally present — property connects with personal identity and sharing."
+      },
+      {
+        "id": "re-community-coffee",
+        "type": "image",
+        "src": "/works/realestate/r_004.jpg",
+        "alt": "Saudi couple having coffee in front of premium residential villa",
+        "title": "COMMUNITY COFFEE",
+        "description": "لقطة اجتماعية رقيقة تبيع الحي كعلاقات يومية وراحة خارج حدود الجدران.",
+        "descriptionEn": "A soft social frame selling the neighborhood as daily relationships beyond walls."
+      },
+      {
+        "id": "re-palace-approach",
+        "type": "image",
+        "src": "/works/realestate/r_003.jpg",
+        "alt": "Saudi man approaching luxury palace style property at golden hour",
+        "title": "PALACE APPROACH",
+        "description": "مدخل فاخر بزخارف محلية وضوء ذهبي؛ يضع العقار في مساحة الهيبة والخصوصية.",
+        "descriptionEn": "A luxury approach with local ornament and golden light placing the property in prestige."
+      },
+      {
+        "id": "re-green-community",
+        "type": "image",
+        "src": "/works/realestate/r_002.jpg",
+        "alt": "Aerial green residential community in Riyadh with villas and gardens",
+        "title": "GREEN COMMUNITY",
+        "description": "مجتمع سكني أخضر من الأعلى؛ المسارات والحدائق والمسابح تبيع نمط حياة متكامل.",
+        "descriptionEn": "An aerial green community where paths, gardens, and pools sell a complete lifestyle."
+      },
+      {
+        "id": "re-executive-lounge",
+        "type": "image",
+        "src": "/works/realestate/r_001.jpg",
+        "alt": "Luxury real estate executive lounge interior with Arabic art",
+        "title": "EXECUTIVE LOUNGE",
+        "description": "مساحة داخلية تنفيذية تصلح لبيع خدمات عقارية فاخرة، اجتماعات كبار العملاء، وهوية مكاتب راقية.",
+        "descriptionEn": "An executive interior for premium real estate services, VIP meetings, and refined office identity."
+      }
+    ]
+  },
+  {
+    "id": "heritage",
+    "slug": "/heritage",
+    "title": "التراث والذاكرة",
+    "titleEn": "Heritage Memory",
+    "subtitle": "حكايات نجد، شوارع الرياض القديمة، السيارات الكلاسيكية، والذاكرة اليومية بلغة سينمائية",
+    "seoDescription": "Turki Ghazi heritage visual portfolio — cinematic Saudi heritage storytelling, old Riyadh neighborhoods, Najdi architecture, classic cars, cultural memory, and Gulf identity visuals.",
+    "introText": "تراث لا يُعرض كأرشيف، بل كفيلم حي من الذاكرة السعودية",
+    "coverImage": "/works/banners/heritage.jpg",
+    "items": [
+      {
+        "id": "he-bofiya",
+        "type": "image",
+        "src": "/works/heritage/h_021.jpg",
+        "alt": "Old Saudi neighborhood bofia sign at golden hour",
+        "title": "BOFIYA MEMORY",
+        "description": "لقطة افتتاحية تحمل رائحة المكان: لوحة بوفية قديمة، ضوء آخر النهار، وباب مفتوح لذاكرة الحي.",
+        "descriptionEn": "An opening memory frame: an old bofia sign, late sun, and a doorway into neighborhood nostalgia."
+      },
+      {
+        "id": "he-rooftops",
+        "type": "image",
+        "src": "/works/heritage/h_020.jpg",
+        "alt": "Aerial view of old Riyadh neighborhood rooftops in warm light",
+        "title": "ROOFTOP CITY",
+        "description": "مشهد علوي يكشف نسيج الرياض القديم؛ أسطح متقاربة، خزانات ماء، وشوارع تحفظ إيقاع الحياة اليومية.",
+        "descriptionEn": "An aerial view of old Riyadh: close rooftops, water tanks, and streets holding daily rhythm."
+      },
+      {
+        "id": "he-classic-cruise",
+        "type": "image",
+        "src": "/works/heritage/h_018.jpg",
+        "alt": "Classic Mercedes convertible cruising near mosque and flowers",
+        "title": "RIYADH CRUISE",
+        "description": "سيارة كلاسيكية تتحرك بهدوء بين النخيل والمسجد؛ فخامة قديمة بروح سعودية خفيفة.",
+        "descriptionEn": "A classic convertible gliding past palms and mosque silhouettes — old elegance with Saudi ease."
+      },
+      {
+        "id": "he-night-drift",
+        "type": "image",
+        "src": "/works/heritage/h_017.jpg",
+        "alt": "Red classic car drifting at night on wet city street",
+        "title": "NIGHT BURNOUT",
+        "description": "جانب حضري من الذاكرة: شارع مبتل، سيارة حمراء، ودخان يصنع لقطة إعلان سينمائية عالية الطاقة.",
+        "descriptionEn": "An urban memory frame: wet asphalt, a red car, and smoke shaping a high-energy cinematic ad shot."
+      },
+      {
+        "id": "he-village-drive",
+        "type": "image",
+        "src": "/works/heritage/h_016.jpg",
+        "alt": "Saudi man driving classic car through heritage village",
+        "title": "VILLAGE DRIVER",
+        "description": "سرد بصري من داخل السيارة؛ العائلة، الأطفال، بائع الآيسكريم، وشارع تراثي يتحرك حول الشخصية.",
+        "descriptionEn": "A story from inside the car: family, children, ice-cream truck, and a heritage street moving around the character."
+      },
+      {
+        "id": "he-heritage-lane",
+        "type": "image",
+        "src": "/works/heritage/h_015.jpg",
+        "alt": "Classic convertible entering old Saudi village street at sunset",
+        "title": "DUST LANE",
+        "description": "زقاق تراثي ممتلئ بالغبار والضوء، يصنع إحساس العودة للمكان لا مجرد زيارته.",
+        "descriptionEn": "A dusty golden heritage lane that feels like returning to a place, not merely visiting it."
+      },
+      {
+        "id": "he-palm-square",
+        "type": "image",
+        "src": "/works/heritage/h_014.jpg",
+        "alt": "Heritage village square with palms children and ice cream truck",
+        "title": "PALM SQUARE",
+        "description": "ساحة شعبية دافئة تجمع النخيل، الأطفال، العربة القديمة، والسيارة كرمز للرحلة بين زمنين.",
+        "descriptionEn": "A warm village square with palms, children, an old truck, and the car as a bridge between eras."
+      },
+      {
+        "id": "he-classic-close",
+        "type": "image",
+        "src": "/works/heritage/h_013.jpg",
+        "alt": "Classic red convertible close shot in old Saudi village",
+        "title": "RED IMPERIAL",
+        "description": "لقطة قريبة تجعل السيارة بطلة تراثية؛ معدن أحمر، انعكاس شمس، وخلفية نجدية ناعمة.",
+        "descriptionEn": "A close heroic classic car frame: red metal, sun reflection, and a soft Najdi backdrop."
+      },
+      {
+        "id": "he-majlis-oud",
+        "type": "image",
+        "src": "/works/heritage/h_012.jpg",
+        "alt": "Old Saudi majlis with oud player tapes radio and vintage TV",
+        "title": "MAJLIS SOUND",
+        "description": "ذاكرة المجلس كصوت وصورة: عود، أشرطة، راديو، تلفزيون قديم، وتفاصيل تحكي زمنًا كاملًا.",
+        "descriptionEn": "Majlis memory as sound and image: oud, tapes, radio, old TV, and details that hold an era."
+      },
+      {
+        "id": "he-parking-classic",
+        "type": "image",
+        "src": "/works/heritage/h_011.jpg",
+        "alt": "Classic convertible in Riyadh Boulevard parking with suited man",
+        "title": "BOULEVARD CLASSIC",
+        "description": "مزج بين الرياض الحديثة والذاكرة الكلاسيكية؛ موقف حضري وسيارة قديمة وشخصية أنيقة.",
+        "descriptionEn": "Modern Riyadh meets classic memory: an urban parking frame, vintage car, and elegant character."
+      },
+      {
+        "id": "he-dust-sedan",
+        "type": "image",
+        "src": "/works/heritage/h_010.jpg",
+        "alt": "Dusty old sedan parked in old Saudi alley at sunset",
+        "title": "DUST SEDAN",
+        "description": "سيارة عادية لكنها محمّلة بالمعنى؛ غبار، غروب، وشارع قديم يصنع صدق الوثائقيات.",
+        "descriptionEn": "An ordinary car carrying meaning: dust, sunset, and an old street with documentary honesty."
+      },
+      {
+        "id": "he-stone-truck",
+        "type": "image",
+        "src": "/works/heritage/h_009.jpg",
+        "alt": "Old pickup truck in narrow heritage stone alley with warm lamps",
+        "title": "STONE ALLEY",
+        "description": "زقاق حجري ومصابيح دافئة وشاحنة قديمة؛ لقطة تصلح لهوية مسلسل أو فيلم تراثي.",
+        "descriptionEn": "Stone alley, warm lamps, and an old pickup — a frame fit for a heritage film identity."
+      },
+      {
+        "id": "he-no-dumping",
+        "type": "image",
+        "src": "/works/heritage/h_008.jpg",
+        "alt": "Arabic no dumping sign in desert waste area with cats",
+        "title": "PUBLIC MEMORY",
+        "description": "لقطة نقدية ذكية من الذاكرة اليومية؛ لوحة رسمية، بيئة مهملة، وحكاية مدينة خلف الصورة.",
+        "descriptionEn": "A smart critical daily-memory frame: official sign, neglected ground, and a city story behind it."
+      },
+      {
+        "id": "he-road-contrast",
+        "type": "image",
+        "src": "/works/heritage/h_007.jpg",
+        "alt": "Saudi highway traffic contrast between old dusty cars and luxury vehicles",
+        "title": "ROAD CONTRAST",
+        "description": "مقارنة بصرية بين القديم والجديد على طريق واحد؛ طبقات اجتماعية وزمنية في لقطة واحدة.",
+        "descriptionEn": "Old and new on one road — social and temporal layers compressed into a single frame."
+      },
+      {
+        "id": "he-city-dust",
+        "type": "image",
+        "src": "/works/heritage/h_006.jpg",
+        "alt": "Dusty old Ford sedan driving through Riyadh traffic",
+        "title": "CITY DUST",
+        "description": "سيارة متعبة وسط مدينة متغيرة؛ صورة تلخص انتقال الرياض بين الغبار والزجاج.",
+        "descriptionEn": "A tired car in a changing city — Riyadh suspended between dust and glass."
+      },
+      {
+        "id": "he-wall-words",
+        "type": "image",
+        "src": "/works/heritage/h_005.jpg",
+        "alt": "Arabic wall graffiti poem on old cracked Saudi wall",
+        "title": "WALL WORDS",
+        "description": "الجدار كدفتر شعبي؛ كتابة عفوية على طين متشقق تمنح التراث صوتًا لا صورة فقط.",
+        "descriptionEn": "The wall as a folk notebook: spontaneous writing on cracked clay giving heritage a voice."
+      },
+      {
+        "id": "he-laundry-roofs",
+        "type": "image",
+        "src": "/works/heritage/h_004.jpg",
+        "alt": "Old neighborhood rooftops laundry lines and mosque minarets",
+        "title": "LAUNDRY ROOFS",
+        "description": "تفاصيل حياة لا تُفتعل: غسيل فوق الأسطح، مكيفات قديمة، ومآذن بعيدة داخل ضوء ذهبي.",
+        "descriptionEn": "Unstaged life details: rooftop laundry, old AC units, distant minarets, and golden light."
+      },
+      {
+        "id": "he-old-street",
+        "type": "image",
+        "src": "/works/heritage/h_003.jpg",
+        "alt": "Old Saudi street with dusty beige car at sunset",
+        "title": "QUIET STREET",
+        "description": "هدوء شارع قديم قبل الليل؛ سيارة ساكنة وشمس منخفضة تمنح الصورة حنينًا صادقًا.",
+        "descriptionEn": "The quiet of an old street before night: a still car and low sun creating honest nostalgia."
+      },
+      {
+        "id": "he-old-roofs",
+        "type": "image",
+        "src": "/works/heritage/h_002.jpg",
+        "alt": "Compressed old Saudi rooftops and narrow alley view",
+        "title": "NARROW MEMORY",
+        "description": "منظر مضغوط بين الأسطح والممرات، يوثق الكثافة البصرية للحي القديم دون تجميل زائد.",
+        "descriptionEn": "A compressed view of rooftops and alleys documenting old-neighborhood density without over-polishing."
+      },
+      {
+        "id": "he-golden-grid",
+        "type": "image",
+        "src": "/works/heritage/h_001.jpg",
+        "alt": "Golden aerial grid of old Saudi neighborhood streets and rooftops",
+        "title": "GOLDEN GRID",
+        "description": "شبكة المدينة من الأعلى؛ نهاية مثالية للقسم لأنها تكشف التراث كنظام حياة كامل.",
+        "descriptionEn": "The city grid from above — a closing frame revealing heritage as a complete living system."
+      }
+    ]
+  }
+]

@@ -3,12 +3,14 @@ import { useNavigate } from "react-router-dom";
 import HorizontalSwiper from "../components/feed/HorizontalSwiper";
 import { CATEGORIES } from "../components/feed/categoriesData";
 import Seo from "@/components/seo/Seo";
+import useSectionItems from "@/hooks/useSectionItems";
 
 const category = CATEGORIES.find((c) => c.id === "ai-fashion");
 
 export default function AiFashion() {
   const navigate = useNavigate();
   const [open, setOpen] = useState(true);
+  const { items } = useSectionItems("ai-fashion", category.items);
 
   const handleExit = () => navigate("/");
 
@@ -44,7 +46,7 @@ export default function AiFashion() {
 
       {/* Cinematic Swiper Experience */}
       <HorizontalSwiper
-        items={category.items}
+        items={items}
         categoryTitle={category.titleEn}
         categoryId={category.id}
         onExit={handleExit}
