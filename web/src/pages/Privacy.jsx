@@ -1,8 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Seo from "@/components/seo/Seo";
-
-const GOLD = "#C9A961";
+import Eyebrow from "@/components/brand/Eyebrow";
 
 // First-pass privacy policy — covers what the site actually does today:
 // 1) booking-form lead capture
@@ -28,9 +27,7 @@ export default function Privacy() {
       </Link>
 
       <div className="mx-auto max-w-3xl">
-        <p className="font-cinzel text-[10px] tracking-[0.45em] uppercase" style={{ color: GOLD }}>
-          Privacy
-        </p>
+        <Eyebrow ar="الخصوصية" en="Privacy" />
         <h1 className="mt-5 font-noto text-5xl font-bold leading-tight md:text-6xl">
           سياسة الخصوصية
         </h1>

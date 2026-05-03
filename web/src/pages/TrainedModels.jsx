@@ -5,6 +5,7 @@ import CharacterRoster from "@/components/characters/CharacterRoster";
 import CharacterShowcase from "@/components/characters/CharacterShowcase";
 import { trainedCharacters as staticCharacters } from "@/components/characters/trainedCharactersData";
 import TGLogo from "@/components/brand/TGLogo";
+import Eyebrow from "@/components/brand/Eyebrow";
 import Seo from "@/components/seo/Seo";
 import useCharacters from "@/hooks/useCharacters";
 
@@ -60,7 +61,7 @@ export default function TrainedModels() {
           <div>
             <div className="mb-4 flex items-center gap-3">
               <Sparkles className="h-5 w-5 text-[#C9A961]" strokeWidth={1.4} />
-              <span className="font-cinzel text-[10px] tracking-[0.42em] text-[#C9A961]">TRAINED CHARACTERS</span>
+              <Eyebrow ar="شخصيات مدرّبة" en="Trained Characters" />
             </div>
             <h1 className="font-noto text-5xl font-bold leading-tight md:text-7xl">الشخصيات المدرّبة</h1>
             <p className="mt-5 max-w-2xl font-noto text-sm leading-8 text-[#1A1A1A]/70 md:text-base">
@@ -94,7 +95,7 @@ export default function TrainedModels() {
               <span className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent" />
               <span className="absolute inset-0 bg-gradient-to-tr from-[#C9A961]/35 via-transparent to-black/20 opacity-0 transition duration-500 group-hover:opacity-100" />
               <div className="absolute bottom-0 right-0 left-0 p-6 text-[#F5F1E8]">
-                <p className="font-cinzel text-[10px] tracking-[0.35em] text-[#C9A961]">FEATURED PROFILE · {character.code}</p>
+                <p className="font-noto text-xs font-bold tracking-[0.18em] text-[#C9A961]">شخصية مميّزة · {character.code}</p>
                 <h2 className="mt-3 font-noto text-5xl font-bold">{character.name}</h2>
                 <p className="mt-3 max-w-md font-noto text-sm leading-7 text-[#F5F1E8]/75">{character.profileStory || character.role}</p>
               </div>

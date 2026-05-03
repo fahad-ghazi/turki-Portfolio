@@ -1,8 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Seo from "@/components/seo/Seo";
-
-const GOLD = "#C9A961";
+import Eyebrow from "@/components/brand/Eyebrow";
 
 // First-pass terms — kept short and reasonable. Should be reviewed
 // with legal counsel and adjusted to actual project-engagement scope.
@@ -24,9 +23,7 @@ export default function Terms() {
       </Link>
 
       <div className="mx-auto max-w-3xl">
-        <p className="font-cinzel text-[10px] tracking-[0.45em] uppercase" style={{ color: GOLD }}>
-          Terms
-        </p>
+        <Eyebrow ar="الشروط والأحكام" en="Terms" />
         <h1 className="mt-5 font-noto text-5xl font-bold leading-tight md:text-6xl">
           الشروط والأحكام
         </h1>

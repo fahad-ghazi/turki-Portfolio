@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { base44 } from "@/api/base44Client";
 import Seo from "@/components/seo/Seo";
+import Eyebrow from "@/components/brand/Eyebrow";
 
 const GOLD = "#C9A961";
 
@@ -35,9 +36,7 @@ export default function Blog() {
       </Link>
 
       <div className="mx-auto max-w-4xl">
-        <p className="font-cinzel text-[10px] tracking-[0.45em] uppercase" style={{ color: GOLD }}>
-          Blog
-        </p>
+        <Eyebrow ar="المدوّنة" en="Blog" />
         <h1 className="mt-5 font-noto text-6xl font-bold leading-tight md:text-7xl">المدوّنة</h1>
 
         {isLoading && (

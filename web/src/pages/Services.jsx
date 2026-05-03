@@ -1,6 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Seo from "@/components/seo/Seo";
+import Eyebrow from "@/components/brand/Eyebrow";
+import Button from "@/components/brand/Button";
 
 const GOLD = "#C9A961";
 
@@ -58,9 +60,7 @@ export default function Services() {
       </Link>
 
       <div className="mx-auto max-w-5xl">
-        <p className="font-cinzel text-[10px] tracking-[0.45em] uppercase" style={{ color: GOLD }}>
-          Services
-        </p>
+        <Eyebrow ar="الخدمات" en="Services" />
         <h1 className="mt-5 font-noto text-6xl font-bold leading-tight tracking-tight md:text-7xl">
           الخدمات
         </h1>
@@ -94,12 +94,7 @@ export default function Services() {
         </div>
 
         <div className="mt-10 flex justify-center">
-          <Link
-            to="/booking"
-            className="rounded-full border-2 border-[#1A1A1A] bg-[#1A1A1A] px-10 py-4 text-center font-noto text-base font-bold text-[#F5F1E8] transition hover:border-[#C9A961] hover:text-[#C9A961]"
-          >
-            ابدأ مشروعك
-          </Link>
+          <Button to="/booking" variant="dark" size="lg">ابدأ مشروعك</Button>
         </div>
       </div>
     </div>

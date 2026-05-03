@@ -3,6 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { base44 } from "@/api/base44Client";
 import Seo from "@/components/seo/Seo";
+import Eyebrow from "@/components/brand/Eyebrow";
 import ReactMarkdown from "react-markdown";
 
 const GOLD = "#C9A961";
@@ -47,9 +48,7 @@ export default function BlogPost() {
         )}
         {post && (
           <>
-            <p className="font-cinzel text-[10px] tracking-[0.45em] uppercase" style={{ color: GOLD }}>
-              Article
-            </p>
+            <Eyebrow ar="مقال" en="Article" />
             <h1 className="mt-5 font-noto text-5xl font-bold leading-tight md:text-6xl">
               {post.h1 || post.title}
             </h1>
