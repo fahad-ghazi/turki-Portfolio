@@ -5,77 +5,120 @@ import SmartNextBar from "./SmartNextBar";
 import useContentTimeTracker from "../../hooks/useContentTimeTracker";
 import { sortByBehavior, trackContentInteraction } from "../../utils/behaviorTracking";
 import { trackEvent } from "@/utils/trackEvent";
+import { useLang } from "@/lib/LanguageContext";
 import Picture from "@/components/brand/Picture";
 
-function MediaItem({ item, isActive, isAdjacent }) {
-  const [loaded, setLoaded] = useState(false);
-  const shouldLoad = isActive || isAdjacent;
-
+function MediaItem({ item, isActive }) {
+  // The previous version painted the bare item.src as a CSS background
+  // (`bg-cover blur-xl`) for a placeholder, which forced the browser to
+  // fetch the full-resolution JPG outside the responsive pipeline. The
+  // <Picture> component now renders its own blurhash canvas while the
+  // real srcset variant decodes — keeping a second placeholder layer
+  // here doubled bandwidth and produced a visible blur-then-fade flash.
   return (
     <div className="absolute inset-0">
-      {shouldLoad && !loaded && (
-        <div
-          className="absolute inset-0 bg-cover bg-center blur-xl scale-110 opacity-50"
-          style={{ backgroundImage: `url(${item.src})` }}
-        />
-      )}
-      {shouldLoad && (
-        <Picture
-          src={item.src}
-          alt={item.alt || item.title}
-          loading={isActive ? "eager" : "lazy"}
-          onLoad={() => setLoaded(true)}
-          className={`w-full h-full object-cover transition-opacity duration-700 ${loaded ? "opacity-100" : "opacity-0"}`}
-        />
-      )}
+      <Picture
+        src={item.src}
+        alt={item.alt || item.title}
+        loading={isActive ? "eager" : "lazy"}
+        fetchPriority={isActive ? "high" : undefined}
+        sizes="(max-width: 768px) 96vw, 880px"
+        className="w-full h-full object-cover"
+      />
     </div>
   );
 }
 
 export default function HorizontalSwiper({ items, onExit, categoryTitle, categoryId }) {
+  const { isAr } = useLang();
   const rankedItems = useMemo(() => sortByBehavior(items), [items]);
   // Audit #47: append a synthetic CTA slide at the end of every section.
   const totalSlots = rankedItems.length + 1;
   const [current, setCurrent] = useState(0);
-  const touchStartX = useRef(null);
+  const [bounce, setBounce] = useState(0);
+  const touchStart = useRef(null);
   const isCta = current === rankedItems.length;
   const isLast = current === totalSlots - 1;
 
+  const triggerBounce = useCallback((dir) => {
+    setBounce(dir);
+    if (navigator.vibrate) navigator.vibrate(4);
+    setTimeout(() => setBounce(0), 280);
+  }, []);
+
+  // Bug fix (jittery first swipe): without this lock, a fast user could
+  // fire 3 swipes inside the 400ms enter/exit window. Each one
+  // increments `current` synchronously and the AnimatePresence
+  // transitions stack/cancel each other, making it look like several
+  // images flash by on a single gesture.
+  const transitioningRef = useRef(false);
+  const TRANSITION_MS = 420;
+
   // Audit #8: useCallback so goNext/goPrev have stable identities.
-  // The keyboard useEffect previously listed only [current] as a dep,
-  // which meant the captured goPrev/goNext were stale on every render
-  // after the first — keyboard nav still worked because of the freshly
-  // re-bound listener, but adding deps later would have re-attached the
-  // listener every render. Stable callbacks fix both ends.
   const goNext = useCallback(() => {
-    if (isLast) onExit();
-    else setCurrent((p) => p + 1);
-  }, [isLast, onExit]);
+    if (transitioningRef.current) return;
+    if (isLast) {
+      triggerBounce(isAr ? -1 : 1);
+      return;
+    }
+    transitioningRef.current = true;
+    setCurrent((p) => p + 1);
+    setTimeout(() => {
+      transitioningRef.current = false;
+    }, TRANSITION_MS);
+  }, [isLast, triggerBounce, isAr]);
 
   const goPrev = useCallback(() => {
-    if (current === 0) onExit();
-    else setCurrent((p) => p - 1);
-  }, [current, onExit]);
+    if (transitioningRef.current) return;
+    if (current === 0) {
+      // Bounce visually instead of exiting — exiting is the explicit
+      // "back" button in the top bar.
+      triggerBounce(isAr ? 1 : -1);
+      return;
+    }
+    transitioningRef.current = true;
+    setCurrent((p) => p - 1);
+    setTimeout(() => {
+      transitioningRef.current = false;
+    }, TRANSITION_MS);
+  }, [current, triggerBounce, isAr]);
 
-  // Touch
-  const onTouchStart = (e) => { touchStartX.current = e.touches[0].clientX; };
+  // Touch — track both X and Y, ignore the gesture if it's mostly
+  // vertical (lets the user scroll past the carousel without
+  // accidentally flipping a slide). RTL: left-swipe = next, right-swipe
+  // = prev. LTR: opposite.
+  const onTouchStart = (e) => {
+    const t = e.touches[0];
+    touchStart.current = { x: t.clientX, y: t.clientY };
+  };
   const onTouchEnd = (e) => {
-    if (touchStartX.current === null) return;
-    const diff = touchStartX.current - e.changedTouches[0].clientX;
-    if (Math.abs(diff) > 40) diff > 0 ? goNext() : goPrev();
-    touchStartX.current = null;
+    if (!touchStart.current) return;
+    const t = e.changedTouches[0];
+    const dx = touchStart.current.x - t.clientX;
+    const dy = touchStart.current.y - t.clientY;
+    touchStart.current = null;
+    if (Math.abs(dy) > Math.abs(dx)) return; // vertical scroll, ignore
+    if (Math.abs(dx) <= 40) return;
+    const swipedLeft = dx > 0; // finger moved right→left
+    if (isAr) {
+      if (swipedLeft) goNext();
+      else goPrev();
+    } else {
+      if (swipedLeft) goPrev();
+      else goNext();
+    }
   };
 
-  // Keyboard
+  // Keyboard — semantic mapping that follows the language reading order.
   useEffect(() => {
     const onKey = (e) => {
-      if (e.key === "ArrowRight") goPrev();
-      if (e.key === "ArrowLeft") goNext();
+      if (e.key === "ArrowRight") (isAr ? goNext : goPrev)();
+      if (e.key === "ArrowLeft") (isAr ? goPrev : goNext)();
       if (e.key === "Escape") onExit();
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [goPrev, goNext, onExit]);
+  }, [goPrev, goNext, onExit, isAr]);
 
   const item = rankedItems[current];
   useContentTimeTracker(item?.id, Boolean(item) && !isCta, 2);
@@ -105,13 +148,19 @@ export default function HorizontalSwiper({ items, onExit, categoryTitle, categor
       onTouchStart={onTouchStart}
       onTouchEnd={onTouchEnd}
     >
-      {/* Media or end-of-section CTA */}
+      {/* Media or end-of-section CTA. Slide direction follows the
+          reading order: in RTL the next slide arrives from the LEFT
+          (the direction of "forward" in Arabic), and the outgoing
+          slide leaves to the RIGHT. Mirror for LTR. */}
       <AnimatePresence mode="wait">
         <motion.div
           key={current}
-          initial={{ opacity: 0, x: 60 }}
-          animate={{ opacity: 1, x: 0 }}
-          exit={{ opacity: 0, x: -60 }}
+          initial={{ opacity: 0, x: isAr ? -60 : 60 }}
+          animate={{
+            opacity: 1,
+            x: bounce === -1 ? -22 : bounce === 1 ? 22 : 0,
+          }}
+          exit={{ opacity: 0, x: isAr ? 60 : -60 }}
           transition={{ duration: 0.4, ease: "easeOut" }}
           className="absolute inset-2 overflow-hidden rounded-[1.35rem] border border-[#C9A961]/18 bg-black"
         >
@@ -215,9 +264,19 @@ export default function HorizontalSwiper({ items, onExit, categoryTitle, categor
         ))}
       </div>
 
-      {/* Clear navigation buttons */}
-      <button onClick={goPrev} className="absolute left-4 top-1/2 z-30 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-[#F5F1E8]/35 bg-black/25 font-cinzel text-lg text-[#F5F1E8] backdrop-blur-sm transition hover:border-[#C9A961] hover:text-[#C9A961]" aria-label="Previous">‹</button>
-      <button onClick={goNext} className="absolute right-4 top-1/2 z-30 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-[#F5F1E8]/35 bg-black/25 font-cinzel text-lg text-[#F5F1E8] backdrop-blur-sm transition hover:border-[#C9A961] hover:text-[#C9A961]" aria-label="Next">›</button>
+      {/* Clear navigation buttons. In RTL the NEXT button is on the
+          left (the "forward" direction in Arabic reading order); in
+          LTR it is on the right. The chevron glyph follows the side. */}
+      <button
+        onClick={isAr ? goNext : goPrev}
+        className="absolute left-4 top-1/2 z-30 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-[#F5F1E8]/35 bg-black/25 font-cinzel text-lg text-[#F5F1E8] backdrop-blur-sm transition hover:border-[#C9A961] hover:text-[#C9A961]"
+        aria-label={isAr ? "التالي" : "Previous"}
+      >‹</button>
+      <button
+        onClick={isAr ? goPrev : goNext}
+        className="absolute right-4 top-1/2 z-30 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-[#F5F1E8]/35 bg-black/25 font-cinzel text-lg text-[#F5F1E8] backdrop-blur-sm transition hover:border-[#C9A961] hover:text-[#C9A961]"
+        aria-label={isAr ? "السابق" : "Next"}
+      >›</button>
     </div>
   );
 }

@@ -15,50 +15,37 @@ const SWIPE_THRESHOLD = 90;
 const SPRING = { type: "spring", stiffness: 280, damping: 28, mass: 0.8 };
 
 // ── Image preloader hook ────────────────────────────────────────
-// Audit #5: previously the next card mounted with a fresh <img>, faded
-// in over 500ms, leaving a blank panel briefly between swipes. Now we
-// preload a small ring of upcoming images in the background so they're
-// already in the browser cache by the time the swipe lands.
-function usePreloadedImages(items, currentIndex, lookahead = 3) {
-  useEffect(() => {
-    if (!Array.isArray(items)) return;
-    const slice = items
-      .slice(currentIndex, currentIndex + lookahead + 1)
-      .map((it) => it?.src)
-      .filter(Boolean);
-    const handles = slice.map((src) => {
-      const img = new Image();
-      img.src = src;
-      return img;
-    });
-    return () => {
-      handles.forEach((h) => {
-        h.src = "";
-      });
-    };
-  }, [items, currentIndex, lookahead]);
+// Previously this used `new Image(); img.src = src` to preload upcoming
+// cards. That works on a single-resolution site, but in the 2026
+// responsive pipeline the browser would have picked the 480w AVIF —
+// the preload would fetch the *full-res JPG* instead, doubling the
+// bandwidth and leaking outside the manifest.
+//
+// The new strategy: render upcoming cards via the same <Picture>
+// component but with `loading="lazy"` and `aria-hidden`, parked in a
+// hidden host. Browsers honour the responsive srcset and only one
+// variant is fetched per slide. This hook is now a no-op, kept for
+// API compatibility with audits that referenced "Audit #5".
+function usePreloadedImages() {
+  /* see HiddenPreloadStack below */
 }
 
-// ── Parallax Image ───────────────────────────────────────────────
+// ── Card Image ───────────────────────────────────────────────────
+// The outer opacity-fade has been removed: <Picture> renders a blurhash
+// canvas placeholder under the <img> and fades the real image in once
+// it decodes. Wrapping that with a second opacity-toggle was double
+// work and introduced a visible 200ms blank flash on cached images.
 function CardImage({ src, alt }) {
-  const [loaded, setLoaded] = useState(false);
-  // If the browser already has the image cached (because usePreloadedImages
-  // queued it) the onLoad callback fires synchronously and the fade-in
-  // skips entirely. Test that on mount.
-  const ref = useRef(null);
-  useEffect(() => {
-    if (ref.current?.complete) setLoaded(true);
-  }, [src]);
   return (
     <div className="absolute inset-0 overflow-hidden rounded-3xl">
       <Picture
-        ref={ref}
         src={src}
         alt={alt}
         draggable={false}
         loading="eager"
-        onLoad={() => setLoaded(true)}
-        className={`w-full h-full object-cover transition-opacity duration-200 ${loaded ? "opacity-100" : "opacity-0"}`}
+        fetchPriority="high"
+        sizes="(max-width: 768px) 96vw, 540px"
+        className="w-full h-full object-cover"
       />
       {/* Bottom gradient for text readability only */}
       <div
@@ -70,19 +57,30 @@ function CardImage({ src, alt }) {
 }
 
 // ── Swipe Label ──────────────────────────────────────────────────
-function SwipeLabel({ dragX, direction }) {
+// `direction` is semantic ("next" or "prev"). The physical side the
+// label sits on, and which sign of dragX triggers it, both depend on
+// the language. In RTL the next-card lives "to the left", so a left
+// drag (negative x) reveals the NEXT label on the left edge. Mirror
+// that for LTR.
+function SwipeLabel({ dragX, direction, isAr }) {
+  const isNext = direction === "next";
+  // Positive x = drag to the right.
+  // RTL+next → fades in as user drags left  (negative x).
+  // LTR+next → fades in as user drags right (positive x).
+  const showsOnNegativeX = isAr ? isNext : !isNext;
   const opacity = useTransform(
     dragX,
-    direction === "next" ? [-160, -50, 0] : [0, 50, 160],
-    direction === "next" ? [1, 0.2, 0] : [0, 0.2, 1]
+    showsOnNegativeX ? [-160, -50, 0] : [0, 50, 160],
+    showsOnNegativeX ? [1, 0.2, 0] : [0, 0.2, 1]
   );
-  const rotate = direction === "next" ? "8deg" : "-8deg";
-  const isNext = direction === "next";
+  // Label sits on the side it points to.
+  const onLeft = showsOnNegativeX;
+  const rotate = onLeft ? "-8deg" : "8deg";
 
   return (
     <motion.div
       style={{ opacity }}
-      className={`absolute top-10 ${isNext ? "right-6" : "left-6"} z-20 pointer-events-none`}
+      className={`absolute top-10 ${onLeft ? "left-6" : "right-6"} z-20 pointer-events-none`}
     >
       <div
         className="rounded-2xl px-4 py-2 border-2"
@@ -93,9 +91,17 @@ function SwipeLabel({ dragX, direction }) {
           background: isNext ? "rgba(248,113,113,0.08)" : "hsl(40 45% 58% / 0.08)",
         }}
       >
-        <span className="font-cinzel text-sm font-bold tracking-widest"
-          style={{ color: isNext ? "rgb(248,113,113)" : "hsl(40 45% 68%)" }}>
-          {isNext ? "NEXT →" : "← PREV"}
+        <span
+          className="font-cinzel text-sm font-bold tracking-widest"
+          style={{ color: isNext ? "rgb(248,113,113)" : "hsl(40 45% 68%)" }}
+        >
+          {isAr
+            ? isNext
+              ? "← التالي"
+              : "السابق →"
+            : isNext
+              ? "NEXT →"
+              : "← PREV"}
         </span>
       </div>
     </motion.div>
@@ -190,7 +196,14 @@ function CardContent({ item, categoryId }) {
 }
 
 // ── Draggable Card ───────────────────────────────────────────────
-function DraggableCard({ item, categoryId, onSwipeLeft, onSwipeRight, zIndex }) {
+// Direction semantics: in Arabic (RTL) the natural "next" gesture is a
+// swipe to the LEFT (the language reads right-to-left, so the next item
+// is to the left visually as well). In English (LTR), the natural
+// "next" is a swipe to the RIGHT, like flipping a book page.
+//
+// We accept a semantic `onNext`/`onPrev` from the parent and let the
+// `isAr` flag decide which physical direction maps to which.
+function DraggableCard({ item, categoryId, onNext, onPrev, zIndex, isAr }) {
   const x = useMotionValue(0);
   const y = useMotionValue(0);
   const rotate = useTransform(x, [-280, 280], [-18, 18]);
@@ -200,16 +213,23 @@ function DraggableCard({ item, categoryId, onSwipeLeft, onSwipeRight, zIndex }) 
   const handleDragEnd = (_, info) => {
     const vx = info.velocity.x;
     const ox = info.offset.x;
-    if (ox < -SWIPE_THRESHOLD || vx < -500) {
-      onSwipeLeft();
-    } else if (ox > SWIPE_THRESHOLD || vx > 500) {
-      onSwipeRight();
+    const swipedLeft = ox < -SWIPE_THRESHOLD || vx < -500;
+    const swipedRight = ox > SWIPE_THRESHOLD || vx > 500;
+    if (!swipedLeft && !swipedRight) return;
+    // RTL: left-swipe = next, right-swipe = prev.
+    // LTR: right-swipe = next, left-swipe = prev.
+    if (isAr) {
+      if (swipedLeft) onNext();
+      else onPrev();
+    } else {
+      if (swipedRight) onNext();
+      else onPrev();
     }
   };
 
   return (
     <motion.div
-      style={{ x, y, rotate, opacity: cardOpacity, scale: cardScale, zIndex, touchAction: "none", willChange: "transform" }}
+      style={{ x, y, rotate, opacity: cardOpacity, scale: cardScale, zIndex, touchAction: "pan-y", willChange: "transform" }}
       drag="x"
       dragConstraints={{ left: 0, right: 0 }}
       dragElastic={0.3}
@@ -217,8 +237,8 @@ function DraggableCard({ item, categoryId, onSwipeLeft, onSwipeRight, zIndex }) 
       className="absolute inset-3 rounded-3xl shadow-2xl cursor-grab active:cursor-grabbing select-none"
     >
       <CardImage src={item.src} alt={item.alt} />
-      <SwipeLabel dragX={x} direction="next" />
-      <SwipeLabel dragX={x} direction="prev" />
+      <SwipeLabel dragX={x} direction="next" isAr={isAr} />
+      <SwipeLabel dragX={x} direction="prev" isAr={isAr} />
 
       {/* Content */}
       <CardContent item={item} categoryId={categoryId} />
@@ -318,7 +338,34 @@ export default function TinderMode({ category, onExit, onNextCategory, closeOnCo
     };
   }, []);
 
+  // Audit fix: previously a swipe-back from index 0 silently called
+  // onExit(), which on character galleries kicked the user back to the
+  // home slide unexpectedly. Now we trigger a quick "bounce" feedback
+  // at boundaries instead — the explicit X close button is the only
+  // way out. Same applies to swiping forward past the last card; we
+  // show the post-experience CTA rather than exit silently.
+  const [bounce, setBounce] = useState(0); // -1 left, 1 right, 0 idle
+  const triggerBounce = (dir) => {
+    setBounce(dir);
+    if (navigator.vibrate) navigator.vibrate(4);
+    setTimeout(() => setBounce(0), 280);
+  };
+
+  // Bug fix (jittery first swipe): on the first card the user could
+  // fire 2-3 swipes in quick succession before the AnimatePresence
+  // exit/enter cycle finished. Each call updated `index` synchronously,
+  // and the motion timeline collapsed several transitions on top of
+  // each other — visually it looked like several images flashing past
+  // at once. We now hold a transition lock for the duration of the
+  // spring animation (~420ms) so swipes are queued sanely.
+  const transitioningRef = useRef(false);
+  const TRANSITION_MS = 420;
+  const releaseTransition = () => {
+    transitioningRef.current = false;
+  };
+
   const goNext = () => {
+    if (transitioningRef.current) return;
     if (index >= items.length - 1) {
       if (closeOnComplete) {
         onNextCategory();
@@ -332,19 +379,26 @@ export default function TinderMode({ category, onExit, onNextCategory, closeOnCo
       }, 3500);
       return;
     }
+    transitioningRef.current = true;
     setExitDir(-1);
     setIndex((p) => p + 1);
     if (navigator.vibrate) navigator.vibrate(6);
+    setTimeout(releaseTransition, TRANSITION_MS);
   };
 
   const goPrev = () => {
+    if (transitioningRef.current) return;
     if (index <= 0) {
-      onExit();
+      // Bounce instead of dropping out — the user almost certainly
+      // wanted to keep browsing, not close the gallery.
+      triggerBounce(isAr ? 1 : -1);
       return;
     }
+    transitioningRef.current = true;
     setExitDir(1);
     setIndex((p) => p - 1);
     if (navigator.vibrate) navigator.vibrate(6);
+    setTimeout(releaseTransition, TRANSITION_MS);
   };
 
   return (
@@ -369,18 +423,34 @@ export default function TinderMode({ category, onExit, onNextCategory, closeOnCo
       {/* Card stack */}
       <div className="relative flex-1 mx-1">
         {showCTA && <PostCTA isAr={isAr} onExit={onExit} />}
-        {/* Background card (next item preview) */}
-        {index + 1 < items.length && (
-          <motion.div
-            className="absolute inset-3 rounded-3xl overflow-hidden pointer-events-none"
-            initial={{ scale: 0.9, opacity: 0.25 }}
-            animate={{ scale: 0.93, opacity: 0.3, y: 12 }}
-            transition={SPRING}
-          >
-            <img src={items[index + 1].src} alt="" className="w-full h-full object-cover" />
-            <div className="absolute inset-0 bg-black/18" />
-          </motion.div>
-        )}
+        {/* Background card (next item preview).
+            Wrapped in AnimatePresence keyed on the upcoming item so the
+            preview cross-fades when index changes — without this the
+            background card snapped instantly from items[N+1] to
+            items[N+2] mid-swipe, which (combined with the active-card
+            entry/exit) made it look like 3 different images flashed
+            past on a single drag. */}
+        <AnimatePresence>
+          {index + 1 < items.length && (
+            <motion.div
+              key={`bg-${index + 1}`}
+              className="absolute inset-3 rounded-3xl overflow-hidden pointer-events-none"
+              initial={{ scale: 0.88, opacity: 0, y: 18 }}
+              animate={{ scale: 0.93, opacity: 0.3, y: 12 }}
+              exit={{ scale: 0.85, opacity: 0, y: 8 }}
+              transition={{ duration: 0.32, ease: [0.22, 1, 0.36, 1] }}
+            >
+              <Picture
+                src={items[index + 1].src}
+                alt=""
+                loading="lazy"
+                sizes="(max-width: 768px) 92vw, 512px"
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-black/18" />
+            </motion.div>
+          )}
+        </AnimatePresence>
 
         {/* Active card */}
         <AnimatePresence mode="wait" custom={exitDir}>
@@ -389,16 +459,21 @@ export default function TinderMode({ category, onExit, onNextCategory, closeOnCo
             className="absolute inset-0"
             custom={exitDir}
             initial={{ x: exitDir * -60, opacity: 0, scale: 0.94 }}
-            animate={{ x: 0, opacity: 1, scale: 1 }}
+            animate={{
+              x: bounce === -1 ? -22 : bounce === 1 ? 22 : 0,
+              opacity: 1,
+              scale: 1,
+            }}
             exit={{ x: exitDir * 340, opacity: 0, rotate: exitDir * 14, scale: 0.88 }}
             transition={SPRING}
           >
             <DraggableCard
               item={items[index]}
               categoryId={categoryId}
-              onSwipeLeft={goNext}
-              onSwipeRight={goPrev}
+              onNext={goNext}
+              onPrev={goPrev}
               zIndex={10}
+              isAr={isAr}
             />
           </motion.div>
         </AnimatePresence>

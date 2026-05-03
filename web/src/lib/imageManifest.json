@@ -1,0 +1,4158 @@
+{
+  "/works/ads/a_001.jpg": {
+    "width": 1200,
+    "height": 1600,
+    "blurhash": "U24_tlIo0Ms,vwWBI@jY00xt~TE30is,^iRk",
+    "widths": [
+      480,
+      960,
+      1200
+    ],
+    "aspectRatio": 0.75
+  },
+  "/works/ads/a_002.jpg": {
+    "width": 1200,
+    "height": 1608,
+    "blurhash": "U16@~FTM019%00n1_4D$00ng=?-5_34.0M-;",
+    "widths": [
+      480,
+      960,
+      1200
+    ],
+    "aspectRatio": 0.7463
+  },
+  "/works/ads/a_003.jpg": {
+    "width": 1200,
+    "height": 1600,
+    "blurhash": "U26HyGnL9z^*DNT2%Ns.01bx^%9#%M-;RjRj",
+    "widths": [
+      480,
+      960,
+      1200
+    ],
+    "aspectRatio": 0.75
+  },
+  "/works/ads/a_004.jpg": {
+    "width": 1200,
+    "height": 1608,
+    "blurhash": "U9ASoH~AI=j[9uRkayj[5SR*jYNH-Uj[WBWV",
+    "widths": [
+      480,
+      960,
+      1200
+    ],
+    "aspectRatio": 0.7463
+  },
+  "/works/ads/a_005.jpg": {
+    "width": 1200,
+    "height": 2150,
+    "blurhash": "UDEBg6}m9bWCxuE3NGWVENo#jFM|~9%1R+RQ",
+    "widths": [
+      480,
+      960,
+      1200
+    ],
+    "aspectRatio": 0.5581
+  },
+  "/works/ads/a_006.jpg": {
+    "width": 1152,
+    "height": 1536,
+    "blurhash": "UIASM4Sg},t5=tI==vWqENEPR-IrI@NJIrNI",
+    "widths": [
+      480,
+      960,
+      1152
+    ],
+    "aspectRatio": 0.75
+  },
+  "/works/ads/a_007.jpg": {
+    "width": 1152,
+    "height": 1536,
+    "blurhash": "UOD[,;~VxuxZ~W~V%MR*%g?axuIp-;kXogs.",
+    "widths": [
+      480,
+      960,
+      1152
+    ],
+    "aspectRatio": 0.75
+  },
+  "/works/ads/a_008.jpg": {
+    "width": 1152,
+    "height": 1536,
+    "blurhash": "UIH1}Fx[oLRjRjE29Ht6~UE1E2xZD%%M%Mj[",
+    "widths": [
+      480,
+      960,
+      1152
+    ],
+    "aspectRatio": 0.75
+  },
+  "/works/ads/a_009.jpg": {
+    "width": 1152,
+    "height": 1536,
+    "blurhash": "U9HnpP~U4o~UtR00IUWB9b01IpIp_3^*E2%1",
+    "widths": [
+      480,
+      960,
+      1152
+    ],
+    "aspectRatio": 0.75
+  },
+  "/works/ads/a_010.jpg": {
+    "width": 1152,
+    "height": 1536,
+    "blurhash": "UJHnyoxu^*RP~pENNH%M?G9Gt7-:NH%LR*Rj",
+    "widths": [
+      480,
+      960,
+      1152
+    ],
+    "aspectRatio": 0.75
+  },
+  "/works/ads/a_011.jpg": {
+    "width": 1200,
+    "height": 1200,
+    "blurhash": "U5I#.N_300?c00ofD%IT00IUITxa00IU~q-;",
+    "widths": [
+      480,
+      960,
+      1200
+    ],
+    "aspectRatio": 1
+  },
+  "/works/ads/a_012.jpg": {
+    "width": 1200,
+    "height": 1200,
+    "blurhash": "ULJ%Bw0gt6xZ~oM|S3oK~UniWVNH~UV@j[s.",
+    "widths": [
+      480,
+      960,
+      1200
+    ],
+    "aspectRatio": 1
+  },
+  "/works/ads/a_013.jpg": {
+    "width": 1200,
+    "height": 1200,
+    "blurhash": "U9CQ71Q-00?w?vOE4.-or_D*8_.8^kMxIA-q",
+    "widths": [
+      480,
+      960,
+      1200
+    ],
+    "aspectRatio": 1
+  },
+  "/works/ads/a_014.jpg": {
+    "width": 1200,
+    "height": 1200,
+    "blurhash": "USG*i-~AxuIWx]afxuaxENRjxujZxYV@kCjt",
+    "widths": [
+      480,
+      960,
+      1200
+    ],
+    "aspectRatio": 1
+  },
+  "/works/ads/a_015.jpg": {
+    "width": 1200,
+    "height": 1200,
+    "blurhash": "UbEpQXtSNIoz?wRiWBae%hkCRjkC%hofRjfk",
+    "widths": [
+      480,
+      960,
+      1200
+    ],
+    "aspectRatio": 1
+  },
+  "/works/ads/a_016.jpg": {
+    "width": 1200,
+    "height": 1200,
+    "blurhash": "UaEyxVE2t7XT~AaeR.tRv~xYIpx]kCR6i_S5",
+    "widths": [
+      480,
+      960,
+      1200
+    ],
+    "aspectRatio": 1
+  },
+  "/works/ads/a_017.jpg": {
+    "width": 1200,
+    "height": 1200,
+    "blurhash": "UIF~?bpdKit,Xpn#WYtR00DOrDIA.Tx[V?M|",
+    "widths": [
+      480,
+      960,
+      1200
+    ],
+    "aspectRatio": 1
+  },
+  "/works/ads/a_018.jpg": {
+    "width": 1200,
+    "height": 1200,
+    "blurhash": "UGJRN[9~%z?wKm4n00nh04M_v}Mx?dw]%fyD",
+    "widths": [
+      480,
+      960,
+      1200
+    ],
+    "aspectRatio": 1
+  },
+  "/works/ads/a_019.jpg": {
+    "width": 1200,
+    "height": 1200,
+    "blurhash": "U9E,WeB,0$D,9c5,w^%00$,s=^xsKJ|^OEIq",
+    "widths": [
+      480,
+      960,
+      1200
+    ],
+    "aspectRatio": 1
+  },
+  "/works/ads/a_020.jpg": {
+    "width": 1200,
+    "height": 1200,
+    "blurhash": "UlI}OxxYj@Ip_MR*WBoe9}R+f6xaD*ofofof",
+    "widths": [
+      480,
+      960,
+      1200
+    ],
+    "aspectRatio": 1
+  },
+  "/works/ads/a_021.jpg": {
+    "width": 1200,
+    "height": 1200,
+    "blurhash": "UG7eIw?vxbj]_N?uxvof%g%g%Mt7t8xux[t7",
+    "widths": [
+      480,
+      960,
+      1200
+    ],
+    "aspectRatio": 1
+  },
+  "/works/ads/a_022.jpg": {
+    "width": 1200,
+    "height": 1200,
+    "blurhash": "UfM%lsxu-:%L~pofM|jtbHWBM{RjWBWBxuof",
+    "widths": [
+      480,
+      960,
+      1200
+    ],
+    "aspectRatio": 1
+  },
+  "/works/ads/a_023.jpg": {
+    "width": 1200,
+    "height": 1200,
+    "blurhash": "USGs_iIV}@w_^jw|xZWX?GaLS2a#^jRkS2s.",
+    "widths": [
+      480,
+      960,
+      1200
+    ],
+    "aspectRatio": 1
+  },
+  "/works/ads/a_024.jpg": {
+    "width": 1200,
+    "height": 1200,
+    "blurhash": "UWI|8r?F~B-:?GIpNH$%^kt7Ipjb-oxaWVWX",
+    "widths": [
+      480,
+      960,
+      1200
+    ],
+    "aspectRatio": 1
+  },
+  "/works/ads/a_025.jpg": {
+    "width": 1200,
+    "height": 1200,
+    "blurhash": "UOR^dT={%1%1~CayWCoM-pRjNGocRPs:oea_",
+    "widths": [
+      480,
+      960,
+      1200
+    ],
+    "aspectRatio": 1
+  },
+  "/works/ads/a_026.jpg": {
+    "width": 1200,
+    "height": 1200,
+    "blurhash": "UJR,z0=_%M-U~UfjWBay_2RkM{t6R5oeaykB",
+    "widths": [
+      480,
+      960,
+      1200
+    ],
+    "aspectRatio": 1
+  },
+  "/works/ads/a_027.jpg": {
+    "width": 1200,
+    "height": 1200,
+    "blurhash": "U154{P^%0M03~9xZ9c9u04E3?F?F0gIp^i^i",
+    "widths": [
+      480,
+      960,
+      1200
+    ],
+    "aspectRatio": 1
+  },
+  "/works/ads/a_028.jpg": {
+    "width": 1200,
+    "height": 1200,
+    "blurhash": "U27ArM000g^*m-bFXl$*E1t7%2D*00_2ict6",
+    "widths": [
+      480,
+      960,
+      1200
+    ],
+    "aspectRatio": 1
+  },
+  "/works/ads/a_029.jpg": {
+    "width": 1200,
+    "height": 1200,
+    "blurhash": "U26@vJ00kW-U4V?aE1?HTJa0xu4:01~Uo2Io",
+    "widths": [
+      480,
+      960,
+      1200
+    ],
+    "aspectRatio": 1
+  },
+  "/works/ads/a_030.jpg": {
+    "width": 1200,
+    "height": 1200,
+    "blurhash": "U05}aE9G00_200%155E25Qbb~q?G00Rk^*Vs",
+    "widths": [
+      480,
+      960,
+      1200
+    ],
+    "aspectRatio": 1
+  },
+  "/works/ads/a_031.jpg": {
+    "width": 1200,
+    "height": 1200,
+    "blurhash": "UBA]j558afNG~AWV%1M|oJ%0Ipt6IVays:t6",
+    "widths": [
+      480,
+      960,
+      1200
+    ],
+    "aspectRatio": 1
+  },
+  "/works/ads/a_032.jpg": {
+    "width": 1200,
+    "height": 1200,
+    "blurhash": "U48Wy:?G00D*=d%1^*ay~BxGE2t6IoV@R+%L",
+    "widths": [
+      480,
+      960,
+      1200
+    ],
+    "aspectRatio": 1
+  },
+  "/works/ads/a_033.jpg": {
+    "width": 1200,
+    "height": 1200,
+    "blurhash": "U9Fht{~Bu4E100DO00I=F{~V~BIV4oIp^+~V",
+    "widths": [
+      480,
+      960,
+      1200
+    ],
+    "aspectRatio": 1
+  },
+  "/works/ads/a_034.jpg": {
+    "width": 1200,
+    "height": 1200,
+    "blurhash": "UCFf,Hz;0f%M|Gs:JUWB00x[cFE1GZR%nOog",
+    "widths": [
+      480,
+      960,
+      1200
+    ],
+    "aspectRatio": 1
+  },
+  "/works/ads/a_035.jpg": {
+    "width": 1200,
+    "height": 1200,
+    "blurhash": "U9CzVSOUJ6j=}GxaxGsm-A$*ofn*wws:N_Na",
+    "widths": [
+      480,
+      960,
+      1200
+    ],
+    "aspectRatio": 1
+  },
+  "/works/ads/a_036.jpg": {
+    "width": 1200,
+    "height": 1200,
+    "blurhash": "U8C;Iu,@-Cspoys.t7JU}Fe.NwI=NGWTI:R+",
+    "widths": [
+      480,
+      960,
+      1200
+    ],
+    "aspectRatio": 1
+  },
+  "/works/ads/a_037.jpg": {
+    "width": 1200,
+    "height": 1200,
+    "blurhash": "U9C6+800~q-;D%?b00t7IUD%4nayM{ay?bay",
+    "widths": [
+      480,
+      960,
+      1200
+    ],
+    "aspectRatio": 1
+  },
+  "/works/ads/a_038.jpg": {
+    "width": 1200,
+    "height": 1200,
+    "blurhash": "UDI;R=00LL~B^jH@0MXmk;-5VY9]$*xuxZRj",
+    "widths": [
+      480,
+      960,
+      1200
+    ],
+    "aspectRatio": 1
+  },
+  "/works/ads/a_039.jpg": {
+    "width": 1200,
+    "height": 1200,
+    "blurhash": "UE8NkH?a?b%M?a~p-:%M?b-:?bxu%M-;xuxu",
+    "widths": [
+      480,
+      960,
+      1200
+    ],
+    "aspectRatio": 1
+  },
+  "/works/ads/a_040.jpg": {
+    "width": 1200,
+    "height": 1200,
+    "blurhash": "UBF|^_7L9bDk020g~9-.-o%feoaKaf$fNHJA",
+    "widths": [
+      480,
+      960,
+      1200
+    ],
+    "aspectRatio": 1
+  },
+  "/works/ads/a_041.jpg": {
+    "width": 1200,
+    "height": 1200,
+    "blurhash": "UYOCsfM{xZR+~qNGW;oe$*t7R*s:%Mt7jsju",
+    "widths": [
+      480,
+      960,
+      1200
+    ],
+    "aspectRatio": 1
+  },
+  "/works/ads/a_042.jpg": {
+    "width": 1200,
+    "height": 1200,
+    "blurhash": "UPKK4YRNj=RP~UaKRjt6t8tRR+t6NfIqWEoJ",
+    "widths": [
+      480,
+      960,
+      1200
+    ],
+    "aspectRatio": 1
+  },
+  "/works/ads/a_043.jpg": {
+    "width": 1200,
+    "height": 1200,
+    "blurhash": "UCBV-A8_$y~V=xrrxat6My%LE2W=0L%MkCE1",
+    "widths": [
+      480,
+      960,
+      1200
+    ],
+    "aspectRatio": 1
+  },
+  "/works/ads/a_044.jpg": {
+    "width": 1200,
+    "height": 1200,
+    "blurhash": "UZNK6ZRj-=xa~qx]kCt8-=ofWBofR*RjRORj",
+    "widths": [
+      480,
+      960,
+      1200
+    ],
+    "aspectRatio": 1
+  },
+  "/works/ads/a_045.jpg": {
+    "width": 1200,
+    "height": 1200,
+    "blurhash": "U13ufs~px]t7M{M|RjWB014oMyV@^+?H%2xa",
+    "widths": [
+      480,
+      960,
+      1200
+    ],
+    "aspectRatio": 1
+  },
+  "/works/ads/a_046.jpg": {
+    "width": 1200,
+    "height": 1200,
+    "blurhash": "U8E-s,Xm57Vt~U-UIpjFF2wJ9aX7-ANdV[Rk",
+    "widths": [
+      480,
+      960,
+      1200
+    ],
+    "aspectRatio": 1
+  },
+  "/works/ads/a_047.jpg": {
+    "width": 1200,
+    "height": 1200,
+    "blurhash": "U88:t@57E2ae?Hs:IVRk~BNHIoae-UoLIpR*",
+    "widths": [
+      480,
+      960,
+      1200
+    ],
+    "aspectRatio": 1
+  },
+  "/works/ads/a_048.jpg": {
+    "width": 1200,
+    "height": 1200,
+    "blurhash": "U35;%B_14o01029a-o^%~U-oE29a4:Io%L-:",
+    "widths": [
+      480,
+      960,
+      1200
+    ],
+    "aspectRatio": 1
+  },
+  "/works/ads/a_049.jpg": {
+    "width": 1200,
+    "height": 1200,
+    "blurhash": "U46ahk~VRPR50g9uIpD+wcs9t6?GaKsm%Lo}",
+    "widths": [
+      480,
+      960,
+      1200
+    ],
+    "aspectRatio": 1
+  },
+  "/works/ads/a_050.jpg": {
+    "width": 1200,
+    "height": 1200,
+    "blurhash": "UJG?tsEg-Saf}=xF$%xYt2$%s.oe^Ns:NHWC",
+    "widths": [
+      480,
+      960,
+      1200
+    ],
+    "aspectRatio": 1
+  },
+  "/works/ads/a_051.jpg": {
+    "width": 1200,
+    "height": 1200,
+    "blurhash": "U5DaVy106R$g=_^Noy9_Kh=csVS#}rEhNb-8",
+    "widths": [
+      480,
+      960,
+      1200
+    ],
+    "aspectRatio": 1
+  },
+  "/works/ads/a_052.jpg": {
+    "width": 1200,
+    "height": 676,
+    "blurhash": "UMH27jAU$+%L_Nxuozxu?^-Coys;?bxujGog",
+    "widths": [
+      480,
+      960,
+      1200
+    ],
+    "aspectRatio": 1.7751
+  },
+  "/works/ads/a_053.jpg": {
+    "width": 1152,
+    "height": 2048,
+    "blurhash": "UKBM#yIVt7%M~VIoWBt7?GM{M{kC_2NGjut7",
+    "widths": [
+      480,
+      960,
+      1152
+    ],
+    "aspectRatio": 0.5625
+  },
+  "/works/ads/a_054.jpg": {
+    "width": 1200,
+    "height": 2150,
+    "blurhash": "UeF}+Ts.oe%2~Us9V@WX-oR*WBs:kBWUWVt6",
+    "widths": [
+      480,
+      960,
+      1200
+    ],
+    "aspectRatio": 0.5581
+  },
+  "/works/ads/a_055.jpg": {
+    "width": 1200,
+    "height": 2150,
+    "blurhash": "UBCiQ@?GEKM|~o-oMyxZkpslRjRj4:Ipt7oy",
+    "widths": [
+      480,
+      960,
+      1200
+    ],
+    "aspectRatio": 0.5581
+  },
+  "/works/ads/a_056.jpg": {
+    "width": 1200,
+    "height": 2150,
+    "blurhash": "U9DIjq-n${Io~lIpIqNb03D+oN-o0h$%%Keo",
+    "widths": [
+      480,
+      960,
+      1200
+    ],
+    "aspectRatio": 0.5581
+  },
+  "/works/ads/a_057.jpg": {
+    "width": 1200,
+    "height": 1608,
+    "blurhash": "UEF=U6xv*J-:#Z-;0$X9^,W=bwkDxVt7Rjj?",
+    "widths": [
+      480,
+      960,
+      1200
+    ],
+    "aspectRatio": 0.7463
+  },
+  "/works/ads/a_058.jpg": {
+    "width": 896,
+    "height": 1200,
+    "blurhash": "UbGatCi_s.bb~ARjM|t6$*oeRkofV@xZf5R-",
+    "widths": [
+      480,
+      896
+    ],
+    "aspectRatio": 0.7467
+  },
+  "/works/ads/a_059.jpg": {
+    "width": 1200,
+    "height": 510,
+    "blurhash": "UPEBH8NIaxs.};oJo0aykCoexCWCbcR,-6s-",
+    "widths": [
+      480,
+      960,
+      1200
+    ],
+    "aspectRatio": 2.3529
+  },
+  "/works/ads/a_060.jpg": {
+    "width": 1200,
+    "height": 510,
+    "blurhash": "USLgIXxY01t6~VoeNGof9Ga#j[kB?Ge.RjWV",
+    "widths": [
+      480,
+      960,
+      1200
+    ],
+    "aspectRatio": 2.3529
+  },
+  "/works/ads/a_061.jpg": {
+    "width": 1200,
+    "height": 676,
+    "blurhash": "UhRC[5aet7-;xvfQj[j[~qxuRjM{_3ofWBj[",
+    "widths": [
+      480,
+      960,
+      1200
+    ],
+    "aspectRatio": 1.7751
+  },
+  "/works/ads/a_062.jpg": {
+    "width": 1200,
+    "height": 676,
+    "blurhash": "UfP6$~xuxvoc-=ofj[Rk.AofWBRk%Lofj[f6",
+    "widths": [
+      480,
+      960,
+      1200
+    ],
+    "aspectRatio": 1.7751
+  },
+  "/works/ads/a_063.jpg": {
+    "width": 1200,
+    "height": 676,
+    "blurhash": "USH_[IRj00t7~qWBofj[?bWBIUayxvayWBfQ",
+    "widths": [
+      480,
+      960,
+      1200
+    ],
+    "aspectRatio": 1.7751
+  },
+  "/works/ads/a_064.jpg": {
+    "width": 1200,
+    "height": 2150,
+    "blurhash": "ULIp#9~V%#x^%2M{I@RjsojZtQX8=_V@IpRk",
+    "widths": [
+      480,
+      960,
+      1200
+    ],
+    "aspectRatio": 0.5581
+  },
+  "/works/ads/a_065.jpg": {
+    "width": 768,
+    "height": 1376,
+    "blurhash": "UsH^*4E2bFxt~Baeayt6RP%2oLoeM{ofofWB",
+    "widths": [
+      480,
+      768
+    ],
+    "aspectRatio": 0.5581
+  },
+  "/works/ads/a_066.jpg": {
+    "width": 768,
+    "height": 1376,
+    "blurhash": "UbK9_GE3s.^%~Uofxaxt$z-Uj[f5-Uj[IpjF",
+    "widths": [
+      480,
+      768
+    ],
+    "aspectRatio": 0.5581
+  },
+  "/works/ads/a_067.jpg": {
+    "width": 768,
+    "height": 1376,
+    "blurhash": "UlIqALNG?G?G~AWBWBofV?%2M{R*RPWqRkM|",
+    "widths": [
+      480,
+      768
+    ],
+    "aspectRatio": 0.5581
+  },
+  "/works/ads/a_068.jpg": {
+    "width": 1152,
+    "height": 2048,
+    "blurhash": "U29%S27P00-i05-N}*9d00I9~BIp~TXob{t5",
+    "widths": [
+      480,
+      960,
+      1152
+    ],
+    "aspectRatio": 0.5625
+  },
+  "/works/ads/a_069.jpg": {
+    "width": 1200,
+    "height": 806,
+    "blurhash": "U5EoukUu01.SYP00?upH0000.TyC*0r^#*.8",
+    "widths": [
+      480,
+      960,
+      1200
+    ],
+    "aspectRatio": 1.4888
+  },
+  "/works/ads/a_070.jpg": {
+    "width": 1200,
+    "height": 806,
+    "blurhash": "UTK1B$x^^d-o~Vs8-ot7-iIpo#bIyEkDRPWX",
+    "widths": [
+      480,
+      960,
+      1200
+    ],
+    "aspectRatio": 1.4888
+  },
+  "/works/ads/a_071.jpg": {
+    "width": 1200,
+    "height": 806,
+    "blurhash": "U9I4FVtM00_40KOQ$|E3vJE1_4Dh%$K7xut8",
+    "widths": [
+      480,
+      960,
+      1200
+    ],
+    "aspectRatio": 1.4888
+  },
+  "/works/banners/ads.jpg": {
+    "width": 1344,
+    "height": 768,
+    "blurhash": "UNOw_|.Ty-.7]jt3o]r?xFR.J.$%=HbbTJn+",
+    "widths": [
+      480,
+      960,
+      1344
+    ],
+    "aspectRatio": 1.75
+  },
+  "/works/banners/commercial.jpg": {
+    "width": 1344,
+    "height": 768,
+    "blurhash": "U46t,c^+Rjae009ZM|NGIVt7t7-:~pxuadIU",
+    "widths": [
+      480,
+      960,
+      1344
+    ],
+    "aspectRatio": 1.75
+  },
+  "/works/banners/fashion.jpg": {
+    "width": 1344,
+    "height": 768,
+    "blurhash": "U9IX4]E201w_00Ne-n?Zrqs,~p-o~U%fIW8{",
+    "widths": [
+      480,
+      960,
+      1344
+    ],
+    "aspectRatio": 1.75
+  },
+  "/works/banners/films.jpg": {
+    "width": 1344,
+    "height": 768,
+    "blurhash": "U88NUoRkt7E3~UM|-nNGozM}-njYRkj[ofWX",
+    "widths": [
+      480,
+      960,
+      1344
+    ],
+    "aspectRatio": 1.75
+  },
+  "/works/banners/heritage.jpg": {
+    "width": 1344,
+    "height": 768,
+    "blurhash": "URGtl_%LIUs.~UxtIUR+tSofM{R*%2xZskWB",
+    "widths": [
+      480,
+      960,
+      1344
+    ],
+    "aspectRatio": 1.75
+  },
+  "/works/banners/realestate.jpg": {
+    "width": 1344,
+    "height": 768,
+    "blurhash": "U58;Z9~VH;R4^-xYngf5Z2M|yEt7zTnhtno#",
+    "widths": [
+      480,
+      960,
+      1344
+    ],
+    "aspectRatio": 1.75
+  },
+  "/works/banners/studies.jpg": {
+    "width": 1344,
+    "height": 768,
+    "blurhash": "UXHLo0jZbIt7~WWBf6jt-;xuRka|x[t7azoL",
+    "widths": [
+      480,
+      960,
+      1344
+    ],
+    "aspectRatio": 1.75
+  },
+  "/works/banners/trained.jpg": {
+    "width": 1344,
+    "height": 768,
+    "blurhash": "U3GR@#~pEQ~q_2S2MdDiIA8_X9tR-n_3Z~%L",
+    "widths": [
+      480,
+      960,
+      1344
+    ],
+    "aspectRatio": 1.75
+  },
+  "/works/fashion/f_001.jpg": {
+    "width": 1400,
+    "height": 2508,
+    "blurhash": "UAAm_0%M00%gaeMxadaz00M|_4M_8_%N%Nt6",
+    "widths": [
+      480,
+      960,
+      1400
+    ],
+    "aspectRatio": 0.5582
+  },
+  "/works/fashion/f_002.jpg": {
+    "width": 1400,
+    "height": 2508,
+    "blurhash": "U87-c,IU00tR4Tt7.8Rj9Ft8$*f7_NM{D$of",
+    "widths": [
+      480,
+      960,
+      1400
+    ],
+    "aspectRatio": 0.5582
+  },
+  "/works/fashion/f_003.jpg": {
+    "width": 1400,
+    "height": 1876,
+    "blurhash": "UJI#rzoM00~p8_M_.8WU9FozWV%fo}-;IAD%",
+    "widths": [
+      480,
+      960,
+      1400
+    ],
+    "aspectRatio": 0.7463
+  },
+  "/works/fashion/f_004.jpg": {
+    "width": 1400,
+    "height": 2508,
+    "blurhash": "ULBW0gxt%L%2~Ut6oft6t6oeRjWBR*oeV[R*",
+    "widths": [
+      480,
+      960,
+      1400
+    ],
+    "aspectRatio": 0.5582
+  },
+  "/works/fashion/f_005.jpg": {
+    "width": 1400,
+    "height": 2508,
+    "blurhash": "U7FE$84U0RIU}7jF9^M{00?bvft7L3M{-:xa",
+    "widths": [
+      480,
+      960,
+      1400
+    ],
+    "aspectRatio": 0.5582
+  },
+  "/works/fashion/f_006.jpg": {
+    "width": 1400,
+    "height": 2508,
+    "blurhash": "UOG8N6-V0gI@.Aa#%Mxu1QR-?GxuyEozIBRk",
+    "widths": [
+      480,
+      960,
+      1400
+    ],
+    "aspectRatio": 0.5582
+  },
+  "/works/fashion/f_007.jpg": {
+    "width": 1400,
+    "height": 1876,
+    "blurhash": "U#L4scj[~q%M?bofRjay%Mt7RiWBs:fQRjWB",
+    "widths": [
+      480,
+      960,
+      1400
+    ],
+    "aspectRatio": 0.7463
+  },
+  "/works/fashion/f_008.jpg": {
+    "width": 1400,
+    "height": 2508,
+    "blurhash": "UBLN*[%M9F~q9F%M9FIUW-of-=RjIoD%IU%M",
+    "widths": [
+      480,
+      960,
+      1400
+    ],
+    "aspectRatio": 0.5582
+  },
+  "/works/fashion/f_009.jpg": {
+    "width": 1400,
+    "height": 2508,
+    "blurhash": "UgM%_=?b~q?bxbaxtRof_3WBIURj%MozRjay",
+    "widths": [
+      480,
+      960,
+      1400
+    ],
+    "aspectRatio": 0.5582
+  },
+  "/works/fashion/f_010.jpg": {
+    "width": 1400,
+    "height": 2508,
+    "blurhash": "UkLEQbxu%MtRt8RjRjRj~qRjD%RjkBWBM{Rj",
+    "widths": [
+      480,
+      960,
+      1400
+    ],
+    "aspectRatio": 0.5582
+  },
+  "/works/fashion/f_011.jpg": {
+    "width": 1400,
+    "height": 2508,
+    "blurhash": "UpLXVx-;~qt7_3WBM{s:-;xuM{fQt7V@RjRj",
+    "widths": [
+      480,
+      960,
+      1400
+    ],
+    "aspectRatio": 0.5582
+  },
+  "/works/fashion/f_012.jpg": {
+    "width": 1400,
+    "height": 2508,
+    "blurhash": "UgONI7xu_3?H-:ayWBf6~qt6D%WCtQxuofkC",
+    "widths": [
+      480,
+      960,
+      1400
+    ],
+    "aspectRatio": 0.5582
+  },
+  "/works/fashion/f_013.jpg": {
+    "width": 1400,
+    "height": 2508,
+    "blurhash": "UuKdJE-p~qx]%gt6tlNIV@M|Rjo0Naofs:kC",
+    "widths": [
+      480,
+      960,
+      1400
+    ],
+    "aspectRatio": 0.5582
+  },
+  "/works/fashion/f_014.jpg": {
+    "width": 1400,
+    "height": 2508,
+    "blurhash": "UcL#5@?b~q?bV[%Mt7of%Mt79FM{t7ogM{WB",
+    "widths": [
+      480,
+      960,
+      1400
+    ],
+    "aspectRatio": 0.5582
+  },
+  "/works/fashion/f_015.jpg": {
+    "width": 1400,
+    "height": 2508,
+    "blurhash": "UWH2WX%N~q?b-:o1f+of%1jZRjoft8tRt7oz",
+    "widths": [
+      480,
+      960,
+      1400
+    ],
+    "aspectRatio": 0.5582
+  },
+  "/works/fashion/f_016.jpg": {
+    "width": 1400,
+    "height": 2488,
+    "blurhash": "U9H,t=R%0gIp02-o5SM|x@}@=x9uEMIp^P%2",
+    "widths": [
+      480,
+      960,
+      1400
+    ],
+    "aspectRatio": 0.5627
+  },
+  "/works/fashion/f_017.jpg": {
+    "width": 1400,
+    "height": 2508,
+    "blurhash": "U6GQzm~A01rr00580MS#%f^j}r9a0#EM~A%2",
+    "widths": [
+      480,
+      960,
+      1400
+    ],
+    "aspectRatio": 0.5582
+  },
+  "/works/fashion/f_018.jpg": {
+    "width": 1400,
+    "height": 2488,
+    "blurhash": "UGH0b0}?tPNHjrae%0R+9vNHnPxF-B%1E3xF",
+    "widths": [
+      480,
+      960,
+      1400
+    ],
+    "aspectRatio": 0.5627
+  },
+  "/works/fashion/f_019.jpg": {
+    "width": 1400,
+    "height": 1866,
+    "blurhash": "UfL4$tt8_MWBt8-:xuxu~qxuRj%LM{IUM{ay",
+    "widths": [
+      480,
+      960,
+      1400
+    ],
+    "aspectRatio": 0.7503
+  },
+  "/works/fashion/f_020.jpg": {
+    "width": 1400,
+    "height": 2508,
+    "blurhash": "UXNwTR~q?c-;_3WCfjRj?cM{M{j[D%t7Rjt8",
+    "widths": [
+      480,
+      960,
+      1400
+    ],
+    "aspectRatio": 0.5582
+  },
+  "/works/fashion/f_021.jpg": {
+    "width": 1400,
+    "height": 2508,
+    "blurhash": "UbMQ-Qxu~q?b_4oft7t89FWBD%M{ofj[RjRj",
+    "widths": [
+      480,
+      960,
+      1400
+    ],
+    "aspectRatio": 0.5582
+  },
+  "/works/fashion/f_022.jpg": {
+    "width": 1400,
+    "height": 2508,
+    "blurhash": "UZJH,Ut7~q%M_3s:9GfktRt7IUWBM{WVIURj",
+    "widths": [
+      480,
+      960,
+      1400
+    ],
+    "aspectRatio": 0.5582
+  },
+  "/works/fashion/f_023.jpg": {
+    "width": 1400,
+    "height": 2508,
+    "blurhash": "UVL}81xu.8?a_4t7%MtRt6RjD%Rj?bRjD*WA",
+    "widths": [
+      480,
+      960,
+      1400
+    ],
+    "aspectRatio": 0.5582
+  },
+  "/works/fashion/f_024.jpg": {
+    "width": 1400,
+    "height": 2508,
+    "blurhash": "UoMHJga{?b%M_Nozt7of%LofD*V@xuayM{ay",
+    "widths": [
+      480,
+      960,
+      1400
+    ],
+    "aspectRatio": 0.5582
+  },
+  "/works/fashion/f_025.jpg": {
+    "width": 1400,
+    "height": 2508,
+    "blurhash": "UaLqa}%M~q?b?b%MWVs:D%xu9FM{-;xuM{Rj",
+    "widths": [
+      480,
+      960,
+      1400
+    ],
+    "aspectRatio": 0.5582
+  },
+  "/works/fashion/f_026.jpg": {
+    "width": 1400,
+    "height": 2508,
+    "blurhash": "UJLEH8t7Ne?b_4fQIUkC00RjITIUR-WBIAM{",
+    "widths": [
+      480,
+      960,
+      1400
+    ],
+    "aspectRatio": 0.5582
+  },
+  "/works/fashion/f_027.jpg": {
+    "width": 1400,
+    "height": 2508,
+    "blurhash": "ULLqa~-;_3_3_4Rj-;%MM_t7D$Rj_3xuD%of",
+    "widths": [
+      480,
+      960,
+      1400
+    ],
+    "aspectRatio": 0.5582
+  },
+  "/works/fashion/f_028.jpg": {
+    "width": 1400,
+    "height": 2508,
+    "blurhash": "UM3.PZt.p0kspfksbHemR-V?VXaKS7Vradks",
+    "widths": [
+      480,
+      960,
+      1400
+    ],
+    "aspectRatio": 0.5582
+  },
+  "/works/fashion/f_029.jpg": {
+    "width": 1400,
+    "height": 2508,
+    "blurhash": "U16kIv_N00D4009G~p?u-SWqt7-o~pxu014o",
+    "widths": [
+      480,
+      960,
+      1400
+    ],
+    "aspectRatio": 0.5582
+  },
+  "/works/fashion/f_030.jpg": {
+    "width": 1400,
+    "height": 2508,
+    "blurhash": "UDF@GR?wId.9$+-:9H%1=Bs+RO%L?w9bRio#",
+    "widths": [
+      480,
+      960,
+      1400
+    ],
+    "aspectRatio": 0.5582
+  },
+  "/works/fashion/f_031.jpg": {
+    "width": 1400,
+    "height": 2508,
+    "blurhash": "UEL0gzGFFwn4:ke9#m-B;4t7JQ#l}[$jF_Fw",
+    "widths": [
+      480,
+      960,
+      1400
+    ],
+    "aspectRatio": 0.5582
+  },
+  "/works/fashion/f_032.jpg": {
+    "width": 1400,
+    "height": 2508,
+    "blurhash": "UODmUIt8_4x]D$WBM{WC4nWB4mM{kBj[%Mof",
+    "widths": [
+      480,
+      960,
+      1400
+    ],
+    "aspectRatio": 0.5582
+  },
+  "/works/fashion/f_033.jpg": {
+    "width": 1400,
+    "height": 2508,
+    "blurhash": "UKGslZ}r;M$g~AX8M|n%GFS4EMS2cDs:IpW;",
+    "widths": [
+      480,
+      960,
+      1400
+    ],
+    "aspectRatio": 0.5582
+  },
+  "/works/fashion/f_034.jpg": {
+    "width": 1400,
+    "height": 2508,
+    "blurhash": "U9CjRp~q004n_N-;DjE100D%$,-;yV9ZIA%L",
+    "widths": [
+      480,
+      960,
+      1400
+    ],
+    "aspectRatio": 0.5582
+  },
+  "/works/fashion/f_035.jpg": {
+    "width": 1400,
+    "height": 2508,
+    "blurhash": "UGE2Ug^j0$-o~V-oafV@T1xZ-6M|x]t7NGIp",
+    "widths": [
+      480,
+      960,
+      1400
+    ],
+    "aspectRatio": 0.5582
+  },
+  "/works/fashion/f_036.jpg": {
+    "width": 1400,
+    "height": 2508,
+    "blurhash": "UHI}9R~WxtxZ%Lj?xuxtI:R*t7xu^+tQIoRj",
+    "widths": [
+      480,
+      960,
+      1400
+    ],
+    "aspectRatio": 0.5582
+  },
+  "/works/fashion/f_037.jpg": {
+    "width": 1400,
+    "height": 1866,
+    "blurhash": "UEGZ5I}F3AX80}ayVFS21vFw-AS2njNaXRwK",
+    "widths": [
+      480,
+      960,
+      1400
+    ],
+    "aspectRatio": 0.7503
+  },
+  "/works/fashion/f_038.jpg": {
+    "width": 1400,
+    "height": 1866,
+    "blurhash": "UMHvFxS~V[n%pHt7nijsBntQWVWV}@%1J8WC",
+    "widths": [
+      480,
+      960,
+      1400
+    ],
+    "aspectRatio": 0.7503
+  },
+  "/works/fashion/f_039.jpg": {
+    "width": 1400,
+    "height": 1866,
+    "blurhash": "UKICTRxanP$iY4t6V[bH3Bt7WVW;~A%1J8kB",
+    "widths": [
+      480,
+      960,
+      1400
+    ],
+    "aspectRatio": 0.7503
+  },
+  "/works/fashion/f_040.jpg": {
+    "width": 1400,
+    "height": 1866,
+    "blurhash": "UADk0^,[0}JA7xXS+v$Q0~ni}soz:,WBFwS~",
+    "widths": [
+      480,
+      960,
+      1400
+    ],
+    "aspectRatio": 0.7503
+  },
+  "/works/fashion/f_041.jpg": {
+    "width": 1400,
+    "height": 1866,
+    "blurhash": "UMEBgSs:BUxa?^xGw|ozu4oz$%of-;ozg2sp",
+    "widths": [
+      480,
+      960,
+      1400
+    ],
+    "aspectRatio": 0.7503
+  },
+  "/works/fashion/f_042.jpg": {
+    "width": 1400,
+    "height": 1866,
+    "blurhash": "U37UPE-;KjM_D,E19uM_T0Rit8Di?wt6?IM_",
+    "widths": [
+      480,
+      960,
+      1400
+    ],
+    "aspectRatio": 0.7503
+  },
+  "/works/fashion/f_043.jpg": {
+    "width": 1400,
+    "height": 1866,
+    "blurhash": "U56[N{MxJ7M}-;D$bvIU%fIUxtM{?wIU%MWC",
+    "widths": [
+      480,
+      960,
+      1400
+    ],
+    "aspectRatio": 0.7503
+  },
+  "/works/fashion/f_044.jpg": {
+    "width": 1400,
+    "height": 1866,
+    "blurhash": "U3A1Ca.T00JE|,tR.TkV00sk#jnN1-WA8#My",
+    "widths": [
+      480,
+      960,
+      1400
+    ],
+    "aspectRatio": 0.7503
+  },
+  "/works/fashion/f_045.jpg": {
+    "width": 1400,
+    "height": 1866,
+    "blurhash": "U39HU{s,00%%:4W@ysWB0EMu+qa]l.Mw4Yoh",
+    "widths": [
+      480,
+      960,
+      1400
+    ],
+    "aspectRatio": 0.7503
+  },
+  "/works/fashion/f_046.jpg": {
+    "width": 1400,
+    "height": 1866,
+    "blurhash": "UWLCk,E}.S=|.l$%%2bbPospxakWw|R*NZjZ",
+    "widths": [
+      480,
+      960,
+      1400
+    ],
+    "aspectRatio": 0.7503
+  },
+  "/works/fashion/f_047.jpg": {
+    "width": 1400,
+    "height": 2508,
+    "blurhash": "UZKmeK=L?^t,_NkWjuWClTN]jFr?g3aejFkC",
+    "widths": [
+      480,
+      960,
+      1400
+    ],
+    "aspectRatio": 0.5582
+  },
+  "/works/fashion/f_048.jpg": {
+    "width": 1400,
+    "height": 2508,
+    "blurhash": "UZG+UKxu-;-;_Nayj]t8?bayIURjt8ofM{Rj",
+    "widths": [
+      480,
+      960,
+      1400
+    ],
+    "aspectRatio": 0.5582
+  },
+  "/works/fashion/f_049.jpg": {
+    "width": 1400,
+    "height": 2508,
+    "blurhash": "UNFiPv_3-;?v_N-;t7WB.8xuMxM_%gt7M{Rj",
+    "widths": [
+      480,
+      960,
+      1400
+    ],
+    "aspectRatio": 0.5582
+  },
+  "/works/fashion/f_050.jpg": {
+    "width": 1400,
+    "height": 2508,
+    "blurhash": "UD9kmkyE%%pJ$%MwofWC.TWBi]V?NFbbnhoJ",
+    "widths": [
+      480,
+      960,
+      1400
+    ],
+    "aspectRatio": 0.5582
+  },
+  "/works/fashion/f_051.jpg": {
+    "width": 1400,
+    "height": 2508,
+    "blurhash": "UfKm*1-V?^tm?vWqoLRjpcS#Vsr?kXWBn$of",
+    "widths": [
+      480,
+      960,
+      1400
+    ],
+    "aspectRatio": 0.5582
+  },
+  "/works/fashion/f_052.jpg": {
+    "width": 1400,
+    "height": 2508,
+    "blurhash": "UjMQec-q%#yD_NWBt7WBS}RjMxV@tSofV@s:",
+    "widths": [
+      480,
+      960,
+      1400
+    ],
+    "aspectRatio": 0.5582
+  },
+  "/works/fashion/f_053.jpg": {
+    "width": 1400,
+    "height": 2508,
+    "blurhash": "UJFpjY~CI;RPMJIAWBtkK%pHw{aKRjS2oeni",
+    "widths": [
+      480,
+      960,
+      1400
+    ],
+    "aspectRatio": 0.5582
+  },
+  "/works/fashion/f_054.jpg": {
+    "width": 1400,
+    "height": 2508,
+    "blurhash": "UZKKA#~V_M?H59t8xut8%gozspof%fozt7oM",
+    "widths": [
+      480,
+      960,
+      1400
+    ],
+    "aspectRatio": 0.5582
+  },
+  "/works/fashion/f_055.jpg": {
+    "width": 1400,
+    "height": 2508,
+    "blurhash": "UPJao}Rku4xu~qM{NGR*.SIUMdRj.8NGRPad",
+    "widths": [
+      480,
+      960,
+      1400
+    ],
+    "aspectRatio": 0.5582
+  },
+  "/works/fashion/f_056.jpg": {
+    "width": 1400,
+    "height": 2508,
+    "blurhash": "UHCgTK,CR%s;}F$kWBWV1ZbcSgJ61yJ7SgNu",
+    "widths": [
+      480,
+      960,
+      1400
+    ],
+    "aspectRatio": 0.5582
+  },
+  "/works/fashion/f_057.jpg": {
+    "width": 1400,
+    "height": 2508,
+    "blurhash": "UgK,XA-V.9xu?^bba#ofTxX8oykCiwjZRPjF",
+    "widths": [
+      480,
+      960,
+      1400
+    ],
+    "aspectRatio": 0.5582
+  },
+  "/works/fashion/f_058.jpg": {
+    "width": 1400,
+    "height": 2508,
+    "blurhash": "UBE.9I^QyYoz~B}@MxSg1zburWRjE15.b^w}",
+    "widths": [
+      480,
+      960,
+      1400
+    ],
+    "aspectRatio": 0.5582
+  },
+  "/works/fashion/f_059.jpg": {
+    "width": 1400,
+    "height": 2508,
+    "blurhash": "UKJHK_kD?^-;%#t7xuoz0|tQ4TNFMxWVI9Rj",
+    "widths": [
+      480,
+      960,
+      1400
+    ],
+    "aspectRatio": 0.5582
+  },
+  "/works/fashion/f_060.jpg": {
+    "width": 1400,
+    "height": 2508,
+    "blurhash": "UHILlM}Y:l:,%JS2xDOU5RK3xtf6=e$iNHr[",
+    "widths": [
+      480,
+      960,
+      1400
+    ],
+    "aspectRatio": 0.5582
+  },
+  "/works/fashion/f_061.jpg": {
+    "width": 1400,
+    "height": 2508,
+    "blurhash": "UOFqUP}Ers$*?akVn%w|6%F^SwOE-UsSNZOY",
+    "widths": [
+      480,
+      960,
+      1400
+    ],
+    "aspectRatio": 0.5582
+  },
+  "/works/fashion/f_062.jpg": {
+    "width": 1400,
+    "height": 2508,
+    "blurhash": "UMECk6xu~q%2?bxuNGay%Mt7M{WUIUt7M{of",
+    "widths": [
+      480,
+      960,
+      1400
+    ],
+    "aspectRatio": 0.5582
+  },
+  "/works/fashion/f_063.jpg": {
+    "width": 1400,
+    "height": 2508,
+    "blurhash": "USGSAXtQ~q%M-;ozNGj]x]RjIUt7oyWBWBof",
+    "widths": [
+      480,
+      960,
+      1400
+    ],
+    "aspectRatio": 0.5582
+  },
+  "/works/fashion/f_064.jpg": {
+    "width": 1400,
+    "height": 2508,
+    "blurhash": "UIE36lkA_N_3xtxuM{RiNGxbMyNGozofs:oe",
+    "widths": [
+      480,
+      960,
+      1400
+    ],
+    "aspectRatio": 0.5582
+  },
+  "/works/fashion/f_065.jpg": {
+    "width": 1400,
+    "height": 2508,
+    "blurhash": "UJCi]qoK?b%M~qoyo#%M.8WBRjxut7aeWBs:",
+    "widths": [
+      480,
+      960,
+      1400
+    ],
+    "aspectRatio": 0.5582
+  },
+  "/works/fashion/f_066.jpg": {
+    "width": 1400,
+    "height": 1738,
+    "blurhash": "UHJ[I%t7R:~qxu%Mxu%Mo#j[xuRjD%IUIUM{",
+    "widths": [
+      480,
+      960,
+      1400
+    ],
+    "aspectRatio": 0.8055
+  },
+  "/works/fashion/f_067.jpg": {
+    "width": 1400,
+    "height": 1738,
+    "blurhash": "UIJ[I*oyM}~q-;%Moet7WFWBxuaf9FIURjWB",
+    "widths": [
+      480,
+      960,
+      1400
+    ],
+    "aspectRatio": 0.8055
+  },
+  "/works/fashion/f_068.jpg": {
+    "width": 1400,
+    "height": 2506,
+    "blurhash": "UEGHuKs9*0t757kCDis:15R*?aR+H?azITjY",
+    "widths": [
+      480,
+      960,
+      1400
+    ],
+    "aspectRatio": 0.5587
+  },
+  "/works/fashion/f_069.jpg": {
+    "width": 1400,
+    "height": 2506,
+    "blurhash": "UADuVpb^020#01}?tlE2Ab0z=t}@0gs.$*t6",
+    "widths": [
+      480,
+      960,
+      1400
+    ],
+    "aspectRatio": 0.5587
+  },
+  "/works/fashion/f_070.jpg": {
+    "width": 1400,
+    "height": 1866,
+    "blurhash": "U99ZcZj[02j@~Boe57R+5RoL=_R*IpWC%1oL",
+    "widths": [
+      480,
+      960,
+      1400
+    ],
+    "aspectRatio": 0.7503
+  },
+  "/works/fashion/f_071.jpg": {
+    "width": 1400,
+    "height": 1866,
+    "blurhash": "UPD+e@oK.8xu~pf6%Nt7E1WBn~ax0LWVr=WB",
+    "widths": [
+      480,
+      960,
+      1400
+    ],
+    "aspectRatio": 0.7503
+  },
+  "/works/fashion/f_072.jpg": {
+    "width": 1400,
+    "height": 1866,
+    "blurhash": "ULEx^eRP?wxu~pRjx]of0KWBVsRj4:WV%1ae",
+    "widths": [
+      480,
+      960,
+      1400
+    ],
+    "aspectRatio": 0.7503
+  },
+  "/works/fashion/f_073.jpg": {
+    "width": 1400,
+    "height": 1866,
+    "blurhash": "UIE.X|n$.Toz~poetlf+00WXZ~ae4:NG-UjZ",
+    "widths": [
+      480,
+      960,
+      1400
+    ],
+    "aspectRatio": 0.7503
+  },
+  "/works/fashion/f_074.jpg": {
+    "width": 1400,
+    "height": 1866,
+    "blurhash": "UqKUZhM{_N?b?bRjR*xu-;M{xZt7Ioj[V@Rj",
+    "widths": [
+      480,
+      960,
+      1400
+    ],
+    "aspectRatio": 0.7503
+  },
+  "/works/fashion/f_075.jpg": {
+    "width": 1400,
+    "height": 1866,
+    "blurhash": "UxJRgYRQ_N%M?aoftRxuxvWB%2t7E1WBaeRj",
+    "widths": [
+      480,
+      960,
+      1400
+    ],
+    "aspectRatio": 0.7503
+  },
+  "/works/fashion/f_076.jpg": {
+    "width": 1400,
+    "height": 1866,
+    "blurhash": "UtJRaJof_3WB~qt7t8WC%Mt7xaofM|WBRPoe",
+    "widths": [
+      480,
+      960,
+      1400
+    ],
+    "aspectRatio": 0.7503
+  },
+  "/works/fashion/f_077.jpg": {
+    "width": 1400,
+    "height": 1866,
+    "blurhash": "UGC=xPVY0#EME1o}E1%25SM{~BM{9axu$%W=",
+    "widths": [
+      480,
+      960,
+      1400
+    ],
+    "aspectRatio": 0.7503
+  },
+  "/works/fashion/f_078.jpg": {
+    "width": 1400,
+    "height": 1866,
+    "blurhash": "UCB{JpE20g~VE1I;smwI0$$%^PEND*%2t79u",
+    "widths": [
+      480,
+      960,
+      1400
+    ],
+    "aspectRatio": 0.7503
+  },
+  "/works/fashion/f_079.jpg": {
+    "width": 1400,
+    "height": 1876,
+    "blurhash": "UMJl5JNLP;x^5aRkofW=20kCzpRjtlR*r=jF",
+    "widths": [
+      480,
+      960,
+      1400
+    ],
+    "aspectRatio": 0.7463
+  },
+  "/works/fashion/f_080.jpg": {
+    "width": 1400,
+    "height": 1876,
+    "blurhash": "UGJbXTE780pe0?M|s.g32wT0:%n4wvI@jZn4",
+    "widths": [
+      480,
+      960,
+      1400
+    ],
+    "aspectRatio": 0.7463
+  },
+  "/works/fashion/f_081.jpg": {
+    "width": 1400,
+    "height": 1876,
+    "blurhash": "UAIj6LL0%1cr7[j[J%WB~C$+OUxHOmbbpIX7",
+    "widths": [
+      480,
+      960,
+      1400
+    ],
+    "aspectRatio": 0.7463
+  },
+  "/works/fashion/f_082.jpg": {
+    "width": 1400,
+    "height": 1876,
+    "blurhash": "UBHM7qDNA9?^0V-:w]nN0LNH+ben+u4;57S$",
+    "widths": [
+      480,
+      960,
+      1400
+    ],
+    "aspectRatio": 0.7463
+  },
+  "/works/fashion/f_083.jpg": {
+    "width": 1400,
+    "height": 1876,
+    "blurhash": "U6IGlqD2[CLyD29s-;J*.:Mx00$+009Z8_R*",
+    "widths": [
+      480,
+      960,
+      1400
+    ],
+    "aspectRatio": 0.7463
+  },
+  "/works/fashion/f_084.jpg": {
+    "width": 1400,
+    "height": 1876,
+    "blurhash": "UEKxew_NQl?v0=XTJ8bw9vWCD$W=t-og?Ht8",
+    "widths": [
+      480,
+      960,
+      1400
+    ],
+    "aspectRatio": 0.7463
+  },
+  "/works/fashion/f_085.jpg": {
+    "width": 1400,
+    "height": 1876,
+    "blurhash": "USL5OGJ5p{%MPWxunPbbtnt9rDRij^R%I.V@",
+    "widths": [
+      480,
+      960,
+      1400
+    ],
+    "aspectRatio": 0.7463
+  },
+  "/works/fashion/f_086.jpg": {
+    "width": 1400,
+    "height": 1876,
+    "blurhash": "UJJ8*KevT}?w05X5RUIUJ?NEMJM~Mx%1xpx]",
+    "widths": [
+      480,
+      960,
+      1400
+    ],
+    "aspectRatio": 0.7463
+  },
+  "/works/fashion/f_087.jpg": {
+    "width": 1400,
+    "height": 1866,
+    "blurhash": "UJFqaQ-UM|s,xDoKazs.~9kVI;a}e.oeWXWC",
+    "widths": [
+      480,
+      960,
+      1400
+    ],
+    "aspectRatio": 0.7503
+  },
+  "/works/fashion/f_088.jpg": {
+    "width": 1400,
+    "height": 1738,
+    "blurhash": "UQKJl9~V-.s:~BxtR*M|x[M|M|t6oJjtoLt6",
+    "widths": [
+      480,
+      960,
+      1400
+    ],
+    "aspectRatio": 0.8055
+  },
+  "/works/fashion/f_089.jpg": {
+    "width": 1400,
+    "height": 1738,
+    "blurhash": "UOHwre~U={xZ?FWXWVj@%1R*NGWCoejZRkoK",
+    "widths": [
+      480,
+      960,
+      1400
+    ],
+    "aspectRatio": 0.8055
+  },
+  "/works/fashion/f_090.jpg": {
+    "width": 1400,
+    "height": 1738,
+    "blurhash": "UOI|%L~V^h-T-:WXs-oe-oRkNHWXxWs.I;WV",
+    "widths": [
+      480,
+      960,
+      1400
+    ],
+    "aspectRatio": 0.8055
+  },
+  "/works/fashion/f_091.jpg": {
+    "width": 1400,
+    "height": 1738,
+    "blurhash": "UGHn1n~A-o-o~ANGR*of%Lt6RQM|M}t6WBae",
+    "widths": [
+      480,
+      960,
+      1400
+    ],
+    "aspectRatio": 0.8055
+  },
+  "/works/fashion/f_092.jpg": {
+    "width": 1400,
+    "height": 1738,
+    "blurhash": "UZH-D4~Bxts.-oofbHs:%1R+R*WCayf6WBoK",
+    "widths": [
+      480,
+      960,
+      1400
+    ],
+    "aspectRatio": 0.8055
+  },
+  "/works/fashion/f_093.jpg": {
+    "width": 1400,
+    "height": 1738,
+    "blurhash": "UTGHk:?Foexa^%t6ayj[~Bt7R*WBadj[WXo0",
+    "widths": [
+      480,
+      960,
+      1400
+    ],
+    "aspectRatio": 0.8055
+  },
+  "/works/fashion/f_094.jpg": {
+    "width": 1400,
+    "height": 1738,
+    "blurhash": "UBI5xzkEK-Ou02D+o~kD0Do~vdVrEn$woJRl",
+    "widths": [
+      480,
+      960,
+      1400
+    ],
+    "aspectRatio": 0.8055
+  },
+  "/works/fashion/f_095.jpg": {
+    "width": 1400,
+    "height": 1738,
+    "blurhash": "UEHx~dX;5BxZ0[slW@IA00ad-:s,9xNKrptl",
+    "widths": [
+      480,
+      960,
+      1400
+    ],
+    "aspectRatio": 0.8055
+  },
+  "/works/fashion/f_096.jpg": {
+    "width": 1400,
+    "height": 1738,
+    "blurhash": "UPDU0_RlS6.T00s.nhIU%hROROV?x]t8oIt6",
+    "widths": [
+      480,
+      960,
+      1400
+    ],
+    "aspectRatio": 0.8055
+  },
+  "/works/fashion/f_097.jpg": {
+    "width": 1400,
+    "height": 1738,
+    "blurhash": "U7JP^_rr02~9Z$%1bI={ko?ENIE39bofE20g",
+    "widths": [
+      480,
+      960,
+      1400
+    ],
+    "aspectRatio": 0.8055
+  },
+  "/works/fashion/f_098.jpg": {
+    "width": 1400,
+    "height": 1866,
+    "blurhash": "UBB3~NRj00~V9]NG9F9ZD$?b^+9Zx[NGIpof",
+    "widths": [
+      480,
+      960,
+      1400
+    ],
+    "aspectRatio": 0.7503
+  },
+  "/works/fashion/f_099.jpg": {
+    "width": 1400,
+    "height": 1866,
+    "blurhash": "UHDlc*ae00M{xbRiOFtR00sk_NkXOZ%L$2D*",
+    "widths": [
+      480,
+      960,
+      1400
+    ],
+    "aspectRatio": 0.7503
+  },
+  "/works/fashion/f_100.jpg": {
+    "width": 1400,
+    "height": 1866,
+    "blurhash": "U6Ac*t?H0hOF4mRjD%Rj0Mbb^i%1ogt7_MtR",
+    "widths": [
+      480,
+      960,
+      1400
+    ],
+    "aspectRatio": 0.7503
+  },
+  "/works/fashion/f_101.jpg": {
+    "width": 1400,
+    "height": 1866,
+    "blurhash": "U3DSm~tQ0N9F00%259tm00Mc[9OY00tm~AVX",
+    "widths": [
+      480,
+      960,
+      1400
+    ],
+    "aspectRatio": 0.7503
+  },
+  "/works/fashion/f_102.jpg": {
+    "width": 1400,
+    "height": 1866,
+    "blurhash": "UADI%Yxt02NIxDWXslkC00Rj~At6NGoLxaM|",
+    "widths": [
+      480,
+      960,
+      1400
+    ],
+    "aspectRatio": 0.7503
+  },
+  "/works/fashion/f_103.jpg": {
+    "width": 1400,
+    "height": 1876,
+    "blurhash": "UED180rb00pI00f#_NoM4TI-xa-;?cx]H?IU",
+    "widths": [
+      480,
+      960,
+      1400
+    ],
+    "aspectRatio": 0.7463
+  },
+  "/works/fashion/f_104.jpg": {
+    "width": 1400,
+    "height": 1876,
+    "blurhash": "UBCQY;%200In0KS#_Nr[00Io?H-pyEt7MdNG",
+    "widths": [
+      480,
+      960,
+      1400
+    ],
+    "aspectRatio": 0.7463
+  },
+  "/works/fashion/f_105.jpg": {
+    "width": 1400,
+    "height": 1876,
+    "blurhash": "U2HV3or500jVD|574TNX9lGtHXGv00~W_M9G",
+    "widths": [
+      480,
+      960,
+      1400
+    ],
+    "aspectRatio": 0.7463
+  },
+  "/works/fashion/f_106.jpg": {
+    "width": 1400,
+    "height": 1876,
+    "blurhash": "UMJ8I;HDA0+aE0MzM_bbpLicR4O@DitQt7nO",
+    "widths": [
+      480,
+      960,
+      1400
+    ],
+    "aspectRatio": 0.7463
+  },
+  "/works/fashion/f_107.jpg": {
+    "width": 1400,
+    "height": 1876,
+    "blurhash": "URMQS7#-RP~qL2S#?bR*3XOrkCV@4.aKMdaK",
+    "widths": [
+      480,
+      960,
+      1400
+    ],
+    "aspectRatio": 0.7463
+  },
+  "/works/fashion/f_108.jpg": {
+    "width": 1400,
+    "height": 1876,
+    "blurhash": "UHK^?LSgADDO7h9Z~q?b3s-Bmlt,0$-BZhMx",
+    "widths": [
+      480,
+      960,
+      1400
+    ],
+    "aspectRatio": 0.7463
+  },
+  "/works/fashion/f_109.jpg": {
+    "width": 1400,
+    "height": 1876,
+    "blurhash": "UgH96EspnTWV}0o1WUS1#Ga|k9WU$ljuWBf5",
+    "widths": [
+      480,
+      960,
+      1400
+    ],
+    "aspectRatio": 0.7463
+  },
+  "/works/fashion/f_110.jpg": {
+    "width": 1400,
+    "height": 1876,
+    "blurhash": "U05#Cg0000~q;0^,0f4-00%NcYIUE$4m~C?b",
+    "widths": [
+      480,
+      960,
+      1400
+    ],
+    "aspectRatio": 0.7463
+  },
+  "/works/fashion/f_111.jpg": {
+    "width": 1400,
+    "height": 1876,
+    "blurhash": "U26Q}79F00~W=it7EKWC00-;yBD%9qRj%3bX",
+    "widths": [
+      480,
+      960,
+      1400
+    ],
+    "aspectRatio": 0.7463
+  },
+  "/works/fashion/f_112.jpg": {
+    "width": 1400,
+    "height": 1876,
+    "blurhash": "U56tOF[qZ4OE~CwKMdS#NaNuOUofVFW.k;W=",
+    "widths": [
+      480,
+      960,
+      1400
+    ],
+    "aspectRatio": 0.7463
+  },
+  "/works/fashion/f_113.jpg": {
+    "width": 1400,
+    "height": 1876,
+    "blurhash": "U48gNrdA8wQ8:RX8%gen0emlTIYjvgaLXSof",
+    "widths": [
+      480,
+      960,
+      1400
+    ],
+    "aspectRatio": 0.7463
+  },
+  "/works/fashion/f_114.jpg": {
+    "width": 1400,
+    "height": 1876,
+    "blurhash": "UIECOM_2Xobw.TbcxXs,NyR*V?s.=_s.IpWX",
+    "widths": [
+      480,
+      960,
+      1400
+    ],
+    "aspectRatio": 0.7463
+  },
+  "/works/fashion/f_115.jpg": {
+    "width": 1400,
+    "height": 1876,
+    "blurhash": "ULOzJL%M~q?a?b-:t8xuxuM{9Fof~pxuD*Rj",
+    "widths": [
+      480,
+      960,
+      1400
+    ],
+    "aspectRatio": 0.7463
+  },
+  "/works/fashion/f_116.jpg": {
+    "width": 1400,
+    "height": 1876,
+    "blurhash": "UMOzMT%M?v_2%2?G%Mxu%MWBD%WB~qRjD*Rj",
+    "widths": [
+      480,
+      960,
+      1400
+    ],
+    "aspectRatio": 0.7463
+  },
+  "/works/fashion/f_117.jpg": {
+    "width": 1400,
+    "height": 1876,
+    "blurhash": "UKHAFQo0R5s:yWW=Vsn$~Bj?Rjs:b[s:J7R*",
+    "widths": [
+      480,
+      960,
+      1400
+    ],
+    "aspectRatio": 0.7463
+  },
+  "/works/fashion/f_118.jpg": {
+    "width": 1400,
+    "height": 1876,
+    "blurhash": "UMPjAE-;.8?b-;xuxuxux]IUV[IU~qt7D%WC",
+    "widths": [
+      480,
+      960,
+      1400
+    ],
+    "aspectRatio": 0.7463
+  },
+  "/works/fashion/f_119.jpg": {
+    "width": 1400,
+    "height": 1876,
+    "blurhash": "UKPGd8%M~q?b%LRlxuay-:V@M{Rj~Wxt9Fay",
+    "widths": [
+      480,
+      960,
+      1400
+    ],
+    "aspectRatio": 0.7463
+  },
+  "/works/fashion/f_120.jpg": {
+    "width": 1400,
+    "height": 1876,
+    "blurhash": "UMO:;C?H?b_3RO-:%Mxtt3t6Ioax~qIU9FRk",
+    "widths": [
+      480,
+      960,
+      1400
+    ],
+    "aspectRatio": 0.7463
+  },
+  "/works/fashion/f_121.jpg": {
+    "width": 1400,
+    "height": 1876,
+    "blurhash": "UOPZfN-;~p?bocoe%Mt7?aV@M|ay~pofD%WB",
+    "widths": [
+      480,
+      960,
+      1400
+    ],
+    "aspectRatio": 0.7463
+  },
+  "/works/fashion/f_122.jpg": {
+    "width": 1400,
+    "height": 1876,
+    "blurhash": "UJF?FgM|01?c5vxa_4NL01R.%2RjIpIVMxxZ",
+    "widths": [
+      480,
+      960,
+      1400
+    ],
+    "aspectRatio": 0.7463
+  },
+  "/works/fashion/f_123.jpg": {
+    "width": 1400,
+    "height": 1876,
+    "blurhash": "UFCG1n-@0=I]ObR%M{f918Ri^IxZRNs;xWay",
+    "widths": [
+      480,
+      960,
+      1400
+    ],
+    "aspectRatio": 0.7463
+  },
+  "/works/fashion/f_124.jpg": {
+    "width": 1400,
+    "height": 1876,
+    "blurhash": "U4A@lE1b1cSz|_AWJ8$Pnk1vj[R+|_snW;63",
+    "widths": [
+      480,
+      960,
+      1400
+    ],
+    "aspectRatio": 0.7463
+  },
+  "/works/fashion/f_125.jpg": {
+    "width": 1400,
+    "height": 1876,
+    "blurhash": "U89Ell|_w{$j|_NuNuw{AX1vEzwxweNuNujt",
+    "widths": [
+      480,
+      960,
+      1400
+    ],
+    "aspectRatio": 0.7463
+  },
+  "/works/fashion/f_126.jpg": {
+    "width": 1400,
+    "height": 1876,
+    "blurhash": "UHC?19~A,.-o_3R-9tNbOH9uE2M}tmsm$$xa",
+    "widths": [
+      480,
+      960,
+      1400
+    ],
+    "aspectRatio": 0.7463
+  },
+  "/works/fashion/f_127.jpg": {
+    "width": 1400,
+    "height": 1876,
+    "blurhash": "UOKTlE-oHq$$u6I;D$RjT0NHo#NH?GRkOGoK",
+    "widths": [
+      480,
+      960,
+      1400
+    ],
+    "aspectRatio": 0.7463
+  },
+  "/works/fashion/f_128.jpg": {
+    "width": 1400,
+    "height": 1876,
+    "blurhash": "UE68qKV=BCtAtWoMT1W=Osn$xIR$OTaewMj[",
+    "widths": [
+      480,
+      960,
+      1400
+    ],
+    "aspectRatio": 0.7463
+  },
+  "/works/fashion/f_129.jpg": {
+    "width": 1400,
+    "height": 1876,
+    "blurhash": "U9KnMA?Gxu%M^+4nIU%M~pWC9GV@00%L-:4.",
+    "widths": [
+      480,
+      960,
+      1400
+    ],
+    "aspectRatio": 0.7463
+  },
+  "/works/fashion/f_130.jpg": {
+    "width": 1400,
+    "height": 1876,
+    "blurhash": "U4D9q_~VD$9u00_3xtM_Y74.-;^*00D%4o%M",
+    "widths": [
+      480,
+      960,
+      1400
+    ],
+    "aspectRatio": 0.7463
+  },
+  "/works/fashion/f_131.jpg": {
+    "width": 1400,
+    "height": 1876,
+    "blurhash": "UXCbAkRjuPo#.To}WBt7u5ofa0bHS$j[nhWB",
+    "widths": [
+      480,
+      960,
+      1400
+    ],
+    "aspectRatio": 0.7463
+  },
+  "/works/fashion/f_132.jpg": {
+    "width": 1400,
+    "height": 1876,
+    "blurhash": "USBF|Wo}PVo~yskCXmbcTyfkh|aeMxayt6j@",
+    "widths": [
+      480,
+      960,
+      1400
+    ],
+    "aspectRatio": 0.7463
+  },
+  "/works/fashion/f_133.jpg": {
+    "width": 1400,
+    "height": 1876,
+    "blurhash": "UNK@bO0y[r}ZwJ-BNajt#m-U5+EzI:W;JRjG",
+    "widths": [
+      480,
+      960,
+      1400
+    ],
+    "aspectRatio": 0.7463
+  },
+  "/works/fashion/f_134.jpg": {
+    "width": 1400,
+    "height": 1876,
+    "blurhash": "U9BJ~xsU1ISN,Zsn6NS3|_sVAXS2ACN]OXo0",
+    "widths": [
+      480,
+      960,
+      1400
+    ],
+    "aspectRatio": 0.7463
+  },
+  "/works/fashion/f_135.jpg": {
+    "width": 1400,
+    "height": 1876,
+    "blurhash": "URCjqyt8I@tS.At7MxogIpjEVXRPNGV?ozW=",
+    "widths": [
+      480,
+      960,
+      1400
+    ],
+    "aspectRatio": 0.7463
+  },
+  "/works/fashion/f_136.jpg": {
+    "width": 1400,
+    "height": 1876,
+    "blurhash": "UIBD$vRj4nxu.AR*I9t7D%ozngV@IUt7nhRj",
+    "widths": [
+      480,
+      960,
+      1400
+    ],
+    "aspectRatio": 0.7463
+  },
+  "/works/fashion/f_137.jpg": {
+    "width": 1400,
+    "height": 1876,
+    "blurhash": "UaI4t?~qDiD%v~M{IUM{8_M{%gxtoLtRx]of",
+    "widths": [
+      480,
+      960,
+      1400
+    ],
+    "aspectRatio": 0.7463
+  },
+  "/works/fashion/f_138.jpg": {
+    "width": 1400,
+    "height": 1876,
+    "blurhash": "UCJ@k0kV00%100bJ?vMw00_3_MRj%gDiMxo~",
+    "widths": [
+      480,
+      960,
+      1400
+    ],
+    "aspectRatio": 0.7463
+  },
+  "/works/fashion/f_139.jpg": {
+    "width": 1400,
+    "height": 1876,
+    "blurhash": "UQKxJ7tR_Nx]-;M{M{%gS5M{9Fxuo#%MoeIT",
+    "widths": [
+      480,
+      960,
+      1400
+    ],
+    "aspectRatio": 0.7463
+  },
+  "/works/fashion/f_140.jpg": {
+    "width": 1400,
+    "height": 1876,
+    "blurhash": "UXHLYp?bNxNx?w-=RPog%#x]VsxaxvWBM{WU",
+    "widths": [
+      480,
+      960,
+      1400
+    ],
+    "aspectRatio": 0.7463
+  },
+  "/works/fashion/f_141.jpg": {
+    "width": 1400,
+    "height": 1876,
+    "blurhash": "USKB5fELw3%3B@t7WFbJIwxaXlS2IXRlt5ay",
+    "widths": [
+      480,
+      960,
+      1400
+    ],
+    "aspectRatio": 0.7463
+  },
+  "/works/fashion/f_142.jpg": {
+    "width": 1400,
+    "height": 1876,
+    "blurhash": "UFKKc%H[VG-p2|xujM%M12J,KPtP9NR.NX9Z",
+    "widths": [
+      480,
+      960,
+      1400
+    ],
+    "aspectRatio": 0.7463
+  },
+  "/works/fashion/f_143.jpg": {
+    "width": 1400,
+    "height": 1876,
+    "blurhash": "UvKKo~-:j=xa.Txua#ofX.R+a$W;x]NGn~af",
+    "widths": [
+      480,
+      960,
+      1400
+    ],
+    "aspectRatio": 0.7463
+  },
+  "/works/fashion/f_144.jpg": {
+    "width": 1400,
+    "height": 1876,
+    "blurhash": "UmIhg7%2NGWr?wt7flogpKa#xas:-;oJs,WB",
+    "widths": [
+      480,
+      960,
+      1400
+    ],
+    "aspectRatio": 0.7463
+  },
+  "/works/fashion/f_145.jpg": {
+    "width": 1400,
+    "height": 1876,
+    "blurhash": "UTINHe9vE2oe~VxFM|R+9vs:t6s.8{xZXSs.",
+    "widths": [
+      480,
+      960,
+      1400
+    ],
+    "aspectRatio": 0.7463
+  },
+  "/works/fashion/f_146.jpg": {
+    "width": 1400,
+    "height": 1400,
+    "blurhash": "U4C5kvxv004.~UEM0fjF0Mn$={-VwM=_EgIp",
+    "widths": [
+      480,
+      960,
+      1400
+    ],
+    "aspectRatio": 1
+  },
+  "/works/fashion/f_147.jpg": {
+    "width": 1400,
+    "height": 1876,
+    "blurhash": "UEHeOORp_2nf00H?9bXAW.NHxaMx~q%f$%Ri",
+    "widths": [
+      480,
+      960,
+      1400
+    ],
+    "aspectRatio": 0.7463
+  },
+  "/works/fashion/f_148.jpg": {
+    "width": 1400,
+    "height": 1876,
+    "blurhash": "UWEy*-+?_Nr;?G-4tRaKm+nhV@W=t7t7t6xt",
+    "widths": [
+      480,
+      960,
+      1400
+    ],
+    "aspectRatio": 0.7463
+  },
+  "/works/fashion/f_149.jpg": {
+    "width": 1400,
+    "height": 1876,
+    "blurhash": "UA9i@-~A0M02-oxaNGM|0M9u={^jIoNGs:t7",
+    "widths": [
+      480,
+      960,
+      1400
+    ],
+    "aspectRatio": 0.7463
+  },
+  "/works/fashion/f_150.jpg": {
+    "width": 1400,
+    "height": 1876,
+    "blurhash": "URLW66%1_MxuoLj@IpRk9Gay9GNG%gj[%Lof",
+    "widths": [
+      480,
+      960,
+      1400
+    ],
+    "aspectRatio": 0.7463
+  },
+  "/works/fashion/f_151.jpg": {
+    "width": 1400,
+    "height": 1876,
+    "blurhash": "U7F4ZT}@0MV@9^WW029v-o58w^={S#={xE9u",
+    "widths": [
+      480,
+      960,
+      1400
+    ],
+    "aspectRatio": 0.7463
+  },
+  "/works/fashion/f_152.jpg": {
+    "width": 1400,
+    "height": 1400,
+    "blurhash": "UIC~F.~WO@tl^k-;x]kXR+xZt7S$EMe.xFbb",
+    "widths": [
+      480,
+      960,
+      1400
+    ],
+    "aspectRatio": 1
+  },
+  "/works/fashion/f_153.jpg": {
+    "width": 1400,
+    "height": 1400,
+    "blurhash": "U36*K[Mb0h57~Ca04:Iq00%h=s-:0LS5^i-8",
+    "widths": [
+      480,
+      960,
+      1400
+    ],
+    "aspectRatio": 1
+  },
+  "/works/fashion/f_154.jpg": {
+    "width": 1400,
+    "height": 1400,
+    "blurhash": "U99G?g%g01RO~p%MIp%1%gx]xus..8%MRjIU",
+    "widths": [
+      480,
+      960,
+      1400
+    ],
+    "aspectRatio": 1
+  },
+  "/works/fashion/f_155.jpg": {
+    "width": 1400,
+    "height": 1400,
+    "blurhash": "UHH2WWoL4o%f~qWBs:%2-;WBRjt7%MWBRjof",
+    "widths": [
+      480,
+      960,
+      1400
+    ],
+    "aspectRatio": 1
+  },
+  "/works/fashion/f_156.jpg": {
+    "width": 1400,
+    "height": 1400,
+    "blurhash": "UVRyg8%L?^%g.8j[sAofM{ayRjWV%gj[jFjZ",
+    "widths": [
+      480,
+      960,
+      1400
+    ],
+    "aspectRatio": 1
+  },
+  "/works/fashion/f_157.jpg": {
+    "width": 1400,
+    "height": 1400,
+    "blurhash": "UlJQyINH$}t6~Vn%j[j[^%s-NJs.kroeWCj@",
+    "widths": [
+      480,
+      960,
+      1400
+    ],
+    "aspectRatio": 1
+  },
+  "/works/fashion/f_158.jpg": {
+    "width": 1400,
+    "height": 788,
+    "blurhash": "U283tv~oIV0211ofjY$MS~j[oING9b9uIVxZ",
+    "widths": [
+      480,
+      960,
+      1400
+    ],
+    "aspectRatio": 1.7766
+  },
+  "/works/fashion/f_159.jpg": {
+    "width": 1400,
+    "height": 2508,
+    "blurhash": "UiH_Y[W;_N-:_2WCx]t79GjYM{NGX9ofxta}",
+    "widths": [
+      480,
+      960,
+      1400
+    ],
+    "aspectRatio": 0.5582
+  },
+  "/works/heritage/h_001.jpg": {
+    "width": 1200,
+    "height": 1788,
+    "blurhash": "UmIERroIxtWW~pt6R*ofyDWCRkj[-;WCjsfk",
+    "widths": [
+      480,
+      960,
+      1200
+    ],
+    "aspectRatio": 0.6711
+  },
+  "/works/heritage/h_002.jpg": {
+    "width": 1200,
+    "height": 1788,
+    "blurhash": "UmIERroIxtWW~pt6R*ofyDWCRkj[-;WCjsfk",
+    "widths": [
+      480,
+      960,
+      1200
+    ],
+    "aspectRatio": 0.6711
+  },
+  "/works/heritage/h_003.jpg": {
+    "width": 1200,
+    "height": 1788,
+    "blurhash": "UIIznp01Xn$z~WIA%MWApI9Gx]M|%LE2-oRk",
+    "widths": [
+      480,
+      960,
+      1200
+    ],
+    "aspectRatio": 0.6711
+  },
+  "/works/heritage/h_004.jpg": {
+    "width": 1200,
+    "height": 1788,
+    "blurhash": "UFI50k~p-p~W5T%h-;-:xuo#-:xux]WY-pxu",
+    "widths": [
+      480,
+      960,
+      1200
+    ],
+    "aspectRatio": 0.6711
+  },
+  "/works/heritage/h_005.jpg": {
+    "width": 1200,
+    "height": 1788,
+    "blurhash": "USHUzl-oIpRk_NR-s.xtyER.R*jtyEofR*WC",
+    "widths": [
+      480,
+      960,
+      1200
+    ],
+    "aspectRatio": 0.6711
+  },
+  "/works/heritage/h_006.jpg": {
+    "width": 1200,
+    "height": 1788,
+    "blurhash": "UaKm:^ofWBxu~pxZoJoz_2s:WWofX.ogj]oL",
+    "widths": [
+      480,
+      960,
+      1200
+    ],
+    "aspectRatio": 0.6711
+  },
+  "/works/heritage/h_007.jpg": {
+    "width": 1200,
+    "height": 1788,
+    "blurhash": "U7A9+s^iE2og}pwINGs:nNjYRjnixC-os:V@",
+    "widths": [
+      480,
+      960,
+      1200
+    ],
+    "aspectRatio": 0.6711
+  },
+  "/works/heritage/h_008.jpg": {
+    "width": 1200,
+    "height": 1788,
+    "blurhash": "UjGuR9M{9Gt7~VM|D*kC-:NGRjWCxuNGoLWC",
+    "widths": [
+      480,
+      960,
+      1200
+    ],
+    "aspectRatio": 0.6711
+  },
+  "/works/heritage/h_009.jpg": {
+    "width": 1200,
+    "height": 1788,
+    "blurhash": "UjGuR9M{9Gt7~VM|D*kC-:NGRjWCxuNGoLWC",
+    "widths": [
+      480,
+      960,
+      1200
+    ],
+    "aspectRatio": 0.6711
+  },
+  "/works/heritage/h_010.jpg": {
+    "width": 1200,
+    "height": 510,
+    "blurhash": "UABW_4?bK4D%_N-;RjNG00IU-;%ME1IUxuxa",
+    "widths": [
+      480,
+      960,
+      1200
+    ],
+    "aspectRatio": 2.3529
+  },
+  "/works/heritage/h_011.jpg": {
+    "width": 1200,
+    "height": 510,
+    "blurhash": "UAEBNf0gJA#R}=0h%Mi^IpEhxZ-7ahs.xYS4",
+    "widths": [
+      480,
+      960,
+      1200
+    ],
+    "aspectRatio": 2.3529
+  },
+  "/works/heritage/h_012.jpg": {
+    "width": 1200,
+    "height": 2150,
+    "blurhash": "UdJQvEIq%Leo~pt6NGt6-;xas:WV?bt7bHae",
+    "widths": [
+      480,
+      960,
+      1200
+    ],
+    "aspectRatio": 0.5581
+  },
+  "/works/heritage/h_013.jpg": {
+    "width": 1200,
+    "height": 2150,
+    "blurhash": "UrJQ+efjIUt7~qj@M{of%hj[n~kC?bofoIj[",
+    "widths": [
+      480,
+      960,
+      1200
+    ],
+    "aspectRatio": 0.5581
+  },
+  "/works/heritage/h_014.jpg": {
+    "width": 1200,
+    "height": 510,
+    "blurhash": "UbGk,k%1jXaK~pozoLRP%gX8WBWB-;t7WBod",
+    "widths": [
+      480,
+      960,
+      1200
+    ],
+    "aspectRatio": 2.3529
+  },
+  "/works/heritage/h_015.jpg": {
+    "width": 1200,
+    "height": 510,
+    "blurhash": "ULFYMjaK00%L?Gay9HWX~VjsIUt7xajZRjoe",
+    "widths": [
+      480,
+      960,
+      1200
+    ],
+    "aspectRatio": 2.3529
+  },
+  "/works/heritage/h_016.jpg": {
+    "width": 1200,
+    "height": 510,
+    "blurhash": "UUExwxwctPM{~UaextRjxsofoLRQ%LX8RkIV",
+    "widths": [
+      480,
+      960,
+      1200
+    ],
+    "aspectRatio": 2.3529
+  },
+  "/works/heritage/h_017.jpg": {
+    "width": 1200,
+    "height": 510,
+    "blurhash": "UECP|w.myX9GD*IpMx%L0yQmQ-xax]ROofS5",
+    "widths": [
+      480,
+      960,
+      1200
+    ],
+    "aspectRatio": 2.3529
+  },
+  "/works/heritage/h_018.jpg": {
+    "width": 735,
+    "height": 1006,
+    "blurhash": "U.JH{,a}WBkC_NaeV[oLtSoffkj]Neozfkj[",
+    "widths": [
+      480,
+      735
+    ],
+    "aspectRatio": 0.7306
+  },
+  "/works/heritage/h_019.jpg": {
+    "width": 1200,
+    "height": 1788,
+    "blurhash": "URGt{4$$t6t6~VR+R*oK_2ays.t6?bRkWCR+",
+    "widths": [
+      480,
+      960,
+      1200
+    ],
+    "aspectRatio": 0.6711
+  },
+  "/works/heritage/h_020.jpg": {
+    "width": 1200,
+    "height": 1788,
+    "blurhash": "URGt{4$$t6t6~VR+R*oK_2ays.t6?bRkWCR+",
+    "widths": [
+      480,
+      960,
+      1200
+    ],
+    "aspectRatio": 0.6711
+  },
+  "/works/heritage/h_021.jpg": {
+    "width": 1200,
+    "height": 1788,
+    "blurhash": "UoIEhEM{xaWA~qRjoLV@-=WBRjj[-;xaRkt7",
+    "widths": [
+      480,
+      960,
+      1200
+    ],
+    "aspectRatio": 0.6711
+  },
+  "/works/hero-poster.jpg": {
+    "width": 1930,
+    "height": 1080,
+    "blurhash": "U47eVJGSDO}vbLbFM_RP00w}%2E1Diw|tRyD",
+    "widths": [
+      480,
+      960,
+      1440,
+      1920,
+      1930
+    ],
+    "aspectRatio": 1.787
+  },
+  "/works/poster_01_saudi_joker.jpg": {
+    "width": 1280,
+    "height": 716,
+    "blurhash": "U38#+*LM4T:oYNtdI]#F?^ox4TMc?wIUNHoz",
+    "widths": [
+      480,
+      960,
+      1280
+    ],
+    "aspectRatio": 1.7877
+  },
+  "/works/poster_02_human_snail.jpg": {
+    "width": 1280,
+    "height": 640,
+    "blurhash": "U5A1Fi?a00Dj2gNHMHs,O^M|-4xa?b-:s-M{",
+    "widths": [
+      480,
+      960,
+      1280
+    ],
+    "aspectRatio": 2
+  },
+  "/works/poster_03_mohammed_writer.jpg": {
+    "width": 1280,
+    "height": 714,
+    "blurhash": "UGDAiS?^00gh9FV@?vxu%gs;Mxae?wozIAog",
+    "widths": [
+      480,
+      960,
+      1280
+    ],
+    "aspectRatio": 1.7927
+  },
+  "/works/poster_04_studies_fragments.jpg": {
+    "width": 1280,
+    "height": 720,
+    "blurhash": "UMGH-d^%?GM|~ntQt7Ip58NKRkWX0NRQWBxs",
+    "widths": [
+      480,
+      960,
+      1280
+    ],
+    "aspectRatio": 1.7778
+  },
+  "/works/poster_05_disorders.jpg": {
+    "width": 1024,
+    "height": 576,
+    "blurhash": "UA8EuN%L00Mx_NoL4URjnOWVNuaz%MkCIURj",
+    "widths": [
+      480,
+      960,
+      1024
+    ],
+    "aspectRatio": 1.7778
+  },
+  "/works/poster_06_saudi_harley.jpg": {
+    "width": 1024,
+    "height": 576,
+    "blurhash": "UHIOOf~V009Z4nD*xvs;s,xut7V@V[t7t7IU",
+    "widths": [
+      480,
+      960,
+      1024
+    ],
+    "aspectRatio": 1.7778
+  },
+  "/works/poster_07_glasses_cinematic.jpg": {
+    "width": 720,
+    "height": 1280,
+    "blurhash": "U9FiA5M_%L~pF}M{oKR*K6xtV[M{NGR+M{Rk",
+    "widths": [
+      480,
+      720
+    ],
+    "aspectRatio": 0.5625
+  },
+  "/works/poster_08_glasses_ugc.jpg": {
+    "width": 720,
+    "height": 1280,
+    "blurhash": "U9Gkj[-n00Rj00D+B=t7KykCofa$^,-o}9jY",
+    "widths": [
+      480,
+      720
+    ],
+    "aspectRatio": 0.5625
+  },
+  "/works/poster_09_generations.jpg": {
+    "width": 1200,
+    "height": 898,
+    "blurhash": "U89Qjg%N_N-q_NtStmo#IoofIoNGMcnNI9M{",
+    "widths": [
+      480,
+      960,
+      1200
+    ],
+    "aspectRatio": 1.3363
+  },
+  "/works/realestate/r_001.jpg": {
+    "width": 1200,
+    "height": 1608,
+    "blurhash": "UDFYMw$%V@xu}=%2f+Rkt.NHoJofM|jZR*of",
+    "widths": [
+      480,
+      960,
+      1200
+    ],
+    "aspectRatio": 0.7463
+  },
+  "/works/realestate/r_002.jpg": {
+    "width": 1200,
+    "height": 1788,
+    "blurhash": "UOF=dMj?xaxa~ps:R*WV^,Rjoes:?boLj^WU",
+    "widths": [
+      480,
+      960,
+      1200
+    ],
+    "aspectRatio": 0.6711
+  },
+  "/works/realestate/r_003.jpg": {
+    "width": 1200,
+    "height": 510,
+    "blurhash": "UjL:=XK,-S-n_NpJslo#Otj@a0Rl%1NHr;Rj",
+    "widths": [
+      480,
+      960,
+      1200
+    ],
+    "aspectRatio": 2.3529
+  },
+  "/works/realestate/r_004.jpg": {
+    "width": 1200,
+    "height": 1788,
+    "blurhash": "UXJ7]*4mI;?I~Vt8R+M_%fV[WBR%?bRPR*kC",
+    "widths": [
+      480,
+      960,
+      1200
+    ],
+    "aspectRatio": 0.6711
+  },
+  "/works/realestate/r_005.jpg": {
+    "width": 1200,
+    "height": 1788,
+    "blurhash": "UgE{tvRkf,bI_4M{M{jubIM{RiWBbIj]xuof",
+    "widths": [
+      480,
+      960,
+      1200
+    ],
+    "aspectRatio": 0.6711
+  },
+  "/works/realestate/r_006.jpg": {
+    "width": 1200,
+    "height": 510,
+    "blurhash": "UMIN?Y%19F^+$v%2o~ng-5oMNHn#~WbHD*tR",
+    "widths": [
+      480,
+      960,
+      1200
+    ],
+    "aspectRatio": 2.3529
+  },
+  "/works/realestate/r_007.jpg": {
+    "width": 1200,
+    "height": 1200,
+    "blurhash": "UXJjYf%1_MtR~qxt%ht7%gWDt8WCxas-NGR*",
+    "widths": [
+      480,
+      960,
+      1200
+    ],
+    "aspectRatio": 1
+  },
+  "/works/realestate/r_008.jpg": {
+    "width": 896,
+    "height": 1200,
+    "blurhash": "UYHxsWIAt8oc~qV?WXWA%hxZM{WBtSxuWAj]",
+    "widths": [
+      480,
+      896
+    ],
+    "aspectRatio": 0.7467
+  },
+  "/works/realestate/r_009.jpg": {
+    "width": 1200,
+    "height": 670,
+    "blurhash": "URDcdh~q%MtR%2V@jEs:M_RPWVWBMxRiWBjE",
+    "widths": [
+      480,
+      960,
+      1200
+    ],
+    "aspectRatio": 1.791
+  },
+  "/works/realestate/r_010.jpg": {
+    "width": 896,
+    "height": 1200,
+    "blurhash": "U%KK+nkCaet6_Nofa}kCtmWXofWXW?WVRkoL",
+    "widths": [
+      480,
+      896
+    ],
+    "aspectRatio": 0.7467
+  },
+  "/works/realestate/r_011.jpg": {
+    "width": 896,
+    "height": 1200,
+    "blurhash": "UOL4HCxEoc-p~qxtodxttmRkDjRPV@ofxtNG",
+    "widths": [
+      480,
+      896
+    ],
+    "aspectRatio": 0.7467
+  },
+  "/works/realestate/r_012.jpg": {
+    "width": 896,
+    "height": 1200,
+    "blurhash": "UAKn9w0001nMS~9FM}xa?^?bQ-4.vzV@J8.8",
+    "widths": [
+      480,
+      896
+    ],
+    "aspectRatio": 0.7467
+  },
+  "/works/realestate/r_013.jpg": {
+    "width": 1200,
+    "height": 670,
+    "blurhash": "UxIhy?t79aR-%%t6oKbIOuoet7bHIqWVt7oe",
+    "widths": [
+      480,
+      960,
+      1200
+    ],
+    "aspectRatio": 1.791
+  },
+  "/works/realestate/r_014.jpg": {
+    "width": 1200,
+    "height": 670,
+    "blurhash": "UHHn._4:00%L~pRjD%xu%2R*M{s:aKoLofWC",
+    "widths": [
+      480,
+      960,
+      1200
+    ],
+    "aspectRatio": 1.791
+  },
+  "/works/realestate/r_015.jpg": {
+    "width": 1200,
+    "height": 670,
+    "blurhash": "UaJHEi-o00WF~Wj?D%t8R+WCoLofs:ofaeWA",
+    "widths": [
+      480,
+      960,
+      1200
+    ],
+    "aspectRatio": 1.791
+  },
+  "/works/realestate/r_016.jpg": {
+    "width": 896,
+    "height": 1200,
+    "blurhash": "U8C~h#-:sRbc}[wIV@t80;tSRiRk0%ayM{s;",
+    "widths": [
+      480,
+      896
+    ],
+    "aspectRatio": 0.7467
+  },
+  "/works/realestate/r_017.jpg": {
+    "width": 896,
+    "height": 1200,
+    "blurhash": "UGDlWl0fIo%1?dNGWUa#17xWoJR*5X%2oLj@",
+    "widths": [
+      480,
+      896
+    ],
+    "aspectRatio": 0.7467
+  },
+  "/works/realestate/r_018.jpg": {
+    "width": 1200,
+    "height": 896,
+    "blurhash": "U6E{RkM{00n|_MaKWXE200xa~BIo?HR-xtxW",
+    "widths": [
+      480,
+      960,
+      1200
+    ],
+    "aspectRatio": 1.3393
+  },
+  "/works/realestate/r_019.jpg": {
+    "width": 1200,
+    "height": 896,
+    "blurhash": "U9DR{2^%0M%M~9$zM|NJ,.-n-pRjwat6%Mj?",
+    "widths": [
+      480,
+      960,
+      1200
+    ],
+    "aspectRatio": 1.3393
+  },
+  "/works/realestate/r_020.jpg": {
+    "width": 1200,
+    "height": 806,
+    "blurhash": "UbGu%aNKX:%L?wNHx^t7NKoLbIWCRPayM|ay",
+    "widths": [
+      480,
+      960,
+      1200
+    ],
+    "aspectRatio": 1.4888
+  },
+  "/works/realestate/r_021.jpg": {
+    "width": 1200,
+    "height": 510,
+    "blurhash": "UUJ7{%9H~qt7_Nt8.8xu%gofX9WrxtRjt7of",
+    "widths": [
+      480,
+      960,
+      1200
+    ],
+    "aspectRatio": 2.3529
+  },
+  "/works/realestate/r_022.jpg": {
+    "width": 1200,
+    "height": 510,
+    "blurhash": "UXPP=W-=oIf4~qx]RkWBxvxuWBa#%Mxuxuof",
+    "widths": [
+      480,
+      960,
+      1200
+    ],
+    "aspectRatio": 2.3529
+  },
+  "/works/realestate/r_023.jpg": {
+    "width": 1200,
+    "height": 510,
+    "blurhash": "USO|LU?G-pD*~qxuofM{?b9FM{-:-;xut7ay",
+    "widths": [
+      480,
+      960,
+      1200
+    ],
+    "aspectRatio": 2.3529
+  },
+  "/works/realestate/r_024.jpg": {
+    "width": 1200,
+    "height": 510,
+    "blurhash": "U%KnC,xtjFxa~qt6WVt7x]oejZoLWEjZoKf6",
+    "widths": [
+      480,
+      960,
+      1200
+    ],
+    "aspectRatio": 2.3529
+  },
+  "/works/realestate/r_025.jpg": {
+    "width": 1200,
+    "height": 510,
+    "blurhash": "UhGl9W-o%2%g~p%L%Lxuxut7ogt6t7kCR+a}",
+    "widths": [
+      480,
+      960,
+      1200
+    ],
+    "aspectRatio": 2.3529
+  },
+  "/works/realestate/r_026.jpg": {
+    "width": 1200,
+    "height": 510,
+    "blurhash": "UUI}eP?atSjs_Nbb%gnh?b-;bvRjt6o}V@oK",
+    "widths": [
+      480,
+      960,
+      1200
+    ],
+    "aspectRatio": 2.3529
+  },
+  "/works/realestate/r_027.jpg": {
+    "width": 1200,
+    "height": 510,
+    "blurhash": "UVGbbX_2yE%f~q%M.8x[kXaftRWX-:WBIpWW",
+    "widths": [
+      480,
+      960,
+      1200
+    ],
+    "aspectRatio": 2.3529
+  },
+  "/works/realestate/r_028.jpg": {
+    "width": 1200,
+    "height": 510,
+    "blurhash": "UKECd%~qIVM|-p%N%gxaxCR+S$%LRjWCogt7",
+    "widths": [
+      480,
+      960,
+      1200
+    ],
+    "aspectRatio": 2.3529
+  },
+  "/works/realestate/r_029.jpg": {
+    "width": 1200,
+    "height": 510,
+    "blurhash": "UEH-xrv{Nb%N~VWVjYV@0hE1ozo}n#xts:WB",
+    "widths": [
+      480,
+      960,
+      1200
+    ],
+    "aspectRatio": 2.3529
+  },
+  "/works/realestate/r_030.jpg": {
+    "width": 1200,
+    "height": 510,
+    "blurhash": "UiJ*I$NKD*j@~qR.M{j[%ht7WBbHtRx[t6fk",
+    "widths": [
+      480,
+      960,
+      1200
+    ],
+    "aspectRatio": 2.3529
+  },
+  "/works/realestate/r_031.jpg": {
+    "width": 1200,
+    "height": 1200,
+    "blurhash": "UCNJm{oz8_xC_MDNIAxu~o4:8_WYxv_4%0Rj",
+    "widths": [
+      480,
+      960,
+      1200
+    ],
+    "aspectRatio": 1
+  },
+  "/works/realestate/r_032.jpg": {
+    "width": 1200,
+    "height": 1200,
+    "blurhash": "UNLND8QlIpt-.T#%oLxvElMwnhS6o~nhWBS5",
+    "widths": [
+      480,
+      960,
+      1200
+    ],
+    "aspectRatio": 1
+  },
+  "/works/realestate/r_033.jpg": {
+    "width": 1200,
+    "height": 1200,
+    "blurhash": "ULJHXH_2E2Ip_N%M%1-o8^V@NJV[0KD*RiM{",
+    "widths": [
+      480,
+      960,
+      1200
+    ],
+    "aspectRatio": 1
+  },
+  "/works/realestate/r_034.jpg": {
+    "width": 1200,
+    "height": 670,
+    "blurhash": "UoI;u0yEjYsl?w%gs*oITLozadj]NHM|Rkog",
+    "widths": [
+      480,
+      960,
+      1200
+    ],
+    "aspectRatio": 1.791
+  },
+  "/works/realestate/r_035.jpg": {
+    "width": 1200,
+    "height": 806,
+    "blurhash": "UaIhNq%200od~pofIToeofayayayxuofWBof",
+    "widths": [
+      480,
+      960,
+      1200
+    ],
+    "aspectRatio": 1.4888
+  },
+  "/works/realestate/r_036.jpg": {
+    "width": 1200,
+    "height": 806,
+    "blurhash": "URF~Ef_N_3_3~px]o}tRaxayNGM{t7s.axay",
+    "widths": [
+      480,
+      960,
+      1200
+    ],
+    "aspectRatio": 1.4888
+  },
+  "/works/realestate/r_037.jpg": {
+    "width": 1200,
+    "height": 670,
+    "blurhash": "UOF}}[0L_2WB?cngxvIU~WRjx]s-SO%1t7R+",
+    "widths": [
+      480,
+      960,
+      1200
+    ],
+    "aspectRatio": 1.791
+  },
+  "/works/realestate/r_038.jpg": {
+    "width": 1200,
+    "height": 670,
+    "blurhash": "U6IEX}.n]fX:0VVWj;_200bw^+MyI9W9?wrq",
+    "widths": [
+      480,
+      960,
+      1200
+    ],
+    "aspectRatio": 1.791
+  },
+  "/works/realestate/r_039.jpg": {
+    "width": 1200,
+    "height": 670,
+    "blurhash": "UbHnpWxZ%$xt_Nt6?bt7b_s:tRofohj[R-WC",
+    "widths": [
+      480,
+      960,
+      1200
+    ],
+    "aspectRatio": 1.791
+  },
+  "/works/realestate/r_040.jpg": {
+    "width": 1024,
+    "height": 1024,
+    "blurhash": "U4EK_S^O01ae0Nofnj9v02WV}=Iq^Osm={=_",
+    "widths": [
+      480,
+      960,
+      1024
+    ],
+    "aspectRatio": 1
+  },
+  "/works/realestate/r_041.jpg": {
+    "width": 1200,
+    "height": 1200,
+    "blurhash": "U8CO?mNG03%2E2oLRkay03oe}=R*M{ay%1j[",
+    "widths": [
+      480,
+      960,
+      1200
+    ],
+    "aspectRatio": 1
+  },
+  "/works/trained_models/char_01/angle_1.jpg": {
+    "width": 1000,
+    "height": 1792,
+    "blurhash": "UcIq7H~BtlNGM_bH9ZniS$Rkoza}sooLbGWV",
+    "widths": [
+      480,
+      960,
+      1000
+    ],
+    "aspectRatio": 0.558
+  },
+  "/works/trained_models/char_01/angle_10.jpg": {
+    "width": 1000,
+    "height": 1792,
+    "blurhash": "UiIzt}~Bo}oIx]R%t7M|I;RPt7M|xaRjogoK",
+    "widths": [
+      480,
+      960,
+      1000
+    ],
+    "aspectRatio": 0.558
+  },
+  "/works/trained_models/char_01/angle_2.jpg": {
+    "width": 1000,
+    "height": 1792,
+    "blurhash": "UZNAuB-;~q%M_NRj%M%MM{Rjt7t7xut7M{M{",
+    "widths": [
+      480,
+      960,
+      1000
+    ],
+    "aspectRatio": 0.558
+  },
+  "/works/trained_models/char_01/angle_3.jpg": {
+    "width": 1000,
+    "height": 1792,
+    "blurhash": "UhN0}1-;~q%M?bWAtRoz?vbcM{axtRWBMxs.",
+    "widths": [
+      480,
+      960,
+      1000
+    ],
+    "aspectRatio": 0.558
+  },
+  "/works/trained_models/char_01/angle_4.jpg": {
+    "width": 1000,
+    "height": 1792,
+    "blurhash": "UeLgtv%g_NxaRjDix]xub_WCVst7.8%Mxtof",
+    "widths": [
+      480,
+      960,
+      1000
+    ],
+    "aspectRatio": 0.558
+  },
+  "/works/trained_models/char_01/angle_5.jpg": {
+    "width": 1000,
+    "height": 1792,
+    "blurhash": "UdNmvU?b_NoJ?bt7%MozIUM{xuRj-;RjIAs:",
+    "widths": [
+      480,
+      960,
+      1000
+    ],
+    "aspectRatio": 0.558
+  },
+  "/works/trained_models/char_01/angle_6.jpg": {
+    "width": 1000,
+    "height": 1792,
+    "blurhash": "UuMj,W%M_Nof%MM{t7xuxuofj[t7xuofRjj]",
+    "widths": [
+      480,
+      960,
+      1000
+    ],
+    "aspectRatio": 0.558
+  },
+  "/works/trained_models/char_01/angle_7.jpg": {
+    "width": 1000,
+    "height": 1792,
+    "blurhash": "UPGHbk~B0gD*-pt7RksmE3NHNHR*oLj[WBWB",
+    "widths": [
+      480,
+      960,
+      1000
+    ],
+    "aspectRatio": 0.558
+  },
+  "/works/trained_models/char_01/angle_8.jpg": {
+    "width": 1000,
+    "height": 1792,
+    "blurhash": "UUGt{E~WK6x]-:%Mxaog9ua}t7WCt7t7o#%2",
+    "widths": [
+      480,
+      960,
+      1000
+    ],
+    "aspectRatio": 0.558
+  },
+  "/works/trained_models/char_01/angle_9.jpg": {
+    "width": 1000,
+    "height": 1792,
+    "blurhash": "UhI4qp%1FzJB_Nof?Gt7.9R-xa%1%Na}n~of",
+    "widths": [
+      480,
+      960,
+      1000
+    ],
+    "aspectRatio": 0.558
+  },
+  "/works/trained_models/char_02/angle_1.jpg": {
+    "width": 1000,
+    "height": 1792,
+    "blurhash": "UmJa4Q~WOZxvw[M{IUV?NGNGWCRk%2xuogR+",
+    "widths": [
+      480,
+      960,
+      1000
+    ],
+    "aspectRatio": 0.558
+  },
+  "/works/trained_models/char_02/angle_10.jpg": {
+    "width": 1000,
+    "height": 1792,
+    "blurhash": "UhN,*z?b-:t7~qaytStRIURj%MtRxaofRiWA",
+    "widths": [
+      480,
+      960,
+      1000
+    ],
+    "aspectRatio": 0.558
+  },
+  "/works/trained_models/char_02/angle_2.jpg": {
+    "width": 1000,
+    "height": 1792,
+    "blurhash": "UjIqP,~px^-;-:xtNGM|kCt7bIbHxaWXbb%2",
+    "widths": [
+      480,
+      960,
+      1000
+    ],
+    "aspectRatio": 0.558
+  },
+  "/works/trained_models/char_02/angle_3.jpg": {
+    "width": 1000,
+    "height": 1792,
+    "blurhash": "UZN0#X~WtR-;9F_4.9NHEMxtRiRk%gMxsmj[",
+    "widths": [
+      480,
+      960,
+      1000
+    ],
+    "aspectRatio": 0.558
+  },
+  "/works/trained_models/char_02/angle_4.jpg": {
+    "width": 1000,
+    "height": 1792,
+    "blurhash": "UZNTtF_3-poI~qWB%gt8D%Rj%Mt7WBofV@V@",
+    "widths": [
+      480,
+      960,
+      1000
+    ],
+    "aspectRatio": 0.558
+  },
+  "/works/trained_models/char_02/angle_5.jpg": {
+    "width": 1000,
+    "height": 1792,
+    "blurhash": "UKN^Vg^+?b?b~W9E.8.8%g-=-=xu?wW=D%s;",
+    "widths": [
+      480,
+      960,
+      1000
+    ],
+    "aspectRatio": 0.558
+  },
+  "/works/trained_models/char_02/angle_6.jpg": {
+    "width": 1000,
+    "height": 1792,
+    "blurhash": "UdNd8k?a?b%M_NWBx]ozE1R*x]ofROjYRPoJ",
+    "widths": [
+      480,
+      960,
+      1000
+    ],
+    "aspectRatio": 0.558
+  },
+  "/works/trained_models/char_02/angle_7.jpg": {
+    "width": 1000,
+    "height": 1792,
+    "blurhash": "UmJQiy~WOZxvw[M{IUV?NGNGWCRk%2xuogR+",
+    "widths": [
+      480,
+      960,
+      1000
+    ],
+    "aspectRatio": 0.558
+  },
+  "/works/trained_models/char_02/angle_8.jpg": {
+    "width": 1000,
+    "height": 1792,
+    "blurhash": "UtI}*9xu.8o}~Wn%%Mt7I;R*aKofR*bHM{j[",
+    "widths": [
+      480,
+      960,
+      1000
+    ],
+    "aspectRatio": 0.558
+  },
+  "/works/trained_models/char_02/angle_9.jpg": {
+    "width": 1000,
+    "height": 1792,
+    "blurhash": "UZNTtF_3-poI~qWB%gt8D%Rj%Mt7WBofV@V@",
+    "widths": [
+      480,
+      960,
+      1000
+    ],
+    "aspectRatio": 0.558
+  },
+  "/works/trained_models/char_03/angle_1.jpg": {
+    "width": 1000,
+    "height": 1792,
+    "blurhash": "U9K0yi-:80_200s9004:02jsxaM|tnxu?^xu",
+    "widths": [
+      480,
+      960,
+      1000
+    ],
+    "aspectRatio": 0.558
+  },
+  "/works/trained_models/char_03/angle_10.jpg": {
+    "width": 1000,
+    "height": 1792,
+    "blurhash": "UhMjN]?b?wxuENVrslR+tmN{s.xt_4NGt8oI",
+    "widths": [
+      480,
+      960,
+      1000
+    ],
+    "aspectRatio": 0.558
+  },
+  "/works/trained_models/char_03/angle_2.jpg": {
+    "width": 1000,
+    "height": 1792,
+    "blurhash": "UUOf}i_N_3$$xut7?vfRI=VrxutRtRkDMwfk",
+    "widths": [
+      480,
+      960,
+      1000
+    ],
+    "aspectRatio": 0.558
+  },
+  "/works/trained_models/char_03/angle_3.jpg": {
+    "width": 1000,
+    "height": 1792,
+    "blurhash": "U9K0yj-:80^+00sS004:02jsxaM|tnxu?^xu",
+    "widths": [
+      480,
+      960,
+      1000
+    ],
+    "aspectRatio": 0.558
+  },
+  "/works/trained_models/char_03/angle_4.jpg": {
+    "width": 1000,
+    "height": 1792,
+    "blurhash": "U6KJxn^*0:~C;c$y000L7h%MKQNd,@$%E1oK",
+    "widths": [
+      480,
+      960,
+      1000
+    ],
+    "aspectRatio": 0.558
+  },
+  "/works/trained_models/char_03/angle_5.jpg": {
+    "width": 1000,
+    "height": 1792,
+    "blurhash": "UKOpxy.8~p^+~qof_Nxu4nj[?HxuWAj[nhRi",
+    "widths": [
+      480,
+      960,
+      1000
+    ],
+    "aspectRatio": 0.558
+  },
+  "/works/trained_models/char_03/angle_6.jpg": {
+    "width": 1000,
+    "height": 1792,
+    "blurhash": "UDLy[pqtE,=D=s~qIA?F5p4:Rj-o;_-:E19G",
+    "widths": [
+      480,
+      960,
+      1000
+    ],
+    "aspectRatio": 0.558
+  },
+  "/works/trained_models/char_03/angle_7.jpg": {
+    "width": 1000,
+    "height": 1792,
+    "blurhash": "UDNc$o0LE,xa0000lBM{5@9bRPoy?w%h-T?H",
+    "widths": [
+      480,
+      960,
+      1000
+    ],
+    "aspectRatio": 0.558
+  },
+  "/works/trained_models/char_03/angle_8.jpg": {
+    "width": 1000,
+    "height": 1792,
+    "blurhash": "UVPGW_%M-:-;?bof_NxuD%ayVsWB.8j[ITWA",
+    "widths": [
+      480,
+      960,
+      1000
+    ],
+    "aspectRatio": 0.558
+  },
+  "/works/trained_models/char_03/angle_9.jpg": {
+    "width": 1000,
+    "height": 1792,
+    "blurhash": "UgNAP6R+?w-;o#IT%Mx]9FWBt7jZkWbIV@M_",
+    "widths": [
+      480,
+      960,
+      1000
+    ],
+    "aspectRatio": 0.558
+  },
+  "/works/trained_models/char_04/angle_1.jpg": {
+    "width": 1000,
+    "height": 1792,
+    "blurhash": "UeN^YpWB-;?b~qt7tRt7IUt7%MWBxuWVM_j[",
+    "widths": [
+      480,
+      960,
+      1000
+    ],
+    "aspectRatio": 0.558
+  },
+  "/works/trained_models/char_04/angle_10.jpg": {
+    "width": 1000,
+    "height": 1792,
+    "blurhash": "UpNmvTkB_N-;%MoJxutRD%kCs.Rjx^j[n$of",
+    "widths": [
+      480,
+      960,
+      1000
+    ],
+    "aspectRatio": 0.558
+  },
+  "/works/trained_models/char_04/angle_2.jpg": {
+    "width": 1000,
+    "height": 1792,
+    "blurhash": "UXO3:~bb_3?b~qxu%gxtM|of%Mt7MdWCRPM{",
+    "widths": [
+      480,
+      960,
+      1000
+    ],
+    "aspectRatio": 0.558
+  },
+  "/works/trained_models/char_04/angle_3.jpg": {
+    "width": 1000,
+    "height": 1792,
+    "blurhash": "UFIX8701TJ~V-Tn$0LR*Sdt7IpW=%2jtozxZ",
+    "widths": [
+      480,
+      960,
+      1000
+    ],
+    "aspectRatio": 0.558
+  },
+  "/works/trained_models/char_04/angle_4.jpg": {
+    "width": 1000,
+    "height": 1792,
+    "blurhash": "UHHw}g00pdDi~9xu9ZxugO9GWr?G%0W=E2xa",
+    "widths": [
+      480,
+      960,
+      1000
+    ],
+    "aspectRatio": 0.558
+  },
+  "/works/trained_models/char_04/angle_5.jpg": {
+    "width": 1000,
+    "height": 1792,
+    "blurhash": "UKJ%UW0MO@~BROsl0LI:NuoMNIt6SPxabvs:",
+    "widths": [
+      480,
+      960,
+      1000
+    ],
+    "aspectRatio": 0.558
+  },
+  "/works/trained_models/char_04/angle_6.jpg": {
+    "width": 1000,
+    "height": 1792,
+    "blurhash": "UOOpupDi.7~WnNnh_N%MD%tR%gkC.9x]WBNG",
+    "widths": [
+      480,
+      960,
+      1000
+    ],
+    "aspectRatio": 0.558
+  },
+  "/works/trained_models/char_04/angle_7.jpg": {
+    "width": 1000,
+    "height": 1792,
+    "blurhash": "UbNTwNf+?a?H~qt7%Mj@IUt7%MfQoeayRiay",
+    "widths": [
+      480,
+      960,
+      1000
+    ],
+    "aspectRatio": 0.558
+  },
+  "/works/trained_models/char_04/angle_8.jpg": {
+    "width": 1000,
+    "height": 1792,
+    "blurhash": "UkH_f7W=_N-:_2WCx]t79ZaxM{NGX9ofxtbH",
+    "widths": [
+      480,
+      960,
+      1000
+    ],
+    "aspectRatio": 0.558
+  },
+  "/works/trained_models/char_04/angle_9.jpg": {
+    "width": 1000,
+    "height": 1792,
+    "blurhash": "UkH_f8M|_N-:?atRx]xtD%t7M{RjtRRjxua#",
+    "widths": [
+      480,
+      960,
+      1000
+    ],
+    "aspectRatio": 0.558
+  },
+  "/works/trained_models/char_05/angle_1.jpg": {
+    "width": 1000,
+    "height": 1792,
+    "blurhash": "UkODh0ay~q?b?bxuozofIUWBt7j[%MayM{WB",
+    "widths": [
+      480,
+      960,
+      1000
+    ],
+    "aspectRatio": 0.558
+  },
+  "/works/trained_models/char_05/angle_10.jpg": {
+    "width": 1000,
+    "height": 1792,
+    "blurhash": "U9CryM5RPB~V#RRj4:bbEMs.jYt7_3jZXTxa",
+    "widths": [
+      480,
+      960,
+      1000
+    ],
+    "aspectRatio": 0.558
+  },
+  "/works/trained_models/char_05/angle_2.jpg": {
+    "width": 1000,
+    "height": 1792,
+    "blurhash": "UfMt5Goz~q?H.9t7%gt7-;oe9ENH%gofs.kC",
+    "widths": [
+      480,
+      960,
+      1000
+    ],
+    "aspectRatio": 0.558
+  },
+  "/works/trained_models/char_05/angle_3.jpg": {
+    "width": 1000,
+    "height": 1792,
+    "blurhash": "UgMQnuoz~q-;?ct7-;t7-;oe9ERj-;ofoLof",
+    "widths": [
+      480,
+      960,
+      1000
+    ],
+    "aspectRatio": 0.558
+  },
+  "/works/trained_models/char_05/angle_4.jpg": {
+    "width": 1000,
+    "height": 1792,
+    "blurhash": "UBC~Cy56E2-U^+Io9a%2o}RQIpR+}@xFxFR*",
+    "widths": [
+      480,
+      960,
+      1000
+    ],
+    "aspectRatio": 0.558
+  },
+  "/works/trained_models/char_05/angle_5.jpg": {
+    "width": 1000,
+    "height": 1792,
+    "blurhash": "UhMH3~t7~q-;?ct7-;t7-;oL9FRj-;j]oLof",
+    "widths": [
+      480,
+      960,
+      1000
+    ],
+    "aspectRatio": 0.558
+  },
+  "/works/trained_models/char_05/angle_6.jpg": {
+    "width": 1000,
+    "height": 1792,
+    "blurhash": "UTPGdEMxxu^+%2jZ_3xvx]%gogt7~qt7DiM{",
+    "widths": [
+      480,
+      960,
+      1000
+    ],
+    "aspectRatio": 0.558
+  },
+  "/works/trained_models/char_05/angle_7.jpg": {
+    "width": 1000,
+    "height": 1792,
+    "blurhash": "UhN,;^oy-;-;~qt7%MxuIUayj[WBxuofD%Rj",
+    "widths": [
+      480,
+      960,
+      1000
+    ],
+    "aspectRatio": 0.558
+  },
+  "/works/trained_models/char_05/angle_8.jpg": {
+    "width": 1000,
+    "height": 1792,
+    "blurhash": "U7B{ZB0zO@~C^4of4.%M9^s-jYW=%Ne.tRs.",
+    "widths": [
+      480,
+      960,
+      1000
+    ],
+    "aspectRatio": 0.558
+  },
+  "/works/trained_models/char_05/angle_9.jpg": {
+    "width": 1000,
+    "height": 1792,
+    "blurhash": "UDEB]RIo.mofbIV?M|WBBpt7^+%M_3IU?vIV",
+    "widths": [
+      480,
+      960,
+      1000
+    ],
+    "aspectRatio": 0.558
+  },
+  "/works/trained_models/char_06/angle_1.jpg": {
+    "width": 1000,
+    "height": 1792,
+    "blurhash": "UUOf}i_N_3$$xut7?vfRI=VrxutRtRkDMwfk",
+    "widths": [
+      480,
+      960,
+      1000
+    ],
+    "aspectRatio": 0.558
+  },
+  "/works/trained_models/char_06/angle_2.jpg": {
+    "width": 1000,
+    "height": 1792,
+    "blurhash": "UjIEw%xu?wxv~Wt7-;t79GWCaJWBIpays.jt",
+    "widths": [
+      480,
+      960,
+      1000
+    ],
+    "aspectRatio": 0.558
+  },
+  "/works/trained_models/char_06/angle_3.jpg": {
+    "width": 1000,
+    "height": 1792,
+    "blurhash": "UjIEtvxu?wxv~Wt7%gt79GWVemWBIpays.jt",
+    "widths": [
+      480,
+      960,
+      1000
+    ],
+    "aspectRatio": 0.558
+  },
+  "/works/trained_models/char_06/angle_4.jpg": {
+    "width": 1000,
+    "height": 1792,
+    "blurhash": "U7KTMN~W1Q~p00R4000K03xu.9W=a0xZtlxu",
+    "widths": [
+      480,
+      960,
+      1000
+    ],
+    "aspectRatio": 0.558
+  },
+  "/works/trained_models/char_06/angle_5.jpg": {
+    "width": 1000,
+    "height": 1792,
+    "blurhash": "UhHxg2-;_NtR_2t7%gog4:M{aJjsS$R*xts:",
+    "widths": [
+      480,
+      960,
+      1000
+    ],
+    "aspectRatio": 0.558
+  },
+  "/works/trained_models/char_06/angle_6.jpg": {
+    "width": 1000,
+    "height": 1792,
+    "blurhash": "UhIqot~q%h-;RPRiWBWX57RjxZWB%Mt7%Moe",
+    "widths": [
+      480,
+      960,
+      1000
+    ],
+    "aspectRatio": 0.558
+  },
+  "/works/trained_models/char_07/angle_1.jpg": {
+    "width": 1000,
+    "height": 1792,
+    "blurhash": "UXO3:~bb_3?b~qxu%gxtM|of%Mt7MdWCRPM{",
+    "widths": [
+      480,
+      960,
+      1000
+    ],
+    "aspectRatio": 0.558
+  },
+  "/works/trained_models/char_07/angle_2.jpg": {
+    "width": 1000,
+    "height": 1792,
+    "blurhash": "UhH-[PW=_N-:_2WCx]xa9GjYM{NGX9ofxta#",
+    "widths": [
+      480,
+      960,
+      1000
+    ],
+    "aspectRatio": 0.558
+  },
+  "/works/trained_models/char_07/angle_3.jpg": {
+    "width": 1000,
+    "height": 1792,
+    "blurhash": "UFIX8701TJ~V-Tn$0LR*Sdt7IpW=%2jtozxZ",
+    "widths": [
+      480,
+      960,
+      1000
+    ],
+    "aspectRatio": 0.558
+  },
+  "/works/trained_models/char_07/angle_4.jpg": {
+    "width": 1000,
+    "height": 1792,
+    "blurhash": "UNIp;k0gEN^*~AM{IpR*%1RkIqNc^jNHbbkD",
+    "widths": [
+      480,
+      960,
+      1000
+    ],
+    "aspectRatio": 0.558
+  },
+  "/works/trained_models/char_07/angle_5.jpg": {
+    "width": 1000,
+    "height": 1792,
+    "blurhash": "UHHw}g00pdDi~9xu9ZxugO9GWr?G%0W=E2xa",
+    "widths": [
+      480,
+      960,
+      1000
+    ],
+    "aspectRatio": 0.558
+  },
+  "/works/trained_models/char_07/angle_6.jpg": {
+    "width": 1000,
+    "height": 1792,
+    "blurhash": "UKJ%UW0MO@~BROsl0LI:NuoMNIt6SPxabvs:",
+    "widths": [
+      480,
+      960,
+      1000
+    ],
+    "aspectRatio": 0.558
+  },
+  "/works/trained_models/char_08/angle_1.jpg": {
+    "width": 1000,
+    "height": 1792,
+    "blurhash": "UuJacj%1t,XS_Nf+-pt7-;f8M{j@o}WVRPs.",
+    "widths": [
+      480,
+      960,
+      1000
+    ],
+    "aspectRatio": 0.558
+  },
+  "/works/trained_models/char_08/angle_2.jpg": {
+    "width": 1000,
+    "height": 1792,
+    "blurhash": "UUJ@RL_Nt-.9IUMxIURkEN%MkDofxZjsNd%2",
+    "widths": [
+      480,
+      960,
+      1000
+    ],
+    "aspectRatio": 0.558
+  },
+  "/works/trained_models/char_08/angle_3.jpg": {
+    "width": 1000,
+    "height": 1792,
+    "blurhash": "UrJ*M3-;?vS~_Nofxuxa-qRjRORj%MWqRit6",
+    "widths": [
+      480,
+      960,
+      1000
+    ],
+    "aspectRatio": 0.558
+  },
+  "/works/trained_models/char_08/angle_4.jpg": {
+    "width": 1000,
+    "height": 1792,
+    "blurhash": "UyJao{xut,oz_Nbb-pxa-;jaM{WUxua|RPj@",
+    "widths": [
+      480,
+      960,
+      1000
+    ],
+    "aspectRatio": 0.558
+  },
+  "/works/trained_models/char_08/angle_5.jpg": {
+    "width": 1000,
+    "height": 1792,
+    "blurhash": "UKJQcj.TTy~qR44n01IUE+%MtR%2?GxutRxv",
+    "widths": [
+      480,
+      960,
+      1000
+    ],
+    "aspectRatio": 0.558
+  },
+  "/works/trained_models/char_08/angle_6.jpg": {
+    "width": 1000,
+    "height": 1792,
+    "blurhash": "UrK1OD-;?vT0_Nofxuxa-qRjRORj%MWqRjt6",
+    "widths": [
+      480,
+      960,
+      1000
+    ],
+    "aspectRatio": 0.558
+  },
+  "/brand/turki-logo.png": {
+    "width": 474,
+    "height": 438,
+    "blurhash": "UBFXz:9b04EO-.~9M|xGw^-nxZ---l-TX7E3",
+    "widths": [
+      474
+    ],
+    "aspectRatio": 1.0822
+  }
+}
