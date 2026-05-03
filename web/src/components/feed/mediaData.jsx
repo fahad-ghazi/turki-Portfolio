@@ -75,7 +75,7 @@ export const FEED_ITEMS = [
   {
     id: 10,
     type: "brand",
-    src: "/works/logo-coin.png",
+    src: "/brand/turki-logo.svg",
     title: "TURKI STUDIO",
     subtitle: "نصنع عوالم بصرية بالذكاء الاصطناعي",
     category: null,

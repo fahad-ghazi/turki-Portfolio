@@ -2,7 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 
 const PORTAL_IMAGE = "/works/hero-poster.jpg";
-const COIN_IMAGE = "/works/logo-coin.png";
+const COIN_IMAGE = "/brand/turki-logo.svg";
 
 export default function FinalBrandSection() {
   return (
