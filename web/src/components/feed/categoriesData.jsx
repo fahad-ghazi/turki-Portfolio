@@ -12,13 +12,13 @@ export const CATEGORIES = [
     seoDescription: "Turki Ghazi fashion portfolio — cinematic fashion editorials, AI-assisted campaign art direction, luxury styling, streetwear visuals, jewelry stories, and Saudi fashion identity.",
     introText: "عالم أزياء محرّر بعين سينمائية ومزاج حملات عالمية",
     introTextEn: "A fashion world curated with cinematic direction and global campaign energy",
-    coverImage: "https://media.base44.com/images/public/69f618d78f528f5ed96d2f9c/160b401e0_fashion.jpg",
+    coverImage: "/works/banners/fashion.jpg",
     color: "from-rose-950/80",
     items: [
       {
         id: "af-red-power",
         type: "image",
-        src: "https://media.base44.com/images/public/69f618d78f528f5ed96d2f9c/258bc65f6_f_159.jpg",
+        src: "/works/fashion/f_159.jpg",
         alt: "Red power suit fashion editorial portrait with luxury styling",
         title: "RED POWER",
         description: "افتتاحية أزياء حادة باللون الأحمر، مناسبة لحملات القوة، الثقة، والحضور النسائي الفاخر.",
@@ -27,7 +27,7 @@ export const CATEGORIES = [
       {
         id: "af-vogue-family",
         type: "image",
-        src: "https://media.base44.com/images/public/69f618d78f528f5ed96d2f9c/8ad1aa98c_f_146.jpg",
+        src: "/works/fashion/f_146.jpg",
         alt: "Vogue inspired neutral fashion group editorial campaign",
         title: "EARTH EDITORIAL",
         description: "حملة جماعية بدرجات ترابية راقية تمنح العلامة إحساس المجلات العالمية والهدوء الفاخر.",
@@ -36,7 +36,7 @@ export const CATEGORIES = [
       {
         id: "af-couture-blue",
         type: "image",
-        src: "https://media.base44.com/images/public/69f618d78f528f5ed96d2f9c/d89281c03_f_128.jpg",
+        src: "/works/fashion/f_128.jpg",
         alt: "Couture fashion editorial with vivid blue architecture and pink gowns",
         title: "BLUE COUTURE",
         description: "تكوين معماري جريء يضع الفساتين كمنحوتات لونية داخل مساحة زرقاء عالية التذكّر.",
@@ -45,7 +45,7 @@ export const CATEGORIES = [
       {
         id: "af-jewelry-ruby",
         type: "image",
-        src: "https://media.base44.com/images/public/69f618d78f528f5ed96d2f9c/05d6879cd_f_143.jpg",
+        src: "/works/fashion/f_143.jpg",
         alt: "Luxury ruby jewelry beauty editorial closeup",
         title: "RUBY JEWELS",
         description: "قصة مجوهرات فاخرة تركّز على البشرة، اللمعة، والحجر الأحمر كبطل بصري للحملة.",
@@ -54,7 +54,7 @@ export const CATEGORIES = [
       {
         id: "af-black-chain",
         type: "image",
-        src: "https://media.base44.com/images/public/69f618d78f528f5ed96d2f9c/d18cdb4f3_f_121.jpg",
+        src: "/works/fashion/f_121.jpg",
         alt: "Black leather fashion editorial with giant metallic chains",
         title: "CHAIN FORM",
         description: "افتتاحية جلد أسود بطابع مستقبلي، تستخدم السلاسل كعنصر قوة وحركة داخل الإطار.",
@@ -63,7 +63,7 @@ export const CATEGORIES = [
       {
         id: "af-denim-desert",
         type: "image",
-        src: "https://media.base44.com/images/public/69f618d78f528f5ed96d2f9c/3b4f0a5ec_f_157.jpg",
+        src: "/works/fashion/f_157.jpg",
         alt: "Surreal denim jacket fashion campaign in the desert",
         title: "DENIM MIRAGE",
         description: "فكرة أزياء سريالية تربط الدنيم بالصحراء، وتحوّل القطعة إلى عالم بصري قابل للتسويق.",
@@ -72,7 +72,7 @@ export const CATEGORIES = [
       {
         id: "af-urban-leather",
         type: "image",
-        src: "https://media.base44.com/images/public/69f618d78f528f5ed96d2f9c/7b9f4eb45_f_155.jpg",
+        src: "/works/fashion/f_155.jpg",
         alt: "Urban fashion low angle leather and denim editorial between skyscrapers",
         title: "CITY ARMOR",
         description: "ستريت وير حضري بإحساس قوي وعدسة منخفضة تعطي الملابس حضورًا أكبر من الواقع.",
@@ -81,7 +81,7 @@ export const CATEGORIES = [
       {
         id: "af-red-studio",
         type: "image",
-        src: "https://media.base44.com/images/public/69f618d78f528f5ed96d2f9c/173739969_f_130.jpg",
+        src: "/works/fashion/f_130.jpg",
         alt: "Red studio denim fashion editorial with motion blur",
         title: "RED DENIM",
         description: "حملة دنيم شبابية بإضاءة حمراء وحركة خفيفة تصنع إحساس الموسيقى والسرعة.",
@@ -90,7 +90,7 @@ export const CATEGORIES = [
       {
         id: "af-design-studies",
         type: "image",
-        src: "https://media.base44.com/images/public/69f618d78f528f5ed96d2f9c/b51f756a5_f_080.jpg",
+        src: "/works/fashion/f_080.jpg",
         alt: "Fashion design study board with cargo pants sketches and fabric swatches",
         title: "DESIGN STUDIES",
         description: "توظيف ذكي لمرحلة ما قبل الإنتاج: باترونات، خامات، وملاحظات تصميم تُظهر عمق العملية الإبداعية.",
@@ -99,7 +99,7 @@ export const CATEGORIES = [
       {
         id: "af-flower-bomber",
         type: "image",
-        src: "https://media.base44.com/images/public/69f618d78f528f5ed96d2f9c/7b1320603_f_120.jpg",
+        src: "/works/fashion/f_120.jpg",
         alt: "Conceptual floral bomber jacket fashion campaign in a meadow",
         title: "BLOOM JACKET",
         description: "حملة شاعرية لقطعة جاكيت، تجعل الأزهار جزءًا من بناء المنتج لا مجرد خلفية.",
@@ -108,7 +108,7 @@ export const CATEGORIES = [
       {
         id: "af-snail-pop",
         type: "image",
-        src: "https://media.base44.com/images/public/69f618d78f528f5ed96d2f9c/55e3d0442_f_135.jpg",
+        src: "/works/fashion/f_135.jpg",
         alt: "Pastel fashion campaign with oversized surreal snail sculpture",
         title: "PASTEL CREATURE",
         description: "عالم أزياء مرح وسريالي مناسب للعلامات الشبابية التي تبحث عن صورة مختلفة ولا تُنسى.",
@@ -117,7 +117,7 @@ export const CATEGORIES = [
       {
         id: "af-cloud-pink",
         type: "image",
-        src: "https://media.base44.com/images/public/69f618d78f528f5ed96d2f9c/2ce310de1_f_113.jpg",
+        src: "/works/fashion/f_113.jpg",
         alt: "Pink loungewear fashion campaign model sitting on cloud",
         title: "CLOUDWEAR",
         description: "حملة مريحة وحالمة للملابس اليومية، تربط الراحة بالخيال والنعومة البصرية.",
@@ -126,7 +126,7 @@ export const CATEGORIES = [
       {
         id: "af-monochrome-thobe",
         type: "image",
-        src: "https://media.base44.com/images/public/69f618d78f528f5ed96d2f9c/7ca820dd7_f_134.jpg",
+        src: "/works/fashion/f_134.jpg",
         alt: "Black and white Saudi menswear editorial seated on stairs",
         title: "SAUDI MINIMAL",
         description: "رجالي سعودي بأسلوب مينيمال أبيض وأسود، يعطي الثوب حضورًا معاصرًا وهادئًا.",
@@ -135,7 +135,7 @@ export const CATEGORIES = [
       {
         id: "af-heritage-luxury",
         type: "image",
-        src: "https://media.base44.com/images/public/69f618d78f528f5ed96d2f9c/49da3edcf_f_158.jpg",
+        src: "/works/fashion/f_158.jpg",
         alt: "Luxury Gulf fashion portrait in embroidered black abaya styling",
         title: "GULF LUXURY",
         description: "إطلالة خليجية فاخرة تجمع التطريز والعباءة السوداء مع لغة ستوديو عالمية.",
@@ -144,7 +144,7 @@ export const CATEGORIES = [
       {
         id: "af-mint-future",
         type: "image",
-        src: "https://media.base44.com/images/public/69f618d78f528f5ed96d2f9c/f87439d47_f_151.jpg",
+        src: "/works/fashion/f_151.jpg",
         alt: "Mint futuristic modest fashion campaign in white desert set",
         title: "MINT FUTURE",
         description: "أزياء محتشمة مستقبلية بدرجات منعشة، مناسبة لحملات الصيف والهوية النظيفة.",
@@ -153,7 +153,7 @@ export const CATEGORIES = [
       {
         id: "af-studio-streetwear",
         type: "image",
-        src: "https://media.base44.com/images/public/69f618d78f528f5ed96d2f9c/3e777a074_f_101.jpg",
+        src: "/works/fashion/f_101.jpg",
         alt: "Studio streetwear fashion campaign with colorful lighting setup",
         title: "STUDIO STREET",
         description: "ستريت وير داخل ستوديو واضح العناصر، يعرض الإضاءة كجزء من هوية الحملة لا كخلفية فقط.",
@@ -162,7 +162,7 @@ export const CATEGORIES = [
       {
         id: "af-burgundy-portrait",
         type: "image",
-        src: "https://media.base44.com/images/public/69f618d78f528f5ed96d2f9c/8d61f9dd6_f_148.jpg",
+        src: "/works/fashion/f_148.jpg",
         alt: "Male fashion portrait with burgundy turtleneck and gold chain",
         title: "BURGUNDY PORTRAIT",
         description: "بورتريه أزياء رجالي كلاسيكي يركز على الخامة، اللون، وتعابير الوجه كهوية بصرية.",
@@ -171,7 +171,7 @@ export const CATEGORIES = [
       {
         id: "af-black-fur",
         type: "image",
-        src: "https://media.base44.com/images/public/69f618d78f528f5ed96d2f9c/092a4d8c30_f_116.jpg",
+        src: "/works/fashion/f_116.jpg",
         alt: "Luxury dark fashion portrait with gray faux fur and purple neon glow",
         title: "NEON FUR",
         description: "فخامة ليلية بفراء رمادي وإضاءة بنفسجية، مناسبة لحملات الشتاء والموضة الجريئة.",
@@ -189,13 +189,13 @@ export const CATEGORIES = [
     seoDescription: "Turki Ghazi commercial advertising portfolio — cinematic AI-powered product campaigns, food advertising, fragrance visuals, fashion products, and branded content for Saudi and Gulf brands.",
     introText: "إعلانات تجارية مصممة كعوالم بصرية لكل علامة",
     introTextEn: "Commercial ads designed as visual worlds for every brand",
-    coverImage: "https://media.base44.com/images/public/69f618d78f528f5ed96d2f9c/ac5c3b2b1_ads.jpg",
+    coverImage: "/works/banners/ads.jpg",
     color: "from-amber-950/80",
     items: [
       {
         id: "ca-watch-party",
         type: "image",
-        src: "https://media.base44.com/images/public/69f618d78f528f5ed96d2f9c/e0f3957ef_a_071.jpg",
+        src: "/works/ads/a_071.jpg",
         alt: "Cinematic football watch party food and beverage campaign",
         title: "WATCH PARTY",
         description: "حملة مطاعم ومشروبات بإحساس اجتماعي سريع، مبنية حول لحظة المشاهدة والحماس الجماعي.",
@@ -204,7 +204,7 @@ export const CATEGORIES = [
       {
         id: "ca-match-night",
         type: "image",
-        src: "https://media.base44.com/images/public/69f618d78f528f5ed96d2f9c/d774bea96_a_068.jpg",
+        src: "/works/ads/a_068.jpg",
         alt: "Night football food commercial with cinematic Saudi living room energy",
         title: "MATCH NIGHT",
         description: "مشهد إعلاني ليلي عالي الإحساس يربط المنتج بالترقب، الضحك، واللحظة العائلية.",
@@ -213,7 +213,7 @@ export const CATEGORIES = [
       {
         id: "ca-alwalimah",
         type: "image",
-        src: "https://media.base44.com/images/public/69f618d78f528f5ed96d2f9c/05ef27856_a_067.jpg",
+        src: "/works/ads/a_067.jpg",
         alt: "Saudi rice product campaign portrait with Alwalimah bag",
         title: "ALWALIMAH RICE",
         description: "حملة منتج غذائي بهوية سعودية واضحة، توازن بين الثقة الشعبية والحضور الإعلاني النظيف.",
@@ -222,7 +222,7 @@ export const CATEGORIES = [
       {
         id: "ca-feast-table",
         type: "image",
-        src: "https://media.base44.com/images/public/69f618d78f528f5ed96d2f9c/0f426bf84_a_064.jpg",
+        src: "/works/ads/a_064.jpg",
         alt: "Hero food platter commercial for rice and feast campaign",
         title: "FEAST HERO",
         description: "لقطة طعام بطولية تضع المنتج في مركز الشهية، مناسبة للحملات الرمضانية والموسمية.",
@@ -231,7 +231,7 @@ export const CATEGORIES = [
       {
         id: "ca-laverne",
         type: "image",
-        src: "https://media.base44.com/images/public/69f618d78f528f5ed96d2f9c/35a5c91c4_a_061.jpg",
+        src: "/works/ads/a_061.jpg",
         alt: "Luxury fragrance product advertising visual with cinematic lighting",
         title: "FRAGRANCE WORLD",
         description: "عالم عطري فاخر يعتمد على الضوء، الزجاج، واللون لصناعة إحساس راقٍ حول المنتج.",
@@ -240,7 +240,7 @@ export const CATEGORIES = [
       {
         id: "ca-natural-life",
         type: "image",
-        src: "https://media.base44.com/images/public/69f618d78f528f5ed96d2f9c/a065584b3_a_059.jpg",
+        src: "/works/ads/a_059.jpg",
         alt: "Lifestyle cafe brand campaign for Natural Life",
         title: "NATURAL LIFE",
         description: "حملة لايف ستايل تربط المكان بالشخصية، وتحوّل الزيارة اليومية إلى صورة قابلة للتسويق.",
@@ -249,7 +249,7 @@ export const CATEGORIES = [
       {
         id: "ca-leather-goods",
         type: "image",
-        src: "https://media.base44.com/images/public/69f618d78f528f5ed96d2f9c/80f907059_a_041.jpg",
+        src: "/works/ads/a_041.jpg",
         alt: "Luxury leather bag product photography with warm premium styling",
         title: "LEATHER GOODS",
         description: "تصوير منتج فاخر يبرز الخامة والملمس والتفاصيل الصغيرة كقيمة أساسية للعلامة.",
@@ -258,7 +258,7 @@ export const CATEGORIES = [
       {
         id: "ca-skincare",
         type: "image",
-        src: "https://media.base44.com/images/public/69f618d78f528f5ed96d2f9c/8c5f55313_a_026.jpg",
+        src: "/works/ads/a_026.jpg",
         alt: "Warm skincare product campaign with monochrome yellow art direction",
         title: "SKINCARE SET",
         description: "توجيه فني لمنتجات العناية بأسلوب لوني موحد يمنح الحملة وضوحًا وتذكّرًا سريعًا.",
@@ -267,7 +267,7 @@ export const CATEGORIES = [
       {
         id: "ca-burger-concept",
         type: "image",
-        src: "https://media.base44.com/images/public/69f618d78f528f5ed96d2f9c/445e110e0_a_010.jpg",
+        src: "/works/ads/a_010.jpg",
         alt: "Bold cinematic burger advertising concept with red restaurant lighting",
         title: "BOLD BURGER",
         description: "إعلان طعام جريء بطابع شبابي، يستخدم المبالغة البصرية لصناعة لقطة لا تُنسى.",
@@ -276,7 +276,7 @@ export const CATEGORIES = [
       {
         id: "ca-cold-drinks",
         type: "image",
-        src: "https://media.base44.com/images/public/69f618d78f528f5ed96d2f9c/2cef9a0a1_a_009.jpg",
+        src: "/works/ads/a_009.jpg",
         alt: "Refreshing beverage product campaign inside a chilled fridge",
         title: "COLD SHELF",
         description: "حملة مشروبات تركز على الإحساس البارد، الرف التجاري، ولحظة الاختيار السريعة.",
@@ -285,7 +285,7 @@ export const CATEGORIES = [
       {
         id: "ca-luxury-set",
         type: "image",
-        src: "https://media.base44.com/images/public/69f618d78f528f5ed96d2f9c/daf7c925d_a_002.jpg",
+        src: "/works/ads/a_002.jpg",
         alt: "Luxury branded merchandise flat lay with hoodie, candle, bottle, and stationery",
         title: "BRAND OBJECTS",
         description: "توظيف الهوية على منتجات ملموسة بأسلوب هادئ وفاخر يصلح للعلامات الراقية والمتاجر الخاصة.",
@@ -303,7 +303,7 @@ export const CATEGORIES = [
     seoDescription: "Turki Ghazi trained AI characters portfolio — persistent character identities with separate galleries, facial angles, fashion, ads, films, and campaign-ready model references.",
     introText: "ادخل كتالوج الشخصيات واختر كل شخصية لاستعراض زواياها الخاصة",
     introTextEn: "Enter the character catalog and open each identity through its dedicated angles",
-    coverImage: "https://media.base44.com/images/public/69f618d78f528f5ed96d2f9c/e127e9f93_angle_1.jpg",
+    coverImage: "/works/trained_models/char_01/angle_1.jpg",
     color: "from-stone-950/80",
     items: [],
   },
@@ -317,7 +317,7 @@ export const CATEGORIES = [
     seoDescription: "Turki Ghazi cinematic films portfolio — short AI-powered films, visual stories, and behind-the-scenes cinema experiments.",
     introText: "أفلام قصيرة تُشاهد كتجربة سينمائية لا كمعرض صور",
     introTextEn: "Short films experienced as cinema, not image galleries",
-    coverImage: "https://media.base44.com/images/public/69f618d78f528f5ed96d2f9c/115dd4f4c_films.jpg",
+    coverImage: "/works/banners/films.jpg",
     color: "from-stone-950/80",
     items: [],
   },
@@ -331,7 +331,7 @@ export const CATEGORIES = [
     seoDescription: "Turki Ghazi real estate portfolio — cinematic luxury property marketing, Riyadh residential developments, architectural façades, investor presentations, virtual tours, and premium real estate campaigns.",
     introText: "نحوّل المشروع العقاري إلى قصة بصرية تبيع الإحساس والقيمة معًا",
     introTextEn: "We turn real estate projects into visual stories that sell both feeling and value",
-    coverImage: "https://media.base44.com/images/public/69f618d78f528f5ed96d2f9c/a88c46ce7_r_041.jpg",
+    coverImage: "/works/realestate/r_041.jpg",
     color: "from-emerald-950/80",
     items: realEstateItems,
   },
@@ -345,13 +345,13 @@ export const CATEGORIES = [
     seoDescription: "Turki Ghazi heritage visual portfolio — cinematic Saudi heritage storytelling, old Riyadh neighborhoods, Najdi architecture, classic cars, cultural memory, and Gulf identity visuals.",
     introText: "تراث لا يُعرض كأرشيف، بل كفيلم حي من الذاكرة السعودية",
     introTextEn: "Heritage presented not as archive, but as a living film of Saudi memory",
-    coverImage: "https://media.base44.com/images/public/69f618d78f528f5ed96d2f9c/66f44173f_heritage.jpg",
+    coverImage: "/works/banners/heritage.jpg",
     color: "from-amber-950/80",
     items: [
       {
         id: "he-bofiya",
         type: "image",
-        src: "https://media.base44.com/images/public/69f618d78f528f5ed96d2f9c/e227092f5_h_021.jpg",
+        src: "/works/heritage/h_021.jpg",
         alt: "Old Saudi neighborhood bofia sign at golden hour",
         title: "BOFIYA MEMORY",
         description: "لقطة افتتاحية تحمل رائحة المكان: لوحة بوفية قديمة، ضوء آخر النهار، وباب مفتوح لذاكرة الحي.",
@@ -360,7 +360,7 @@ export const CATEGORIES = [
       {
         id: "he-rooftops",
         type: "image",
-        src: "https://media.base44.com/images/public/69f618d78f528f5ed96d2f9c/f6fa7a949_h_020.jpg",
+        src: "/works/heritage/h_020.jpg",
         alt: "Aerial view of old Riyadh neighborhood rooftops in warm light",
         title: "ROOFTOP CITY",
         description: "مشهد علوي يكشف نسيج الرياض القديم؛ أسطح متقاربة، خزانات ماء، وشوارع تحفظ إيقاع الحياة اليومية.",
@@ -369,7 +369,7 @@ export const CATEGORIES = [
       {
         id: "he-classic-cruise",
         type: "image",
-        src: "https://media.base44.com/images/public/69f618d78f528f5ed96d2f9c/c98ca1ba7_h_018.jpg",
+        src: "/works/heritage/h_018.jpg",
         alt: "Classic Mercedes convertible cruising near mosque and flowers",
         title: "RIYADH CRUISE",
         description: "سيارة كلاسيكية تتحرك بهدوء بين النخيل والمسجد؛ فخامة قديمة بروح سعودية خفيفة.",
@@ -378,7 +378,7 @@ export const CATEGORIES = [
       {
         id: "he-night-drift",
         type: "image",
-        src: "https://media.base44.com/images/public/69f618d78f528f5ed96d2f9c/1b2827777_h_017.jpg",
+        src: "/works/heritage/h_017.jpg",
         alt: "Red classic car drifting at night on wet city street",
         title: "NIGHT BURNOUT",
         description: "جانب حضري من الذاكرة: شارع مبتل، سيارة حمراء، ودخان يصنع لقطة إعلان سينمائية عالية الطاقة.",
@@ -387,7 +387,7 @@ export const CATEGORIES = [
       {
         id: "he-village-drive",
         type: "image",
-        src: "https://media.base44.com/images/public/69f618d78f528f5ed96d2f9c/ece892a19_h_016.jpg",
+        src: "/works/heritage/h_016.jpg",
         alt: "Saudi man driving classic car through heritage village",
         title: "VILLAGE DRIVER",
         description: "سرد بصري من داخل السيارة؛ العائلة، الأطفال، بائع الآيسكريم، وشارع تراثي يتحرك حول الشخصية.",
@@ -396,7 +396,7 @@ export const CATEGORIES = [
       {
         id: "he-heritage-lane",
         type: "image",
-        src: "https://media.base44.com/images/public/69f618d78f528f5ed96d2f9c/bed675303_h_015.jpg",
+        src: "/works/heritage/h_015.jpg",
         alt: "Classic convertible entering old Saudi village street at sunset",
         title: "DUST LANE",
         description: "زقاق تراثي ممتلئ بالغبار والضوء، يصنع إحساس العودة للمكان لا مجرد زيارته.",
@@ -405,7 +405,7 @@ export const CATEGORIES = [
       {
         id: "he-palm-square",
         type: "image",
-        src: "https://media.base44.com/images/public/69f618d78f528f5ed96d2f9c/044cbe3ab_h_014.jpg",
+        src: "/works/heritage/h_014.jpg",
         alt: "Heritage village square with palms children and ice cream truck",
         title: "PALM SQUARE",
         description: "ساحة شعبية دافئة تجمع النخيل، الأطفال، العربة القديمة، والسيارة كرمز للرحلة بين زمنين.",
@@ -414,7 +414,7 @@ export const CATEGORIES = [
       {
         id: "he-classic-close",
         type: "image",
-        src: "https://media.base44.com/images/public/69f618d78f528f5ed96d2f9c/422bc7753_h_013.jpg",
+        src: "/works/heritage/h_013.jpg",
         alt: "Classic red convertible close shot in old Saudi village",
         title: "RED IMPERIAL",
         description: "لقطة قريبة تجعل السيارة بطلة تراثية؛ معدن أحمر، انعكاس شمس، وخلفية نجدية ناعمة.",
@@ -423,7 +423,7 @@ export const CATEGORIES = [
       {
         id: "he-majlis-oud",
         type: "image",
-        src: "https://media.base44.com/images/public/69f618d78f528f5ed96d2f9c/caea3c6ed_h_012.jpg",
+        src: "/works/heritage/h_012.jpg",
         alt: "Old Saudi majlis with oud player tapes radio and vintage TV",
         title: "MAJLIS SOUND",
         description: "ذاكرة المجلس كصوت وصورة: عود، أشرطة، راديو، تلفزيون قديم، وتفاصيل تحكي زمنًا كاملًا.",
@@ -432,7 +432,7 @@ export const CATEGORIES = [
       {
         id: "he-parking-classic",
         type: "image",
-        src: "https://media.base44.com/images/public/69f618d78f528f5ed96d2f9c/21de165c2_h_011.jpg",
+        src: "/works/heritage/h_011.jpg",
         alt: "Classic convertible in Riyadh Boulevard parking with suited man",
         title: "BOULEVARD CLASSIC",
         description: "مزج بين الرياض الحديثة والذاكرة الكلاسيكية؛ موقف حضري وسيارة قديمة وشخصية أنيقة.",
@@ -441,7 +441,7 @@ export const CATEGORIES = [
       {
         id: "he-dust-sedan",
         type: "image",
-        src: "https://media.base44.com/images/public/69f618d78f528f5ed96d2f9c/a03442e2f_h_010.jpg",
+        src: "/works/heritage/h_010.jpg",
         alt: "Dusty old sedan parked in old Saudi alley at sunset",
         title: "DUST SEDAN",
         description: "سيارة عادية لكنها محمّلة بالمعنى؛ غبار، غروب، وشارع قديم يصنع صدق الوثائقيات.",
@@ -450,7 +450,7 @@ export const CATEGORIES = [
       {
         id: "he-stone-truck",
         type: "image",
-        src: "https://media.base44.com/images/public/69f618d78f528f5ed96d2f9c/d4e943688_h_009.jpg",
+        src: "/works/heritage/h_009.jpg",
         alt: "Old pickup truck in narrow heritage stone alley with warm lamps",
         title: "STONE ALLEY",
         description: "زقاق حجري ومصابيح دافئة وشاحنة قديمة؛ لقطة تصلح لهوية مسلسل أو فيلم تراثي.",
@@ -459,7 +459,7 @@ export const CATEGORIES = [
       {
         id: "he-no-dumping",
         type: "image",
-        src: "https://media.base44.com/images/public/69f618d78f528f5ed96d2f9c/80fce6e03_h_008.jpg",
+        src: "/works/heritage/h_008.jpg",
         alt: "Arabic no dumping sign in desert waste area with cats",
         title: "PUBLIC MEMORY",
         description: "لقطة نقدية ذكية من الذاكرة اليومية؛ لوحة رسمية، بيئة مهملة، وحكاية مدينة خلف الصورة.",
@@ -468,7 +468,7 @@ export const CATEGORIES = [
       {
         id: "he-road-contrast",
         type: "image",
-        src: "https://media.base44.com/images/public/69f618d78f528f5ed96d2f9c/39449f7e3_h_007.jpg",
+        src: "/works/heritage/h_007.jpg",
         alt: "Saudi highway traffic contrast between old dusty cars and luxury vehicles",
         title: "ROAD CONTRAST",
         description: "مقارنة بصرية بين القديم والجديد على طريق واحد؛ طبقات اجتماعية وزمنية في لقطة واحدة.",
@@ -477,7 +477,7 @@ export const CATEGORIES = [
       {
         id: "he-city-dust",
         type: "image",
-        src: "https://media.base44.com/images/public/69f618d78f528f5ed96d2f9c/568ce3c4c_h_006.jpg",
+        src: "/works/heritage/h_006.jpg",
         alt: "Dusty old Ford sedan driving through Riyadh traffic",
         title: "CITY DUST",
         description: "سيارة متعبة وسط مدينة متغيرة؛ صورة تلخص انتقال الرياض بين الغبار والزجاج.",
@@ -486,7 +486,7 @@ export const CATEGORIES = [
       {
         id: "he-wall-words",
         type: "image",
-        src: "https://media.base44.com/images/public/69f618d78f528f5ed96d2f9c/a7c16ed64_h_005.jpg",
+        src: "/works/heritage/h_005.jpg",
         alt: "Arabic wall graffiti poem on old cracked Saudi wall",
         title: "WALL WORDS",
         description: "الجدار كدفتر شعبي؛ كتابة عفوية على طين متشقق تمنح التراث صوتًا لا صورة فقط.",
@@ -495,7 +495,7 @@ export const CATEGORIES = [
       {
         id: "he-laundry-roofs",
         type: "image",
-        src: "https://media.base44.com/images/public/69f618d78f528f5ed96d2f9c/c95711343_h_004.jpg",
+        src: "/works/heritage/h_004.jpg",
         alt: "Old neighborhood rooftops laundry lines and mosque minarets",
         title: "LAUNDRY ROOFS",
         description: "تفاصيل حياة لا تُفتعل: غسيل فوق الأسطح، مكيفات قديمة، ومآذن بعيدة داخل ضوء ذهبي.",
@@ -504,7 +504,7 @@ export const CATEGORIES = [
       {
         id: "he-old-street",
         type: "image",
-        src: "https://media.base44.com/images/public/69f618d78f528f5ed96d2f9c/0a2ead0e0_h_003.jpg",
+        src: "/works/heritage/h_003.jpg",
         alt: "Old Saudi street with dusty beige car at sunset",
         title: "QUIET STREET",
         description: "هدوء شارع قديم قبل الليل؛ سيارة ساكنة وشمس منخفضة تمنح الصورة حنينًا صادقًا.",
@@ -513,7 +513,7 @@ export const CATEGORIES = [
       {
         id: "he-old-roofs",
         type: "image",
-        src: "https://media.base44.com/images/public/69f618d78f528f5ed96d2f9c/5774086f3_h_002.jpg",
+        src: "/works/heritage/h_002.jpg",
         alt: "Compressed old Saudi rooftops and narrow alley view",
         title: "NARROW MEMORY",
         description: "منظر مضغوط بين الأسطح والممرات، يوثق الكثافة البصرية للحي القديم دون تجميل زائد.",
@@ -522,7 +522,7 @@ export const CATEGORIES = [
       {
         id: "he-golden-grid",
         type: "image",
-        src: "https://media.base44.com/images/public/69f618d78f528f5ed96d2f9c/89714a346_h_001.jpg",
+        src: "/works/heritage/h_001.jpg",
         alt: "Golden aerial grid of old Saudi neighborhood streets and rooftops",
         title: "GOLDEN GRID",
         description: "شبكة المدينة من الأعلى؛ نهاية مثالية للقسم لأنها تكشف التراث كنظام حياة كامل.",

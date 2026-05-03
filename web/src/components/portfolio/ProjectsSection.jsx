@@ -6,31 +6,31 @@ const PROJECTS = [
     id: 1,
     title: "GOLD ERA CAMPAIGN",
     category: "AI Film",
-    image: "https://media.base44.com/images/public/user_685b19d62576f664d63bade4/c6a4f8523_IMG_0267.jpg",
+    image: "/works/hero-poster.jpg",
   },
   {
     id: 2,
     title: "PRODUCT PRO",
     category: "Product",
-    image: "https://media.base44.com/images/public/user_685b19d62576f664d63bade4/c19215f8f_IMG_0262.jpg",
+    image: "/works/hero-poster.jpg",
   },
   {
     id: 3,
     title: "60 SEC CINEMATIC",
     category: "Creative",
-    image: "https://media.base44.com/images/public/user_685b19d62576f664d63bade4/903d3fe3b_IMG_0268.jpg",
+    image: "/works/hero-poster.jpg",
   },
   {
     id: 4,
     title: "FASHION STUDIO",
     category: "AI Film",
-    image: "https://media.base44.com/images/public/user_685b19d62576f664d63bade4/8ca04bb7d_IMG_0266.jpg",
+    image: "/works/hero-poster.jpg",
   },
   {
     id: 5,
     title: "DESERT VISION",
     category: "Creative",
-    image: "https://media.base44.com/images/public/user_685b19d62576f664d63bade4/1f7df23f8_IMG_0265.jpg",
+    image: "/works/hero-poster.jpg",
   },
 ];
 

@@ -3,15 +3,15 @@ import { motion, AnimatePresence } from "framer-motion";
 import { X } from "lucide-react";
 
 const GALLERY_IMAGES = [
-  "https://media.base44.com/images/public/user_685b19d62576f664d63bade4/903d3fe3b_IMG_0268.jpg",
-  "https://media.base44.com/images/public/user_685b19d62576f664d63bade4/8ca04bb7d_IMG_0266.jpg",
-  "https://media.base44.com/images/public/user_685b19d62576f664d63bade4/1f7df23f8_IMG_0265.jpg",
-  "https://media.base44.com/images/public/user_685b19d62576f664d63bade4/c6a4f8523_IMG_0267.jpg",
+  "/works/hero-poster.jpg",
+  "/works/hero-poster.jpg",
+  "/works/hero-poster.jpg",
+  "/works/hero-poster.jpg",
 ];
 
 const BTS_IMAGES = [
-  "https://media.base44.com/images/public/user_685b19d62576f664d63bade4/c1f9c069a_IMG_0259.jpg",
-  "https://media.base44.com/images/public/user_685b19d62576f664d63bade4/b9687a4b0_IMG_0261.jpg",
+  "/works/hero-poster.jpg",
+  "/works/hero-poster.jpg",
 ];
 
 export default function ProjectDetails({ project, onClose }) {

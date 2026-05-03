@@ -1,8 +1,8 @@
 import React from "react";
 import { motion } from "framer-motion";
 
-const PORTAL_IMAGE = "https://media.base44.com/images/public/user_685b19d62576f664d63bade4/b9687a4b0_IMG_0261.jpg";
-const COIN_IMAGE = "https://media.base44.com/images/public/user_685b19d62576f664d63bade4/517e55039_238F1F71-449B-49FF-82CE-3254EF82B44A.png";
+const PORTAL_IMAGE = "/works/hero-poster.jpg";
+const COIN_IMAGE = "/works/logo-coin.png";
 
 export default function FinalBrandSection() {
   return (

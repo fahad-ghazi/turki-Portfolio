@@ -24,7 +24,7 @@ export default function Films() {
       duration: film.duration || "--:--",
       year: film.year || "2026",
       description: film.description || "فيلم سينمائي قصير من تركي استديو.",
-      videoUrl: film.video_url || "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+      videoUrl: film.video_url || null,
       thumbnail: film.thumbnail,
     }));
   }, [adminFilms]);

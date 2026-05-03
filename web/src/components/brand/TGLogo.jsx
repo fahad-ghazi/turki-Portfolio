@@ -1,6 +1,6 @@
 import React from "react";
 
-const LOGO_URL = "https://media.base44.com/images/public/69f618d78f528f5ed96d2f9c/5c635a979_.png";
+const LOGO_URL = "/works/logo-coin.png";
 
 const sizes = {
   sm: "h-14 w-20",

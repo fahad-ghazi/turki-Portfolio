@@ -12,7 +12,7 @@ const SKILLS = [
 
 const TOOLS = ["Midjourney", "Runway", "Photoshop", "After Effects", "Blender"];
 
-const HEADSHOT = "https://media.base44.com/images/public/user_685b19d62576f664d63bade4/a8b85fa80_IMG_0256.jpg";
+const HEADSHOT = "/works/hero-poster.jpg";
 
 function SkillBar({ name, level, delay }) {
   return (

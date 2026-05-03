@@ -4,8 +4,7 @@ const SITE_URL = (import.meta.env?.VITE_PUBLIC_SITE_URL || 'https://turkistudio.
 const DEFAULT_TITLE = 'تركي غازي — مصمم بصري بالذكاء الاصطناعي';
 const DEFAULT_DESCRIPTION =
   'تركي غازي — مصمم ومبدع بصري متخصص في صناعة العوالم السينمائية والإعلانات والأزياء والعقار والتراث باستخدام الذكاء الاصطناعي.';
-const DEFAULT_OG_IMAGE =
-  'https://media.base44.com/images/public/user_685b19d62576f664d63bade4/a3a81c251_IMG_0264.jpg';
+const DEFAULT_OG_IMAGE = '/works/hero-poster.jpg';
 
 function absoluteUrl(input, fallback) {
   if (!input) return fallback;

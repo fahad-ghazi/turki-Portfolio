@@ -2,7 +2,7 @@ export const realEstateItems = [
   {
     id: "re-urban-luxury-tower",
     type: "image",
-    src: "https://media.base44.com/images/public/69f618d78f528f5ed96d2f9c/a88c46ce7_r_041.jpg",
+    src: "/works/realestate/r_041.jpg",
     alt: "Luxury Riyadh residential building at night with skyline",
     title: "URBAN LUXURY",
     description: "واجهة سكنية فاخرة بإضاءة ليلية تجعل العقار يبدو كعنوان للرفاهية لا مجرد مبنى.",
@@ -11,7 +11,7 @@ export const realEstateItems = [
   {
     id: "re-najdi-modern",
     type: "image",
-    src: "https://media.base44.com/images/public/69f618d78f528f5ed96d2f9c/c4c94bda5_r_040.jpg",
+    src: "/works/realestate/r_040.jpg",
     alt: "Modern Najdi inspired residential building with city skyline",
     title: "NAJDI MODERN",
     description: "مزج بين الزخرفة النجدية والعمارة الحديثة لصناعة مشروع يحمل هوية محلية عالية القيمة.",
@@ -20,7 +20,7 @@ export const realEstateItems = [
   {
     id: "re-golden-residence",
     type: "image",
-    src: "https://media.base44.com/images/public/69f618d78f528f5ed96d2f9c/577a075ec_r_039.jpg",
+    src: "/works/realestate/r_039.jpg",
     alt: "Premium residential building glowing at golden hour",
     title: "GOLDEN RESIDENCE",
     description: "لقطة واجهة ذهبية تبرز دفء السكن، اتساع النوافذ، وحياة الداخل كعنصر بيع أساسي.",
@@ -29,7 +29,7 @@ export const realEstateItems = [
   {
     id: "re-balcony-moment",
     type: "image",
-    src: "https://media.base44.com/images/public/69f618d78f528f5ed96d2f9c/752eeb990_r_038.jpg",
+    src: "/works/realestate/r_038.jpg",
     alt: "Saudi couple on balcony overlooking sunset property view",
     title: "BALCONY MOMENT",
     description: "مشهد إنساني يبيع الإحساس قبل المساحة: عائلة، إطلالة، وقرار سكني مطمئن.",
@@ -38,7 +38,7 @@ export const realEstateItems = [
   {
     id: "re-client-tour",
     type: "image",
-    src: "https://media.base44.com/images/public/69f618d78f528f5ed96d2f9c/b740817a8_r_037.jpg",
+    src: "/works/realestate/r_037.jpg",
     alt: "Real estate consultants touring clients outside modern villa",
     title: "CLIENT TOUR",
     description: "تجربة المعاينة العقارية كقصة ثقة بين المستشار، العميل، والمكان.",
@@ -47,7 +47,7 @@ export const realEstateItems = [
   {
     id: "re-advisor-portrait",
     type: "image",
-    src: "https://media.base44.com/images/public/69f618d78f528f5ed96d2f9c/c035375d1_r_036.jpg",
+    src: "/works/realestate/r_036.jpg",
     alt: "Professional Saudi real estate advisor in front of premium building",
     title: "ADVISOR PRESENCE",
     description: "بورتريه مستشار عقاري يعطي العلامة وجهًا موثوقًا وحضورًا احترافيًا واضحًا.",
@@ -56,7 +56,7 @@ export const realEstateItems = [
   {
     id: "re-coffee-meeting",
     type: "image",
-    src: "https://media.base44.com/images/public/69f618d78f528f5ed96d2f9c/883835045_r_035.jpg",
+    src: "/works/realestate/r_035.jpg",
     alt: "Real estate couple discussing investment with coffee in city street",
     title: "INVESTOR TALK",
     description: "لقطة حوارية مناسبة لحملات الاستثمار، تعكس القرار العقاري كجزء من نمط حياة عصري.",
@@ -65,7 +65,7 @@ export const realEstateItems = [
   {
     id: "re-terrace-living",
     type: "image",
-    src: "https://media.base44.com/images/public/69f618d78f528f5ed96d2f9c/7cd1a89dc_r_034.jpg",
+    src: "/works/realestate/r_034.jpg",
     alt: "Residential terrace apartments with warm interiors at sunset",
     title: "TERRACE LIVING",
     description: "إظهار الشرفات والخضرة والإضاءة الداخلية لصناعة رغبة سكنية هادئة وفاخرة.",
@@ -74,7 +74,7 @@ export const realEstateItems = [
   {
     id: "re-market-strategy",
     type: "image",
-    src: "https://media.base44.com/images/public/69f618d78f528f5ed96d2f9c/a93bc4529_r_033.jpg",
+    src: "/works/realestate/r_033.jpg",
     alt: "Saudi real estate team planning market positioning strategy",
     title: "MARKET STRATEGY",
     description: "توظيف احترافي لخلفية التسويق العقاري: تحليل، تموضع، وتسعير قبل الإطلاق.",
@@ -83,7 +83,7 @@ export const realEstateItems = [
   {
     id: "re-signature-deal",
     type: "image",
-    src: "https://media.base44.com/images/public/69f618d78f528f5ed96d2f9c/4e8fe0f25_r_032.jpg",
+    src: "/works/realestate/r_032.jpg",
     alt: "Miniature Saudi property deal scene with contracts and materials",
     title: "SIGNATURE DEAL",
     description: "لقطة رمزية ذكية تربط العقد، الخامات، والثقة المالية في صورة واحدة سهلة التذكّر.",
@@ -92,7 +92,7 @@ export const realEstateItems = [
   {
     id: "re-material-kit",
     type: "image",
-    src: "https://media.base44.com/images/public/69f618d78f528f5ed96d2f9c/5ad256a6d_r_031.jpg",
+    src: "/works/realestate/r_031.jpg",
     alt: "Real estate material sample kit contracts coffee and Saudi hospitality",
     title: "MATERIAL KIT",
     description: "تفاصيل الخامات والضيافة والعقود تظهر المشروع كمنظومة متكاملة وليست صور مبنى فقط.",
@@ -101,7 +101,7 @@ export const realEstateItems = [
   {
     id: "re-desert-launch",
     type: "image",
-    src: "https://media.base44.com/images/public/69f618d78f528f5ed96d2f9c/bc60c49c5_r_030.jpg",
+    src: "/works/realestate/r_030.jpg",
     alt: "Luxury desert real estate launch event with open door installation",
     title: "DESERT LAUNCH",
     description: "إطلاق عقاري بصري في الصحراء؛ باب مفتوح، دائرة ضوء، وحضور خاص يصنع تجربة علامة.",
@@ -110,7 +110,7 @@ export const realEstateItems = [
   {
     id: "re-riyadh-door",
     type: "image",
-    src: "https://media.base44.com/images/public/69f618d78f528f5ed96d2f9c/b61770046_r_029.jpg",
+    src: "/works/realestate/r_029.jpg",
     alt: "Saudi real estate deal in luxury interior with Riyadh skyline view",
     title: "RIYADH DOOR",
     description: "مجاز بصري قوي: باب تراثي يفتح على أفق الرياض، مثالي لحملات التحول والاستثمار.",
@@ -119,7 +119,7 @@ export const realEstateItems = [
   {
     id: "re-hologram-masterplan",
     type: "image",
-    src: "https://media.base44.com/images/public/69f618d78f528f5ed96d2f9c/2de8cc2f5_r_028.jpg",
+    src: "/works/realestate/r_028.jpg",
     alt: "Saudi developer presenting holographic residential masterplan",
     title: "SMART MASTERPLAN",
     description: "عرض مشروع بتقنية مستقبلية يرفع قيمة العرض ويحوّل المخطط إلى تجربة تفاعلية.",
@@ -128,7 +128,7 @@ export const realEstateItems = [
   {
     id: "re-table-model",
     type: "image",
-    src: "https://media.base44.com/images/public/69f618d78f528f5ed96d2f9c/bf0206403_r_027.jpg",
+    src: "/works/realestate/r_027.jpg",
     alt: "Saudi investors reviewing holographic architectural model",
     title: "MODEL REVIEW",
     description: "جلسة بيع راقية حول نموذج معماري مضيء؛ التقنية تخدم الثقة وتسهّل القرار.",
@@ -137,7 +137,7 @@ export const realEstateItems = [
   {
     id: "re-boardroom-launch",
     type: "image",
-    src: "https://media.base44.com/images/public/69f618d78f528f5ed96d2f9c/4cc8c978a_r_026.jpg",
+    src: "/works/realestate/r_026.jpg",
     alt: "Saudi real estate boardroom project launch with skyline and analytics",
     title: "BOARDROOM LAUNCH",
     description: "مشهد إطلاق للمستثمرين يجمع النموذج، التحليلات، وأفق الرياض كدليل على الجدية.",
@@ -146,7 +146,7 @@ export const realEstateItems = [
   {
     id: "re-brand-positioning",
     type: "image",
-    src: "https://media.base44.com/images/public/69f618d78f528f5ed96d2f9c/b3ef94f87_r_025.jpg",
+    src: "/works/realestate/r_025.jpg",
     alt: "Real estate brand positioning workshop with Saudi team",
     title: "BRAND POSITIONING",
     description: "تسويق عقاري يبدأ من الحضور المختلف؛ لوحة، فريق، ورسائل واضحة قبل الإعلان.",
@@ -155,7 +155,7 @@ export const realEstateItems = [
   {
     id: "re-development-journey",
     type: "image",
-    src: "https://media.base44.com/images/public/69f618d78f528f5ed96d2f9c/b1049e31a_r_024.jpg",
+    src: "/works/realestate/r_024.jpg",
     alt: "Saudi real estate development journey from desert to skyline",
     title: "DEVELOPMENT JOURNEY",
     description: "صورة تلخص رحلة التطوير من الفكرة في الأرض إلى البناء ثم المدينة المكتملة.",
@@ -164,7 +164,7 @@ export const realEstateItems = [
   {
     id: "re-seed-concept",
     type: "image",
-    src: "https://media.base44.com/images/public/69f618d78f528f5ed96d2f9c/8df9f30df_r_023.jpg",
+    src: "/works/realestate/r_023.jpg",
     alt: "Minimal real estate concept seed growing into modern building",
     title: "SEED CONCEPT",
     description: "مجاز بصري ناعم للمشروع العقاري كاستثمار يبدأ صغيرًا وينمو إلى أصل واضح القيمة.",
@@ -173,7 +173,7 @@ export const realEstateItems = [
   {
     id: "re-launch-explainer",
     type: "image",
-    src: "https://media.base44.com/images/public/69f618d78f528f5ed96d2f9c/6f3553c89_r_022.jpg",
+    src: "/works/realestate/r_022.jpg",
     alt: "Arabic real estate project launch explainer infographic",
     title: "LAUNCH EXPLAINER",
     description: "إنفوجرافيك تسويقي يشرح قيمة الإطلاق والتموضع بلغة بسيطة قابلة للنشر.",
@@ -182,7 +182,7 @@ export const realEstateItems = [
   {
     id: "re-mobile-tour",
     type: "image",
-    src: "https://media.base44.com/images/public/69f618d78f528f5ed96d2f9c/af5794a44_r_021.jpg",
+    src: "/works/realestate/r_021.jpg",
     alt: "Mobile video property tour in front of apartment building",
     title: "MOBILE TOUR",
     description: "توظيف الهاتف كقناة بيع؛ العقار يظهر كمحتوى قابل للمشاهدة والمشاركة فورًا.",
@@ -191,7 +191,7 @@ export const realEstateItems = [
   {
     id: "re-mamsha-residence",
     type: "image",
-    src: "https://media.base44.com/images/public/69f618d78f528f5ed96d2f9c/7648be73b_r_020.jpg",
+    src: "/works/realestate/r_020.jpg",
     alt: "Al Mamsha residences urban mixed-use property exterior",
     title: "MAMSHA RESIDENCES",
     description: "واجهة حضرية قابلة للبيع بصريًا: مدخل واضح، حركة شارع، وخدمات بجانب السكن.",
@@ -200,7 +200,7 @@ export const realEstateItems = [
   {
     id: "re-corridor-luxury",
     type: "image",
-    src: "https://media.base44.com/images/public/69f618d78f528f5ed96d2f9c/3c341a93d_r_019.jpg",
+    src: "/works/realestate/r_019.jpg",
     alt: "Luxury residential corridor with ornate open apartment door",
     title: "PRIVATE CORRIDOR",
     description: "الرفاهية تبدأ من الممر؛ باب مفتوح وإضاءة دافئة تبيع الخصوصية قبل الداخل.",
@@ -209,7 +209,7 @@ export const realEstateItems = [
   {
     id: "re-architectural-model",
     type: "image",
-    src: "https://media.base44.com/images/public/69f618d78f528f5ed96d2f9c/db6530fd8_r_018.jpg",
+    src: "/works/realestate/r_018.jpg",
     alt: "White architectural residential model under spotlight",
     title: "PHYSICAL MODEL",
     description: "نموذج معماري نظيف يعرض المشروع كمنتج ملموس ويزيد ثقة العميل قبل التنفيذ.",
@@ -218,7 +218,7 @@ export const realEstateItems = [
   {
     id: "re-pool-villa",
     type: "image",
-    src: "https://media.base44.com/images/public/69f618d78f528f5ed96d2f9c/174ef80d8_r_017.jpg",
+    src: "/works/realestate/r_017.jpg",
     alt: "Luxury villa pool at sunset with palm landscape",
     title: "POOL VILLA",
     description: "لقطة نمط حياة فاخرة تجمع المسبح، النخيل، والغروب لصناعة رغبة السكن الخاص.",
@@ -227,7 +227,7 @@ export const realEstateItems = [
   {
     id: "re-sunset-villa",
     type: "image",
-    src: "https://media.base44.com/images/public/69f618d78f528f5ed96d2f9c/4e63c9300_r_016.jpg",
+    src: "/works/realestate/r_016.jpg",
     alt: "Modern villa with pool and sunset reflection",
     title: "SUNSET VILLA",
     description: "فيلا حديثة بإضاءة غروب وانعكاس ماء؛ مثالية لإعلانات البيع العاطفي عالي القيمة.",
@@ -236,7 +236,7 @@ export const realEstateItems = [
   {
     id: "re-open-door",
     type: "image",
-    src: "https://media.base44.com/images/public/69f618d78f528f5ed96d2f9c/4977d6d2d_r_015.jpg",
+    src: "/works/realestate/r_015.jpg",
     alt: "Open wooden door into bright living room interior",
     title: "OPEN DOOR",
     description: "لقطة دخول ناعمة تبيع الإحساس بالبيت: مفتاح، خشب، ضوء، وراحة داخلية.",
@@ -245,7 +245,7 @@ export const realEstateItems = [
   {
     id: "re-premium-interior",
     type: "image",
-    src: "https://media.base44.com/images/public/69f618d78f528f5ed96d2f9c/69c422d2f_r_014.jpg",
+    src: "/works/realestate/r_014.jpg",
     alt: "Bright premium apartment interior seen through black door",
     title: "PREMIUM INTERIOR",
     description: "الداخل كدليل جودة؛ لون هادئ، أثاث متوازن، وباب أسود يعطي قيمة فاخرة.",
@@ -254,7 +254,7 @@ export const realEstateItems = [
   {
     id: "re-future-project",
     type: "image",
-    src: "https://media.base44.com/images/public/69f618d78f528f5ed96d2f9c/cf07af707_r_013.jpg",
+    src: "/works/realestate/r_013.jpg",
     alt: "Arabic future project residential community at sunrise",
     title: "FUTURE PROJECT",
     description: "صورة إطلاق مباشرة تحمل وعدًا واضحًا: مشروع المستقبل الجديد بلغة بسيطة وقوية.",
@@ -263,7 +263,7 @@ export const realEstateItems = [
   {
     id: "re-marble-detail",
     type: "image",
-    src: "https://media.base44.com/images/public/69f618d78f528f5ed96d2f9c/a6dce8a6b_r_012.jpg",
+    src: "/works/realestate/r_012.jpg",
     alt: "Hand touching luxury marble wall in premium interior",
     title: "MARBLE TOUCH",
     description: "تفاصيل الخامة تبيع أكثر من اللقطة الواسعة؛ ملمس الرخام يصبح دليلًا على الفخامة.",
@@ -272,7 +272,7 @@ export const realEstateItems = [
   {
     id: "re-riyadh-overlook",
     type: "image",
-    src: "https://media.base44.com/images/public/69f618d78f528f5ed96d2f9c/d0b06c257_r_010.jpg",
+    src: "/works/realestate/r_010.jpg",
     alt: "Saudi man overlooking Riyadh skyline from rooftop",
     title: "RIYADH OVERLOOK",
     description: "صورة طموح عقاري؛ الوقوف فوق المدينة يربط المشروع بالمستقبل والمكانة.",
@@ -281,7 +281,7 @@ export const realEstateItems = [
   {
     id: "re-live-broadcast",
     type: "image",
-    src: "https://media.base44.com/images/public/69f618d78f528f5ed96d2f9c/59efc5f8f_r_009.jpg",
+    src: "/works/realestate/r_009.jpg",
     alt: "Luxury property live broadcast production studio",
     title: "LIVE PROPERTY",
     description: "تسويق عقاري كإنتاج إعلامي كامل: بث مباشر، شاشات، وفريق تصوير لرفع الثقة.",
@@ -290,7 +290,7 @@ export const realEstateItems = [
   {
     id: "re-production-day",
     type: "image",
-    src: "https://media.base44.com/images/public/69f618d78f528f5ed96d2f9c/afda3fd60_r_008.jpg",
+    src: "/works/realestate/r_008.jpg",
     alt: "Real estate video production set with drone and cinema camera outside villa",
     title: "PRODUCTION DAY",
     description: "ما وراء الكواليس يثبت الاحتراف: كاميرا سينما، درون، وفريق يرفع قيمة العرض العقاري.",
@@ -299,7 +299,7 @@ export const realEstateItems = [
   {
     id: "re-heritage-residence",
     type: "image",
-    src: "https://media.base44.com/images/public/69f618d78f528f5ed96d2f9c/e94c20c45_r_007.jpg",
+    src: "/works/realestate/r_007.jpg",
     alt: "Heritage inspired modern residence with Riyadh skyline",
     title: "HERITAGE RESIDENCE",
     description: "عمارة مستوحاة من التراث بلغة معاصرة؛ مشروع يبيع الهوية بقدر ما يبيع المساحة.",
@@ -308,7 +308,7 @@ export const realEstateItems = [
   {
     id: "re-family-home",
     type: "image",
-    src: "https://media.base44.com/images/public/69f618d78f528f5ed96d2f9c/0c126fea0_r_006.jpg",
+    src: "/works/realestate/r_006.jpg",
     alt: "Saudi family sitting together in bright home interior",
     title: "FAMILY HOME",
     description: "البيت كحياة: عائلة، دفء، وطمأنينة تجعل الرسالة العقارية إنسانية ومؤثرة.",
@@ -317,7 +317,7 @@ export const realEstateItems = [
   {
     id: "re-modern-buyer",
     type: "image",
-    src: "https://media.base44.com/images/public/69f618d78f528f5ed96d2f9c/aadc1fabf_r_005.jpg",
+    src: "/works/realestate/r_005.jpg",
     alt: "Modern Saudi buyer taking selfie near glass business towers",
     title: "MODERN BUYER",
     description: "المشتري الحديث حاضر رقميًا؛ صورة تربط العقار بالهوية الشخصية والمشاركة الاجتماعية.",
@@ -326,7 +326,7 @@ export const realEstateItems = [
   {
     id: "re-community-coffee",
     type: "image",
-    src: "https://media.base44.com/images/public/69f618d78f528f5ed96d2f9c/fcd39a756_r_004.jpg",
+    src: "/works/realestate/r_004.jpg",
     alt: "Saudi couple having coffee in front of premium residential villa",
     title: "COMMUNITY COFFEE",
     description: "لقطة اجتماعية رقيقة تبيع الحي كعلاقات يومية وراحة خارج حدود الجدران.",
@@ -335,7 +335,7 @@ export const realEstateItems = [
   {
     id: "re-palace-approach",
     type: "image",
-    src: "https://media.base44.com/images/public/69f618d78f528f5ed96d2f9c/8db36858b_r_003.jpg",
+    src: "/works/realestate/r_003.jpg",
     alt: "Saudi man approaching luxury palace style property at golden hour",
     title: "PALACE APPROACH",
     description: "مدخل فاخر بزخارف محلية وضوء ذهبي؛ يضع العقار في مساحة الهيبة والخصوصية.",
@@ -344,7 +344,7 @@ export const realEstateItems = [
   {
     id: "re-green-community",
     type: "image",
-    src: "https://media.base44.com/images/public/69f618d78f528f5ed96d2f9c/b6fde6fd7_r_002.jpg",
+    src: "/works/realestate/r_002.jpg",
     alt: "Aerial green residential community in Riyadh with villas and gardens",
     title: "GREEN COMMUNITY",
     description: "مجتمع سكني أخضر من الأعلى؛ المسارات والحدائق والمسابح تبيع نمط حياة متكامل.",
@@ -353,7 +353,7 @@ export const realEstateItems = [
   {
     id: "re-executive-lounge",
     type: "image",
-    src: "https://media.base44.com/images/public/69f618d78f528f5ed96d2f9c/766796c0c_r_001.jpg",
+    src: "/works/realestate/r_001.jpg",
     alt: "Luxury real estate executive lounge interior with Arabic art",
     title: "EXECUTIVE LOUNGE",
     description: "مساحة داخلية تنفيذية تصلح لبيع خدمات عقارية فاخرة، اجتماعات كبار العملاء، وهوية مكاتب راقية.",

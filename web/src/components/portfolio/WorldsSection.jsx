@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 
-const GALLERY_IMAGE = "https://media.base44.com/images/public/user_685b19d62576f664d63bade4/72d59f0da_IMG_0263.jpg";
+const GALLERY_IMAGE = "/works/hero-poster.jpg";
 
 export default function WorldsSection() {
   const sectionRef = useRef(null);

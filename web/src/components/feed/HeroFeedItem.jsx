@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 
-const HERO_IMAGE = "https://media.base44.com/images/public/user_685b19d62576f664d63bade4/a3a81c251_IMG_0264.jpg";
+const HERO_IMAGE = "/works/hero-poster.jpg";
 const TOTAL = 5;
 
 // Luxury gold constant

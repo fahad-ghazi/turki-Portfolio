@@ -2,7 +2,7 @@ export const FEED_ITEMS = [
   {
     id: 1,
     type: "image",
-    src: "https://media.base44.com/images/public/user_685b19d62576f664d63bade4/a3a81c251_IMG_0264.jpg",
+    src: "/works/hero-poster.jpg",
     title: "تركي غازي",
     subtitle: "مصمم ومبدع بصري",
     category: null,
@@ -11,7 +11,7 @@ export const FEED_ITEMS = [
   {
     id: 2,
     type: "image",
-    src: "https://media.base44.com/images/public/user_685b19d62576f664d63bade4/72d59f0da_IMG_0263.jpg",
+    src: "/works/hero-poster.jpg",
     title: "عوالم بصرية",
     subtitle: "تصنع بالذكاء الاصطناعي",
     category: "AI Visual",
@@ -19,7 +19,7 @@ export const FEED_ITEMS = [
   {
     id: 3,
     type: "image",
-    src: "https://media.base44.com/images/public/user_685b19d62576f664d63bade4/c6a4f8523_IMG_0267.jpg",
+    src: "/works/hero-poster.jpg",
     title: "GOLD ERA",
     subtitle: "حملة بصرية سينمائية",
     category: "AI Film",
@@ -27,7 +27,7 @@ export const FEED_ITEMS = [
   {
     id: 4,
     type: "image",
-    src: "https://media.base44.com/images/public/user_685b19d62576f664d63bade4/c19215f8f_IMG_0262.jpg",
+    src: "/works/hero-poster.jpg",
     title: "PRODUCT PRO",
     subtitle: "تصميم منتج احترافي",
     category: "Product",
@@ -35,7 +35,7 @@ export const FEED_ITEMS = [
   {
     id: 5,
     type: "image",
-    src: "https://media.base44.com/images/public/user_685b19d62576f664d63bade4/903d3fe3b_IMG_0268.jpg",
+    src: "/works/hero-poster.jpg",
     title: "60 SEC CINEMATIC",
     subtitle: "إنتاج سينمائي مكثف",
     category: "Creative",
@@ -43,7 +43,7 @@ export const FEED_ITEMS = [
   {
     id: 6,
     type: "image",
-    src: "https://media.base44.com/images/public/user_685b19d62576f664d63bade4/8ca04bb7d_IMG_0266.jpg",
+    src: "/works/hero-poster.jpg",
     title: "FASHION STUDIO",
     subtitle: "تصوير أزياء بالذكاء الاصطناعي",
     category: "AI Film",
@@ -51,7 +51,7 @@ export const FEED_ITEMS = [
   {
     id: 7,
     type: "image",
-    src: "https://media.base44.com/images/public/user_685b19d62576f664d63bade4/1f7df23f8_IMG_0265.jpg",
+    src: "/works/hero-poster.jpg",
     title: "DESERT VISION",
     subtitle: "رؤية إبداعية من الصحراء",
     category: "Heritage",
@@ -59,7 +59,7 @@ export const FEED_ITEMS = [
   {
     id: 8,
     type: "image",
-    src: "https://media.base44.com/images/public/user_685b19d62576f664d63bade4/c1f9c069a_IMG_0259.jpg",
+    src: "/works/hero-poster.jpg",
     title: "خلف الكواليس",
     subtitle: "العملية الإبداعية",
     category: "BTS",
@@ -67,7 +67,7 @@ export const FEED_ITEMS = [
   {
     id: 9,
     type: "image",
-    src: "https://media.base44.com/images/public/user_685b19d62576f664d63bade4/b9687a4b0_IMG_0261.jpg",
+    src: "/works/hero-poster.jpg",
     title: "الاستوديو",
     subtitle: "بيئة الإبداع",
     category: "BTS",
@@ -75,7 +75,7 @@ export const FEED_ITEMS = [
   {
     id: 10,
     type: "brand",
-    src: "https://media.base44.com/images/public/user_685b19d62576f664d63bade4/517e55039_238F1F71-449B-49FF-82CE-3254EF82B44A.png",
+    src: "/works/logo-coin.png",
     title: "TURKI STUDIO",
     subtitle: "نصنع عوالم بصرية بالذكاء الاصطناعي",
     category: null,

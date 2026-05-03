@@ -10,7 +10,7 @@ import { Link } from "react-router-dom";
 import { useLang } from "@/lib/LanguageContext";
 import TGLogo from "@/components/brand/TGLogo";
 
-const HERO_IMAGE = "https://media.base44.com/images/public/user_685b19d62576f664d63bade4/a3a81c251_IMG_0264.jpg";
+const HERO_IMAGE = "/works/hero-poster.jpg";
 const TOTAL = 5;
 const GOLD = "#C9A961";
 

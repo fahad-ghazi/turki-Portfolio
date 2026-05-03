@@ -1,3 +1,8 @@
+// All thumbnails + videoUrls point at the user's own assets in
+// web/public/works (posters) and web/public/videos (films). The
+// previous flower.mp4 placeholder from MDN was a leftover from the
+// turki-vision-flow scaffold — none of those videos belonged to us.
+
 export const FILMS = [
   {
     id: "film-01",
@@ -5,8 +10,8 @@ export const FILMS = [
     duration: "--:--",
     year: "2026",
     description: "فيلم سينمائي قصير بعالم بصري سعودي جريء.",
-    videoUrl: "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
-    thumbnail: "https://media.base44.com/images/public/69f618d78f528f5ed96d2f9c/50408478a_poster_01_saudi_joker.jpg",
+    videoUrl: "/videos/01_saudi_joker.mp4",
+    thumbnail: "/works/poster_01_saudi_joker.jpg",
   },
   {
     id: "film-02",
@@ -14,8 +19,8 @@ export const FILMS = [
     duration: "--:--",
     year: "2026",
     description: "مشهد مستقبلي عن الإنسان والتحوّل داخل مدينة صامتة.",
-    videoUrl: "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
-    thumbnail: "https://media.base44.com/images/public/69f618d78f528f5ed96d2f9c/299cf4ec4_poster_02_human_snail.jpg",
+    videoUrl: "/videos/02_human_snail.mp4",
+    thumbnail: "/works/poster_02_human_snail.jpg",
   },
   {
     id: "film-03",
@@ -23,8 +28,8 @@ export const FILMS = [
     duration: "--:--",
     year: "2026",
     description: "بورتريه سينمائي لكاتب يعيش بين الواقع وخياله الداخلي.",
-    videoUrl: "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
-    thumbnail: "https://media.base44.com/images/public/69f618d78f528f5ed96d2f9c/896efbb93_poster_03_mohammed_writer.jpg",
+    videoUrl: "/videos/03_mohammed_writer.mp4",
+    thumbnail: "/works/poster_03_mohammed_writer.jpg",
   },
   {
     id: "film-04",
@@ -32,8 +37,8 @@ export const FILMS = [
     duration: "--:--",
     year: "2026",
     description: "شظايا دراسة بصرية داخل عالم فني ملوّن ومضطرب.",
-    videoUrl: "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
-    thumbnail: "https://media.base44.com/images/public/69f618d78f528f5ed96d2f9c/b16bc79a7_poster_04_studies_fragments.jpg",
+    videoUrl: "/videos/04_studies_fragments.mp4",
+    thumbnail: "/works/poster_04_studies_fragments.jpg",
   },
   {
     id: "film-05",
@@ -41,8 +46,8 @@ export const FILMS = [
     duration: "--:--",
     year: "2026",
     description: "تجربة بصرية عن التشوش، الذاكرة، والانفصال عن الجسد.",
-    videoUrl: "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
-    thumbnail: "https://media.base44.com/images/public/69f618d78f528f5ed96d2f9c/2d82fa3a9_poster_05_disorders.jpg",
+    videoUrl: "/videos/05_disorders.mp4",
+    thumbnail: "/works/poster_05_disorders.jpg",
   },
   {
     id: "film-06",
@@ -50,8 +55,8 @@ export const FILMS = [
     duration: "--:--",
     year: "2026",
     description: "طاقة سعودية معاصرة بإيقاع شارع وحضور قوي.",
-    videoUrl: "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
-    thumbnail: "https://media.base44.com/images/public/69f618d78f528f5ed96d2f9c/0950d3939_poster_06_saudi_harley.jpg",
+    videoUrl: "/videos/06_saudi_harley.mp4",
+    thumbnail: "/works/poster_06_saudi_harley.jpg",
   },
   {
     id: "film-07",
@@ -59,8 +64,8 @@ export const FILMS = [
     duration: "--:--",
     year: "2026",
     description: "إعلان سينمائي لنظارة بحضور راقٍ وحركة مدروسة.",
-    videoUrl: "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
-    thumbnail: "https://media.base44.com/images/public/69f618d78f528f5ed96d2f9c/9a663b1cb_poster_07_glasses_cinematic.jpg",
+    videoUrl: "/videos/07_glasses_cinematic.mp4",
+    thumbnail: "/works/poster_07_glasses_cinematic.jpg",
   },
   {
     id: "film-08",
@@ -68,8 +73,8 @@ export const FILMS = [
     duration: "--:--",
     year: "2026",
     description: "محتوى قريب من الجمهور لنظارة ذكية بأسلوب يومي مباشر.",
-    videoUrl: "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
-    thumbnail: "https://media.base44.com/images/public/69f618d78f528f5ed96d2f9c/e1ce15d4d_poster_08_glasses_ugc.jpg",
+    videoUrl: "/videos/08_glasses_ugc.mp4",
+    thumbnail: "/works/poster_08_glasses_ugc.jpg",
   },
   {
     id: "film-09",
@@ -77,7 +82,7 @@ export const FILMS = [
     duration: "--:--",
     year: "2026",
     description: "حكاية أجيال وصورة ذاكرة تتقاطع مع المستقبل.",
-    videoUrl: "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
-    thumbnail: "https://media.base44.com/images/public/69f618d78f528f5ed96d2f9c/37ab695a0_poster_09_generations.jpg",
+    videoUrl: "/videos/09_generations.mp4",
+    thumbnail: "/works/poster_09_generations.jpg",
   },
 ];
