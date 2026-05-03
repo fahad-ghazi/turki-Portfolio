@@ -5,7 +5,7 @@ import {
   motion, AnimatePresence,
   useMotionValue, useTransform,
 } from "framer-motion";
-import { X, Sparkles } from "lucide-react";
+import { X, Sparkles, ChevronLeft, ChevronRight } from "lucide-react";
 import Picture from "@/components/brand/Picture";
 import { useLang } from "@/lib/LanguageContext";
 import { CATEGORIES } from "../feed/categoriesData";
@@ -395,6 +395,21 @@ export default function AllWorksMode({ onExit }) {
     };
   }, []);
 
+  // Desktop keyboard navigation
+  useEffect(() => {
+    if (phase !== "swipe") return;
+    const onKey = (e) => {
+      if (e.key === "Escape") { onExit(); return; }
+      const nextPhysical = isAr ? -1 : 1;
+      const prevPhysical = isAr ?  1 : -1;
+      if (e.key === (isAr ? "ArrowLeft" : "ArrowRight")) { e.preventDefault(); handleSwipe(nextPhysical); }
+      if (e.key === (isAr ? "ArrowRight" : "ArrowLeft")) { e.preventDefault(); handleSwipe(prevPhysical); }
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [phase, isAr, index]);
+
   // ── Filter selection ───────────────────────────────────────────
   const handleFilterSelect = useCallback((id) => {
     setFilterId(id);
@@ -530,12 +545,39 @@ export default function AllWorksMode({ onExit }) {
         </motion.button>
       </div>
 
-      {/* ── Card area ── */}
+      {/* ── Card area — centred, max-width on desktop ── */}
       <div
-        ref={cardAreaRef}
-        className="relative flex-1 mx-1"
+        className="relative flex-1 flex items-stretch justify-center overflow-hidden"
         onPointerMove={handlePointerMove}
       >
+        {/* Blurred backdrop fill (desktop only) */}
+        {currentCard && (
+          <div
+            className="absolute inset-0 pointer-events-none overflow-hidden"
+            aria-hidden="true"
+            style={{ filter: "blur(48px)", transform: "scale(1.18)", opacity: 0.22 }}
+          >
+            <Picture src={currentCard.src} alt="" loading="eager" className="w-full h-full object-cover" />
+          </div>
+        )}
+
+        {/* Desktop prev arrow */}
+        <button
+          onClick={() => handleSwipe(isAr ? 1 : -1)}
+          aria-label="Previous"
+          className="absolute left-0 top-0 h-full z-30 hidden md:flex items-center justify-center px-3 transition-opacity duration-200 opacity-30 hover:opacity-80"
+          style={{ width: "60px" }}
+        >
+          {isAr ? <ChevronRight className="h-7 w-7" style={{ color: "#1A1A1A" }} strokeWidth={1.5} />
+                : <ChevronLeft  className="h-7 w-7" style={{ color: "#1A1A1A" }} strokeWidth={1.5} />}
+        </button>
+
+        {/* Constrained card container */}
+        <div
+          ref={cardAreaRef}
+          className="relative w-full"
+          style={{ maxWidth: "min(calc(100% - 8px), 520px)" }}
+        >
         {/* Background card — persistent mount, only the image cross-fades */}
         <motion.div
           className="absolute inset-3 rounded-3xl overflow-hidden pointer-events-none"
@@ -602,7 +644,20 @@ export default function AllWorksMode({ onExit }) {
             )}
           </motion.div>
         </AnimatePresence>
-      </div>
+        </div>{/* end constrained container */}
+
+        {/* Desktop next arrow */}
+        <button
+          onClick={() => handleSwipe(isAr ? -1 : 1)}
+          aria-label="Next"
+          className="absolute right-0 top-0 h-full z-30 hidden md:flex items-center justify-center px-3 transition-opacity duration-200 opacity-30 hover:opacity-80"
+          style={{ width: "60px" }}
+        >
+          {isAr ? <ChevronLeft  className="h-7 w-7" style={{ color: "#1A1A1A" }} strokeWidth={1.5} />
+                : <ChevronRight className="h-7 w-7" style={{ color: "#1A1A1A" }} strokeWidth={1.5} />}
+        </button>
+
+      </div>{/* end flex card area */}
 
       {/* ── Progress pills ── */}
       {/* Mystery cards shown as slightly larger gold-tinted pills so

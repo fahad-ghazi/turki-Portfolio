@@ -3,7 +3,7 @@ import {
   motion, AnimatePresence,
   useMotionValue, useTransform
 } from "framer-motion";
-import { X, Heart, Share2 } from "lucide-react";
+import { X, Heart, Share2, ChevronLeft, ChevronRight } from "lucide-react";
 import { apiClient } from "@/api/client";
 import { useLang } from "@/lib/LanguageContext";
 import { sortByBehavior, trackContentInteraction } from "../../utils/behaviorTracking";
@@ -338,6 +338,21 @@ export default function TinderMode({ category, onExit, onNextCategory, closeOnCo
     };
   }, []);
 
+  // Desktop keyboard navigation — arrow keys map to semantic next/prev
+  // so the direction is language-aware (RTL: ← = next, → = prev).
+  useEffect(() => {
+    const onKey = (e) => {
+      if (e.key === "Escape") { onExit(); return; }
+      const nextKey = isAr ? "ArrowLeft"  : "ArrowRight";
+      const prevKey = isAr ? "ArrowRight" : "ArrowLeft";
+      if (e.key === nextKey) { e.preventDefault(); goNext(); }
+      if (e.key === prevKey) { e.preventDefault(); goPrev(); }
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isAr, index]);   // re-bind when index changes so closures stay fresh
+
   // Audit fix: previously a swipe-back from index 0 silently called
   // onExit(), which on character galleries kicked the user back to the
   // home slide unexpectedly. Now we trigger a quick "bounce" feedback
@@ -420,8 +435,44 @@ export default function TinderMode({ category, onExit, onNextCategory, closeOnCo
         >{index + 1} / {items.length}</span>
       </div>
 
-      {/* Card stack */}
-      <div className="relative flex-1 mx-1">
+      {/* Card stack — centred + constrained so portrait images never crop
+          on desktop. On mobile (< 520 px) the card still fills the width
+          exactly as before. The blurred backdrop fills the side gutters on
+          wide screens so there's no harsh edge against the page bg. */}
+      <div className="relative flex-1 flex items-stretch justify-center overflow-hidden">
+
+        {/* Blurred backdrop — only visible on desktop where card ≠ full-width */}
+        {items[index] && (
+          <div
+            className="absolute inset-0 pointer-events-none overflow-hidden"
+            aria-hidden="true"
+            style={{ filter: "blur(48px)", transform: "scale(1.18)", opacity: 0.22 }}
+          >
+            <Picture
+              src={items[index].src}
+              alt=""
+              loading="eager"
+              className="w-full h-full object-cover"
+            />
+          </div>
+        )}
+
+        {/* Desktop prev arrow — hidden on touch devices */}
+        <button
+          onClick={goPrev}
+          aria-label="Previous"
+          className="absolute left-0 top-0 h-full z-30 hidden md:flex items-center justify-center px-3 transition-opacity duration-200 opacity-30 hover:opacity-80"
+          style={{ width: "60px" }}
+        >
+          {isAr ? <ChevronRight className="h-7 w-7" style={{ color: "#1A1A1A" }} strokeWidth={1.5} />
+                : <ChevronLeft  className="h-7 w-7" style={{ color: "#1A1A1A" }} strokeWidth={1.5} />}
+        </button>
+
+        {/* Constrained card container — phone-like width on desktop */}
+        <div
+          className="relative w-full"
+          style={{ maxWidth: "min(calc(100% - 8px), 520px)" }}
+        >
         {showCTA && <PostCTA isAr={isAr} onExit={onExit} />}
         {/* Background card — never unmounts, only its image cross-fades.
             Old approach: keyed on `bg-${index+1}` inside AnimatePresence.
@@ -499,7 +550,20 @@ export default function TinderMode({ category, onExit, onNextCategory, closeOnCo
             />
           </motion.div>
         </AnimatePresence>
-      </div>
+        </div>{/* end constrained card container */}
+
+        {/* Desktop next arrow */}
+        <button
+          onClick={goNext}
+          aria-label="Next"
+          className="absolute right-0 top-0 h-full z-30 hidden md:flex items-center justify-center px-3 transition-opacity duration-200 opacity-30 hover:opacity-80"
+          style={{ width: "60px" }}
+        >
+          {isAr ? <ChevronLeft  className="h-7 w-7" style={{ color: "#1A1A1A" }} strokeWidth={1.5} />
+                : <ChevronRight className="h-7 w-7" style={{ color: "#1A1A1A" }} strokeWidth={1.5} />}
+        </button>
+
+      </div>{/* end flex card area */}
 
       {/* Bottom controls — minimal */}
       <div className="shrink-0 px-6 pb-8 pt-3">
