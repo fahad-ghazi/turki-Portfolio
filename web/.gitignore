@@ -2,6 +2,12 @@
 .env
 .env.*
 !.env.example
+# .env.production only has VITE_R2_BASE (public CDN URL) — safe to track
+!.env.production
+
+# R2 images — served from Cloudflare R2, not git
+public/works/
+public/brand/
 
 # Logs
 /logs

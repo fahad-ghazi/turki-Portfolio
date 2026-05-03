@@ -29,12 +29,28 @@ import manifest from "@/lib/imageManifest.json";
 const RASTER_RE = /\.(jpe?g|png)$/i;
 const FORMAT_TYPES = { avif: "image/avif", webp: "image/webp", jpg: "image/jpeg" };
 
-function buildSrcSet(src, format, widths) {
-  const ext = src.match(RASTER_RE)?.[0] ?? "";
+// When images are served from Cloudflare R2 the manifest keys stay as
+// local paths (/works/…) but the actual bytes live at the R2 CDN.
+// VITE_R2_BASE is injected at build time; absent means we're in local dev
+// and the public/ folder serves the files directly.
+const R2_BASE = import.meta.env.VITE_R2_BASE ?? "";
+
+// Convert a local public path (/works/ads/a_001.jpg) to the delivery URL.
+// If R2_BASE is empty the path passes through unchanged (dev / local).
+function toDeliveryUrl(localPath) {
+  if (!localPath || localPath.startsWith("http")) return localPath;
+  return R2_BASE ? `${R2_BASE}${localPath}` : localPath;
+}
+
+function buildSrcSet(localSrc, format, widths) {
+  const ext = localSrc.match(RASTER_RE)?.[0] ?? "";
   if (!ext) return null;
-  const base = src.slice(0, -ext.length);
+  const base = localSrc.slice(0, -ext.length);
   const formatExt = format === "jpg" ? "jpg" : format;
-  return widths.map((w) => `${base}-${w}w.${formatExt} ${w}w`).join(", ");
+  // Variant URLs go through R2 CDN in production.
+  return widths
+    .map((w) => `${toDeliveryUrl(`${base}-${w}w.${formatExt}`)} ${w}w`)
+    .join(", ");
 }
 
 function BlurhashCanvas({ hash, aspectRatio, className = "" }) {
@@ -93,8 +109,14 @@ const Picture = forwardRef(function Picture(
     if (imgRef.current?.complete) setLoaded(true);
   }, [src]);
 
-  const entry = src && manifest[src];
-  if (!src || !RASTER_RE.test(src) || !entry) {
+  // Manifest is keyed on local paths (/works/…). The incoming src may
+  // already be an absolute R2 URL if other components set it directly —
+  // strip the base so the lookup still hits.
+  const localSrc = R2_BASE && src?.startsWith(R2_BASE)
+    ? src.slice(R2_BASE.length)
+    : src;
+  const entry = localSrc && manifest[localSrc];
+  if (!src || !RASTER_RE.test(localSrc) || !entry) {
     return (
       <img
         ref={setRefs}
@@ -130,12 +152,12 @@ const Picture = forwardRef(function Picture(
         />
       )}
       <picture className="block h-full w-full">
-        <source type={FORMAT_TYPES.avif} srcSet={buildSrcSet(src, "avif", widths)} sizes={sizes} />
-        <source type={FORMAT_TYPES.webp} srcSet={buildSrcSet(src, "webp", widths)} sizes={sizes} />
+        <source type={FORMAT_TYPES.avif} srcSet={buildSrcSet(localSrc, "avif", widths)} sizes={sizes} />
+        <source type={FORMAT_TYPES.webp} srcSet={buildSrcSet(localSrc, "webp", widths)} sizes={sizes} />
         <img
           ref={setRefs}
-          src={src}
-          srcSet={buildSrcSet(src, "jpg", widths)}
+          src={toDeliveryUrl(localSrc)}
+          srcSet={buildSrcSet(localSrc, "jpg", widths)}
           sizes={sizes}
           alt={alt}
           loading={loading}
