@@ -1,4 +1,5 @@
 import Fastify from 'fastify';
+import type { FastifyError } from 'fastify';
 import cors from '@fastify/cors';
 import helmet from '@fastify/helmet';
 import cookie from '@fastify/cookie';
@@ -79,7 +80,7 @@ async function main() {
   // Seed admin if needed (idempotent)
   await ensureAdminSeed(app.prisma, app.log);
 
-  app.setErrorHandler((err, req, reply) => {
+  app.setErrorHandler((err: FastifyError, req, reply) => {
     req.log.error({ err }, 'unhandled error');
     if (reply.sent) return;
     const status = err.statusCode && err.statusCode >= 400 ? err.statusCode : 500;
@@ -95,7 +96,7 @@ async function main() {
     await app.listen({ port: env.PORT, host: env.HOST });
     app.log.info({ port: env.PORT, host: env.HOST, env: env.NODE_ENV }, 'turki-api ready');
   } catch (err) {
-    app.log.error(err);
+    app.log.error(err as Error);
     process.exit(1);
   }
 }
