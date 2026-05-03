@@ -6,6 +6,7 @@ import AdminTable from "../components/admin/AdminTable";
 import AdminQuickForm from "../components/admin/AdminQuickForm";
 import SmartAnalyticsPanel from "../components/admin/SmartAnalyticsPanel";
 import AdminSidebar from "../components/admin/AdminSidebar";
+import ChangePasswordForm from "../components/admin/ChangePasswordForm";
 import Seo from "@/components/seo/Seo";
 
 const queries = {
@@ -43,7 +44,10 @@ export default function AdminDashboard() {
     queryFn: () => base44.auth.me(),
   });
 
-  const isAdmin = user?.role === "admin";
+  // The /api/admin/me endpoint is itself gated by requireAdmin, so any
+  // successful response means we're authenticated. The legacy "role"
+  // field came from base44 and isn't part of our schema.
+  const isAdmin = Boolean(user?.id);
 
   const { data = {}, isLoading } = useQuery({
     queryKey: ["admin-dashboard"],
@@ -127,19 +131,25 @@ export default function AdminDashboard() {
           </select>
         </div>
 
-        <section className="mt-6 rounded-2xl border border-slate-200 bg-white p-4 shadow-sm md:p-6">
-          {isLoading ? (
-            <div className="py-16 text-center text-sm text-slate-500">جاري تحميل بيانات الإدارة...</div>
-          ) : (
-            <>
-              {tab === "overview" && <SmartAnalyticsPanel events={data.analytics || []} />}
-              <div className="grid gap-6 xl:grid-cols-[360px_1fr]">
-                <div>{renderForm() || <div className="rounded-2xl border border-slate-200 bg-slate-50 p-6 text-sm leading-8 text-slate-600">اختر قسمًا قابلًا للإضافة لإدارة المحتوى مباشرة. تعرض الأقسام الأخرى مؤشرات الأداء، المشاكل، والطلبات.</div>}</div>
-                <AdminTable items={tab === "overview" ? data.analytics || [] : data[tab] || []} columns={tab === "overview" ? columns.analytics : columns[tab]} />
-              </div>
-            </>
-          )}
-        </section>
+        {tab === "settings" ? (
+          <section className="mt-6 max-w-2xl">
+            <ChangePasswordForm />
+          </section>
+        ) : (
+          <section className="mt-6 rounded-2xl border border-slate-200 bg-white p-4 shadow-sm md:p-6">
+            {isLoading ? (
+              <div className="py-16 text-center text-sm text-slate-500">جاري تحميل بيانات الإدارة...</div>
+            ) : (
+              <>
+                {tab === "overview" && <SmartAnalyticsPanel events={data.analytics || []} />}
+                <div className="grid gap-6 xl:grid-cols-[360px_1fr]">
+                  <div>{renderForm() || <div className="rounded-2xl border border-slate-200 bg-slate-50 p-6 text-sm leading-8 text-slate-600">اختر قسمًا قابلًا للإضافة لإدارة المحتوى مباشرة. تعرض الأقسام الأخرى مؤشرات الأداء، المشاكل، والطلبات.</div>}</div>
+                  <AdminTable items={tab === "overview" ? data.analytics || [] : data[tab] || []} columns={tab === "overview" ? columns.analytics : columns[tab]} />
+                </div>
+              </>
+            )}
+          </section>
+        )}
       </main>
     </div>
   );

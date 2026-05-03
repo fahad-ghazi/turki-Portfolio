@@ -197,6 +197,12 @@ const auth = {
       }
     }
   },
+  async changePassword({ currentPassword, newPassword }) {
+    return request('/api/admin/me/password', {
+      method: 'POST',
+      body: { currentPassword, newPassword },
+    });
+  },
   // Compat shim: old base44 SDK had redirectToLogin. We just go to /admin/login.
   redirectToLogin(returnTo) {
     if (typeof window === 'undefined') return;

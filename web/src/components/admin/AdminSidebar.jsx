@@ -1,5 +1,5 @@
 import React from "react";
-import { BarChart3, FileText, Film, Image, Inbox, LayoutDashboard, Search, Settings, Users } from "lucide-react";
+import { BarChart3, FileText, Film, Image, Inbox, KeyRound, LayoutDashboard, Search, Settings, Users } from "lucide-react";
 
 const tabs = [
   { id: "overview", label: "نظرة عامة", icon: LayoutDashboard },
@@ -13,6 +13,7 @@ const tabs = [
   { id: "leads", label: "الطلبات", icon: Users },
   { id: "errors", label: "الأخطاء", icon: Settings },
   { id: "media", label: "الوسائط", icon: Inbox },
+  { id: "settings", label: "الإعدادات", icon: KeyRound },
 ];
 
 export default function AdminSidebar({ activeTab, onChange }) {
