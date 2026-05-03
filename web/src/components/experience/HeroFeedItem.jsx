@@ -9,6 +9,7 @@ const CONTACT_EMAIL = import.meta.env?.VITE_CONTACT_EMAIL || "contact@turkighazi
 import { Link } from "react-router-dom";
 import { useLang } from "@/lib/LanguageContext";
 import TGLogo from "@/components/brand/TGLogo";
+import LanguageToggle from "@/components/brand/LanguageToggle";
 
 const HERO_IMAGE = "/works/hero-poster.jpg";
 const GOLD = "#C9A961";
@@ -65,8 +66,14 @@ export default function HeroFeedItem({ isActive, onEnter, totalSlides = 5, curre
               initial={{ opacity: 0, y: -8 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -8 }}
-              className="absolute left-7 top-20 z-30 min-w-44 rounded-2xl border border-[#C9A961]/35 bg-black/28 p-3 text-[#F5F1E8] backdrop-blur-md"
+              className="absolute left-7 top-20 z-30 min-w-48 rounded-2xl border border-[#C9A961]/35 bg-black/28 p-3 text-[#F5F1E8] backdrop-blur-md"
             >
+              {/* Language toggle pinned at the top of the menu so it's
+                  reachable from the hero without adding extra chrome. */}
+              <div className="flex justify-center pb-2 pt-1">
+                <LanguageToggle />
+              </div>
+              <div className="my-1 h-px bg-[#C9A961]/22" />
               {[
                 ["/films", isAr ? "الأفلام" : "Films"],
                 ["/ai-fashion", isAr ? "الأزياء" : "AI Fashion"],
