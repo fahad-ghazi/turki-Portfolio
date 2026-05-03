@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, useCallback, useMemo } from "react";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import SmartNextBar from "./SmartNextBar";
@@ -33,32 +33,29 @@ function MediaItem({ item, isActive, isAdjacent }) {
 }
 
 export default function HorizontalSwiper({ items, onExit, categoryTitle, categoryId }) {
-  const rankedItems = sortByBehavior(items);
+  const rankedItems = useMemo(() => sortByBehavior(items), [items]);
   // Audit #47: append a synthetic CTA slide at the end of every section.
-  // After a visitor walks through all the work in a category, the next
-  // swipe lands on a clear "أريد مشروعاً مشابهاً" call-to-action instead
-  // of silently exiting the section.
-  const totalSlots = rankedItems.length + 1; // +1 = the end CTA slot
+  const totalSlots = rankedItems.length + 1;
   const [current, setCurrent] = useState(0);
   const touchStartX = useRef(null);
   const isCta = current === rankedItems.length;
-  const isLast = current === totalSlots - 1; // = isCta
+  const isLast = current === totalSlots - 1;
 
-  const goNext = () => {
-    if (isLast) {
-      onExit();
-    } else {
-      setCurrent((p) => p + 1);
-    }
-  };
+  // Audit #8: useCallback so goNext/goPrev have stable identities.
+  // The keyboard useEffect previously listed only [current] as a dep,
+  // which meant the captured goPrev/goNext were stale on every render
+  // after the first — keyboard nav still worked because of the freshly
+  // re-bound listener, but adding deps later would have re-attached the
+  // listener every render. Stable callbacks fix both ends.
+  const goNext = useCallback(() => {
+    if (isLast) onExit();
+    else setCurrent((p) => p + 1);
+  }, [isLast, onExit]);
 
-  const goPrev = () => {
-    if (current === 0) {
-      onExit();
-    } else {
-      setCurrent((p) => p - 1);
-    }
-  };
+  const goPrev = useCallback(() => {
+    if (current === 0) onExit();
+    else setCurrent((p) => p - 1);
+  }, [current, onExit]);
 
   // Touch
   const onTouchStart = (e) => { touchStartX.current = e.touches[0].clientX; };
@@ -78,7 +75,7 @@ export default function HorizontalSwiper({ items, onExit, categoryTitle, categor
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [current]);
+  }, [goPrev, goNext, onExit]);
 
   const item = rankedItems[current];
   useContentTimeTracker(item?.id, Boolean(item) && !isCta, 2);

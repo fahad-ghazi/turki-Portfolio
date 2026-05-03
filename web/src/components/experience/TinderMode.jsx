@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef, useMemo } from "react";
 import {
   motion, AnimatePresence,
   useMotionValue, useTransform
@@ -13,15 +13,50 @@ import useContentTimeTracker from "../../hooks/useContentTimeTracker";
 const SWIPE_THRESHOLD = 90;
 const SPRING = { type: "spring", stiffness: 280, damping: 28, mass: 0.8 };
 
+// ── Image preloader hook ────────────────────────────────────────
+// Audit #5: previously the next card mounted with a fresh <img>, faded
+// in over 500ms, leaving a blank panel briefly between swipes. Now we
+// preload a small ring of upcoming images in the background so they're
+// already in the browser cache by the time the swipe lands.
+function usePreloadedImages(items, currentIndex, lookahead = 3) {
+  useEffect(() => {
+    if (!Array.isArray(items)) return;
+    const slice = items
+      .slice(currentIndex, currentIndex + lookahead + 1)
+      .map((it) => it?.src)
+      .filter(Boolean);
+    const handles = slice.map((src) => {
+      const img = new Image();
+      img.src = src;
+      return img;
+    });
+    return () => {
+      handles.forEach((h) => {
+        h.src = "";
+      });
+    };
+  }, [items, currentIndex, lookahead]);
+}
+
 // ── Parallax Image ───────────────────────────────────────────────
 function CardImage({ src, alt }) {
   const [loaded, setLoaded] = useState(false);
+  // If the browser already has the image cached (because usePreloadedImages
+  // queued it) the onLoad callback fires synchronously and the fade-in
+  // skips entirely. Test that on mount.
+  const ref = useRef(null);
+  useEffect(() => {
+    if (ref.current?.complete) setLoaded(true);
+  }, [src]);
   return (
     <div className="absolute inset-0 overflow-hidden rounded-3xl">
       <img
-        src={src} alt={alt} draggable={false}
+        ref={ref}
+        src={src}
+        alt={alt}
+        draggable={false}
         onLoad={() => setLoaded(true)}
-        className={`w-full h-full object-cover transition-opacity duration-500 ${loaded ? "opacity-100" : "opacity-0"}`}
+        className={`w-full h-full object-cover transition-opacity duration-200 ${loaded ? "opacity-100" : "opacity-0"}`}
       />
       {/* Bottom gradient for text readability only */}
       <div
@@ -230,16 +265,32 @@ function PostCTA({ isAr, onExit }) {
 export default function TinderMode({ category, onExit, onNextCategory, closeOnComplete = false }) {
   const { isAr } = useLang();
   const { titleEn, id: categoryId } = category;
-  const items = sortByBehavior(category.items || []);
+  // useMemo: don't re-sort on every render.
+  const items = useMemo(() => sortByBehavior(category.items || []), [category.items]);
   const [index, setIndex] = useState(0);
   const [exitDir, setExitDir] = useState(-1); // -1 = left, 1 = right
   const [showCTA, setShowCTA] = useState(false);
+  const ctaTimeoutRef = useRef(null);
+
+  // Audit #5: preload a window of upcoming images so swipes don't reveal
+  // a blank panel while the new <img> downloads.
+  usePreloadedImages(items, index, 3);
 
   useEffect(() => {
     if (items[index]) trackContentInteraction(items[index].id, 1);
   }, [index, items]);
 
   useContentTimeTracker(items[index]?.id, Boolean(items[index]), 2);
+
+  // Audit #9: clear the CTA timeout on unmount or before scheduling a
+  // new one. Without this, exiting the experience during the 3.5s grace
+  // window fires onNextCategory on a torn-down component (state-update
+  // warning + a phantom category change).
+  useEffect(() => {
+    return () => {
+      if (ctaTimeoutRef.current) clearTimeout(ctaTimeoutRef.current);
+    };
+  }, []);
 
   const goNext = () => {
     if (index >= items.length - 1) {
@@ -248,7 +299,11 @@ export default function TinderMode({ category, onExit, onNextCategory, closeOnCo
         return;
       }
       setShowCTA(true);
-      setTimeout(() => onNextCategory(), 3500);
+      if (ctaTimeoutRef.current) clearTimeout(ctaTimeoutRef.current);
+      ctaTimeoutRef.current = setTimeout(() => {
+        ctaTimeoutRef.current = null;
+        onNextCategory();
+      }, 3500);
       return;
     }
     setExitDir(-1);
@@ -325,7 +380,7 @@ export default function TinderMode({ category, onExit, onNextCategory, closeOnCo
 
       {/* Bottom controls — minimal */}
       <div className="shrink-0 px-6 pb-8 pt-3">
-        {/* Progress pills */}
+        {/* Progress pills (3px so they're actually visible) */}
         <div className="flex gap-2 justify-center">
           {items.map((_, i) => (
             <motion.div
@@ -335,16 +390,15 @@ export default function TinderMode({ category, onExit, onNextCategory, closeOnCo
                 backgroundColor: i === index ? "#C9A961" : "rgba(26,26,26,0.16)",
               }}
               transition={{ duration: 0.4, ease: "easeOut" }}
-              style={{ height: "2px", borderRadius: "1px" }}
+              style={{ height: "3px", borderRadius: "1.5px" }}
             />
           ))}
         </div>
-
-        {/* Hidden nav — keyboard/swipe only */}
-        <div className="absolute left-0 right-0 bottom-0 flex h-20 pointer-events-auto">
-          <button onClick={goPrev} className="flex-1" style={{ background: "none", border: "none" }} />
-          <button onClick={goNext} className="flex-1" style={{ background: "none", border: "none" }} />
-        </div>
+        {/* Audit #4: the previous "hidden nav — keyboard/swipe only" was a
+            pair of 50%-wide invisible buttons over the bottom 80px,
+            stealing taps from anyone trying to read the description or
+            press the like icon. Removed entirely — keyboard arrows + the
+            drag gesture cover the same intent without the surprise. */}
       </div>
     </div>
   );

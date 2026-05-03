@@ -11,10 +11,13 @@ import { useLang } from "@/lib/LanguageContext";
 import TGLogo from "@/components/brand/TGLogo";
 
 const HERO_IMAGE = "/works/hero-poster.jpg";
-const TOTAL = 5;
 const GOLD = "#C9A961";
 
-export default function HeroFeedItem({ isActive, onEnter }) {
+export default function HeroFeedItem({ isActive, onEnter, totalSlides = 5, currentSlide = 0 }) {
+  // Audit #6: dot count used to be hard-coded to 5, but the page actually
+  // has 8-9 slides. DualNav now passes the real total + which slide is
+  // current so the indicator stays honest.
+  const TOTAL = totalSlides;
   const [loaded, setLoaded] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const { isAr } = useLang();
@@ -215,8 +218,8 @@ export default function HeroFeedItem({ isActive, onEnter }) {
         {Array.from({ length: TOTAL }).map((_, i) => (
           <div key={i} className="rounded-full transition-all duration-500" style={{
             width: "3px",
-            height: i === 0 ? "20px" : "3px",
-            backgroundColor: i === 0 ? GOLD : "rgba(255,255,255,0.18)",
+            height: i === currentSlide ? "20px" : "3px",
+            backgroundColor: i === currentSlide ? GOLD : "rgba(255,255,255,0.18)",
           }} />
         ))}
       </motion.div>

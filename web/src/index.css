@@ -170,10 +170,20 @@ html {
   flex: none;
 }
 
-.floating-icon:hover,
-.menu-icon:hover,
-.social-icon:hover,
-.action-icon:hover,
+/* Hover effects only on hover-capable devices (audit #10) — this stops
+   the floating icons from sticking in their "hovered" state after a tap
+   on touch-only phones / tablets. */
+@media (hover: hover) and (pointer: fine) {
+  .floating-icon:hover,
+  .menu-icon:hover,
+  .social-icon:hover,
+  .action-icon:hover {
+    opacity: 1 !important;
+    transform: scale(1.04) !important;
+    border-color: rgba(201, 169, 97, 0.55) !important;
+  }
+}
+
 .floating-icon:active,
 .menu-icon:active,
 .social-icon:active,

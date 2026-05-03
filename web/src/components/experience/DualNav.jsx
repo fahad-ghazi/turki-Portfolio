@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect, useCallback } from "react";
+import React, { useRef, useState, useEffect, useCallback, useMemo } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import TikTokSection from "./TikTokSection";
@@ -27,73 +27,80 @@ export default function DualNav() {
   const navigate = useNavigate();
   const [currentSlide, setCurrentSlide] = useState(0);
   const [activeCategoryIndex, setActiveCategoryIndex] = useState(null); // null = TikTok mode
-  const [orderedCategories] = useState(sortCategoriesStatic());
+  const orderedCategories = useMemo(() => sortCategoriesStatic(), []);
   const containerRef = useRef(null);
-  const isScrollingRef = useRef(false);
-  const touchStartY = useRef(null);
   const slides = 1 + 1 + orderedCategories.length + 1;
 
-  const goTo = useCallback((index) => {
-    const clamped = Math.max(0, Math.min(slides - 1, index));
-    setCurrentSlide(clamped);
-    const el = containerRef.current?.children[clamped];
-    if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
-  }, [slides]);
-
-  // Wheel snap
+  // ── Scroll synchronisation ────────────────────────────────────────
+  // Audit findings #1, #2, #3:
+  //   - State used to lag behind scroll (no listener for native scroll).
+  //   - The old wheel handler called preventDefault while scroll-snap
+  //     was also active → trackpad rubberband + slide overshoot.
+  //   - 750ms throttle dropped legitimate fast scrolls.
+  // New design: pure CSS scroll-snap (browser does the right thing on
+  // every input device), and an IntersectionObserver tells us which
+  // slide is currently >50% visible so isActive is always truthful.
   useEffect(() => {
-    const el = containerRef.current;
-    if (!el) return;
-    const onWheel = (e) => {
-      e.preventDefault();
-      if (isScrollingRef.current || activeCategoryIndex !== null) return;
-      isScrollingRef.current = true;
-      setCurrentSlide((p) => {
-        const n = e.deltaY > 0
-          ? Math.min(p + 1, slides - 1)
-          : Math.max(p - 1, 0);
-        const child = containerRef.current?.children[n];
-        if (child) child.scrollIntoView({ behavior: "smooth", block: "start" });
-        return n;
-      });
-      setTimeout(() => { isScrollingRef.current = false; }, 750);
-    };
-    el.addEventListener("wheel", onWheel, { passive: false });
-    return () => el.removeEventListener("wheel", onWheel);
-  }, [activeCategoryIndex, slides]);
+    const container = containerRef.current;
+    if (!container) return;
+    const slideEls = Array.from(container.children);
+    if (slideEls.length === 0) return;
 
-  // Touch snap (vertical)
-  useEffect(() => {
-    const el = containerRef.current;
-    if (!el) return;
-    const onTouchStart = (e) => { touchStartY.current = e.touches[0].clientY; };
-    const onTouchEnd = (e) => {
-      if (touchStartY.current === null || activeCategoryIndex !== null) return;
-      const diff = touchStartY.current - e.changedTouches[0].clientY;
-      if (Math.abs(diff) > 50) diff > 0 ? goTo(currentSlide + 1) : goTo(currentSlide - 1);
-      touchStartY.current = null;
-    };
-    el.addEventListener("touchstart", onTouchStart, { passive: true });
-    el.addEventListener("touchend", onTouchEnd, { passive: true });
-    return () => {
-      el.removeEventListener("touchstart", onTouchStart);
-      el.removeEventListener("touchend", onTouchEnd);
-    };
-  }, [currentSlide, goTo, activeCategoryIndex]);
+    const observer = new IntersectionObserver(
+      (entries) => {
+        // Pick the entry with the highest intersection ratio currently in view.
+        let best = null;
+        for (const entry of entries) {
+          if (!best || entry.intersectionRatio > best.intersectionRatio) {
+            best = entry;
+          }
+        }
+        if (best && best.intersectionRatio >= 0.55) {
+          const idx = slideEls.indexOf(best.target);
+          if (idx !== -1) setCurrentSlide(idx);
+        }
+      },
+      {
+        root: container,
+        threshold: [0.2, 0.55, 0.85],
+      },
+    );
 
-  // Keyboard
+    slideEls.forEach((el) => observer.observe(el));
+    return () => observer.disconnect();
+  }, [orderedCategories.length]);
+
+  const goTo = useCallback(
+    (index) => {
+      const clamped = Math.max(0, Math.min(slides - 1, index));
+      const el = containerRef.current?.children[clamped];
+      if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+    },
+    [slides],
+  );
+
+  // Keyboard navigation only — wheel + touch are handled natively
+  // by scroll-snap, which behaves correctly on every input device.
   useEffect(() => {
     const onKey = (e) => {
       if (activeCategoryIndex !== null) {
         if (e.key === "Escape") setActiveCategoryIndex(null);
         return;
       }
-      if (e.key === "ArrowDown") goTo(currentSlide + 1);
-      if (e.key === "ArrowUp") goTo(currentSlide - 1);
+      if (e.key === "ArrowDown" || e.key === "PageDown") {
+        e.preventDefault();
+        goTo(currentSlide + 1);
+      }
+      if (e.key === "ArrowUp" || e.key === "PageUp") {
+        e.preventDefault();
+        goTo(currentSlide - 1);
+      }
+      if (e.key === "Home") goTo(0);
+      if (e.key === "End") goTo(slides - 1);
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [currentSlide, goTo, activeCategoryIndex]);
+  }, [currentSlide, goTo, activeCategoryIndex, slides]);
 
   const handleEnterCategory = (catIndex) => {
     const category = orderedCategories[catIndex];
@@ -139,24 +146,41 @@ export default function DualNav() {
       <div
         ref={containerRef}
         className="w-full h-full"
-        style={{ overflowY: activeCategoryIndex !== null ? "hidden" : "scroll", scrollSnapType: "y mandatory" }}
+        style={{
+          overflowY: activeCategoryIndex !== null ? "hidden" : "scroll",
+          // Audit #2: pure scroll-snap. No JS interception; the browser
+          // handles trackpad inertia, touch flicks, and mouse wheel
+          // correctly on its own.
+          scrollSnapType: "y mandatory",
+          // Audit #7: "always" forced a stop at every snap point, which
+          // killed fast multi-slide flicks on mobile. "normal" lets a
+          // strong gesture skip past intermediate snap points.
+          scrollSnapStop: "normal",
+          // iOS smooth momentum
+          WebkitOverflowScrolling: "touch",
+          // Disable elastic bounce at top/bottom on iOS so partial
+          // scrolls don't leave the user mid-slide.
+          overscrollBehaviorY: "contain",
+        }}
       >
         {/* Hero slide — index 0 */}
-        <div style={{ height: "100dvh", scrollSnapAlign: "start", scrollSnapStop: "always" }}>
-          <HeroFeedItem isActive={currentSlide === 0 && activeCategoryIndex === null} onEnter={() => goTo(2)} />
+        <div style={{ height: "100dvh", scrollSnapAlign: "start" }}>
+          <HeroFeedItem
+            isActive={currentSlide === 0 && activeCategoryIndex === null}
+            onEnter={() => goTo(2)}
+            totalSlides={slides}
+            currentSlide={currentSlide}
+          />
         </div>
 
         {/* Micro context — index 1 */}
-        <div style={{ height: "100dvh", scrollSnapAlign: "start", scrollSnapStop: "always" }}>
+        <div style={{ height: "100dvh", scrollSnapAlign: "start" }}>
           <MicroContext isActive={currentSlide === 1 && activeCategoryIndex === null} />
         </div>
 
         {/* Category slides — index 2..N+1 */}
         {orderedCategories.map((cat, i) => (
-          <div
-            key={cat.id}
-            style={{ height: "100dvh", scrollSnapAlign: "start", scrollSnapStop: "always" }}
-          >
+          <div key={cat.id} style={{ height: "100dvh", scrollSnapAlign: "start" }}>
             <TikTokSection
               category={cat}
               isActive={i + 2 === currentSlide && activeCategoryIndex === null}
@@ -166,7 +190,7 @@ export default function DualNav() {
         ))}
 
         {/* Final slide — last index */}
-        <div style={{ height: "100dvh", scrollSnapAlign: "start", scrollSnapStop: "always" }}>
+        <div style={{ height: "100dvh", scrollSnapAlign: "start" }}>
           <FinalSlide isActive={currentSlide === slides - 1 && activeCategoryIndex === null} />
         </div>
       </div>
