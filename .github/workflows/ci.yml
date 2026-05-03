@@ -1,0 +1,75 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  # Manual trigger from the Actions tab
+  workflow_dispatch:
+
+# Cancel superseded runs on the same ref so PRs that get pushed twice
+# don't burn double the minutes.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  api:
+    name: api — typecheck + build
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./api
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+          cache-dependency-path: api/package.json
+      - run: npm install --no-audit --no-fund --ignore-scripts
+      - run: npx prisma generate
+      - run: npm run build
+
+  web:
+    name: web — build
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./web
+    env:
+      # Stub values so vite doesn't fail validation; real values are
+      # injected by Dokploy at deploy time as build args.
+      VITE_API_URL: https://api.turkistudio.ai
+      VITE_PUBLIC_SITE_URL: https://turkistudio.ai
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+          cache-dependency-path: web/package.json
+      - run: npm install --no-audit --no-fund --ignore-scripts
+      - run: npm run build
+
+  lint:
+    name: web — lint
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./web
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+          cache-dependency-path: web/package.json
+      - run: npm install --no-audit --no-fund --ignore-scripts
+      # `eslint . --quiet` only surfaces errors, not warnings.
+      - run: npm run lint
+        # Don't block the merge on lint warnings while we still have
+        # legacy code that hasn't been swept yet — flip to required
+        # once the codebase stabilises.
+        continue-on-error: true

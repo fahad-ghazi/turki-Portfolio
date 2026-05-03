@@ -1,126 +1,141 @@
-# STATUS — turki-vision-flow migration
+# STATUS — turki-vision-flow
 
-> **Branch:** `claude/nervous-snyder-7ee5a3`
+> **Branch:** `claude/nervous-snyder-7ee5a3` (will become `main` once merged)
 > **Last update:** 2026-05-03
 
 ---
 
-## ما أُنجز (4 commits)
+## ما أُنجز (22 commit)
 
-### Phase 1-3 — فصل عن base44 + بناء الباك-إند (commit `9adb5cc`)
-- استيراد `turki-vision-flow/` كـ `web/`
-- إنشاء `api/` (Node + Fastify + Prisma + Postgres)
-- إزالة كل تبعيات base44، استبدالها بـ shim عبر `web/src/api/client.js`
-- AuthContext جديد admin-only، JWT في httpOnly cookie
-- صفحة `/admin/login` + `ProtectedRoute` يحرس `/admin`
-- 11 entity في Prisma بمسماة snake_case للحفاظ على parity
-- routes عامة: `/api/leads` (rate-limited + honeypot), analytics events,
-  interactions, site-errors، films، portfolio-projects، blog، site-content
-- routes إدارة: `/api/admin/login|logout|me` و generic CRUD
-  `/api/admin/entities/:entity[/:id]` على allowlist 11 كياناً
-- Dockerfile multi-stage يشغّل `prisma migrate deploy` عند الإقلاع
-- `docker-compose.yml` للتطوير المحلي
-- `docs/DEPLOY.md` بإرشادات Dokploy التفصيلية
+### المرحلة الأولى — البنية التحتية (commits `9adb5cc` → `7702863`)
+- فصل كامل عن base44 → Fastify + Prisma + Postgres على api.turkistudio.ai
+- 11 كيان في DB، seed تلقائي على الإقلاع، generic admin CRUD + auth JWT
+- 4 صفحات أقسام تقرأ من DB مع fallback للـstatic
+- Films + Blog + Site content public read endpoints
+- Lead form بحماية honeypot + rate limit
+- ErrorBoundary + auto error reporter في web → /api/site-errors
+- 12 route لها SEO ديناميكي (Helmet + JSON-LD: Person + ProfessionalService + FAQ)
+- 6 صفحات stub جاهزة (About, Services, Privacy, Terms, Blog index, Blog post)
 
-### Phase 4 — إصلاحات UX حرجة (commit `e98e1ce`)
-- إزالة رابط LinkedIn الوهمي من Hero — يُقرأ من `VITE_LINKEDIN_URL`
-  وإذا فاضي يختفي تماماً
-- مؤشر وقت الفيديو الحقيقي `MM:SS / MM:SS` بدل القيمة الثابتة
-- أحداث تتبع تحويل: `booking_open_clicked`, `contact_email_clicked`,
-  `social_click`
+### الأصول الفعلية (commit `e34ea3a`)
+- 207 رابط `media.base44.com` → مسارات محلية في `web/public/works/`
+- 9 فيديو MDN dummy → 9 أفلام تركي الفعلية في `web/public/videos/`
+- 378 صورة + 11 فيديو منقولة (66M + 84M)
 
-### Phase 5 — أساسيات SEO (commit `b3fc449`)
-- `<Seo />` موحّد عبر `react-helmet-async`
-- 12 route لها title/description/canonical/og/twitter:
-  - عامة: Home (مع Person JSON-LD), Films, AiFashion, CommercialAds,
-    RealEstate, Heritage, TrainedModels, Contact, CV
-  - مخفية عن الفهرسة: Booking, AdminLogin, AdminDashboard
-- يقرأ `VITE_PUBLIC_SITE_URL` لبناء canonical/og:url
+### الإصلاحات الحرجة لـscroll/UX (commit `c65620f`)
+- DualNav: scroll-snap نقي + IntersectionObserver لمزامنة currentSlide مع المعروض فعلياً
+- إزالة wheel/touch handlers + 750ms throttle (يصارع iOS و trackpad)
+- TinderMode: حذف tap zones خفية + preload صور + cleanup setTimeout
+- HeroFeedItem: dot indicator dynamic
+- HorizontalSwiper: useCallback + memoization + deps صحيحة
+- CSS: hover effects خلف `(hover: hover)` فقط (لا تلتصق على iOS)
+- 10 من 23 مشكلة scroll/animation معالجة
 
-### Phase 7 — تتبع أخطاء تلقائي (commit `0219192`)
-- `lib/errorReporter.js`: window.error + unhandledrejection +
-  document capture على img/video failures
-- يستخدم `sendBeacon` ليصل قبل unload، de-dup حتى لا يولّد infinite loops
-- `<ErrorBoundary />` يلتقط أخطاء React مع UI fallback عربي وإعادة تشغيل
-- يصبّ كل شيء في `/api/site-errors` فيظهر تلقائياً في لوحة الإدارة
+### الشعار (commit `397fcd6`)
+- استبدال logo-coin.png بـ`brand/turki-logo.svg` (الشعار المفرغ المقصوص)
+- favicon + apple-touch-icon + Hero + FinalBrandSection
 
----
+### Stage-1 cleanup (commit `20a7ada`)
+- حذف 16 ملف orphan (1573 سطر) — portfolio/*, FeedScroller, MainFeed,
+  RecommendedWorks, إلخ
+- حذف 8 تبعيات npm غير مستخدمة (Stripe, three, leaflet, quill,
+  html2canvas, jspdf, canvas-confetti) → 64 → 56 dep
+- LanguageContext يحفظ في localStorage + يحدّث `<html lang>` و `dir`
+- LanguageToggle component مدمج في قائمة Hero (AR · EN segmented pill)
 
-## ما يحتاج إجراء منك / محادثة "مدير سيرفر"
+### Stage-2 — DB-first content (commits `9de94c6` + `5b0f14c`)
+- Character entity جديد في Prisma + seed من 6 شخصيات
+- TrainedModels.jsx يقرأ من /api/characters مع fallback static
+- Per-entity Zod validation في admin CRUD (portfolio_projects, films,
+  characters, blog_posts, media_assets, site_content) → 400 نظيف بدل 500
+- AdminAction audit log: كل create/update/delete + login/logout/password_change
+- AdminSidebar: tabs جديدة "الشخصيات" و "سجل الإدارة"
+- audit_actions كـread-only في الـallowlist (mutating → 405)
 
-### Deploy (محادثة مدير سيرفر)
-انظر `docs/DEPLOY.md` الكامل. الخطوات الجوهرية:
-1. **DB:** أنشئ خدمة Postgres جديدة في Dokploy `turki-postgres` (لا تلمس DB أخرى)
-2. **API service:** Dockerfile من `api/`، يبني نفسه ويشغّل migrate تلقائياً
-3. **Web service:** Dockerfile من `web/` (staging مؤقت أو مباشر بحسب رغبتك)
-4. **DNS:** في Cloudflare (zone `turkistudio.ai`):
-   ```
-   api.turkistudio.ai      A → Dokploy IP   (Proxied)
-   ```
-5. **Env vars الحرجة للـ API:**
-   - `DATABASE_URL` — connection string من Postgres الجديد
-   - `JWT_SECRET` — `openssl rand -hex 32`
-   - `COOKIE_SECRET` — `openssl rand -hex 32`
-   - `CORS_ORIGINS` — `https://turkistudio.ai,https://staging.turkistudio.ai`
-   - `ADMIN_EMAIL`, `ADMIN_PASSWORD` — أول مرة فقط لإنشاء حسابك
-   - `LEAD_NOTIFY_TO`, `SMTP_*` — اختياري للإشعارات
-
-### قرارات محتوى مطلوبة قبل ما أكمل Phase 8
-1. **روابط social الحقيقية** — Instagram, LinkedIn, WhatsApp Business (إن وجد)
-2. **بريد التواصل الرسمي** — حالياً `contact@turkighazi.com`؛ هل تغير؟
-3. **الدومين الرسمي للـ canonical** — `turkistudio.ai` أم `turkighazi.com`؟
-   (index.html يستخدم turkighazi.com حالياً، لكن Dokploy عندك turkistudio.ai)
-4. **محتوى صفحات Phase 8:**
-   - About: 3-5 فقرات عن خلفيتك ومنهجك
-   - Services: قائمة الخدمات بمخرجات وباقات/نطاقات تقريبية
-   - Privacy / Terms: نسخة أولية أم تكتبها أنت؟
+### Stage-3 — security hardening + CI (commit جاري)
+- nginx CSP صارم + HSTS + COOP + COEP + Permissions-Policy
+- GitHub Actions workflow `.github/workflows/ci.yml`:
+  - api typecheck + build (TypeScript strict)
+  - web build (Vite production)
+  - lint (continue-on-error مؤقتاً)
 
 ---
 
-## Phases المؤجلة
+## الحالة الحية (2026-05-03)
 
-### Phase 8 — صفحات محتوى (في انتظار الإجابات أعلاه)
-- `/about` — صفحة About
-- `/services` — Services بباقات
-- `/privacy` — Privacy Policy
-- `/terms` — Terms
-
-### Phase 6 — أداء وصور (آخر شيء، حسب طلبك)
-- pipeline صور WebP/AVIF + responsive
-- lazy loading شامل
-- video analytics 25/50/75/100%
-
-### Phase 9 — cutover إلى الجذر
-- نقل ملفات Framer إلى `_archive/`
-- جعل `web/dist` يخدم على turkistudio.ai
-- تحديث Cloudflare DNS النهائي
+| Service | الحالة | URL |
+|---------|--------|-----|
+| `turki-postgres` | ✅ شغّال (host داخلي `turki-postgres-fec6as`) | داخلي |
+| `turki-api` | ✅ صحّي | https://api.turkistudio.ai/health |
+| `turki-web-staging` | ✅ شغّال | https://staging.turkistudio.ai |
+| `Frontend` (الإنتاج القديم) | ⏸️ Framer كما هو، انتظار cutover | https://turkistudio.ai |
 
 ---
 
-## كيف تتحقق محلياً (اختياري)
+## أرصدة تتبع التقدم
+
+| Metric | القيمة |
+|--------|--------|
+| Commits على الفرع | 22 |
+| ملفات جديدة | ~210 |
+| أصول مرفوعة | 378 صورة + 11 فيديو |
+| Audit issues معالجة (من الـ50) | ~38 |
+| ملفات orphan متبقّية | 0 |
+| تبعيات غير مستخدمة | 0 |
+| اختبارات | 0 (CI أُنشئ، tests TBD) |
+
+---
+
+## ما يحتاج إجراء منك
+
+### عاجل (يفتح الإطلاق)
+1. **اختبر staging** بصرياً واطلب fixes إن وُجدت
+2. **ادخل /admin** وغيّر كلمة المرور من تبويب الإعدادات
+3. **محتوى About نهائي** + قرار Services (باقات أم لا)
+4. **روابط social حقيقية:** LinkedIn URL (Instagram + email + WhatsApp جاهزة)
+5. **Privacy/Terms** — مراجعة قانونية قبل launch
+
+### متوسط
+6. **اطلب من وكيل السيرفر:**
+   - حذف `ADMIN_PASSWORD` من Dokploy env بعد تغييرها
+   - إضافة `SMTP_HOST/PORT/USER/PASS/FROM/LEAD_NOTIFY_TO` لإشعارات Lead
+7. **تجهيز شعارات/شهادات عملاء** للـtrust block (audit #50)
+
+### لاحقاً (مؤجّل بطلبك)
+8. **Phase 6 — تحسين الصور:** WebP/AVIF + lazy + responsive srcset
+9. **Cutover:** عدّل خدمة `Frontend` في Dokploy لتشير إلى `web/Dockerfile`، أو أنشئ DNS swap
+
+---
+
+## كيف تتحقق محلياً
 
 ```bash
-# 1) Postgres + API
+# Postgres + API
 docker compose up -d postgres api
 
-# 2) Web (في تيرمنال ثاني)
+# Web (في تيرمنال ثاني)
 cd web
-cp .env.example .env.local        # عدّل VITE_API_URL إذا لزم
+cp .env.example .env.local
 npm install
 npm run dev
 
-# 3) افتح:
-#    http://localhost:5173
-#    http://localhost:5173/admin/login (admin@turki.local / ChangeMeOnFirstBoot!)
+# افتح:
+#   http://localhost:5173
+#   http://localhost:5173/admin/login
 ```
 
 ---
 
-## أرقام صريحة
+## ملاحظات معمارية
 
-- **Commits:** 4
-- **ملفات جديدة:** 181
-- **أسطر جديدة:** ~24,400
-- **مكوّنات React محذوفة من base44 SDK:** 0 (shim يحتفظ بكل surface)
-- **Endpoints API:** 8 عامة + 5 admin auth + generic CRUD لـ11 كياناً
-- **Audit issues addressed:** 11 من 50 (الباقي في Phase 6/8/9 أو يحتاج deploy)
+- **DB schema:** snake_case في الـDB columns (`@map`), camelCase في Prisma JS,
+  snake_case في JSON API. Translation طبقة في `lib/serialize.ts`.
+- **Seed strategy:** auto-seed-if-empty على الإقلاع. لإعادة seed يدوياً:
+  `POST /api/admin/seed/content` (admin auth).
+- **Audit log:** read-only من /admin، لا يُحذف. يستوعب 100,000+ rows
+  بدون مشكلة قبل الحاجة لـpartitioning.
+- **Image storage:** ملفات في `web/public/works/` و `web/public/videos/`،
+  تخدم من nginx مباشرة. لو احتجت إدارة من /admin مع رفع جديد، سأضيف
+  upload endpoint مع R2/S3 لاحقاً.
+- **CI:** GitHub Actions يبني api + web على كل push. Dokploy ينشر
+  مباشرة عند نجاح الـbuild.
