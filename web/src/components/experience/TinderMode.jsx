@@ -423,46 +423,68 @@ export default function TinderMode({ category, onExit, onNextCategory, closeOnCo
       {/* Card stack */}
       <div className="relative flex-1 mx-1">
         {showCTA && <PostCTA isAr={isAr} onExit={onExit} />}
-        {/* Background card (next item preview).
-            Wrapped in AnimatePresence keyed on the upcoming item so the
-            preview cross-fades when index changes — without this the
-            background card snapped instantly from items[N+1] to
-            items[N+2] mid-swipe, which (combined with the active-card
-            entry/exit) made it look like 3 different images flashed
-            past on a single drag. */}
-        <AnimatePresence>
-          {index + 1 < items.length && (
-            <motion.div
-              key={`bg-${index + 1}`}
-              className="absolute inset-3 rounded-3xl overflow-hidden pointer-events-none"
-              initial={{ scale: 0.88, opacity: 0, y: 18 }}
-              animate={{ scale: 0.93, opacity: 0.3, y: 12 }}
-              exit={{ scale: 0.85, opacity: 0, y: 8 }}
-              transition={{ duration: 0.32, ease: [0.22, 1, 0.36, 1] }}
-            >
-              <Picture
-                src={items[index + 1].src}
-                alt=""
-                loading="lazy"
-                sizes="(max-width: 768px) 92vw, 512px"
-                className="w-full h-full object-cover"
-              />
-              <div className="absolute inset-0 bg-black/18" />
-            </motion.div>
-          )}
-        </AnimatePresence>
+        {/* Background card — never unmounts, only its image cross-fades.
+            Old approach: keyed on `bg-${index+1}` inside AnimatePresence.
+            Problem: when index changed, the same image that was peeking at
+            opacity 0.3 started its EXIT animation while the new active card
+            entered from x:-60 with opacity:0 — the user saw their expected
+            next image disappear then re-appear from a completely different
+            direction (the "wrong image flash").
 
-        {/* Active card */}
-        <AnimatePresence mode="wait" custom={exitDir}>
+            New approach: one persistent div (no key, no AnimatePresence
+            wrapper). Its scale/opacity animate between values. Only the
+            <Picture> inside gets an AnimatePresence cross-fade, so the
+            *container* is always present and the active card can promote
+            from it seamlessly. */}
+        <motion.div
+          className="absolute inset-3 rounded-3xl overflow-hidden pointer-events-none"
+          animate={{
+            scale: index + 1 < items.length ? 0.93 : 0.88,
+            opacity: index + 1 < items.length ? 0.28 : 0,
+            y: 12,
+          }}
+          transition={{ duration: 0.32, ease: [0.22, 1, 0.36, 1] }}
+        >
+          <AnimatePresence initial={false}>
+            {index + 1 < items.length && (
+              <motion.div
+                key={`bgimg-${index + 1}`}
+                className="absolute inset-0"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.22 }}
+              >
+                <Picture
+                  src={items[index + 1].src}
+                  alt=""
+                  loading="lazy"
+                  sizes="(max-width: 768px) 92vw, 512px"
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-black/18" />
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </motion.div>
+
+        {/* Active card.
+            `mode="wait"` removed: the new card starts entering the moment
+            the old card begins its exit. Combined with the new `initial`
+            that matches the background card's resting state (scale 0.93,
+            y 12), the transition reads as "the peeking card promotes itself
+            to the top" — no side-entry flash, no blank gap. */}
+        <AnimatePresence custom={exitDir}>
           <motion.div
             key={index}
             className="absolute inset-0"
             custom={exitDir}
-            initial={{ x: exitDir * -60, opacity: 0, scale: 0.94 }}
+            initial={{ scale: 0.93, opacity: 0.85, y: 12 }}
             animate={{
               x: bounce === -1 ? -22 : bounce === 1 ? 22 : 0,
               opacity: 1,
               scale: 1,
+              y: 0,
             }}
             exit={{ x: exitDir * 340, opacity: 0, rotate: exitDir * 14, scale: 0.88 }}
             transition={SPRING}
