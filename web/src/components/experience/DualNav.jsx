@@ -6,7 +6,6 @@ import TinderMode from "./TinderMode";
 import HeroFeedItem from "./HeroFeedItem";
 import MicroContext from "./MicroContext";
 import FinalSlide from "./FinalSlide";
-import TopNav from "./TopNav";
 import { CATEGORIES } from "../feed/categoriesData";
 
 const SECTION_ORDER = { films: 0 };
@@ -108,15 +107,11 @@ export default function DualNav() {
 
   return (
     <div className="fixed inset-0 overflow-hidden bg-[#F5F1E8]">
-      {/* Audit #6/#7/#19: persistent top nav so users always see a way to
-          works/services/CV/booking, regardless of where they are in the
-          cinematic scroll. The hero slide gets a translucent treatment;
-          everything else gets solid for legibility over images. */}
-      <TopNav solid={currentSlide !== 0 || activeCategoryIndex !== null} />
-
       {/* SR-only indexable description for crawlers — the cinematic
           experience itself is JS-driven so search engines need this
-          static block to understand what the page is about. */}
+          static block to understand what the page is about. Invisible
+          to sighted users; kept after the TopNav was removed because
+          it serves SEO, not UX. */}
       <div className="sr-only">
         <h1>تركي غازي — مصمم بصري بالذكاء الاصطناعي | Turki Studio</h1>
         <p>
