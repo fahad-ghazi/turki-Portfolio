@@ -3,6 +3,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import TikTokSection from "./TikTokSection";
 import TinderMode from "./TinderMode";
+import AllWorksMode from "./AllWorksMode";
 import HeroFeedItem from "./HeroFeedItem";
 import MicroContext from "./MicroContext";
 import FinalSlide from "./FinalSlide";
@@ -27,6 +28,7 @@ export default function DualNav() {
   const navigate = useNavigate();
   const [currentSlide, setCurrentSlide] = useState(0);
   const [activeCategoryIndex, setActiveCategoryIndex] = useState(null); // null = TikTok mode
+  const [allWorksOpen, setAllWorksOpen] = useState(false);
   const orderedCategories = useMemo(() => sortCategoriesStatic(), []);
   const containerRef = useRef(null);
   const slides = 1 + 1 + orderedCategories.length + 1;
@@ -168,7 +170,7 @@ export default function DualNav() {
         <div style={{ height: "100dvh", scrollSnapAlign: "start" }}>
           <HeroFeedItem
             isActive={currentSlide === 0 && activeCategoryIndex === null}
-            onEnter={() => goTo(2)}
+            onEnter={() => setAllWorksOpen(true)}
             totalSlides={slides}
             currentSlide={currentSlide}
           />
@@ -219,7 +221,23 @@ export default function DualNav() {
         </div>
       )}
 
-      {/* ── Tinder overlay — cinematic entry ── */}
+      {/* ── AllWorks overlay — hero "استعرض الأعمال" entry ── */}
+      <AnimatePresence>
+        {allWorksOpen && (
+          <motion.div
+            key="all-works"
+            initial={{ opacity: 0, scale: 1.04 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.97 }}
+            transition={{ duration: 0.35, ease: [0.25, 0.46, 0.45, 0.94] }}
+            className="fixed inset-0 z-40"
+          >
+            <AllWorksMode onExit={() => setAllWorksOpen(false)} />
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* ── Tinder overlay — per-category cinematic entry ── */}
       <AnimatePresence>
         {activeCategoryIndex !== null && (
           <motion.div
