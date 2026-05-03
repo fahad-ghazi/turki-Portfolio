@@ -75,9 +75,16 @@ function ActionBar({ item, categoryId }) {
     const next = !liked;
     setLiked(next);
     if (next) {
+      // Persist the interaction
       await base44.entities.ProjectInteraction.create({
         project_id: item.id, category_id: categoryId,
         action: "like", user_identifier: "anonymous",
+      });
+      // Audit #29: also fire an analytics event so likes show up in the
+      // unified events stream alongside clicks and submissions.
+      base44.analytics.track({
+        eventName: "project_like",
+        properties: { event_type: "like", target_id: item.id, section: categoryId },
       });
     }
   };
@@ -88,6 +95,10 @@ function ActionBar({ item, categoryId }) {
     await base44.entities.ProjectInteraction.create({
       project_id: item.id, category_id: categoryId,
       action: "share", user_identifier: "anonymous",
+    });
+    base44.analytics.track({
+      eventName: "project_share",
+      properties: { event_type: "share", target_id: item.id, section: categoryId },
     });
     if (navigator.share) {
       navigator.share({ title: item.title, text: item.description, url: window.location.href });

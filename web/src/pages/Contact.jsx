@@ -3,8 +3,11 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Download, Mail } from "lucide-react";
 import Seo from "@/components/seo/Seo";
+import { trackEvent } from "@/utils/trackEvent";
 
 const GOLD = "#C9A961";
+const CONTACT_EMAIL = import.meta.env?.VITE_CONTACT_EMAIL || "contact@turkighazi.com";
+const WHATSAPP_URL = import.meta.env?.VITE_WHATSAPP_URL || "";
 
 export default function Contact() {
   return (
@@ -27,16 +30,44 @@ export default function Contact() {
         </motion.p>
 
         <motion.div initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.28 }} className="mt-10 flex flex-col gap-3 sm:flex-row">
-          <Link to="/booking" className="rounded-full border-2 border-[#1A1A1A] bg-[#F5F1E8] px-8 py-3.5 text-center font-noto text-base font-bold text-[#1A1A1A] transition hover:border-[#C9A961]">
+          <Link
+            to="/booking"
+            onClick={() => trackEvent("contact_booking_clicked", { event_type: "button_click", section: "contact_hero" })}
+            className="rounded-full border-2 border-[#1A1A1A] bg-[#F5F1E8] px-8 py-3.5 text-center font-noto text-base font-bold text-[#1A1A1A] transition hover:border-[#C9A961]"
+          >
             ابدأ مشروعك
           </Link>
-          <a href="/cv" className="flex items-center justify-center gap-3 rounded-full border-2 border-[#1A1A1A] bg-[#F5F1E8] px-8 py-3.5 font-noto text-base font-bold text-[#1A1A1A] transition hover:border-[#C9A961]">
+          <a
+            href="/cv"
+            onClick={() => trackEvent("contact_cv_clicked", { event_type: "button_click", section: "contact_hero" })}
+            className="flex items-center justify-center gap-3 rounded-full border-2 border-[#1A1A1A] bg-[#F5F1E8] px-8 py-3.5 font-noto text-base font-bold text-[#1A1A1A] transition hover:border-[#C9A961]"
+          >
             <Download className="h-4 w-4" /> عرض السيرة
           </a>
         </motion.div>
 
         <div className="mt-12 flex gap-4">
-          <a className="social-icon" href="mailto:contact@turkighazi.com" aria-label="Email"><Mail /></a>
+          <a
+            className="social-icon"
+            href={`mailto:${CONTACT_EMAIL}`}
+            aria-label="Email"
+            onClick={() => trackEvent("contact_email_clicked", { event_type: "button_click", section: "contact_footer" })}
+          >
+            <Mail />
+          </a>
+          {WHATSAPP_URL && (
+            <a
+              className="social-icon"
+              href={WHATSAPP_URL}
+              target="_blank"
+              rel="noreferrer"
+              aria-label="WhatsApp"
+              onClick={() => trackEvent("contact_whatsapp_clicked", { event_type: "button_click", section: "contact_footer" })}
+            >
+              {/* lucide-react has MessageCircle but we keep Mail+icon style by lazy-loading */}
+              <Mail />
+            </a>
+          )}
         </div>
       </div>
     </div>

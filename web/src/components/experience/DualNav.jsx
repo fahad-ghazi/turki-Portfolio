@@ -10,28 +10,24 @@ import { CATEGORIES } from "../feed/categoriesData";
 
 const SECTION_ORDER = { films: 0 };
 
-// 0 = Hero, 1 = MicroContext, 2..N+1 = categories, last = FinalSlide
-const sortCategoriesByAnalytics = (events = []) => {
-  const scores = events.reduce((acc, event) => {
-    if (event.target_id && event.event_name === "project_visit") {
-      acc[event.target_id] = (acc[event.target_id] || 0) + 1;
-    }
-    return acc;
-  }, {});
-
-  return CATEGORIES.map((category, index) => ({
-    ...category,
-    originalIndex: index,
-    analyticsScore: (scores[category.id] || 0) + (category.items || []).reduce((total, item) => total + (scores[item.id] || 0), 0),
-    items: [...(category.items || [])].sort((a, b) => (scores[b.id] || 0) - (scores[a.id] || 0)),
-  })).sort((a, b) => ((SECTION_ORDER[a.id] ?? 10) - (SECTION_ORDER[b.id] ?? 10)) || (b.analyticsScore - a.analyticsScore) || (a.originalIndex - b.originalIndex));
-};
+// Sort categories with films first, then by their original order in CATEGORIES.
+// Audit issue #2: the prior version pulled AnalyticsEvent.list straight from
+// the homepage to weight ranking — that read uses the public path and would
+// have either returned [] (since AnalyticsEvent isn't a public-list entity)
+// or, if it ever became one, leaked analytics to anonymous visitors. Until
+// we add a server-computed `/api/popular-projects` endpoint, sort is static.
+const sortCategoriesStatic = () =>
+  CATEGORIES.map((category, index) => ({ ...category, originalIndex: index })).sort(
+    (a, b) =>
+      ((SECTION_ORDER[a.id] ?? 10) - (SECTION_ORDER[b.id] ?? 10)) ||
+      (a.originalIndex - b.originalIndex),
+  );
 
 export default function DualNav() {
   const navigate = useNavigate();
   const [currentSlide, setCurrentSlide] = useState(0);
   const [activeCategoryIndex, setActiveCategoryIndex] = useState(null); // null = TikTok mode
-  const [orderedCategories] = useState(sortCategoriesByAnalytics());
+  const [orderedCategories] = useState(sortCategoriesStatic());
   const containerRef = useRef(null);
   const isScrollingRef = useRef(false);
   const touchStartY = useRef(null);

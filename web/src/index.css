@@ -48,40 +48,11 @@
     --sidebar-ring: 40 45% 58%;
   }
 
-  .dark {
-    --background: 42 39% 94%;
-    --foreground: 0 0% 5%;
-    --card: 42 39% 94%;
-    --card-foreground: 0 0% 10%;
-    --popover: 42 39% 94%;
-    --popover-foreground: 0 0% 10%;
-    --primary: 40 45% 58%;
-    --primary-foreground: 0 0% 10%;
-    --secondary: 39 35% 87%;
-    --secondary-foreground: 0 0% 10%;
-    --muted: 39 35% 87%;
-    --muted-foreground: 0 0% 12%;
-    --accent: 40 45% 58%;
-    --accent-foreground: 0 0% 10%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 30 10% 18%;
-    --input: 30 10% 18%;
-    --ring: 40 45% 58%;
-    --chart-1: 40 45% 58%;
-    --chart-2: 30 40% 45%;
-    --chart-3: 20 30% 30%;
-    --chart-4: 35 50% 65%;
-    --chart-5: 25 35% 50%;
-    --sidebar-background: 42 39% 94%;
-    --sidebar-foreground: 0 0% 10%;
-    --sidebar-primary: 40 45% 58%;
-    --sidebar-primary-foreground: 0 0% 10%;
-    --sidebar-accent: 39 35% 87%;
-    --sidebar-accent-foreground: 0 0% 10%;
-    --sidebar-border: 40 45% 58%;
-    --sidebar-ring: 40 45% 58%;
-  }
+  /* Audit issue #16: a `.dark` block used to live here with values that
+     were copied from :root verbatim — toggling dark mode would have done
+     nothing but confused screen reader / system-pref users into thinking
+     they had a dark theme. The brand is light-luxury only; we deliberately
+     do NOT ship a dark theme until one is actually designed. */
 }
 
 @layer base {

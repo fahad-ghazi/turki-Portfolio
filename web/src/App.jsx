@@ -20,6 +20,12 @@ import Booking from './pages/Booking';
 import TrainedModels from './pages/TrainedModels';
 import AdminDashboard from './pages/AdminDashboard';
 import AdminLogin from './pages/AdminLogin';
+import About from './pages/About';
+import Services from './pages/Services';
+import Privacy from './pages/Privacy';
+import Terms from './pages/Terms';
+import Blog from './pages/Blog';
+import BlogPost from './pages/BlogPost';
 
 function App() {
   return (
@@ -39,6 +45,14 @@ function App() {
               <Route path="/cv" element={<CV />} />
               <Route path="/booking" element={<Booking />} />
               <Route path="/trained-models" element={<TrainedModels />} />
+
+              {/* Stub content pages — noIndex until copy lands */}
+              <Route path="/about" element={<About />} />
+              <Route path="/services" element={<Services />} />
+              <Route path="/privacy" element={<Privacy />} />
+              <Route path="/terms" element={<Terms />} />
+              <Route path="/blog" element={<Blog />} />
+              <Route path="/blog/:slug" element={<BlogPost />} />
 
               {/* Admin */}
               <Route path="/admin/login" element={<AdminLogin />} />

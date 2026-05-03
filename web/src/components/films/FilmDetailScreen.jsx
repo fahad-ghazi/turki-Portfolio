@@ -2,6 +2,7 @@ import React, { useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowLeft, Maximize2, Pause, Play } from "lucide-react";
 import useContentTimeTracker from "../../hooks/useContentTimeTracker";
+import { trackEvent } from "@/utils/trackEvent";
 
 const GOLD = "#C9A961";
 
@@ -18,6 +19,8 @@ export default function FilmDetailScreen({ film, films, onBack, onSelect }) {
   const [progress, setProgress] = useState(0);
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
+  // Audit #30: video analytics milestones — fire each threshold once per film.
+  const milestonesFiredRef = useRef(new Set());
 
   const togglePlay = () => {
     const video = videoRef.current;
@@ -25,9 +28,11 @@ export default function FilmDetailScreen({ film, films, onBack, onSelect }) {
     if (video.paused) {
       video.play();
       setPlaying(true);
+      trackEvent("video_play", { event_type: "button_click", target_id: film.id });
     } else {
       video.pause();
       setPlaying(false);
+      trackEvent("video_pause", { event_type: "button_click", target_id: film.id });
     }
   };
 
@@ -36,7 +41,20 @@ export default function FilmDetailScreen({ film, films, onBack, onSelect }) {
     if (!video?.duration) return;
     setCurrentTime(video.currentTime);
     setDuration(video.duration);
-    setProgress((video.currentTime / video.duration) * 100);
+    const pct = (video.currentTime / video.duration) * 100;
+    setProgress(pct);
+
+    // Fire milestones at 25 / 50 / 75 / 100 % — once each per film play.
+    const fired = milestonesFiredRef.current;
+    for (const threshold of [25, 50, 75, 100]) {
+      if (pct >= threshold && !fired.has(threshold)) {
+        fired.add(threshold);
+        trackEvent(`video_progress_${threshold}`, {
+          event_type: "article_read",
+          target_id: film.id,
+        });
+      }
+    }
   };
 
   useContentTimeTracker(film.id, true, playing ? 2 : 0.5);
