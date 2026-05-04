@@ -3,20 +3,22 @@ import { motion } from "framer-motion";
 import { useLang } from "@/lib/LanguageContext";
 import { trackContentInteraction } from "../../utils/behaviorTracking";
 import useContentTimeTracker from "../../hooks/useContentTimeTracker";
+import Picture from "@/components/brand/Picture";
 
 const GOLD = "#C9A961";
 
-function CleanBg({ src, color }) {
-  const [loaded, setLoaded] = useState(false);
+// Section background: full-bleed cover image routed through R2 CDN via
+// the Picture component (AVIF → WebP → JPG responsive srcset + blurhash
+// placeholder so there's never a blank rectangle while loading).
+function CleanBg({ src }) {
   return (
     <div className="absolute inset-0 overflow-hidden">
-      <img
-      src={src}
-      alt=""
-      loading="lazy"
-      decoding="async"
-      onLoad={() => setLoaded(true)}
-      className={`w-full h-full object-cover transition-opacity duration-700 ${loaded ? "opacity-100" : "opacity-0"}`}
+      <Picture
+        src={src}
+        alt=""
+        loading="lazy"
+        sizes="100vw"
+        className="absolute inset-0 object-cover"
       />
       <div
         className="absolute inset-0 pointer-events-none"
@@ -43,7 +45,7 @@ export default function TikTokSection({ category, isActive, onEnter }) {
 
   return (
     <div className="relative w-full h-full overflow-hidden bg-[#F5F1E8]" dir={isAr ? "rtl" : "ltr"}>
-      <CleanBg src={category.coverImage} color={category.color} />
+      <CleanBg src={category.coverImage} />
 
       {/* Text content */}
       <motion.div

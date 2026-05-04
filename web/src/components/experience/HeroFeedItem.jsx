@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Calendar, Linkedin, Mail } from "lucide-react";
 import { trackEvent } from "@/utils/trackEvent";
+import Picture from "@/components/brand/Picture";
 
 const LINKEDIN_URL = import.meta.env?.VITE_LINKEDIN_URL || "";
 const INSTAGRAM_URL = import.meta.env?.VITE_INSTAGRAM_URL || "";
@@ -11,7 +12,6 @@ import { useLang } from "@/lib/LanguageContext";
 import TGLogo from "@/components/brand/TGLogo";
 import LanguageToggle from "@/components/brand/LanguageToggle";
 
-const HERO_IMAGE = "/works/hero-poster.jpg";
 const GOLD = "#C9A961";
 
 export default function HeroFeedItem({ isActive, onEnter, totalSlides = 5, currentSlide = 0 }) {
@@ -19,7 +19,6 @@ export default function HeroFeedItem({ isActive, onEnter, totalSlides = 5, curre
   // has 8-9 slides. DualNav now passes the real total + which slide is
   // current so the indicator stays honest.
   const TOTAL = totalSlides;
-  const [loaded, setLoaded] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const { isAr } = useLang();
 
@@ -30,15 +29,17 @@ export default function HeroFeedItem({ isActive, onEnter, totalSlides = 5, curre
         <p>{isAr ? "نصنع عوالم بصرية بالذكاء الاصطناعي تتجاوز الخيال." : "We craft AI visual worlds that transcend imagination."}</p>
       </div>
 
-      {/* Background — clean, no blur, no heavy overlay */}
-      <img
-      src={HERO_IMAGE}
-      alt="Turki Ghazi — AI Visual Designer"
-      loading="eager"
-      decoding="async"
-      onLoad={() => setLoaded(true)}
-      className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ${loaded ? "opacity-100" : "opacity-0"}`}
-      />
+      {/* Background — Picture routes through R2 CDN + blurhash placeholder */}
+      <div className="absolute inset-0 overflow-hidden">
+        <Picture
+          src="/works/hero-poster.jpg"
+          alt="Turki Ghazi — AI Visual Designer"
+          loading="eager"
+          fetchPriority="high"
+          sizes="100vw"
+          className="absolute inset-0 object-cover"
+        />
+      </div>
       <div
         className="absolute inset-0 pointer-events-none"
         style={{ background: "linear-gradient(to bottom, rgba(0,0,0,0.18) 0%, rgba(0,0,0,0.34) 52%, rgba(0,0,0,0.62) 100%)" }}

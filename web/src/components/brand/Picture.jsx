@@ -143,6 +143,14 @@ const Picture = forwardRef(function Picture(
     ? { aspectRatio: String(entry.aspectRatio) }
     : undefined;
 
+  // CSS properties that only work on replaced elements (img, video) must
+  // go on the <img>, not the wrapping <span>. Extract object-* and
+  // pointer-events-* classes so callers can write
+  //   className="absolute inset-0 object-cover pointer-events-none"
+  // and have them land on the right DOM nodes.
+  const IMG_CLASS_RE = /\bobject-\S+\b/g;
+  const imgPassthrough = (className.match(IMG_CLASS_RE) ?? []).join(" ");
+
   return (
     <span className={`relative block overflow-hidden ${className}`} style={aspectStyle}>
       {useBlur && !loaded && (
@@ -169,7 +177,7 @@ const Picture = forwardRef(function Picture(
           }}
           onError={onError}
           draggable={draggable}
-          className={`block h-full w-full transition-opacity duration-300 ${
+          className={`block h-full w-full transition-opacity duration-300 ${imgPassthrough} ${
             loaded ? "opacity-100" : "opacity-0"
           }`}
           {...rest}
