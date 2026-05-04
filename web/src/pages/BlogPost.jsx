@@ -4,6 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import { apiClient } from "@/api/client";
 import Seo from "@/components/seo/Seo";
 import Eyebrow from "@/components/brand/Eyebrow";
+import Picture from "@/components/brand/Picture";
 import ReactMarkdown from "react-markdown";
 
 const GOLD = "#C9A961";
@@ -58,12 +59,15 @@ export default function BlogPost() {
               </p>
             )}
             {post.hero_image && (
-              <img
-                src={post.hero_image}
-                alt={post.alt_text || post.title}
-                loading="eager"
-                className="mt-8 w-full rounded-2xl"
-              />
+              <div className="mt-8 w-full rounded-2xl overflow-hidden">
+                <Picture
+                  src={post.hero_image}
+                  alt={post.alt_text || post.title}
+                  loading="eager"
+                  sizes="(max-width: 768px) 100vw, 720px"
+                  className="w-full object-cover"
+                />
+              </div>
             )}
             <div className="prose prose-slate mt-10 max-w-none font-noto text-base leading-9">
               <ReactMarkdown>{post.content || ""}</ReactMarkdown>

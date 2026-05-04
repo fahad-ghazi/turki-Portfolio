@@ -180,17 +180,15 @@ function CardContent({ item, categoryId }) {
   const { isAr } = useLang();
   return (
     <div className="absolute bottom-0 left-0 right-0 px-6 pb-7 z-10" dir={isAr ? "rtl" : "ltr"}>
-      {/* Floating action icons — top right corner of content area */}
+      {/* Floating action icons — trailing corner (right in LTR, left in RTL) */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1.2, delay: 0.6 }}
-        className="absolute bottom-8 right-6"
+        className={`absolute bottom-8 ${isAr ? "left-6" : "right-6"}`}
       >
         <ActionBar item={item} categoryId={categoryId} />
       </motion.div>
-
-
     </div>
   );
 }
@@ -205,7 +203,6 @@ function CardContent({ item, categoryId }) {
 // `isAr` flag decide which physical direction maps to which.
 function DraggableCard({ item, categoryId, onNext, onPrev, zIndex, isAr }) {
   const x = useMotionValue(0);
-  const y = useMotionValue(0);
   const rotate = useTransform(x, [-280, 280], [-18, 18]);
   const cardOpacity = useTransform(x, [-220, -70, 0, 70, 220], [0.3, 1, 1, 1, 0.3]);
   const cardScale = useTransform(x, [-200, 0, 200], [0.97, 1, 0.97]);
@@ -229,7 +226,7 @@ function DraggableCard({ item, categoryId, onNext, onPrev, zIndex, isAr }) {
 
   return (
     <motion.div
-      style={{ x, y, rotate, opacity: cardOpacity, scale: cardScale, zIndex, touchAction: "pan-y", willChange: "transform" }}
+      style={{ x, rotate, opacity: cardOpacity, scale: cardScale, zIndex, touchAction: "pan-y", willChange: "transform" }}
       drag="x"
       dragConstraints={{ left: 0, right: 0 }}
       dragElastic={0.3}
@@ -350,8 +347,12 @@ export default function TinderMode({ category, onExit, onNextCategory, closeOnCo
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
+  // goNext/goPrev are plain functions that close over index, onNextCategory,
+  // closeOnComplete, and onExit. Listing them all here ensures the listener
+  // always calls the current version — especially important if onNextCategory
+  // is an inline arrow function from the parent that captures activeCategoryIndex.
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isAr, index]);   // re-bind when index changes so closures stay fresh
+  }, [isAr, index, onExit, onNextCategory, closeOnComplete]);
 
   // Audit fix: previously a swipe-back from index 0 silently called
   // onExit(), which on character galleries kicked the user back to the

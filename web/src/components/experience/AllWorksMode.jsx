@@ -321,7 +321,6 @@ export default function AllWorksMode({ onExit }) {
   const [bounce, setBounce]         = useState(0);
 
   const transitioningRef = useRef(false);
-  const cardAreaRef      = useRef(null);
 
   // Lock the DualNav scroll container (same pattern as TinderMode)
   useEffect(() => {
@@ -348,8 +347,7 @@ export default function AllWorksMode({ onExit }) {
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [phase, isAr, index]);
+  }, [phase, isAr, onExit, handleSwipe]);
 
   // ── Filter selection ───────────────────────────────────────────
   const handleFilterSelect = useCallback((id) => {
@@ -497,7 +495,6 @@ export default function AllWorksMode({ onExit }) {
 
         {/* Constrained card container */}
         <div
-          ref={cardAreaRef}
           className="relative w-full"
           style={{ maxWidth: "min(calc(100% - 8px), 520px)" }}
         >

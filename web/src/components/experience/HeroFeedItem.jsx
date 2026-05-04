@@ -29,7 +29,11 @@ export default function HeroFeedItem({ isActive, onEnter, totalSlides = 5, curre
         <p>{isAr ? "نصنع عوالم بصرية بالذكاء الاصطناعي تتجاوز الخيال." : "We craft AI visual worlds that transcend imagination."}</p>
       </div>
 
-      {/* Background — Picture routes through R2 CDN + blurhash placeholder */}
+      {/* Background — Picture routes through R2 CDN + blurhash placeholder.
+          Use w-full h-full (not absolute inset-0) on Picture so the <span>
+          wrapper doesn't fight its own hardcoded `relative` class in Tailwind's
+          cascade — `absolute` sorts before `relative` in the generated sheet
+          so `relative` always wins, collapsing the span to 0px height on mobile. */}
       <div className="absolute inset-0 overflow-hidden">
         <Picture
           src="/works/hero-poster.jpg"
@@ -37,7 +41,7 @@ export default function HeroFeedItem({ isActive, onEnter, totalSlides = 5, curre
           loading="eager"
           fetchPriority="high"
           sizes="100vw"
-          className="absolute inset-0 object-cover"
+          className="w-full h-full object-cover object-top"
         />
       </div>
       <div
@@ -139,8 +143,8 @@ export default function HeroFeedItem({ isActive, onEnter, totalSlides = 5, curre
         </a>
       </motion.div>
 
-      {/* Main Content */}
-      <div className={`absolute bottom-0 left-0 right-0 px-8 pb-32`}>
+      {/* Main Content — pb accounts for iOS safe-area-inset-bottom (notch/home bar) */}
+      <div className="absolute bottom-0 left-0 right-0 px-8" style={{ paddingBottom: "calc(8rem + env(safe-area-inset-bottom, 0px))" }}>
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={isActive ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}

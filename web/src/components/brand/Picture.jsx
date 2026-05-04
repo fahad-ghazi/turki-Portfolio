@@ -144,10 +144,16 @@ const Picture = forwardRef(function Picture(
     : undefined;
 
   // CSS properties that only work on replaced elements (img, video) must
-  // go on the <img>, not the wrapping <span>. Extract object-* and
-  // pointer-events-* classes so callers can write
-  //   className="absolute inset-0 object-cover pointer-events-none"
-  // and have them land on the right DOM nodes.
+  // go on the <img>, not the wrapping <span>. Extract object-* classes
+  // so callers can write className="w-full h-full object-cover"
+  // and object-* lands on the <img>.
+  //
+  // ⚠️  Do NOT pass "absolute inset-0" inside className — this <span>
+  // already has a hardcoded "relative" class. Both absolute and relative
+  // have equal specificity; Tailwind sorts "absolute" before "relative"
+  // alphabetically so "relative" wins the cascade → span height collapses
+  // to 0 on mobile. Always wrap in a <div className="absolute inset-0">
+  // and pass only "w-full h-full object-cover" to Picture.
   const IMG_CLASS_RE = /\bobject-\S+\b/g;
   const imgPassthrough = (className.match(IMG_CLASS_RE) ?? []).join(" ");
 

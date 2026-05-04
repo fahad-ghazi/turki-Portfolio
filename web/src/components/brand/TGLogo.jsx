@@ -2,7 +2,13 @@ import React from "react";
 
 // Cropped transparent brand mark — the "شعار مفرغ مقصوص" file the
 // user picked. SVG keeps it crisp at every size without retina blur.
-const LOGO_URL = "/brand/turki-logo.svg";
+//
+// The SVG lives in Cloudflare R2 (not in the git repo / public/).
+// We apply VITE_R2_BASE at build time so the correct CDN URL is baked
+// into the bundle — same pattern as toDeliveryUrl() in Picture.jsx.
+const R2_BASE = import.meta.env.VITE_R2_BASE ?? "";
+const LOGO_PATH = "/brand/turki-logo.svg";
+const LOGO_URL = R2_BASE ? `${R2_BASE}${LOGO_PATH}` : LOGO_PATH;
 
 const sizes = {
   sm: "h-14 w-20",

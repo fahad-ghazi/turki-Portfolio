@@ -14,11 +14,11 @@ function CleanBg({ src }) {
   return (
     <div className="absolute inset-0 overflow-hidden">
       <Picture
-        src={src}
+        src={src || "/works/hero-poster.jpg"}
         alt=""
         loading="lazy"
         sizes="100vw"
-        className="absolute inset-0 object-cover"
+        className="w-full h-full object-cover object-top"
       />
       <div
         className="absolute inset-0 pointer-events-none"
@@ -47,12 +47,13 @@ export default function TikTokSection({ category, isActive, onEnter }) {
     <div className="relative w-full h-full overflow-hidden bg-[#F5F1E8]" dir={isAr ? "rtl" : "ltr"}>
       <CleanBg src={category.coverImage} />
 
-      {/* Text content */}
+      {/* Text content — bottom offset accounts for iOS safe-area-inset-bottom */}
       <motion.div
         initial={{ opacity: 0, y: 50 }}
         animate={isActive ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
         transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
-        className="absolute bottom-48 right-0 left-0 px-9 pointer-events-none"
+        className="absolute right-0 left-0 px-9 pointer-events-none"
+        style={{ bottom: "calc(12rem + env(safe-area-inset-bottom, 0px))" }}
       >
         {/* Title — white, large, editorial */}
         <motion.h2
@@ -67,7 +68,7 @@ export default function TikTokSection({ category, isActive, onEnter }) {
             letterSpacing: "-0.01em",
           }}
         >
-          {isAr ? category.title : category.titleEn}
+          {isAr ? category.title : (category.titleEn || category.title)}
         </motion.h2>
 
         {/* Short description line */}
@@ -87,7 +88,8 @@ export default function TikTokSection({ category, isActive, onEnter }) {
         initial={{ opacity: 0, y: 18 }}
         animate={isActive ? { opacity: 1, y: 0 } : { opacity: 0, y: 18 }}
         transition={{ delay: 0.55, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-        className="absolute bottom-28 right-0 left-0 flex justify-center z-10"
+        className="absolute right-0 left-0 flex justify-center z-10"
+        style={{ bottom: "calc(5rem + env(safe-area-inset-bottom, 0px))" }}
       >
         <motion.button
           onClick={handleEnter}
