@@ -533,34 +533,36 @@ export default function AllWorksMode({ onExit }) {
 
         {/* Active card — AnimatePresence handles enter/exit */}
         <AnimatePresence custom={exitDir}>
-          <motion.div
-            key={index}
-            className="absolute inset-0"
-            custom={exitDir}
-            initial={{ scale: 0.93, opacity: 0.85, y: 12 }}
-            animate={{
-              x:       bounce === -1 ? -22 : bounce === 1 ? 22 : 0,
-              opacity: 1,
-              scale:   1,
-              y:       0,
-            }}
-            exit={{ x: exitDir * 340, opacity: 0, rotate: exitDir * 14, scale: 0.88 }}
-            transition={SPRING}
-          >
-            {isMystery ? (
-              <MysteryCard
-                item={currentCard}
-                isAr={isAr}
-                onPhysicalSwipe={handleSwipe}
-              />
-            ) : (
-              <WorkCard
-                item={currentCard}
-                isAr={isAr}
-                onPhysicalSwipe={handleSwipe}
-              />
-            )}
-          </motion.div>
+          {currentCard && (
+            <motion.div
+              key={index}
+              className="absolute inset-0"
+              custom={exitDir}
+              initial={{ scale: 0.93, opacity: 0.85, y: 12 }}
+              animate={{
+                x:       bounce === -1 ? -22 : bounce === 1 ? 22 : 0,
+                opacity: 1,
+                scale:   1,
+                y:       0,
+              }}
+              exit={{ x: exitDir * 340, opacity: 0, rotate: exitDir * 14, scale: 0.88 }}
+              transition={SPRING}
+            >
+              {isMystery ? (
+                <MysteryCard
+                  item={currentCard}
+                  isAr={isAr}
+                  onPhysicalSwipe={handleSwipe}
+                />
+              ) : (
+                <WorkCard
+                  item={currentCard}
+                  isAr={isAr}
+                  onPhysicalSwipe={handleSwipe}
+                />
+              )}
+            </motion.div>
+          )}
         </AnimatePresence>
         </div>{/* end constrained container */}
 

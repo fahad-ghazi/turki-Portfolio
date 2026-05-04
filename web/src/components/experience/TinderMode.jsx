@@ -325,13 +325,14 @@ export default function TinderMode({ category, onExit, onNextCategory, closeOnCo
     const container = document.querySelector('[data-scroll-container="dual-nav"]');
     if (!container) return;
     const savedOverflow = container.style.overflowY;
-    const savedScrollTop = container.scrollTop;
+    // Prevent the DualNav scroll container from capturing touch events
+    // while the horizontal swipe cards are active. Scroll restoration
+    // is handled by DualNav itself (slideBeforeEnter ref) because the
+    // container is already overflow:hidden when this effect runs and
+    // scrollTop may already be 0.
     container.style.overflowY = 'hidden';
     return () => {
       container.style.overflowY = savedOverflow;
-      // Restore the original scroll position so the user lands back on
-      // the slide they were viewing, not on the snap-mandatory closest.
-      container.scrollTop = savedScrollTop;
     };
   }, []);
 

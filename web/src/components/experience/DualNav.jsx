@@ -31,6 +31,9 @@ export default function DualNav() {
   const [allWorksOpen, setAllWorksOpen] = useState(false);
   const orderedCategories = useMemo(() => sortCategoriesStatic(), []);
   const containerRef = useRef(null);
+  // Save the slide we were on before entering a category so we can
+  // restore it on exit. Stored in a ref (not state) to avoid a render.
+  const slideBeforeEnter = useRef(0);
   const slides = 1 + 1 + orderedCategories.length + 1;
 
   // ── Scroll synchronisation ────────────────────────────────────────
@@ -110,9 +113,35 @@ export default function DualNav() {
       navigate(category.slug);
       return;
     }
+    // Save the current slide BEFORE DualNav hides the scroll container.
+    // We can't rely on TinderMode's cleanup to restore scrollTop because
+    // the container already has overflowY:"hidden" by the time TinderMode
+    // mounts, which may reset scrollTop to 0 on some browsers.
+    slideBeforeEnter.current = currentSlide;
     setActiveCategoryIndex(catIndex);
   };
-  const handleExitCategory = () => setActiveCategoryIndex(null);
+  const handleExitCategory = useCallback(() => {
+    setActiveCategoryIndex(null);
+  }, []);
+
+  // When a category is exited, snap back to the slide the user was on.
+  // We do this in DualNav (not in TinderMode's cleanup) because by the
+  // time TinderMode mounts, the container overflowY is already "hidden"
+  // which can reset scrollTop to 0 — making the saved value unreliable.
+  // Using activeCategoryIndex as trigger: fires when it transitions null→value
+  // and value→null. We only care about value→null (exit), guarded by the ref.
+  useEffect(() => {
+    if (activeCategoryIndex !== null) return;
+    const slide = slideBeforeEnter.current;
+    if (slide <= 0) return; // already at top, nothing to restore
+    const el = containerRef.current?.children[slide];
+    if (!el) return;
+    // One rAF so the overflow:scroll style is applied before we scroll.
+    requestAnimationFrame(() => {
+      el.scrollIntoView({ behavior: "instant", block: "start" });
+    });
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [activeCategoryIndex]);
 
   return (
     <div className="fixed inset-0 overflow-hidden bg-[#F5F1E8]">
