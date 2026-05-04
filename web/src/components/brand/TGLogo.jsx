@@ -7,7 +7,7 @@ import React from "react";
 // We apply VITE_R2_BASE at build time so the correct CDN URL is baked
 // into the bundle — same pattern as toDeliveryUrl() in Picture.jsx.
 const R2_BASE = import.meta.env.VITE_R2_BASE ?? "";
-const LOGO_PATH = "/brand/turki-logo.svg";
+const LOGO_PATH = "/brand/turki-logo.png";
 const LOGO_URL = R2_BASE ? `${R2_BASE}${LOGO_PATH}` : LOGO_PATH;
 
 const sizes = {

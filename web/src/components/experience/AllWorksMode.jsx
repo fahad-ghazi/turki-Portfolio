@@ -335,20 +335,6 @@ export default function AllWorksMode({ onExit }) {
     };
   }, []);
 
-  // Desktop keyboard navigation
-  useEffect(() => {
-    if (phase !== "swipe") return;
-    const onKey = (e) => {
-      if (e.key === "Escape") { onExit(); return; }
-      const nextPhysical = isAr ? -1 : 1;
-      const prevPhysical = isAr ?  1 : -1;
-      if (e.key === (isAr ? "ArrowLeft" : "ArrowRight")) { e.preventDefault(); handleSwipe(nextPhysical); }
-      if (e.key === (isAr ? "ArrowRight" : "ArrowLeft")) { e.preventDefault(); handleSwipe(prevPhysical); }
-    };
-    window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
-  }, [phase, isAr, onExit, handleSwipe]);
-
   // ── Filter selection ───────────────────────────────────────────
   const handleFilterSelect = useCallback((id) => {
     setFilterId(id);
@@ -367,6 +353,11 @@ export default function AllWorksMode({ onExit }) {
   // ── Swipe handler ──────────────────────────────────────────────
   // physicalDir: -1 = swiped left, 1 = swiped right.
   // In Arabic the "next" gesture is a left swipe; in English it's right.
+  // IMPORTANT: this must be declared BEFORE the keyboard useEffect that
+  // references it in its deps array. `const` is in TDZ until this line
+  // executes — if the effect deps are evaluated first, React throws a
+  // ReferenceError during render that the root ErrorBoundary catches,
+  // producing the "حدث خطأ غير متوقع" full-page crash.
   const handleSwipe = useCallback(
     (physicalDir) => {
       if (transitioningRef.current) return;
@@ -397,6 +388,21 @@ export default function AllWorksMode({ onExit }) {
     },
     [isAr, index, deck.length, onExit],
   );
+
+  // Desktop keyboard navigation — placed AFTER handleSwipe so its deps
+  // array can reference handleSwipe without a TDZ ReferenceError.
+  useEffect(() => {
+    if (phase !== "swipe") return;
+    const onKey = (e) => {
+      if (e.key === "Escape") { onExit(); return; }
+      const nextPhysical = isAr ? -1 : 1;
+      const prevPhysical = isAr ?  1 : -1;
+      if (e.key === (isAr ? "ArrowLeft" : "ArrowRight")) { e.preventDefault(); handleSwipe(nextPhysical); }
+      if (e.key === (isAr ? "ArrowRight" : "ArrowLeft")) { e.preventDefault(); handleSwipe(prevPhysical); }
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [phase, isAr, onExit, handleSwipe]);
 
   // ── Derived values ─────────────────────────────────────────────
   const currentCard  = deck[index];

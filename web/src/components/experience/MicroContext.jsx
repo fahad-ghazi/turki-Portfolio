@@ -158,7 +158,7 @@ export default function MicroContext({ isActive }) {
                         willChange: "transform",
                       }}
                     >
-                      <Picture src={character.cover} alt={character.name} className="h-full w-full object-cover object-top" />
+                      <Picture src={character.cover} alt={character.name} loading="eager" sizes="56px" className="h-full w-full object-cover object-top" />
                       <span className="absolute inset-0 bg-gradient-to-tr from-[#C9A961]/55 via-transparent to-black/45 opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
                     </span>
                   </button>
