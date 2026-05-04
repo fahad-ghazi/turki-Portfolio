@@ -206,26 +206,13 @@ function DraggableWrapper({ onPhysicalSwipe, children }) {
 }
 
 // ── Work Card — Layer 2 ────────────────────────────────────────────
-// "النافذة + المشكلة أولاً":
-//   • Card starts dark — description text centred on a dark overlay.
-//   • A spotlight (radial-gradient) follows cursor/finger, revealing
-//     the image beneath. Text fades once the user starts exploring.
-//   • After reveal, title + category label appear at the bottom.
-function WorkCard({ item, spotPos, spotTouched, isAr, onPhysicalSwipe }) {
-  const text = isAr ? item.description : item.descriptionEn;
-
-  const spotStyle = spotTouched
-    ? {
-        background: `radial-gradient(circle 140px at ${spotPos.x}% ${spotPos.y}%,
-          rgba(0,0,0,0) 0%,
-          rgba(0,0,0,0.52) 52%,
-          rgba(0,0,0,0.88) 100%)`,
-      }
-    : { background: "rgba(0,0,0,0.72)" };
-
+// Clean full-bleed image card — no dark overlay, no spotlight.
+// Image is fully visible from first frame. Title + category sit in a
+// subtle bottom gradient so text remains readable over any image.
+function WorkCard({ item, isAr, onPhysicalSwipe }) {
   return (
     <DraggableWrapper onPhysicalSwipe={onPhysicalSwipe}>
-      {/* Full-res image behind everything */}
+      {/* Full-res image */}
       <div className="absolute inset-0 overflow-hidden rounded-3xl">
         <Picture
           src={item.src}
@@ -238,80 +225,36 @@ function WorkCard({ item, spotPos, spotTouched, isAr, onPhysicalSwipe }) {
         />
       </div>
 
-      {/* Spotlight overlay — pointer-events: none so drag still works */}
+      {/* Subtle bottom gradient for text legibility only */}
       <div
         className="absolute inset-0 rounded-3xl pointer-events-none"
         style={{
-          ...spotStyle,
-          transition: "background 80ms linear",
+          background:
+            "linear-gradient(to bottom, rgba(0,0,0,0.04) 0%, rgba(0,0,0,0.18) 55%, rgba(0,0,0,0.52) 100%)",
         }}
       />
 
-      {/* Description text — visible before first exploration */}
-      <AnimatePresence>
-        {!spotTouched && (
-          <motion.div
-            key="desc"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0, transition: { duration: 0.35 } }}
-            transition={{ duration: 0.5, delay: 0.15 }}
-            className="absolute inset-0 flex flex-col items-center justify-center px-9 pointer-events-none"
-            dir={isAr ? "rtl" : "ltr"}
-          >
-            <p
-              className="font-noto text-center text-[15px] leading-[1.85]"
-              style={{
-                color: "rgba(245,241,232,0.92)",
-                textShadow: "0 2px 20px rgba(0,0,0,0.7)",
-              }}
-            >
-              {text}
-            </p>
-            <motion.p
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 1.4 }}
-              className="font-cinzel text-[9px] tracking-[0.32em] mt-6"
-              style={{ color: "rgba(201,169,97,0.6)" }}
-            >
-              {isAr ? "حرّك لتكتشف" : "EXPLORE"}
-            </motion.p>
-          </motion.div>
-        )}
-      </AnimatePresence>
-
-      {/* Title + category — revealed after first touch/hover */}
-      <AnimatePresence>
-        {spotTouched && (
-          <motion.div
-            key="meta"
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            className="absolute bottom-0 left-0 right-0 px-6 pb-7 pointer-events-none rounded-b-3xl"
-            dir={isAr ? "rtl" : "ltr"}
-            style={{
-              background:
-                "linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.55) 100%)",
-            }}
-          >
-            <p
-              className="font-cinzel text-[9px] tracking-widest mb-1"
-              style={{ color: "#C9A961" }}
-            >
-              {isAr ? item.catAr : item.catEn}
-            </p>
-            <p
-              className="font-noto text-sm font-semibold"
-              style={{ color: "#F5F1E8" }}
-            >
-              {item.title}
-            </p>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      {/* Title + category — always visible */}
+      <motion.div
+        initial={{ opacity: 0, y: 8 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.4, delay: 0.1 }}
+        className="absolute bottom-0 left-0 right-0 px-6 pb-7 pointer-events-none"
+        dir={isAr ? "rtl" : "ltr"}
+      >
+        <p
+          className="font-cinzel text-[9px] tracking-widest mb-1"
+          style={{ color: "#C9A961" }}
+        >
+          {isAr ? item.catAr : item.catEn}
+        </p>
+        <p
+          className="font-noto text-sm font-semibold"
+          style={{ color: "#F5F1E8" }}
+        >
+          {item.title}
+        </p>
+      </motion.div>
     </DraggableWrapper>
   );
 }
@@ -376,8 +319,6 @@ export default function AllWorksMode({ onExit }) {
   const [index, setIndex]           = useState(0);
   const [exitDir, setExitDir]       = useState(-1);
   const [bounce, setBounce]         = useState(0);
-  const [spotPos, setSpotPos]       = useState({ x: 50, y: 46 });
-  const [spotTouched, setSpotTouched] = useState(false);
 
   const transitioningRef = useRef(false);
   const cardAreaRef      = useRef(null);
@@ -415,7 +356,6 @@ export default function AllWorksMode({ onExit }) {
     setFilterId(id);
     setDeck(buildDeck(id));
     setIndex(0);
-    setSpotTouched(false);
     setPhase("swipe");
   }, []);
 
@@ -442,7 +382,6 @@ export default function AllWorksMode({ onExit }) {
         transitioningRef.current = true;
         setExitDir(physicalDir);
         setIndex((p) => p + 1);
-        setSpotTouched(false);
       } else {
         if (index <= 0) {
           triggerBounce(-physicalDir);
@@ -451,7 +390,6 @@ export default function AllWorksMode({ onExit }) {
         transitioningRef.current = true;
         setExitDir(physicalDir);
         setIndex((p) => p - 1);
-        setSpotTouched(false);
       }
 
       if (navigator.vibrate) navigator.vibrate(6);
@@ -460,20 +398,6 @@ export default function AllWorksMode({ onExit }) {
       }, TRANSITION_MS);
     },
     [isAr, index, deck.length, onExit],
-  );
-
-  // ── Spotlight tracking (Layer 2 — النافذة) ───────────────────
-  const handlePointerMove = useCallback(
-    (e) => {
-      if (phase !== "swipe" || !cardAreaRef.current) return;
-      const rect = cardAreaRef.current.getBoundingClientRect();
-      setSpotPos({
-        x: ((e.clientX - rect.left)  / rect.width)  * 100,
-        y: ((e.clientY - rect.top)   / rect.height) * 100,
-      });
-      if (!spotTouched) setSpotTouched(true);
-    },
-    [phase, spotTouched],
   );
 
   // ── Derived values ─────────────────────────────────────────────
@@ -533,7 +457,7 @@ export default function AllWorksMode({ onExit }) {
 
         {/* Re-filter button */}
         <motion.button
-          onClick={() => { setPhase("filter"); setSpotTouched(false); }}
+          onClick={() => setPhase("filter")}
           whileTap={{ scale: 0.95 }}
           className="font-cinzel text-[9px] tracking-widest px-4 py-2.5 rounded-full transition-all duration-200"
           style={{
@@ -548,7 +472,6 @@ export default function AllWorksMode({ onExit }) {
       {/* ── Card area — centred, max-width on desktop ── */}
       <div
         className="relative flex-1 flex items-stretch justify-center overflow-hidden"
-        onPointerMove={handlePointerMove}
       >
         {/* Blurred backdrop fill (desktop only) */}
         {currentCard && (
@@ -636,8 +559,6 @@ export default function AllWorksMode({ onExit }) {
             ) : (
               <WorkCard
                 item={currentCard}
-                spotPos={spotPos}
-                spotTouched={spotTouched}
                 isAr={isAr}
                 onPhysicalSwipe={handleSwipe}
               />
