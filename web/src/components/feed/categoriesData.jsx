@@ -12,7 +12,7 @@ export const CATEGORIES = [
     seoDescription: "Turki Ghazi fashion portfolio — cinematic fashion editorials, AI-assisted campaign art direction, luxury styling, streetwear visuals, jewelry stories, and Saudi fashion identity.",
     introText: "عالم أزياء محرّر بعين سينمائية ومزاج حملات عالمية",
     introTextEn: "A fashion world curated with cinematic direction and global campaign energy",
-    coverImage: "/works/banners/fashion.jpg",
+    coverImage: "/works/fashion/f_030.jpg",
     color: "from-rose-950/80",
     items: [
       {
@@ -189,7 +189,7 @@ export const CATEGORIES = [
     seoDescription: "Turki Ghazi commercial advertising portfolio — cinematic AI-powered product campaigns, food advertising, fragrance visuals, fashion products, and branded content for Saudi and Gulf brands.",
     introText: "إعلانات تجارية مصممة كعوالم بصرية لكل علامة",
     introTextEn: "Commercial ads designed as visual worlds for every brand",
-    coverImage: "/works/banners/ads.jpg",
+    coverImage: "/works/banners/commercial.jpg",
     color: "from-amber-950/80",
     items: [
       {
@@ -303,7 +303,7 @@ export const CATEGORIES = [
     seoDescription: "Turki Ghazi trained AI characters portfolio — persistent character identities with separate galleries, facial angles, fashion, ads, films, and campaign-ready model references.",
     introText: "ادخل كتالوج الشخصيات واختر كل شخصية لاستعراض زواياها الخاصة",
     introTextEn: "Enter the character catalog and open each identity through its dedicated angles",
-    coverImage: "/works/trained_models/char_01/angle_1.jpg",
+    coverImage: "/works/trained_models/char_03/angle_1.jpg",
     color: "from-stone-950/80",
     items: [],
   },
@@ -331,7 +331,7 @@ export const CATEGORIES = [
     seoDescription: "Turki Ghazi real estate portfolio — cinematic luxury property marketing, Riyadh residential developments, architectural façades, investor presentations, virtual tours, and premium real estate campaigns.",
     introText: "نحوّل المشروع العقاري إلى قصة بصرية تبيع الإحساس والقيمة معًا",
     introTextEn: "We turn real estate projects into visual stories that sell both feeling and value",
-    coverImage: "/works/realestate/r_041.jpg",
+    coverImage: "/works/banners/realestate.jpg",
     color: "from-emerald-950/80",
     items: realEstateItems,
   },
@@ -345,7 +345,7 @@ export const CATEGORIES = [
     seoDescription: "Turki Ghazi heritage visual portfolio — cinematic Saudi heritage storytelling, old Riyadh neighborhoods, Najdi architecture, classic cars, cultural memory, and Gulf identity visuals.",
     introText: "تراث لا يُعرض كأرشيف، بل كفيلم حي من الذاكرة السعودية",
     introTextEn: "Heritage presented not as archive, but as a living film of Saudi memory",
-    coverImage: "/works/banners/heritage.jpg",
+    coverImage: "/works/heritage/h_015.jpg",
     color: "from-amber-950/80",
     items: [
       {

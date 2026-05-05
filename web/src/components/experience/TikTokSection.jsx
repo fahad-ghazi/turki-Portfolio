@@ -10,12 +10,18 @@ const GOLD = "#C9A961";
 // Per-category colour tint — each section gets a unique mood overlay.
 // Designed so every slide is visually distinct at a glance.
 const CATEGORY_TINT = {
-  "ai-fashion":     "rgba(120,20,55,0.22)",   // rose / couture
-  "commercial-ads": "rgba(22,50,130,0.20)",   // deep navy / corporate
+  // Fashion: f_030 is blue sky + bold outfit — rose tint adds couture warmth
+  "ai-fashion":     "rgba(120,20,55,0.18)",   // rose / couture
+  // Ads: commercial.jpg is dark marble perfume — amber-gold tint lifts the luxury feel
+  "commercial-ads": "rgba(160,120,40,0.22)",  // amber-gold / luxury product
+  // Characters: char_03 is a close face portrait — violet tint reads as AI / uncanny
   "trained-models": "rgba(80,24,120,0.20)",   // violet / AI
+  // Films: golden doorway — near-black deepens the cinematic contrast
   "films":          "rgba(4,10,30,0.22)",     // near-black / cinematic
-  "real-estate":    "rgba(140,110,50,0.22)",  // amber-gold / luxury
-  "heritage":       "rgba(110,48,14,0.22)",   // warm sienna / memory
+  // Real Estate: realestate.jpg already glows blue-gold at night — subtle warm tint
+  "real-estate":    "rgba(140,110,50,0.18)",  // amber-gold / luxury
+  // Heritage: h_015 is warm golden-hour dust — sienna tint amplifies nostalgia
+  "heritage":       "rgba(110,48,14,0.25)",   // warm sienna / memory
 };
 
 // Per-category CTA copy — avoids the same label repeating 6 times.

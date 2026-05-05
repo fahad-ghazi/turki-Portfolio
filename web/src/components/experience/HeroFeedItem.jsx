@@ -220,22 +220,6 @@ export default function HeroFeedItem({ isActive, onEnter, totalSlides = 5, curre
         </motion.div>
       </div>
 
-      {/* Side dots */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={isActive ? { opacity: 1 } : { opacity: 0 }}
-        transition={{ delay: 0.8 }}
-        className={`absolute ${isAr ? "right-5" : "left-5"} top-1/2 -translate-y-1/2 flex flex-col gap-2.5`}
-      >
-        {Array.from({ length: TOTAL }).map((_, i) => (
-          <div key={i} className="rounded-full transition-all duration-500" style={{
-            width: "3px",
-            height: i === currentSlide ? "20px" : "3px",
-            backgroundColor: i === currentSlide ? GOLD : "rgba(255,255,255,0.38)",
-          }} />
-        ))}
-      </motion.div>
-
       {/* Scroll hint */}
       <motion.div
         initial={{ opacity: 0 }}
