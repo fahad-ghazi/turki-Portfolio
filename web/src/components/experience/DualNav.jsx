@@ -242,7 +242,7 @@ export default function DualNav() {
                 style={{
                   width: "5px",
                   height: i === currentSlide ? "22px" : "5px",
-                  backgroundColor: i === currentSlide ? "#C9A961" : "rgba(26,26,26,0.18)",
+                  backgroundColor: i === currentSlide ? "#C9A961" : "rgba(255,255,255,0.38)",
                 }}
               />
             </button>

@@ -74,14 +74,14 @@ export default function MicroContext({ isActive }) {
 
   return (
     <div
-      className="relative w-full h-full flex items-center justify-center overflow-hidden bg-[#F5F1E8]"
+      className="relative w-full h-full flex items-center justify-center overflow-hidden bg-[#0C0C0C]"
       dir={isAr ? "rtl" : "ltr"}
     >
-      {/* Subtle radial glow */}
+      {/* Radial gold glow — more visible on dark background */}
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
-          background: "radial-gradient(ellipse 60% 50% at 50% 50%, rgba(201,169,97,0.12) 0%, transparent 70%)",
+          background: "radial-gradient(ellipse 60% 50% at 50% 50%, rgba(201,169,97,0.10) 0%, transparent 68%)",
         }}
       />
 
@@ -102,8 +102,8 @@ export default function MicroContext({ isActive }) {
         <p
           className="font-noto font-light leading-[2]"
           style={{
-            fontSize: "clamp(1.35rem, 5.8vw, 1.9rem)",
-            color: "#0B0B0B",
+            fontSize: "clamp(1.1rem, 4.5vw, 1.5rem)",
+            color: "rgba(245,241,232,0.82)",
             maxWidth: "420px",
             letterSpacing: "0.015em",
           }}
@@ -117,7 +117,7 @@ export default function MicroContext({ isActive }) {
 
         <div className="mt-2 w-full max-w-[520px]">
           <div className="relative mx-auto h-56 w-56">
-            <div className="absolute inset-8 rounded-full border border-[#C9A961]/25 bg-[#E9E2D3]/35" />
+            <div className="absolute inset-8 rounded-full border border-[#C9A961]/25 bg-white/5" />
             {/* The orbit ring rotates as a whole (animated by ringRef.style
                 in the requestAnimationFrame loop); each child sits at a
                 fixed angle within it and only counter-rotates its inner
@@ -166,7 +166,7 @@ export default function MicroContext({ isActive }) {
               })}
             </div>
             <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
-              <span className="rounded-full border border-[#C9A961]/35 bg-[#F5F1E8]/90 px-5 py-3 font-noto text-sm font-bold text-[#1A1A1A] shadow-md">
+              <span className="rounded-full border border-[#C9A961]/40 bg-[#0C0C0C]/90 px-5 py-3 font-noto text-sm font-bold shadow-md" style={{ color: GOLD }}>
                 {isAr ? "عيالي" : "Characters"}
               </span>
             </div>

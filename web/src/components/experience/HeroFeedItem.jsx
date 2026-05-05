@@ -167,7 +167,7 @@ export default function HeroFeedItem({ isActive, onEnter, totalSlides = 5, curre
           <h1
             className="font-cormorant font-semibold leading-[0.92] mb-6"
             style={{
-              fontSize: "clamp(4rem, 17vw, 7rem)",
+              fontSize: "clamp(3rem, 13vw, 5.5rem)",
               color: "#F5F1E8",
               letterSpacing: "-0.01em",
               textShadow: "0 4px 32px rgba(26,26,26,0.28)",
@@ -211,7 +211,7 @@ export default function HeroFeedItem({ isActive, onEnter, totalSlides = 5, curre
               }}
             >
               <span>{isAr ? "استعرض الأعمال" : "View Work"}</span>
-              <span style={{ color: "#1A1A1A", fontSize: "10px" }}>{isAr ? "←" : "→"}</span>
+              <span style={{ color: "#1A1A1A", fontSize: "10px" }}>→</span>
             </motion.button>
             <Link to="/booking" className="rounded-full border border-[#F5F1E8]/55 bg-black/22 px-6 py-3.5 font-noto text-sm font-bold text-[#F5F1E8] backdrop-blur-sm transition hover:border-[#C9A961] hover:text-[#C9A961]">
               {isAr ? "احجز مشروع" : "Book Project"}
@@ -231,7 +231,7 @@ export default function HeroFeedItem({ isActive, onEnter, totalSlides = 5, curre
           <div key={i} className="rounded-full transition-all duration-500" style={{
             width: "3px",
             height: i === currentSlide ? "20px" : "3px",
-            backgroundColor: i === currentSlide ? GOLD : "rgba(255,255,255,0.18)",
+            backgroundColor: i === currentSlide ? GOLD : "rgba(255,255,255,0.38)",
           }} />
         ))}
       </motion.div>
