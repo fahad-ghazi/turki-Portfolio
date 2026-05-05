@@ -12,8 +12,8 @@ const GOLD = "#C9A961";
 const CATEGORY_TINT = {
   // Fashion: f_030 is blue sky + bold outfit — rose tint adds couture warmth
   "ai-fashion":     "rgba(120,20,55,0.18)",   // rose / couture
-  // Ads: commercial.jpg is dark marble perfume — amber-gold tint lifts the luxury feel
-  "commercial-ads": "rgba(160,120,40,0.22)",  // amber-gold / luxury product
+  // Ads: a_055 is warm burgundy lifestyle — deep navy tint adds cinematic contrast
+  "commercial-ads": "rgba(22,50,130,0.20)",   // deep navy / corporate
   // Characters: char_03 is a close face portrait — violet tint reads as AI / uncanny
   "trained-models": "rgba(80,24,120,0.20)",   // violet / AI
   // Films: golden doorway — near-black deepens the cinematic contrast
