@@ -321,17 +321,21 @@ export default function AllWorksMode({ onExit }) {
   const [bounce, setBounce]         = useState(0);
 
   const transitioningRef = useRef(false);
+  const bounceTimerRef   = useRef(null);
 
-  // Lock the DualNav scroll container (same pattern as TinderMode)
+  // Clear bounce timer on unmount to prevent setState on unmounted component
+  useEffect(() => () => { if (bounceTimerRef.current) clearTimeout(bounceTimerRef.current); }, []);
+
+  // Lock the DualNav scroll container while AllWorksMode is open.
+  // We do NOT restore scrollTop here — DualNav owns scroll restoration
+  // via its slideBeforeEnter ref (same contract as TinderMode).
   useEffect(() => {
     const container = document.querySelector('[data-scroll-container="dual-nav"]');
     if (!container) return;
-    const savedOverflow  = container.style.overflowY;
-    const savedScrollTop = container.scrollTop;
+    const savedOverflow = container.style.overflowY;
     container.style.overflowY = "hidden";
     return () => {
       container.style.overflowY = savedOverflow;
-      container.scrollTop       = savedScrollTop;
     };
   }, []);
 
@@ -344,11 +348,12 @@ export default function AllWorksMode({ onExit }) {
   }, []);
 
   // ── Bounce at boundaries ───────────────────────────────────────
-  const triggerBounce = (dir) => {
+  const triggerBounce = useCallback((dir) => {
     setBounce(dir);
     if (navigator.vibrate) navigator.vibrate(4);
-    setTimeout(() => setBounce(0), 280);
-  };
+    if (bounceTimerRef.current) clearTimeout(bounceTimerRef.current);
+    bounceTimerRef.current = setTimeout(() => setBounce(0), 280);
+  }, []);
 
   // ── Swipe handler ──────────────────────────────────────────────
   // physicalDir: -1 = swiped left, 1 = swiped right.
@@ -386,7 +391,7 @@ export default function AllWorksMode({ onExit }) {
         transitioningRef.current = false;
       }, TRANSITION_MS);
     },
-    [isAr, index, deck.length, onExit],
+    [isAr, index, deck.length, onExit, triggerBounce],
   );
 
   // Desktop keyboard navigation — placed AFTER handleSwipe so its deps
@@ -412,19 +417,15 @@ export default function AllWorksMode({ onExit }) {
     [filterId],
   );
 
-  // ── Render: intent filter ──────────────────────────────────────
-  if (phase === "filter") {
-    return (
-      <AnimatePresence>
-        <IntentFilter isAr={isAr} onSelect={handleFilterSelect} onClose={onExit} />
-      </AnimatePresence>
-    );
-  }
-
   const isMystery = currentCard?.cardType === "mystery";
 
-  // ── Render: swipe stage ────────────────────────────────────────
+  // ── Single return — AnimatePresence stays mounted across phase changes
+  // so IntentFilter's exit animation fires when phase → "swipe".
+  // The IntentFilter is z-50 fixed so it sits above the swipe UI.
   return (
+    <>
+    {/* ── Swipe stage — always rendered once phase leaves "filter" ── */}
+    {phase !== "filter" && (
     <div
       className="fixed inset-0 z-50 flex flex-col"
       style={{ background: "#F5F1E8" }}
@@ -610,5 +611,17 @@ export default function AllWorksMode({ onExit }) {
         </div>
       </div>
     </div>
+    )}{/* end phase !== "filter" */}
+
+    {/* IntentFilter — always inside AnimatePresence so it can play its
+        exit animation (opacity: 0, 0.28 s) when phase changes to "swipe".
+        An early-return approach would unmount AnimatePresence itself, killing
+        the exit before it fires. */}
+    <AnimatePresence>
+      {phase === "filter" && (
+        <IntentFilter isAr={isAr} onSelect={handleFilterSelect} onClose={onExit} />
+      )}
+    </AnimatePresence>
+    </>
   );
 }

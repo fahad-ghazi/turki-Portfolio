@@ -1,7 +1,11 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { useLang } from "@/lib/LanguageContext";
 import { Lightbulb, Globe, Film, Download } from "lucide-react";
+
+// motion-enhanced Link so we can use whileTap/whileHover on router links
+const MotionLink = motion(Link);
 
 const GOLD = "#C9A961";
 
@@ -120,8 +124,10 @@ export default function FinalSlide({ isActive }) {
         </p>
 
         <div className="flex flex-col gap-3">
-          <motion.a
-            href="/booking"
+          {/* Use MotionLink so React Router handles the navigation —
+              <a href> would trigger a full page reload inside the SPA. */}
+          <MotionLink
+            to="/booking"
             whileTap={{ scale: 0.97 }}
             whileHover={{ boxShadow: "0 0 36px rgba(201,169,97,0.22)", borderColor: "rgba(201,169,97,0.8)" }}
             className="flex items-center justify-center gap-3 font-noto text-base font-bold transition-all duration-400"
@@ -134,15 +140,15 @@ export default function FinalSlide({ isActive }) {
             }}
           >
             {isAr ? "ابدأ مشروعك" : "Start Your Project"}
-          </motion.a>
-          <motion.a
-            href="/Turki-Ghazi-CV.txt"
-            download
+          </MotionLink>
+          {/* CV page is served at /cv — no plain-text file to download */}
+          <MotionLink
+            to="/cv"
             whileTap={{ scale: 0.97 }}
             className="flex items-center justify-center gap-3 rounded-full border-2 border-[#1A1A1A] bg-[#F5F1E8] px-7 py-3 font-noto text-base font-bold text-[#1A1A1A]"
           >
-            <Download className="h-4 w-4" /> {isAr ? "تحميل السيرة" : "Download CV"}
-          </motion.a>
+            <Download className="h-4 w-4" /> {isAr ? "السيرة الذاتية" : "View CV"}
+          </MotionLink>
         </div>
       </motion.div>
     </div>

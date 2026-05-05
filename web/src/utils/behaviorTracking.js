@@ -3,8 +3,14 @@ import { apiClient } from "@/api/client";
 const STORAGE_KEY = "tg_behavior_scores";
 
 const readScores = () => {
-  const raw = localStorage.getItem(STORAGE_KEY);
-  return raw ? JSON.parse(raw) : {};
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    return raw ? JSON.parse(raw) : {};
+  } catch {
+    // Corrupted localStorage entry — start fresh
+    localStorage.removeItem(STORAGE_KEY);
+    return {};
+  }
 };
 
 const writeScores = (scores) => {
@@ -22,7 +28,6 @@ export function trackContentInteraction(id, weight = 1) {
     page: window.location.pathname,
     target_id: id,
     device: /Mobi|Android/i.test(navigator.userAgent) ? "mobile" : "desktop",
-    browser: navigator.userAgent,
     privacy_consent: false,
   });
 }
@@ -38,7 +43,6 @@ export function trackContentTime(id, seconds = 1, weight = 1) {
     target_id: id,
     session_duration: Math.max(1, seconds),
     device: /Mobi|Android/i.test(navigator.userAgent) ? "mobile" : "desktop",
-    browser: navigator.userAgent,
     privacy_consent: false,
   });
 }

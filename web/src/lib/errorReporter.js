@@ -74,10 +74,15 @@ export function installGlobalErrorHandlers() {
 
   window.addEventListener('unhandledrejection', (event) => {
     const reason = event?.reason;
-    const message =
-      typeof reason === 'string'
-        ? reason
-        : reason?.message || JSON.stringify(reason)?.slice(0, 500) || 'unhandled rejection';
+    let message = 'unhandled rejection';
+    if (typeof reason === 'string') {
+      message = reason;
+    } else if (reason?.message) {
+      message = reason.message;
+    } else {
+      // JSON.stringify on a circular object throws TypeError — guard it.
+      try { message = JSON.stringify(reason)?.slice(0, 500) || message; } catch { /* circular */ }
+    }
     reportError({ message });
   });
 
