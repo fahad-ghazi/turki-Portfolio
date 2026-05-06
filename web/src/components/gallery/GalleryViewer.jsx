@@ -4,8 +4,30 @@ import Picture from "@/components/brand/Picture";
 
 const SITE_URL = (import.meta.env?.VITE_PUBLIC_SITE_URL || "").replace(/\/$/, "");
 
+const MOOD_LABELS = {
+  Cinematic: "سينمائي",
+  Fashion: "أزياء",
+  Characters: "شخصيات",
+  "Product Ads": "إعلانات",
+  Heritage: "تراث",
+  Architecture: "معمار",
+  Luxury: "صحراء",
+  Experimental: "تجربة",
+};
+
+const GROUP_LABELS = {
+  "dark-cinematic": "ظِل سينمائي",
+  "red-power": "قوة الأحمر",
+  "warm-luxury": "دفء فاخر",
+  "golden-mood": "ذهب",
+  "soft-neutral": "هدوء محايد",
+  "monochrome": "أحادي",
+  "high-contrast": "تباين عالٍ",
+  "cool-blue": "أزرق بارد",
+  "editorial": "تحريري",
+};
+
 function shareUrlFor(item) {
-  // Deep link back to /gallery-intelligent with the focused item id.
   const base = SITE_URL || (typeof window !== "undefined" ? window.location.origin : "");
   return `${base}/gallery-intelligent?item=${encodeURIComponent(item.id)}`;
 }
@@ -18,22 +40,20 @@ export default function GalleryViewer({ item, onClose, onPrev, onNext }) {
       await navigator.clipboard.writeText(shareUrlFor(item));
       setCopied(true);
       setTimeout(() => setCopied(false), 1500);
-    } catch {
-      /* clipboard unavailable — silently ignore */
-    }
+    } catch { /* ignore */ }
   }, [item]);
 
+  // Arrow keys: in RTL, "left" feels like "next". Mirror.
   useEffect(() => {
     function onKey(e) {
       if (e.key === "Escape") onClose();
-      else if (e.key === "ArrowLeft") onPrev();
-      else if (e.key === "ArrowRight") onNext();
+      else if (e.key === "ArrowRight") onPrev();
+      else if (e.key === "ArrowLeft") onNext();
     }
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
   }, [onClose, onPrev, onNext]);
 
-  // Lock body scroll while the viewer is open.
   useEffect(() => {
     const prev = document.body.style.overflow;
     document.body.style.overflow = "hidden";
@@ -41,53 +61,55 @@ export default function GalleryViewer({ item, onClose, onPrev, onNext }) {
   }, []);
 
   if (!item) return null;
-
   const palette = item.color_palette || [];
+  const mood = MOOD_LABELS[item.mood] || item.mood;
+  const group = GROUP_LABELS[item.visual_group] || item.visual_group;
 
   return (
     <div
       role="dialog"
       aria-modal="true"
+      dir="rtl"
       className="fixed inset-0 z-[100] flex items-center justify-center"
-      style={{
-        backgroundColor: item.dominant_color || "#000",
-      }}
+      style={{ backgroundColor: item.dominant_color || "#000" }}
       onClick={onClose}
     >
-      {/* Soft tinted overlay so any colour reads as cinematic, not flat. */}
       <div
         className="absolute inset-0"
         style={{
           background:
-            "radial-gradient(ellipse at center, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.7) 75%)",
+            "radial-gradient(ellipse at center, rgba(0,0,0,0.18) 0%, rgba(0,0,0,0.72) 78%)",
         }}
       />
 
+      {/* Close — top-left in RTL feels natural */}
       <button
         type="button"
         onClick={(e) => { e.stopPropagation(); onClose(); }}
-        className="absolute right-5 top-5 z-10 inline-flex h-10 w-10 items-center justify-center rounded-full bg-black/40 text-white backdrop-blur-md transition hover:bg-black/60"
-        aria-label="Close"
+        className="absolute left-5 top-5 z-10 inline-flex h-10 w-10 items-center justify-center rounded-full bg-black/40 text-white backdrop-blur-md transition hover:bg-black/65"
+        aria-label="إغلاق"
       >
         <X size={18} />
       </button>
 
+      {/* Prev (right side in RTL → previous = right arrow) */}
       <button
         type="button"
         onClick={(e) => { e.stopPropagation(); onPrev(); }}
-        className="absolute left-3 top-1/2 z-10 -translate-y-1/2 inline-flex h-12 w-12 items-center justify-center rounded-full bg-black/30 text-white/90 backdrop-blur-md transition hover:bg-black/55 md:left-6"
-        aria-label="Previous"
+        className="absolute right-3 top-1/2 z-10 -translate-y-1/2 inline-flex h-12 w-12 items-center justify-center rounded-full bg-black/30 text-white/90 backdrop-blur-md transition hover:bg-black/55 md:right-6"
+        aria-label="السابق"
       >
-        <ChevronLeft size={22} />
+        <ChevronRight size={22} />
       </button>
 
+      {/* Next (left side in RTL) */}
       <button
         type="button"
         onClick={(e) => { e.stopPropagation(); onNext(); }}
-        className="absolute right-3 top-1/2 z-10 -translate-y-1/2 inline-flex h-12 w-12 items-center justify-center rounded-full bg-black/30 text-white/90 backdrop-blur-md transition hover:bg-black/55 md:right-6"
-        aria-label="Next"
+        className="absolute left-3 top-1/2 z-10 -translate-y-1/2 inline-flex h-12 w-12 items-center justify-center rounded-full bg-black/30 text-white/90 backdrop-blur-md transition hover:bg-black/55 md:left-6"
+        aria-label="التالي"
       >
-        <ChevronRight size={22} />
+        <ChevronLeft size={22} />
       </button>
 
       <div
@@ -96,14 +118,11 @@ export default function GalleryViewer({ item, onClose, onPrev, onNext }) {
       >
         <div
           className="relative w-full"
-          style={{
-            maxHeight: "78vh",
-            aspectRatio: String(item.aspect_ratio || 1),
-          }}
+          style={{ maxHeight: "78vh", aspectRatio: String(item.aspect_ratio || 1) }}
         >
           <Picture
             src={item.image_url}
-            alt={item.alt || item.mood}
+            alt={item.alt || mood}
             className="absolute inset-0 h-full w-full object-contain"
             loading="eager"
             fetchPriority="high"
@@ -111,12 +130,12 @@ export default function GalleryViewer({ item, onClose, onPrev, onNext }) {
           />
         </div>
 
-        <div className="mt-5 flex w-full max-w-[900px] flex-wrap items-center justify-between gap-4 text-white/80">
+        <div className="mt-6 flex w-full max-w-[920px] flex-wrap items-center justify-between gap-4 text-white/85">
           <div className="flex items-center gap-3">
-            <span className="text-[11px] uppercase tracking-[0.2em] text-white/60">{item.mood}</span>
+            <span className="text-[11px] tracking-[0.22em] text-white/65">{mood}</span>
             <span className="hidden text-white/30 md:inline">·</span>
-            <span className="hidden text-[11px] uppercase tracking-[0.2em] text-white/50 md:inline">
-              {item.visual_group.replace("-", " ")}
+            <span className="hidden text-[11px] tracking-[0.22em] text-white/55 md:inline">
+              {group}
             </span>
           </div>
 
@@ -134,10 +153,10 @@ export default function GalleryViewer({ item, onClose, onPrev, onNext }) {
           <button
             type="button"
             onClick={copyShare}
-            className="inline-flex items-center gap-2 rounded-full bg-white/10 px-3 py-1.5 text-[11px] uppercase tracking-[0.18em] text-white/90 backdrop-blur-md transition hover:bg-white/20"
+            className="inline-flex items-center gap-2 rounded-full bg-white/10 px-3.5 py-1.5 text-[11px] tracking-[0.18em] text-white/90 backdrop-blur-md transition hover:bg-white/20"
           >
             {copied ? <Check size={14} /> : <LinkIcon size={14} />}
-            {copied ? "Copied" : "Copy link"}
+            {copied ? "تم النسخ" : "نسخ الرابط"}
           </button>
         </div>
       </div>

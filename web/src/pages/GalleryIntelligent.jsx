@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { useSearchParams } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 import Seo from "@/components/seo/Seo";
 import GalleryHeader from "@/components/gallery/GalleryHeader";
 import GalleryGrid from "@/components/gallery/GalleryGrid";
@@ -10,32 +11,46 @@ import {
   VIEW_MODES,
   COLLECTIONS,
 } from "@/components/gallery/galleryAlgorithm";
+import {
+  TOKENS,
+  styleFromTokens,
+  resolveInitialTheme,
+  persistTheme,
+} from "@/components/gallery/galleryTheme";
 
 /**
- * /gallery-intelligent — additive page. Reads only
- * public/gallery-manifest.json (built by web/scripts/build-gallery-index.js)
- * and renders an editorial, colour-aware view of every image already on
- * the site. The existing gallery routes are untouched.
+ * /gallery-intelligent — Arabic-first editorial gallery.
  *
- * URL params (all shareable):
- *   ?view=curated|by-color|by-brightness|by-faces|by-mood|random
- *   ?collection=fashion|characters|ads|films|heritage|realestate|luxury|dark|warm|red|high-contrast
- *   ?seed=<int>   — random-mode seed, so a copied URL renders identically
- *   ?item=<id>    — opens the fullscreen viewer focused on that item
+ * What this page is:
+ *   - RTL by default. Title is "عوالم تركي".
+ *   - Two themes: warm cinematic light + true black dark. Toggle in
+ *     header, persisted to localStorage, falls back to OS preference.
+ *   - Reads only public/gallery-manifest.json (built by
+ *     scripts/build-gallery-index.js) — no client-side analysis.
+ *   - Curated view assigns items to Visual Chapters with Arabic
+ *     headings (شخصيات / أزياء / سينمائي / إعلانات / تراث / معمار /
+ *     أحمر / صحراء / ليل / هدوء / تجارب). Other views show a flat
+ *     editorial masonry.
+ *   - Typography: IBM Plex Sans Arabic, loaded via Helmet so it only
+ *     ships on this route.
+ *
+ * URL params (shareable on WhatsApp, etc.):
+ *   ?view=curated|by-color|by-brightness|by-mood|random
+ *   ?collection=characters|fashion|ads|films|heritage|realestate|luxury|dark|red
+ *   ?seed=<int>   for the random view
+ *   ?item=<id>    opens the fullscreen viewer
  */
 export default function GalleryIntelligent() {
   const [params, setParams] = useSearchParams();
   const [manifest, setManifest] = useState(null);
   const [error, setError] = useState(null);
   const [openItem, setOpenItem] = useState(null);
+  const [theme, setTheme] = useState(() => resolveInitialTheme());
 
   const view = validateOption(params.get("view"), VIEW_MODES, "curated");
   const collection = validateOption(params.get("collection"), COLLECTIONS, "all");
   const seed = Number(params.get("seed")) || 1729;
 
-  // Load manifest once. We deliberately fetch from /gallery-manifest.json
-  // (public/) instead of importing it so the JSON stays out of the JS
-  // bundle and ships gzipped from the static host.
   useEffect(() => {
     let cancelled = false;
     fetch("/gallery-manifest.json", { cache: "force-cache" })
@@ -54,7 +69,6 @@ export default function GalleryIntelligent() {
     return arrangeForView(filtered, view, seed);
   }, [manifest, collection, view, seed]);
 
-  // Deep-link to a specific item via ?item=…
   useEffect(() => {
     if (!manifest) return;
     const id = params.get("item");
@@ -92,51 +106,65 @@ export default function GalleryIntelligent() {
 
   const onClose = useCallback(() => updateParam("item", null), [updateParam]);
 
+  const onChangeTheme = useCallback((t) => {
+    setTheme(t);
+    persistTheme(t);
+  }, []);
+
+  const wrapperStyle = useMemo(() => ({
+    ...styleFromTokens(theme),
+    fontFamily:
+      "'IBM Plex Sans Arabic', 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif",
+    transition: "background-color 320ms ease, color 320ms ease",
+  }), [theme]);
+
   return (
-    <div
-      className="min-h-screen bg-[#0a0a0b] text-white selection:bg-white selection:text-black"
-      style={{ fontFeatureSettings: "'ss01', 'ss02'" }}
-    >
+    <div dir="rtl" data-theme={theme} className="min-h-screen" style={wrapperStyle}>
+      <Helmet>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&display=swap"
+        />
+        <meta name="theme-color" content={TOKENS[theme].bg} />
+      </Helmet>
+
       <Seo
-        title="AI Visual Worlds"
-        description="An intelligent, colour-aware gallery of AI-generated visuals — sorted by light, contrast and mood."
+        title="عوالم تركي"
+        description="تجارب بصرية مولَّدة بالذكاء الاصطناعي — مُرتَّبة حسب اللون والضوء والمزاج."
         canonical="/gallery-intelligent"
-        noIndex={true}
+        lang="ar"
       />
 
       <GalleryHeader
         view={view}
         collection={collection}
         count={items.length}
+        theme={theme}
+        onChangeTheme={onChangeTheme}
         onChangeView={(v) => updateParam("view", v)}
         onChangeCollection={(c) => updateParam("collection", c)}
       />
 
-      <main className="mx-auto w-full max-w-[1600px] px-3 pb-24 md:px-6">
+      <main className="mx-auto w-full max-w-[1600px] px-4 pb-32 md:px-8">
         {error && (
-          <p className="px-4 py-12 text-center text-sm text-white/50">
-            Couldn’t load the gallery manifest. Run{" "}
-            <code className="rounded bg-white/10 px-1.5 py-0.5">
-              node scripts/build-gallery-index.js
-            </code>{" "}
-            and reload.
+          <p
+            className="px-4 py-12 text-center text-sm"
+            style={{ color: "var(--gi-text-muted)" }}
+          >
+            تعذّر تحميل بيانات المعرض.
           </p>
         )}
 
-        {!error && !manifest && (
-          <div className="grid grid-cols-2 gap-3 px-2 md:grid-cols-4 md:gap-4 lg:grid-cols-6">
-            {Array.from({ length: 24 }).map((_, i) => (
-              <div
-                key={i}
-                className="aspect-[3/4] animate-pulse rounded-xl bg-white/5"
-              />
-            ))}
-          </div>
-        )}
+        {!error && !manifest && <GridSkeleton />}
 
         {manifest && items.length === 0 && (
-          <p className="px-4 py-16 text-center text-sm text-white/45">
-            No images match this collection yet.
+          <p
+            className="px-4 py-16 text-center text-sm"
+            style={{ color: "var(--gi-text-muted)" }}
+          >
+            لا توجد أعمال تطابق هذا التصنيف بعد.
           </p>
         )}
 
@@ -149,6 +177,14 @@ export default function GalleryIntelligent() {
         )}
       </main>
 
+      {/* Footer — minimal, Arabic, brand-anchored */}
+      <footer
+        className="border-t px-6 py-12 text-center text-[12px] tracking-[0.22em]"
+        style={{ borderColor: "var(--gi-border)", color: "var(--gi-text-subtle)" }}
+      >
+        تركي غازي · عوالم بصرية بالذكاء الاصطناعي
+      </footer>
+
       {openItem && (
         <GalleryViewer
           item={openItem}
@@ -157,6 +193,20 @@ export default function GalleryIntelligent() {
           onNext={onNext}
         />
       )}
+    </div>
+  );
+}
+
+function GridSkeleton() {
+  return (
+    <div className="grid grid-cols-2 gap-4 px-2 md:grid-cols-6 md:gap-5">
+      {Array.from({ length: 18 }).map((_, i) => (
+        <div
+          key={i}
+          className="aspect-[3/4] animate-pulse rounded-[14px]"
+          style={{ backgroundColor: "var(--gi-skeleton)" }}
+        />
+      ))}
     </div>
   );
 }

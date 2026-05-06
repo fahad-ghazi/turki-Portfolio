@@ -181,28 +181,26 @@ const MOOD_TO_GROUP = {
 };
 
 // Public list of collections shown in the header chips, in display order.
+// Arabic labels — the page is RTL-first.
 export const COLLECTIONS = [
-  { id: "all",          label: "All" },
-  { id: "fashion",      label: "Fashion" },
-  { id: "characters",   label: "Characters" },
-  { id: "ads",          label: "Product Ads" },
-  { id: "films",        label: "Cinematic" },
-  { id: "heritage",     label: "Heritage" },
-  { id: "realestate",   label: "Architecture" },
-  { id: "luxury",       label: "Luxury" },
-  { id: "dark",         label: "Dark Mood" },
-  { id: "warm",         label: "Warm Mood" },
-  { id: "red",          label: "Red Mood" },
-  { id: "high-contrast",label: "High Contrast" },
+  { id: "all",          label: "الكل" },
+  { id: "characters",   label: "شخصيات" },
+  { id: "fashion",      label: "أزياء" },
+  { id: "ads",          label: "إعلانات" },
+  { id: "films",        label: "سينمائي" },
+  { id: "heritage",     label: "تراث" },
+  { id: "realestate",   label: "معمار" },
+  { id: "luxury",       label: "صحراء" },
+  { id: "dark",         label: "ليل" },
+  { id: "red",          label: "أحمر" },
 ];
 
 export const VIEW_MODES = [
-  { id: "curated",     label: "Curated" },
-  { id: "by-color",    label: "By Color" },
-  { id: "by-brightness", label: "By Brightness" },
-  { id: "by-faces",    label: "By Faces" },
-  { id: "by-mood",     label: "By Mood" },
-  { id: "random",      label: "Random Editorial" },
+  { id: "curated",       label: "مُنتقى" },
+  { id: "by-color",      label: "حسب اللون" },
+  { id: "by-brightness", label: "حسب الضوء" },
+  { id: "by-mood",       label: "حسب المزاج" },
+  { id: "random",        label: "عشوائي" },
 ];
 
 export function arrangeForView(items, view, seed) {
