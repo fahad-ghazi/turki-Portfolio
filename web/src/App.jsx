@@ -26,6 +26,7 @@ import Privacy from './pages/Privacy';
 import Terms from './pages/Terms';
 import Blog from './pages/Blog';
 import BlogPost from './pages/BlogPost';
+import GalleryIntelligent from './pages/GalleryIntelligent';
 
 function App() {
   return (
@@ -45,6 +46,9 @@ function App() {
               <Route path="/cv" element={<CV />} />
               <Route path="/booking" element={<Booking />} />
               <Route path="/trained-models" element={<TrainedModels />} />
+
+              {/* Intelligent gallery — additive, does not replace existing pages */}
+              <Route path="/gallery-intelligent" element={<GalleryIntelligent />} />
 
               {/* Stub content pages — noIndex until copy lands */}
               <Route path="/about" element={<About />} />

@@ -7,6 +7,7 @@
     "dev": "vite",
     "build": "vite build",
     "build:images": "node tools/build-images.mjs",
+    "build:gallery": "node scripts/build-gallery-index.js",
     "lint": "eslint . --quiet",
     "lint:fix": "eslint . --fix",
     "typecheck": "tsc -p ./jsconfig.json",
