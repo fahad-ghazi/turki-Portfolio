@@ -16,6 +16,43 @@
 //      forward. Same for "rest" beats which pull forward the calmest.
 //      Strong images land where they belong, not in indexer order.
 
+// --- 0. Cluster dedupe -------------------------------------------------
+//
+// The trained-models folder ships ~7-10 angles per character (char_01,
+// char_02, …). Each angle is technically a different photo, but to a
+// human scrolling the cinema it reads as "I just saw this person".
+// Without dedupe, 8 characters take up 68 of the deck's 352 slots and
+// the page feels repetitive even though every URL is unique.
+//
+// We cluster by filesystem prefix and keep at most N per cluster,
+// picking the highest-featured-score angles. Non-character images are
+// each their own cluster (no dedupe). N = 2 keeps the characters
+// visible without making the same face dominate the film.
+
+const MAX_PER_CHARACTER = 2;
+
+function clusterKeyOf(item) {
+  const m = item.image_url.match(/\/trained_models\/(char_\d+)\//);
+  if (m) return `char:${m[1]}`;
+  return `id:${item.id}`; // singletons cluster only with themselves
+}
+
+function dedupeClusters(items, maxPerCluster) {
+  const buckets = new Map();
+  for (const it of items) {
+    const key = clusterKeyOf(it);
+    if (!buckets.has(key)) buckets.set(key, []);
+    buckets.get(key).push(it);
+  }
+  const out = [];
+  for (const arr of buckets.values()) {
+    if (arr.length <= 1) { out.push(...arr); continue; }
+    arr.sort((a, b) => b.featured_score - a.featured_score);
+    out.push(...arr.slice(0, maxPerCluster));
+  }
+  return out;
+}
+
 // --- 1. Visual proximity sort ------------------------------------------
 
 function visualCoord(it) {
@@ -111,7 +148,8 @@ function pullImage(deck, weight) {
 // --- 3. Public API ------------------------------------------------------
 
 export function buildCinemaSequence(items) {
-  const deck = arrangeForCinema(items);
+  const filtered = dedupeClusters(items, MAX_PER_CHARACTER);
+  const deck = arrangeForCinema(filtered);
   const beats = [];
   let p = 0;
   let safety = 0;
