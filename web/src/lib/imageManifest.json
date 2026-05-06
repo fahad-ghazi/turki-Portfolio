@@ -153,17 +153,6 @@
     ],
     "aspectRatio": 1
   },
-  "/works/ads/a_015.jpg": {
-    "width": 1200,
-    "height": 1200,
-    "blurhash": "UbEpQXtSNIoz?wRiWBae%hkCRjkC%hofRjfk",
-    "widths": [
-      480,
-      960,
-      1200
-    ],
-    "aspectRatio": 1
-  },
   "/works/ads/a_016.jpg": {
     "width": 1200,
     "height": 1200,
@@ -571,17 +560,6 @@
     ],
     "aspectRatio": 1.7751
   },
-  "/works/ads/a_053.jpg": {
-    "width": 1152,
-    "height": 2048,
-    "blurhash": "UKBM#yIVt7%M~VIoWBt7?GM{M{kC_2NGjut7",
-    "widths": [
-      480,
-      960,
-      1152
-    ],
-    "aspectRatio": 0.5625
-  },
   "/works/ads/a_054.jpg": {
     "width": 1200,
     "height": 2150,
@@ -732,17 +710,6 @@
     ],
     "aspectRatio": 0.5581
   },
-  "/works/ads/a_068.jpg": {
-    "width": 1152,
-    "height": 2048,
-    "blurhash": "U29%S27P00-i05-N}*9d00I9~BIp~TXob{t5",
-    "widths": [
-      480,
-      960,
-      1152
-    ],
-    "aspectRatio": 0.5625
-  },
   "/works/ads/a_069.jpg": {
     "width": 1200,
     "height": 806,
@@ -776,17 +743,6 @@
     ],
     "aspectRatio": 1.4888
   },
-  "/works/banners/ads.jpg": {
-    "width": 1344,
-    "height": 768,
-    "blurhash": "UNOw_|.Ty-.7]jt3o]r?xFR.J.$%=HbbTJn+",
-    "widths": [
-      480,
-      960,
-      1344
-    ],
-    "aspectRatio": 1.75
-  },
   "/works/banners/commercial.jpg": {
     "width": 1344,
     "height": 768,
@@ -809,17 +765,6 @@
     ],
     "aspectRatio": 1.75
   },
-  "/works/banners/films.jpg": {
-    "width": 1344,
-    "height": 768,
-    "blurhash": "U88NUoRkt7E3~UM|-nNGozM}-njYRkj[ofWX",
-    "widths": [
-      480,
-      960,
-      1344
-    ],
-    "aspectRatio": 1.75
-  },
   "/works/banners/heritage.jpg": {
     "width": 1344,
     "height": 768,
@@ -835,28 +780,6 @@
     "width": 1344,
     "height": 768,
     "blurhash": "U58;Z9~VH;R4^-xYngf5Z2M|yEt7zTnhtno#",
-    "widths": [
-      480,
-      960,
-      1344
-    ],
-    "aspectRatio": 1.75
-  },
-  "/works/banners/studies.jpg": {
-    "width": 1344,
-    "height": 768,
-    "blurhash": "UXHLo0jZbIt7~WWBf6jt-;xuRka|x[t7azoL",
-    "widths": [
-      480,
-      960,
-      1344
-    ],
-    "aspectRatio": 1.75
-  },
-  "/works/banners/trained.jpg": {
-    "width": 1344,
-    "height": 768,
-    "blurhash": "U3GR@#~pEQ~q_2S2MdDiIA8_X9tR-n_3Z~%L",
     "widths": [
       480,
       960,
@@ -1011,17 +934,6 @@
     "width": 1400,
     "height": 2508,
     "blurhash": "UcL#5@?b~q?bV[%Mt7of%Mt79FM{t7ogM{WB",
-    "widths": [
-      480,
-      960,
-      1400
-    ],
-    "aspectRatio": 0.5582
-  },
-  "/works/fashion/f_015.jpg": {
-    "width": 1400,
-    "height": 2508,
-    "blurhash": "UWH2WX%N~q?b-:o1f+of%1jZRjoft8tRt7oz",
     "widths": [
       480,
       960,
@@ -1293,65 +1205,10 @@
     ],
     "aspectRatio": 0.7503
   },
-  "/works/fashion/f_040.jpg": {
-    "width": 1400,
-    "height": 1866,
-    "blurhash": "UADk0^,[0}JA7xXS+v$Q0~ni}soz:,WBFwS~",
-    "widths": [
-      480,
-      960,
-      1400
-    ],
-    "aspectRatio": 0.7503
-  },
   "/works/fashion/f_041.jpg": {
     "width": 1400,
     "height": 1866,
     "blurhash": "UMEBgSs:BUxa?^xGw|ozu4oz$%of-;ozg2sp",
-    "widths": [
-      480,
-      960,
-      1400
-    ],
-    "aspectRatio": 0.7503
-  },
-  "/works/fashion/f_042.jpg": {
-    "width": 1400,
-    "height": 1866,
-    "blurhash": "U37UPE-;KjM_D,E19uM_T0Rit8Di?wt6?IM_",
-    "widths": [
-      480,
-      960,
-      1400
-    ],
-    "aspectRatio": 0.7503
-  },
-  "/works/fashion/f_043.jpg": {
-    "width": 1400,
-    "height": 1866,
-    "blurhash": "U56[N{MxJ7M}-;D$bvIU%fIUxtM{?wIU%MWC",
-    "widths": [
-      480,
-      960,
-      1400
-    ],
-    "aspectRatio": 0.7503
-  },
-  "/works/fashion/f_044.jpg": {
-    "width": 1400,
-    "height": 1866,
-    "blurhash": "U3A1Ca.T00JE|,tR.TkV00sk#jnN1-WA8#My",
-    "widths": [
-      480,
-      960,
-      1400
-    ],
-    "aspectRatio": 0.7503
-  },
-  "/works/fashion/f_045.jpg": {
-    "width": 1400,
-    "height": 1866,
-    "blurhash": "U39HU{s,00%%:4W@ysWB0EMu+qa]l.Mw4Yoh",
     "widths": [
       480,
       960,
@@ -1931,54 +1788,10 @@
     ],
     "aspectRatio": 0.8055
   },
-  "/works/fashion/f_098.jpg": {
-    "width": 1400,
-    "height": 1866,
-    "blurhash": "UBB3~NRj00~V9]NG9F9ZD$?b^+9Zx[NGIpof",
-    "widths": [
-      480,
-      960,
-      1400
-    ],
-    "aspectRatio": 0.7503
-  },
-  "/works/fashion/f_099.jpg": {
-    "width": 1400,
-    "height": 1866,
-    "blurhash": "UHDlc*ae00M{xbRiOFtR00sk_NkXOZ%L$2D*",
-    "widths": [
-      480,
-      960,
-      1400
-    ],
-    "aspectRatio": 0.7503
-  },
-  "/works/fashion/f_100.jpg": {
-    "width": 1400,
-    "height": 1866,
-    "blurhash": "U6Ac*t?H0hOF4mRjD%Rj0Mbb^i%1ogt7_MtR",
-    "widths": [
-      480,
-      960,
-      1400
-    ],
-    "aspectRatio": 0.7503
-  },
   "/works/fashion/f_101.jpg": {
     "width": 1400,
     "height": 1866,
     "blurhash": "U3DSm~tQ0N9F00%259tm00Mc[9OY00tm~AVX",
-    "widths": [
-      480,
-      960,
-      1400
-    ],
-    "aspectRatio": 0.7503
-  },
-  "/works/fashion/f_102.jpg": {
-    "width": 1400,
-    "height": 1866,
-    "blurhash": "UADI%Yxt02NIxDWXslkC00Rj~At6NGoLxaM|",
     "widths": [
       480,
       960,
@@ -2001,17 +1814,6 @@
     "width": 1400,
     "height": 1876,
     "blurhash": "UBCQY;%200In0KS#_Nr[00Io?H-pyEt7MdNG",
-    "widths": [
-      480,
-      960,
-      1400
-    ],
-    "aspectRatio": 0.7463
-  },
-  "/works/fashion/f_105.jpg": {
-    "width": 1400,
-    "height": 1876,
-    "blurhash": "U2HV3or500jVD|574TNX9lGtHXGv00~W_M9G",
     "widths": [
       480,
       960,
@@ -2843,30 +2645,6 @@
     ],
     "aspectRatio": 0.6711
   },
-  "/works/hero-poster.jpg": {
-    "width": 1930,
-    "height": 1080,
-    "blurhash": "U47eVJGSDO}vbLbFM_RP00w}%2E1Diw|tRyD",
-    "widths": [
-      480,
-      960,
-      1440,
-      1920,
-      1930
-    ],
-    "aspectRatio": 1.787
-  },
-  "/works/poster_01_saudi_joker.jpg": {
-    "width": 1280,
-    "height": 716,
-    "blurhash": "U38#+*LM4T:oYNtdI]#F?^ox4TMc?wIUNHoz",
-    "widths": [
-      480,
-      960,
-      1280
-    ],
-    "aspectRatio": 1.7877
-  },
   "/works/poster_02_human_snail.jpg": {
     "width": 1280,
     "height": 640,
@@ -2900,17 +2678,6 @@
     ],
     "aspectRatio": 1.7778
   },
-  "/works/poster_05_disorders.jpg": {
-    "width": 1024,
-    "height": 576,
-    "blurhash": "UA8EuN%L00Mx_NoL4URjnOWVNuaz%MkCIURj",
-    "widths": [
-      480,
-      960,
-      1024
-    ],
-    "aspectRatio": 1.7778
-  },
   "/works/poster_06_saudi_harley.jpg": {
     "width": 1024,
     "height": 576,
@@ -2941,17 +2708,6 @@
       720
     ],
     "aspectRatio": 0.5625
-  },
-  "/works/poster_09_generations.jpg": {
-    "width": 1200,
-    "height": 898,
-    "blurhash": "U89Qjg%N_N-q_NtStmo#IoofIoNGMcnNI9M{",
-    "widths": [
-      480,
-      960,
-      1200
-    ],
-    "aspectRatio": 1.3363
   },
   "/works/realestate/r_001.jpg": {
     "width": 1200,
@@ -3040,17 +2796,6 @@
     ],
     "aspectRatio": 0.7467
   },
-  "/works/realestate/r_009.jpg": {
-    "width": 1200,
-    "height": 670,
-    "blurhash": "URDcdh~q%MtR%2V@jEs:M_RPWVWBMxRiWBjE",
-    "widths": [
-      480,
-      960,
-      1200
-    ],
-    "aspectRatio": 1.791
-  },
   "/works/realestate/r_010.jpg": {
     "width": 896,
     "height": 1200,
@@ -3134,17 +2879,6 @@
     ],
     "aspectRatio": 0.7467
   },
-  "/works/realestate/r_018.jpg": {
-    "width": 1200,
-    "height": 896,
-    "blurhash": "U6E{RkM{00n|_MaKWXE200xa~BIo?HR-xtxW",
-    "widths": [
-      480,
-      960,
-      1200
-    ],
-    "aspectRatio": 1.3393
-  },
   "/works/realestate/r_019.jpg": {
     "width": 1200,
     "height": 896,
@@ -3189,32 +2923,10 @@
     ],
     "aspectRatio": 2.3529
   },
-  "/works/realestate/r_023.jpg": {
-    "width": 1200,
-    "height": 510,
-    "blurhash": "USO|LU?G-pD*~qxuofM{?b9FM{-:-;xut7ay",
-    "widths": [
-      480,
-      960,
-      1200
-    ],
-    "aspectRatio": 2.3529
-  },
   "/works/realestate/r_024.jpg": {
     "width": 1200,
     "height": 510,
     "blurhash": "U%KnC,xtjFxa~qt6WVt7x]oejZoLWEjZoKf6",
-    "widths": [
-      480,
-      960,
-      1200
-    ],
-    "aspectRatio": 2.3529
-  },
-  "/works/realestate/r_025.jpg": {
-    "width": 1200,
-    "height": 510,
-    "blurhash": "UhGl9W-o%2%g~p%L%Lxuxut7ogt6t7kCR+a}",
     "widths": [
       480,
       960,
@@ -3237,17 +2949,6 @@
     "width": 1200,
     "height": 510,
     "blurhash": "UVGbbX_2yE%f~q%M.8x[kXaftRWX-:WBIpWW",
-    "widths": [
-      480,
-      960,
-      1200
-    ],
-    "aspectRatio": 2.3529
-  },
-  "/works/realestate/r_028.jpg": {
-    "width": 1200,
-    "height": 510,
-    "blurhash": "UKECd%~qIVM|-p%N%gxaxCR+S$%LRjWCogt7",
     "widths": [
       480,
       960,

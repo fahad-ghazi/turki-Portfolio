@@ -5,15 +5,6 @@
 
 export const FILMS = [
   {
-    id: "film-01",
-    title: "Saudi Joker",
-    duration: "--:--",
-    year: "2026",
-    description: "فيلم سينمائي قصير بعالم بصري سعودي جريء.",
-    videoUrl: "/videos/01_saudi_joker.mp4",
-    thumbnail: "/works/poster_01_saudi_joker.jpg",
-  },
-  {
     id: "film-02",
     title: "Human Snail",
     duration: "--:--",
@@ -41,15 +32,6 @@ export const FILMS = [
     thumbnail: "/works/poster_04_studies_fragments.jpg",
   },
   {
-    id: "film-05",
-    title: "Disorders",
-    duration: "--:--",
-    year: "2026",
-    description: "تجربة بصرية عن التشوش، الذاكرة، والانفصال عن الجسد.",
-    videoUrl: "/videos/05_disorders.mp4",
-    thumbnail: "/works/poster_05_disorders.jpg",
-  },
-  {
     id: "film-06",
     title: "Saudi Harley",
     duration: "--:--",
@@ -75,14 +57,5 @@ export const FILMS = [
     description: "محتوى قريب من الجمهور لنظارة ذكية بأسلوب يومي مباشر.",
     videoUrl: "/videos/08_glasses_ugc.mp4",
     thumbnail: "/works/poster_08_glasses_ugc.jpg",
-  },
-  {
-    id: "film-09",
-    title: "Generations",
-    duration: "--:--",
-    year: "2026",
-    description: "حكاية أجيال وصورة ذاكرة تتقاطع مع المستقبل.",
-    videoUrl: "/videos/09_generations.mp4",
-    thumbnail: "/works/poster_09_generations.jpg",
   },
 ];

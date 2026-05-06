@@ -52,7 +52,7 @@ function CleanBg({ src, tint }) {
   return (
     <div className="absolute inset-0 overflow-hidden">
       <Picture
-        src={src || "/works/hero-poster.jpg"}
+        src={src || "/works/fashion/f_159.jpg"}
         alt=""
         loading="lazy"
         sizes="100vw"

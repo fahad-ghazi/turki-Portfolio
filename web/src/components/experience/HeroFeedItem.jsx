@@ -36,7 +36,7 @@ export default function HeroFeedItem({ isActive, onEnter, totalSlides = 5, curre
           so `relative` always wins, collapsing the span to 0px height on mobile. */}
       <div className="absolute inset-0 overflow-hidden">
         <Picture
-          src="/works/hero-poster.jpg"
+          src="/works/fashion/f_159.jpg"
           alt="Turki Ghazi — AI Visual Designer"
           loading="eager"
           fetchPriority="high"
