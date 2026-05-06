@@ -4,34 +4,18 @@ import Picture from "@/components/brand/Picture";
 
 const SITE_URL = (import.meta.env?.VITE_PUBLIC_SITE_URL || "").replace(/\/$/, "");
 
-const MOOD_LABELS = {
-  Cinematic: "سينمائي",
-  Fashion: "أزياء",
-  Characters: "شخصيات",
-  "Product Ads": "إعلانات",
-  Heritage: "تراث",
-  Architecture: "معمار",
-  Luxury: "صحراء",
-  Experimental: "تجربة",
-};
-
-const GROUP_LABELS = {
-  "dark-cinematic": "ظِل سينمائي",
-  "red-power": "قوة الأحمر",
-  "warm-luxury": "دفء فاخر",
-  "golden-mood": "ذهب",
-  "soft-neutral": "هدوء محايد",
-  "monochrome": "أحادي",
-  "high-contrast": "تباين عالٍ",
-  "cool-blue": "أزرق بارد",
-  "editorial": "تحريري",
-};
-
 function shareUrlFor(item) {
   const base = SITE_URL || (typeof window !== "undefined" ? window.location.origin : "");
   return `${base}/gallery-intelligent?item=${encodeURIComponent(item.id)}`;
 }
 
+/**
+ * Spotlight viewer. Stripped of metadata — no mood/group labels, no
+ * filename. Just the image, dominant-colour backdrop, palette dots,
+ * and three controls. The page is a film; this is the close-up.
+ *
+ * Arrow keys are mirrored for RTL: ← = next, → = previous.
+ */
 export default function GalleryViewer({ item, onClose, onPrev, onNext }) {
   const [copied, setCopied] = useState(false);
 
@@ -43,7 +27,6 @@ export default function GalleryViewer({ item, onClose, onPrev, onNext }) {
     } catch { /* ignore */ }
   }, [item]);
 
-  // Arrow keys: in RTL, "left" feels like "next". Mirror.
   useEffect(() => {
     function onKey(e) {
       if (e.key === "Escape") onClose();
@@ -62,8 +45,6 @@ export default function GalleryViewer({ item, onClose, onPrev, onNext }) {
 
   if (!item) return null;
   const palette = item.color_palette || [];
-  const mood = MOOD_LABELS[item.mood] || item.mood;
-  const group = GROUP_LABELS[item.visual_group] || item.visual_group;
 
   return (
     <div
@@ -78,38 +59,35 @@ export default function GalleryViewer({ item, onClose, onPrev, onNext }) {
         className="absolute inset-0"
         style={{
           background:
-            "radial-gradient(ellipse at center, rgba(0,0,0,0.18) 0%, rgba(0,0,0,0.72) 78%)",
+            "radial-gradient(ellipse at center, rgba(0,0,0,0.18) 0%, rgba(0,0,0,0.78) 78%)",
         }}
       />
 
-      {/* Close — top-left in RTL feels natural */}
       <button
         type="button"
         onClick={(e) => { e.stopPropagation(); onClose(); }}
-        className="absolute left-5 top-5 z-10 inline-flex h-10 w-10 items-center justify-center rounded-full bg-black/40 text-white backdrop-blur-md transition hover:bg-black/65"
+        className="absolute left-5 top-5 z-10 inline-flex h-10 w-10 items-center justify-center rounded-full bg-black/35 text-white/90 backdrop-blur-md transition hover:bg-black/65"
         aria-label="إغلاق"
       >
-        <X size={18} />
+        <X size={18} strokeWidth={1.5} />
       </button>
 
-      {/* Prev (right side in RTL → previous = right arrow) */}
       <button
         type="button"
         onClick={(e) => { e.stopPropagation(); onPrev(); }}
-        className="absolute right-3 top-1/2 z-10 -translate-y-1/2 inline-flex h-12 w-12 items-center justify-center rounded-full bg-black/30 text-white/90 backdrop-blur-md transition hover:bg-black/55 md:right-6"
+        className="absolute right-3 top-1/2 z-10 -translate-y-1/2 inline-flex h-12 w-12 items-center justify-center rounded-full bg-black/25 text-white/85 backdrop-blur-md transition hover:bg-black/55 md:right-6"
         aria-label="السابق"
       >
-        <ChevronRight size={22} />
+        <ChevronRight size={22} strokeWidth={1.5} />
       </button>
 
-      {/* Next (left side in RTL) */}
       <button
         type="button"
         onClick={(e) => { e.stopPropagation(); onNext(); }}
-        className="absolute left-3 top-1/2 z-10 -translate-y-1/2 inline-flex h-12 w-12 items-center justify-center rounded-full bg-black/30 text-white/90 backdrop-blur-md transition hover:bg-black/55 md:left-6"
+        className="absolute left-3 top-1/2 z-10 -translate-y-1/2 inline-flex h-12 w-12 items-center justify-center rounded-full bg-black/25 text-white/85 backdrop-blur-md transition hover:bg-black/55 md:left-6"
         aria-label="التالي"
       >
-        <ChevronLeft size={22} />
+        <ChevronLeft size={22} strokeWidth={1.5} />
       </button>
 
       <div
@@ -118,11 +96,11 @@ export default function GalleryViewer({ item, onClose, onPrev, onNext }) {
       >
         <div
           className="relative w-full"
-          style={{ maxHeight: "78vh", aspectRatio: String(item.aspect_ratio || 1) }}
+          style={{ maxHeight: "82vh", aspectRatio: String(item.aspect_ratio || 1) }}
         >
           <Picture
             src={item.image_url}
-            alt={item.alt || mood}
+            alt=""
             className="absolute inset-0 h-full w-full object-contain"
             loading="eager"
             fetchPriority="high"
@@ -130,22 +108,13 @@ export default function GalleryViewer({ item, onClose, onPrev, onNext }) {
           />
         </div>
 
-        <div className="mt-6 flex w-full max-w-[920px] flex-wrap items-center justify-between gap-4 text-white/85">
-          <div className="flex items-center gap-3">
-            <span className="text-[11px] tracking-[0.22em] text-white/65">{mood}</span>
-            <span className="hidden text-white/30 md:inline">·</span>
-            <span className="hidden text-[11px] tracking-[0.22em] text-white/55 md:inline">
-              {group}
-            </span>
-          </div>
-
-          <div className="flex items-center gap-2">
+        <div className="mt-6 flex w-full max-w-[680px] items-center justify-between gap-4">
+          <div className="flex items-center gap-1.5">
             {palette.slice(0, 5).map((c, i) => (
               <span
                 key={i}
-                className="h-4 w-4 rounded-full ring-1 ring-white/20"
+                className="h-2.5 w-2.5 rounded-full ring-1 ring-white/15"
                 style={{ backgroundColor: c }}
-                title={c}
               />
             ))}
           </div>
@@ -153,9 +122,9 @@ export default function GalleryViewer({ item, onClose, onPrev, onNext }) {
           <button
             type="button"
             onClick={copyShare}
-            className="inline-flex items-center gap-2 rounded-full bg-white/10 px-3.5 py-1.5 text-[11px] tracking-[0.18em] text-white/90 backdrop-blur-md transition hover:bg-white/20"
+            className="inline-flex items-center gap-2 rounded-full bg-white/8 px-3 py-1.5 text-[11px] tracking-[0.18em] text-white/85 backdrop-blur-md transition hover:bg-white/16"
           >
-            {copied ? <Check size={14} /> : <LinkIcon size={14} />}
+            {copied ? <Check size={13} strokeWidth={1.6} /> : <LinkIcon size={13} strokeWidth={1.6} />}
             {copied ? "تم النسخ" : "نسخ الرابط"}
           </button>
         </div>

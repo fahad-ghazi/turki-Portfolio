@@ -1,55 +1,35 @@
 import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { useSearchParams } from "react-router-dom";
-import { Helmet } from "react-helmet-async";
 import Seo from "@/components/seo/Seo";
-import GalleryHeader from "@/components/gallery/GalleryHeader";
-import GalleryGrid from "@/components/gallery/GalleryGrid";
+import CinemaBeat from "@/components/gallery/CinemaBeat";
 import GalleryViewer from "@/components/gallery/GalleryViewer";
-import {
-  arrangeForView,
-  filterByCollection,
-  VIEW_MODES,
-  COLLECTIONS,
-} from "@/components/gallery/galleryAlgorithm";
-import {
-  TOKENS,
-  styleFromTokens,
-  resolveInitialTheme,
-  persistTheme,
-} from "@/components/gallery/galleryTheme";
+import { buildCinemaSequence } from "@/components/gallery/cinemaSequence";
 
 /**
- * /gallery-intelligent — Arabic-first editorial gallery.
+ * /gallery-intelligent — Cinema prototype.
  *
- * What this page is:
- *   - RTL by default. Title is "عوالم تركي".
- *   - Two themes: warm cinematic light + true black dark. Toggle in
- *     header, persisted to localStorage, falls back to OS preference.
- *   - Reads only public/gallery-manifest.json (built by
- *     scripts/build-gallery-index.js) — no client-side analysis.
- *   - Curated view assigns items to Visual Chapters with Arabic
- *     headings (شخصيات / أزياء / سينمائي / إعلانات / تراث / معمار /
- *     أحمر / صحراء / ليل / هدوء / تجارب). Other views show a flat
- *     editorial masonry.
- *   - Typography: IBM Plex Sans Arabic, loaded via Helmet so it only
- *     ships on this route.
+ * The page is not a gallery, it's a slow film. Beats stack vertically
+ * with deliberate variation in size and breathing room. There is no
+ * header, no chips, no filters, no theme toggle. The only UI is the
+ * viewer that opens when an image is clicked.
  *
- * URL params (shareable on WhatsApp, etc.):
- *   ?view=curated|by-color|by-brightness|by-mood|random
- *   ?collection=characters|fashion|ads|films|heritage|realestate|luxury|dark|red
- *   ?seed=<int>   for the random view
- *   ?item=<id>    opens the fullscreen viewer
+ * Reads only from public/gallery-manifest.json. The cinema sequencer
+ * (cinemaSequence.js) reorders items by visual proximity and assigns
+ * them into beats — single / silence / triptych / solo-quiet / cluster
+ * / pair / oversized / montage — following a fixed score.
+ *
+ * URL params:
+ *   ?item=<id>  opens the spotlight viewer focused on that image.
+ *
+ * No view modes, no collections — those filters belong to a gallery,
+ * and this isn't a gallery.
  */
 export default function GalleryIntelligent() {
   const [params, setParams] = useSearchParams();
   const [manifest, setManifest] = useState(null);
   const [error, setError] = useState(null);
   const [openItem, setOpenItem] = useState(null);
-  const [theme, setTheme] = useState(() => resolveInitialTheme());
-
-  const view = validateOption(params.get("view"), VIEW_MODES, "curated");
-  const collection = validateOption(params.get("collection"), COLLECTIONS, "all");
-  const seed = Number(params.get("seed")) || 1729;
+  const [showBrand, setShowBrand] = useState(true);
 
   useEffect(() => {
     let cancelled = false;
@@ -63,11 +43,18 @@ export default function GalleryIntelligent() {
     return () => { cancelled = true; };
   }, []);
 
-  const items = useMemo(() => {
-    if (!manifest) return [];
-    const filtered = filterByCollection(manifest.items, collection);
-    return arrangeForView(filtered, view, seed);
-  }, [manifest, collection, view, seed]);
+  const beats = useMemo(
+    () => (manifest ? buildCinemaSequence(manifest.items) : []),
+    [manifest],
+  );
+
+  // Flat list of just the images, in cinema order — used for prev/next
+  // inside the viewer so the user keeps moving through the film, not
+  // through alphabetical slugs.
+  const orderedItems = useMemo(
+    () => beats.flatMap((b) => b.items || []),
+    [beats],
+  );
 
   useEffect(() => {
     if (!manifest) return;
@@ -77,113 +64,129 @@ export default function GalleryIntelligent() {
     setOpenItem(found || null);
   }, [manifest, params]);
 
-  const updateParam = useCallback((key, value) => {
-    const next = new URLSearchParams(params);
-    if (!value || value === "all" || (key === "view" && value === "curated")) {
-      next.delete(key);
-    } else {
-      next.set(key, value);
+  // Hide the brand mark once the user starts moving — keeps the
+  // opening contemplative and the rest of the scroll free of chrome.
+  useEffect(() => {
+    function onScroll() {
+      if (window.scrollY > window.innerHeight * 0.6) setShowBrand(false);
+      else setShowBrand(true);
     }
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  const updateItemParam = useCallback((value) => {
+    const next = new URLSearchParams(params);
+    if (!value) next.delete("item"); else next.set("item", value);
     setParams(next, { replace: false });
   }, [params, setParams]);
 
   const openIndex = useMemo(
-    () => (openItem ? items.findIndex((x) => x.id === openItem.id) : -1),
-    [openItem, items],
+    () => (openItem ? orderedItems.findIndex((x) => x.id === openItem.id) : -1),
+    [openItem, orderedItems],
   );
 
   const onPrev = useCallback(() => {
     if (openIndex < 0) return;
-    const next = items[(openIndex - 1 + items.length) % items.length];
-    updateParam("item", next.id);
-  }, [openIndex, items, updateParam]);
+    const next = orderedItems[(openIndex - 1 + orderedItems.length) % orderedItems.length];
+    updateItemParam(next.id);
+  }, [openIndex, orderedItems, updateItemParam]);
 
   const onNext = useCallback(() => {
     if (openIndex < 0) return;
-    const next = items[(openIndex + 1) % items.length];
-    updateParam("item", next.id);
-  }, [openIndex, items, updateParam]);
+    const next = orderedItems[(openIndex + 1) % orderedItems.length];
+    updateItemParam(next.id);
+  }, [openIndex, orderedItems, updateItemParam]);
 
-  const onClose = useCallback(() => updateParam("item", null), [updateParam]);
-
-  const onChangeTheme = useCallback((t) => {
-    setTheme(t);
-    persistTheme(t);
-  }, []);
-
-  const wrapperStyle = useMemo(() => ({
-    ...styleFromTokens(theme),
-    fontFamily:
-      "'IBM Plex Sans Arabic', 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif",
-    transition: "background-color 320ms ease, color 320ms ease",
-  }), [theme]);
+  const onClose = useCallback(() => updateItemParam(null), [updateItemParam]);
 
   return (
-    <div dir="rtl" data-theme={theme} className="min-h-screen" style={wrapperStyle}>
-      <Helmet>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
-        <link
-          rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&display=swap"
-        />
-        <meta name="theme-color" content={TOKENS[theme].bg} />
-      </Helmet>
+    <div dir="rtl" className="relative min-h-screen bg-black text-white antialiased">
+      {/* The intro fade keyframe is shared by every CinemaImage marked
+          `intro`. Defining it here keeps the gallery stylesheet
+          self-contained — no new global CSS file. */}
+      <style>{`
+        @keyframes cinemaIntroFade {
+          0%   { opacity: 0; transform: translate3d(0, 24px, 0); }
+          100% { opacity: 1; transform: translate3d(0, 0, 0); }
+        }
+        @keyframes cinemaBrandFade {
+          0%   { opacity: 0; }
+          60%  { opacity: 0; }
+          100% { opacity: 0.7; }
+        }
+        @keyframes cinemaScrollHint {
+          0%, 100% { opacity: 0; transform: translateY(0); }
+          50%      { opacity: 0.55; transform: translateY(8px); }
+        }
+      `}</style>
 
       <Seo
         title="عوالم تركي"
-        description="تجارب بصرية مولَّدة بالذكاء الاصطناعي — مُرتَّبة حسب اللون والضوء والمزاج."
+        description="تجربة بصرية متدفّقة بالذكاء الاصطناعي."
         canonical="/gallery-intelligent"
         lang="ar"
       />
 
-      <GalleryHeader
-        view={view}
-        collection={collection}
-        count={items.length}
-        theme={theme}
-        onChangeTheme={onChangeTheme}
-        onChangeView={(v) => updateParam("view", v)}
-        onChangeCollection={(c) => updateParam("collection", c)}
-      />
-
-      <main className="mx-auto w-full max-w-[1600px] px-4 pb-32 md:px-8">
-        {error && (
-          <p
-            className="px-4 py-12 text-center text-sm"
-            style={{ color: "var(--gi-text-muted)" }}
-          >
-            تعذّر تحميل بيانات المعرض.
-          </p>
-        )}
-
-        {!error && !manifest && <GridSkeleton />}
-
-        {manifest && items.length === 0 && (
-          <p
-            className="px-4 py-16 text-center text-sm"
-            style={{ color: "var(--gi-text-muted)" }}
-          >
-            لا توجد أعمال تطابق هذا التصنيف بعد.
-          </p>
-        )}
-
-        {manifest && items.length > 0 && (
-          <GalleryGrid
-            items={items}
-            view={view}
-            onOpen={(it) => updateParam("item", it.id)}
-          />
-        )}
-      </main>
-
-      {/* Footer — minimal, Arabic, brand-anchored */}
-      <footer
-        className="border-t px-6 py-12 text-center text-[12px] tracking-[0.22em]"
-        style={{ borderColor: "var(--gi-border)", color: "var(--gi-text-subtle)" }}
+      {/* Brand mark — fades in 1.4s after load, fades out once the
+          user scrolls past the opening. Pure typographic anchor; no
+          navigation, no link. */}
+      <div
+        className="pointer-events-none fixed bottom-6 right-6 z-30 text-[10px] tracking-[0.42em] text-white/70 transition-opacity duration-1000"
+        style={{
+          opacity: showBrand ? 0.7 : 0,
+          animation: "cinemaBrandFade 2400ms ease-out both",
+        }}
       >
-        تركي غازي · عوالم بصرية بالذكاء الاصطناعي
-      </footer>
+        تركي غازي · عوالم
+      </div>
+
+      {/* A near-invisible scroll hint that appears only at the very
+          top, to let the first-time visitor know there's more below
+          the opening frame. */}
+      <div
+        className="pointer-events-none fixed bottom-6 left-1/2 z-30 -translate-x-1/2 text-[9px] tracking-[0.42em] text-white/45"
+        style={{
+          opacity: showBrand ? 1 : 0,
+          animation: "cinemaScrollHint 2800ms ease-in-out 3200ms infinite",
+        }}
+      >
+        ↓
+      </div>
+
+      {error && (
+        <p className="px-4 py-32 text-center text-sm text-white/45">
+          تعذّر تحميل العالم البصري.
+        </p>
+      )}
+
+      {!error && !manifest && (
+        <div className="flex min-h-screen items-center justify-center">
+          <div className="text-[11px] tracking-[0.42em] text-white/30">
+            جاري الفتح…
+          </div>
+        </div>
+      )}
+
+      {manifest && beats.length > 0 && (
+        <main className="flex flex-col">
+          {beats.map((beat, i) => (
+            <CinemaBeat
+              key={`b-${i}`}
+              beat={beat}
+              index={i}
+              onOpen={(it) => updateItemParam(it.id)}
+            />
+          ))}
+        </main>
+      )}
+
+      {/* Closing breath + signature — minimal, monochrome. */}
+      {manifest && (
+        <footer className="px-6 pb-24 pt-32 text-center text-[10px] tracking-[0.42em] text-white/35">
+          تركي غازي
+        </footer>
+      )}
 
       {openItem && (
         <GalleryViewer
@@ -195,23 +198,4 @@ export default function GalleryIntelligent() {
       )}
     </div>
   );
-}
-
-function GridSkeleton() {
-  return (
-    <div className="grid grid-cols-2 gap-4 px-2 md:grid-cols-6 md:gap-5">
-      {Array.from({ length: 18 }).map((_, i) => (
-        <div
-          key={i}
-          className="aspect-[3/4] animate-pulse rounded-[14px]"
-          style={{ backgroundColor: "var(--gi-skeleton)" }}
-        />
-      ))}
-    </div>
-  );
-}
-
-function validateOption(value, options, fallback) {
-  if (!value) return fallback;
-  return options.some((o) => o.id === value) ? value : fallback;
 }
