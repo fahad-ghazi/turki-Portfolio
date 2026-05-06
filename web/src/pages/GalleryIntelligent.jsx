@@ -169,7 +169,7 @@ export default function GalleryIntelligent() {
       )}
 
       {manifest && beats.length > 0 && (
-        <main className="flex flex-col">
+        <main className="flex flex-col gap-3 md:gap-5">
           {beats.map((beat, i) => (
             <CinemaBeat
               key={`b-${i}`}

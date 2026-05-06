@@ -4,18 +4,21 @@ import CinemaImage from "./CinemaImage";
 /**
  * Renders one beat from the cinema sequence. Eight beat types:
  *
- *   silence      — pure breathing room, no image
- *   single       — one image, near full-bleed (or contained for variation)
- *   solo-quiet   — small image floating in a tall empty section (rest)
- *   triptych     — three side-by-side, stacked on mobile
- *   cluster      — asymmetric 4-image arrangement on desktop, 2x2 on mobile
- *   pair         — two images, breath between them
- *   oversized    — single image that exceeds the viewport vertically
- *   montage      — five images, dense vertical strip on mobile, 5-up on desktop
+ *   silence      — pure breathing room, no image (4–14vh)
+ *   single       — one image, optionally contained
+ *   solo-quiet   — small image floating in vertical padding (rest)
+ *   triptych     — three side-by-side film frames
+ *   cluster      — clean 2x2 of film frames
+ *   pair         — two side-by-side film frames
+ *   oversized    — single tall image (85–100vh)
+ *   montage      — five-frame filmstrip (≤30vh)
  *
- * All beat heights are expressed in viewport units so the rhythm
- * holds across screen sizes. We never use scroll-snap — the cadence
- * comes from the beat heights, not from forced stops.
+ * IMPORTANT: every grouped beat (pair / triptych / cluster / montage)
+ * uses a UNIFORM aspect ratio across its tiles, computed as the clamped
+ * average of the items' aspect ratios. The cinema uses this discipline
+ * to read as a single composition rather than a Pinterest-style row of
+ * mismatched cards. Each tile uses object-cover so any minor crop is
+ * absorbed gracefully.
  */
 export default function CinemaBeat({ beat, index, onOpen }) {
   if (beat.type === "silence") {
@@ -23,53 +26,55 @@ export default function CinemaBeat({ beat, index, onOpen }) {
       <div
         aria-hidden="true"
         className="w-full"
-        style={{ height: `${beat.height || 10}vh` }}
+        style={{ height: `${beat.height || 6}vh` }}
       />
     );
   }
 
-  // First non-silence beat is the intro.
   const isIntro = index === 0;
 
   switch (beat.type) {
-    case "single":
-      return <BeatSingle beat={beat} isIntro={isIntro} onOpen={onOpen} />;
-    case "solo-quiet":
-      return <BeatSoloQuiet beat={beat} onOpen={onOpen} />;
-    case "triptych":
-      return <BeatTriptych beat={beat} onOpen={onOpen} />;
-    case "cluster":
-      return <BeatCluster beat={beat} onOpen={onOpen} />;
-    case "pair":
-      return <BeatPair beat={beat} onOpen={onOpen} />;
-    case "oversized":
-      return <BeatOversized beat={beat} onOpen={onOpen} />;
-    case "montage":
-      return <BeatMontage beat={beat} onOpen={onOpen} />;
-    default:
-      return null;
+    case "single":      return <BeatSingle      beat={beat} isIntro={isIntro} onOpen={onOpen} />;
+    case "solo-quiet":  return <BeatSoloQuiet   beat={beat} onOpen={onOpen} />;
+    case "triptych":    return <BeatTriptych    beat={beat} onOpen={onOpen} />;
+    case "cluster":     return <BeatCluster     beat={beat} onOpen={onOpen} />;
+    case "pair":        return <BeatPair        beat={beat} onOpen={onOpen} />;
+    case "oversized":   return <BeatOversized   beat={beat} onOpen={onOpen} />;
+    case "montage":     return <BeatMontage     beat={beat} onOpen={onOpen} />;
+    default: return null;
   }
+}
+
+// Average aspect ratio of a beat's items, clamped so a single very-tall
+// or very-wide image can't pull the entire group into a strange shape.
+function uniformAspect(items, min = 0.7, max = 1.4) {
+  const avg = items.reduce((s, it) => s + (it.aspect_ratio || 1), 0) / items.length;
+  return Math.max(min, Math.min(max, avg));
 }
 
 // --- Beat layouts -------------------------------------------------------
 
 function BeatSingle({ beat, isIntro, onOpen }) {
   const item = beat.items[0];
-  // Contained singles get a max-width so they read as a "frame" rather
-  // than a full-bleed shock — a softer note in the score.
-  const containerCls = beat.contained
-    ? "mx-auto w-[88vw] max-w-[1100px]"
-    : "w-full";
+  const ar = item.aspect_ratio || 1;
+  // Cap by viewport HEIGHT, then back-solve width from the image's
+  // natural aspect ratio. This preserves image proportions exactly
+  // (no stretch, no awkward crop) while ensuring the beat fits the
+  // viewport. The intro hero gets a slightly larger cap so it lands
+  // like an opening shot.
+  const heightCap = isIntro ? 92 : (beat.contained ? 72 : 86);
+  const widthMax = beat.contained ? 88 : 100;
   return (
-    <section className={containerCls}>
+    <section className="flex w-full justify-center">
       <CinemaImage
         item={item}
         eager={isIntro}
         intro={isIntro}
         sizes="100vw"
         style={{
-          aspectRatio: String(item.aspect_ratio || 1),
-          maxHeight: beat.contained ? "82vh" : "92vh",
+          aspectRatio: String(ar),
+          width: `min(${widthMax}vw, calc(${heightCap}vh * ${ar}))`,
+          maxHeight: `${heightCap}vh`,
         }}
         onOpen={onOpen}
       />
@@ -79,35 +84,35 @@ function BeatSingle({ beat, isIntro, onOpen }) {
 
 function BeatSoloQuiet({ beat, onOpen }) {
   const item = beat.items[0];
+  const ar = item.aspect_ratio || 0.75;
   return (
-    <section
-      className="flex w-full items-center justify-center"
-      style={{ minHeight: "92vh" }}
-    >
-      <div
-        className="w-[68vw] md:w-[34vw]"
-        style={{ maxWidth: "560px" }}
-      >
-        <CinemaImage
-          item={item}
-          sizes="(min-width: 768px) 34vw, 68vw"
-          style={{ aspectRatio: String(item.aspect_ratio || 0.75) }}
-          onOpen={onOpen}
-        />
-      </div>
+    <section className="flex w-full justify-center py-10 md:py-20">
+      <CinemaImage
+        item={item}
+        sizes="(min-width: 768px) 32vw, 68vw"
+        style={{
+          aspectRatio: String(ar),
+          // Mobile-first sizing — small framed image. The min() falls back
+          // to whichever constraint is tighter, so the tile always fits.
+          width: `min(68vw, calc(56vh * ${ar}), 520px)`,
+          maxHeight: "56vh",
+        }}
+        onOpen={onOpen}
+      />
     </section>
   );
 }
 
 function BeatTriptych({ beat, onOpen }) {
+  const ar = uniformAspect(beat.items, 0.7, 1.1);
   return (
-    <section className="grid w-full grid-cols-1 gap-3 md:grid-cols-3 md:gap-4">
+    <section className="grid w-full grid-cols-3 gap-1.5 md:gap-3">
       {beat.items.map((it) => (
         <CinemaImage
           key={it.id}
           item={it}
-          sizes="(min-width: 768px) 33vw, 100vw"
-          style={{ aspectRatio: String(it.aspect_ratio || 1) }}
+          sizes="33vw"
+          style={{ aspectRatio: String(ar) }}
           onOpen={onOpen}
         />
       ))}
@@ -116,25 +121,19 @@ function BeatTriptych({ beat, onOpen }) {
 }
 
 function BeatCluster({ beat, onOpen }) {
-  // Asymmetric arrangement on desktop — staggered vertical offsets so
-  // it never reads as a 2x2 grid. On mobile we collapse to a tight 2x2
-  // because asymmetry on small screens just creates awkward gaps.
-  const desktopSlots = [
-    "md:col-start-1 md:col-end-7  md:row-start-1",
-    "md:col-start-8 md:col-end-13 md:row-start-1 md:mt-12",
-    "md:col-start-2 md:col-end-7  md:row-start-2 md:-mt-10",
-    "md:col-start-7 md:col-end-12 md:row-start-2 md:mt-6",
-  ];
+  // Clean 2x2 with a uniform aspect — reads as one composition. The
+  // earlier asymmetric "fashion editorial" placement left visible empty
+  // grid cells, which broke the cinematic continuity.
+  const ar = uniformAspect(beat.items, 0.85, 1.15);
   return (
-    <section className="mx-auto w-full max-w-[1280px]">
-      <div className="grid grid-cols-2 gap-3 md:grid-cols-12 md:gap-4">
-        {beat.items.slice(0, 4).map((it, i) => (
+    <section className="mx-auto w-full max-w-[1100px]">
+      <div className="grid grid-cols-2 gap-1.5 md:gap-3">
+        {beat.items.slice(0, 4).map((it) => (
           <CinemaImage
             key={it.id}
             item={it}
-            sizes="(min-width: 768px) 30vw, 50vw"
-            className={desktopSlots[i] || ""}
-            style={{ aspectRatio: String(it.aspect_ratio || 1) }}
+            sizes="(min-width: 768px) 32vw, 50vw"
+            style={{ aspectRatio: String(ar) }}
             onOpen={onOpen}
           />
         ))}
@@ -144,14 +143,15 @@ function BeatCluster({ beat, onOpen }) {
 }
 
 function BeatPair({ beat, onOpen }) {
+  const ar = uniformAspect(beat.items, 0.7, 1.2);
   return (
-    <section className="grid w-full grid-cols-1 gap-3 md:grid-cols-2 md:gap-5">
+    <section className="grid w-full grid-cols-2 gap-1.5 md:gap-4">
       {beat.items.map((it) => (
         <CinemaImage
           key={it.id}
           item={it}
-          sizes="(min-width: 768px) 50vw, 100vw"
-          style={{ aspectRatio: String(it.aspect_ratio || 1) }}
+          sizes="50vw"
+          style={{ aspectRatio: String(ar) }}
           onOpen={onOpen}
         />
       ))}
@@ -161,16 +161,20 @@ function BeatPair({ beat, onOpen }) {
 
 function BeatOversized({ beat, onOpen }) {
   const item = beat.items[0];
-  // Force a tall aspect so the image earns its "oversized" name. If the
-  // source is landscape, we still let it dominate by using min-height.
+  const ar = item.aspect_ratio || 0.7;
+  // "Boom" beat — same width-from-height technique as BeatSingle so the
+  // image keeps its native shape. Pushed slightly taller (98vh) so it
+  // dominates the viewport without breaking the film.
   return (
-    <section className="w-full">
+    <section className="flex w-full justify-center">
       <CinemaImage
         item={item}
         sizes="100vw"
         style={{
-          aspectRatio: String(item.aspect_ratio || 0.65),
-          minHeight: "104vh",
+          aspectRatio: String(ar),
+          width: `min(100vw, calc(98vh * ${ar}))`,
+          maxHeight: "100vh",
+          minHeight: "78vh",
         }}
         onOpen={onOpen}
       />
@@ -179,11 +183,7 @@ function BeatOversized({ beat, onOpen }) {
 }
 
 function BeatMontage({ beat, onOpen }) {
-  // A 5-frame filmstrip. Always 5 columns — on mobile this becomes a
-  // tight contact-sheet of small portraits, which is exactly the
-  // "explosion of dense imagery" beat the score asks for. The narrow
-  // tile width keeps the strip vertically short, so it functions as a
-  // burst of energy between calmer beats.
+  const ar = uniformAspect(beat.items, 0.6, 0.9);
   return (
     <section className="grid w-full grid-cols-5 gap-1 md:gap-2">
       {beat.items.map((it) => (
@@ -191,7 +191,7 @@ function BeatMontage({ beat, onOpen }) {
           key={it.id}
           item={it}
           sizes="20vw"
-          style={{ aspectRatio: String(it.aspect_ratio || 0.7) }}
+          style={{ aspectRatio: String(ar) }}
           onOpen={onOpen}
         />
       ))}
