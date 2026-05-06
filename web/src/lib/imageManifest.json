@@ -614,28 +614,6 @@
     ],
     "aspectRatio": 0.7467
   },
-  "/works/ads/a_059.jpg": {
-    "width": 1200,
-    "height": 510,
-    "blurhash": "UPEBH8NIaxs.};oJo0aykCoexCWCbcR,-6s-",
-    "widths": [
-      480,
-      960,
-      1200
-    ],
-    "aspectRatio": 2.3529
-  },
-  "/works/ads/a_060.jpg": {
-    "width": 1200,
-    "height": 510,
-    "blurhash": "USLgIXxY01t6~VoeNGof9Ga#j[kB?Ge.RjWV",
-    "widths": [
-      480,
-      960,
-      1200
-    ],
-    "aspectRatio": 2.3529
-  },
   "/works/ads/a_061.jpg": {
     "width": 1200,
     "height": 676,
@@ -2371,17 +2349,6 @@
     ],
     "aspectRatio": 1
   },
-  "/works/fashion/f_156.jpg": {
-    "width": 1400,
-    "height": 1400,
-    "blurhash": "UVRyg8%L?^%g.8j[sAofM{ayRjWV%gj[jFjZ",
-    "widths": [
-      480,
-      960,
-      1400
-    ],
-    "aspectRatio": 1
-  },
   "/works/fashion/f_157.jpg": {
     "width": 1400,
     "height": 1400,
@@ -2514,28 +2481,6 @@
     ],
     "aspectRatio": 0.6711
   },
-  "/works/heritage/h_010.jpg": {
-    "width": 1200,
-    "height": 510,
-    "blurhash": "UABW_4?bK4D%_N-;RjNG00IU-;%ME1IUxuxa",
-    "widths": [
-      480,
-      960,
-      1200
-    ],
-    "aspectRatio": 2.3529
-  },
-  "/works/heritage/h_011.jpg": {
-    "width": 1200,
-    "height": 510,
-    "blurhash": "UAEBNf0gJA#R}=0h%Mi^IpEhxZ-7ahs.xYS4",
-    "widths": [
-      480,
-      960,
-      1200
-    ],
-    "aspectRatio": 2.3529
-  },
   "/works/heritage/h_012.jpg": {
     "width": 1200,
     "height": 2150,
@@ -2557,50 +2502,6 @@
       1200
     ],
     "aspectRatio": 0.5581
-  },
-  "/works/heritage/h_014.jpg": {
-    "width": 1200,
-    "height": 510,
-    "blurhash": "UbGk,k%1jXaK~pozoLRP%gX8WBWB-;t7WBod",
-    "widths": [
-      480,
-      960,
-      1200
-    ],
-    "aspectRatio": 2.3529
-  },
-  "/works/heritage/h_015.jpg": {
-    "width": 1200,
-    "height": 510,
-    "blurhash": "ULFYMjaK00%L?Gay9HWX~VjsIUt7xajZRjoe",
-    "widths": [
-      480,
-      960,
-      1200
-    ],
-    "aspectRatio": 2.3529
-  },
-  "/works/heritage/h_016.jpg": {
-    "width": 1200,
-    "height": 510,
-    "blurhash": "UUExwxwctPM{~UaextRjxsofoLRQ%LX8RkIV",
-    "widths": [
-      480,
-      960,
-      1200
-    ],
-    "aspectRatio": 2.3529
-  },
-  "/works/heritage/h_017.jpg": {
-    "width": 1200,
-    "height": 510,
-    "blurhash": "UECP|w.myX9GD*IpMx%L0yQmQ-xax]ROofS5",
-    "widths": [
-      480,
-      960,
-      1200
-    ],
-    "aspectRatio": 2.3529
   },
   "/works/heritage/h_018.jpg": {
     "width": 735,
@@ -2678,27 +2579,6 @@
     ],
     "aspectRatio": 1.7778
   },
-  "/works/poster_06_saudi_harley.jpg": {
-    "width": 1024,
-    "height": 576,
-    "blurhash": "UHIOOf~V009Z4nD*xvs;s,xut7V@V[t7t7IU",
-    "widths": [
-      480,
-      960,
-      1024
-    ],
-    "aspectRatio": 1.7778
-  },
-  "/works/poster_07_glasses_cinematic.jpg": {
-    "width": 720,
-    "height": 1280,
-    "blurhash": "U9FiA5M_%L~pF}M{oKR*K6xtV[M{NGR+M{Rk",
-    "widths": [
-      480,
-      720
-    ],
-    "aspectRatio": 0.5625
-  },
   "/works/poster_08_glasses_ugc.jpg": {
     "width": 720,
     "height": 1280,
@@ -2731,17 +2611,6 @@
     ],
     "aspectRatio": 0.6711
   },
-  "/works/realestate/r_003.jpg": {
-    "width": 1200,
-    "height": 510,
-    "blurhash": "UjL:=XK,-S-n_NpJslo#Otj@a0Rl%1NHr;Rj",
-    "widths": [
-      480,
-      960,
-      1200
-    ],
-    "aspectRatio": 2.3529
-  },
   "/works/realestate/r_004.jpg": {
     "width": 1200,
     "height": 1788,
@@ -2763,17 +2632,6 @@
       1200
     ],
     "aspectRatio": 0.6711
-  },
-  "/works/realestate/r_006.jpg": {
-    "width": 1200,
-    "height": 510,
-    "blurhash": "UMIN?Y%19F^+$v%2o~ng-5oMNHn#~WbHD*tR",
-    "widths": [
-      480,
-      960,
-      1200
-    ],
-    "aspectRatio": 2.3529
   },
   "/works/realestate/r_007.jpg": {
     "width": 1200,
@@ -2900,83 +2758,6 @@
       1200
     ],
     "aspectRatio": 1.4888
-  },
-  "/works/realestate/r_021.jpg": {
-    "width": 1200,
-    "height": 510,
-    "blurhash": "UUJ7{%9H~qt7_Nt8.8xu%gofX9WrxtRjt7of",
-    "widths": [
-      480,
-      960,
-      1200
-    ],
-    "aspectRatio": 2.3529
-  },
-  "/works/realestate/r_022.jpg": {
-    "width": 1200,
-    "height": 510,
-    "blurhash": "UXPP=W-=oIf4~qx]RkWBxvxuWBa#%Mxuxuof",
-    "widths": [
-      480,
-      960,
-      1200
-    ],
-    "aspectRatio": 2.3529
-  },
-  "/works/realestate/r_024.jpg": {
-    "width": 1200,
-    "height": 510,
-    "blurhash": "U%KnC,xtjFxa~qt6WVt7x]oejZoLWEjZoKf6",
-    "widths": [
-      480,
-      960,
-      1200
-    ],
-    "aspectRatio": 2.3529
-  },
-  "/works/realestate/r_026.jpg": {
-    "width": 1200,
-    "height": 510,
-    "blurhash": "UUI}eP?atSjs_Nbb%gnh?b-;bvRjt6o}V@oK",
-    "widths": [
-      480,
-      960,
-      1200
-    ],
-    "aspectRatio": 2.3529
-  },
-  "/works/realestate/r_027.jpg": {
-    "width": 1200,
-    "height": 510,
-    "blurhash": "UVGbbX_2yE%f~q%M.8x[kXaftRWX-:WBIpWW",
-    "widths": [
-      480,
-      960,
-      1200
-    ],
-    "aspectRatio": 2.3529
-  },
-  "/works/realestate/r_029.jpg": {
-    "width": 1200,
-    "height": 510,
-    "blurhash": "UEH-xrv{Nb%N~VWVjYV@0hE1ozo}n#xts:WB",
-    "widths": [
-      480,
-      960,
-      1200
-    ],
-    "aspectRatio": 2.3529
-  },
-  "/works/realestate/r_030.jpg": {
-    "width": 1200,
-    "height": 510,
-    "blurhash": "UiJ*I$NKD*j@~qR.M{j[%ht7WBbHtRx[t6fk",
-    "widths": [
-      480,
-      960,
-      1200
-    ],
-    "aspectRatio": 2.3529
   },
   "/works/realestate/r_031.jpg": {
     "width": 1200,

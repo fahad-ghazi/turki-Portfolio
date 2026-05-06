@@ -43,9 +43,12 @@ const APPLY = process.argv.includes("--apply");
 const WIDTHS = [480, 960, 1200, 1440, 1920];
 const FORMATS = ["avif", "webp", "jpg"];
 
-// 27 base images to retire. Paths are RELATIVE to the bucket root —
-// R2 keys are `works/...` (no leading slash).
+// 47 base images to retire (27 from the user's first list + 20 flagged
+// as low-quality / panoramic-low-res / overexposed). Paths are
+// RELATIVE to the bucket root — R2 keys are `works/...` (no leading
+// slash).
 const BASES = [
+  // --- Round 1: user-provided list (27) ---
   "works/fashion/f_043.jpg",
   "works/fashion/f_042.jpg",
   "works/hero-poster.jpg",
@@ -73,6 +76,30 @@ const BASES = [
   "works/realestate/r_025.jpg",
   "works/fashion/f_040.jpg",
   "works/banners/studies.jpg",
+  // --- Round 2: low-quality detection (20) ---
+  // Panoramic 1200x510 (severity-3): 6 heritage + 9 realestate + 2 ads
+  "works/heritage/h_010.jpg",
+  "works/heritage/h_011.jpg",
+  "works/heritage/h_014.jpg",
+  "works/heritage/h_015.jpg",
+  "works/heritage/h_016.jpg",
+  "works/heritage/h_017.jpg",
+  "works/realestate/r_003.jpg",
+  "works/realestate/r_006.jpg",
+  "works/realestate/r_021.jpg",
+  "works/realestate/r_022.jpg",
+  "works/realestate/r_024.jpg",
+  "works/realestate/r_026.jpg",
+  "works/realestate/r_027.jpg",
+  "works/realestate/r_029.jpg",
+  "works/realestate/r_030.jpg",
+  "works/ads/a_059.jpg",
+  "works/ads/a_060.jpg",
+  // Overexposed
+  "works/fashion/f_156.jpg",
+  // Posters: low-res or washed-out
+  "works/poster_06_saudi_harley.jpg",
+  "works/poster_07_glasses_cinematic.jpg",
 ];
 
 function variantKeysFor(basePath) {
